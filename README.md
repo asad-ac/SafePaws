@@ -1,16 +1,63 @@
-# React + Vite
+# Finding Fido
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+CodePath WEB103 Final Project
 
-Currently, two official plugins are available:
+Designed and developed by: Rajiv Chevannes, Samantha Milo, Asad Chaudhry, Baire Diaz
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Description and Purpose
 
-## React Compiler
+Finding Fido is a web app about finding man's best friend and your newest partner! Our mission is to ensure every dog is able to find stability and love in a caring home. We've come together to build a website that displays local Dog Shelter's in your area and the dogs ready and waiting for a new home! We do everything we can to support a dog's journey into a new life.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Inspiration
 
-## Expanding the ESLint configuration
+Throughout the weeks collaborating on the codepath assignments and bonding, we discovered we all have dogs! Our pets are a large part of our lives - they're close family that we're excited see coming home , just as they are seeing us arrive. They provide us comfort and joy throughout our days and we'd love to give back to our furry friends! Knowing that so many dogs stay on the streets, cold, hungry, and alone breaks our hearts. We want to ensure that every dog without an owner can find their new family ASAP!
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+
+Frontend: React
+
+Backend: Express.js + Node.js
+
+## Features
+
+[Name of Feature 1]
+
+[short description goes here]
+
+[gif goes here]
+
+[Name of Feature 2]
+
+[short description goes here]
+
+[gif goes here]
+
+[Name of Feature 3]
+
+[short description goes here]
+
+[gif goes here]
+
+[Name of Feature 4]
+
+[short description goes here]
+
+[gif goes here]
+
+[Name of Feature 5]
+
+[short description goes here]
+
+[gif goes here]
+
+[Name of Feature 6]
+
+[short description goes here]
+
+[gif goes here]
+
+[ADDITIONAL FEATURES GO HERE - ADD ALL FEATURES HERE IN THE FORMAT ABOVE; you will check these off and add gifs as you complete them]
+
+## Installation Instructions
+
+[instructions go here]
