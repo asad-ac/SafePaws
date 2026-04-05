@@ -14,13 +14,26 @@ Throughout the weeks collaborating on the codepath assignments and bonding, we d
 
 ## Tech Stack
 
-Frontend: React
-
-Backend: Express.js + Node.js
+- **Frontend**
+  - **Languages:** JavaScript
+  - **Frameworks:** React.js (Vite)
+- **Backend:**
+  - **Languages:** Node.js
+  - **Frameworks:** Express
+- **Database:** PostgreSQL
 
 ## Features
 
-* Sorting by date added
+* Sorting by date intake, name, or age. For fast user experiences as a staff worker * for an animal sanctuary.
+* Filtering by care status, feeding status, enclosure cleaning status? or tags?.
+* Generate post for an animal to ask for donations or volunteers.
+* React hot toast notifications for adding, updating, and deleting animals for an improved user experience.
+* CRUD modals for improved user experience opposed to navigating to a different page to fill out form?
+* Login with GitHub so each sanctuary can manage their animals?
+* Loading Skeletons for improved user experience.
+
+
+
 
 
 [Name of Feature 1]
