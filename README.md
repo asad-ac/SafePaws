@@ -20,6 +20,9 @@ Backend: Express.js + Node.js
 
 ## Features
 
+* Sorting by date added
+
+
 [Name of Feature 1]
 
 [short description goes here]
