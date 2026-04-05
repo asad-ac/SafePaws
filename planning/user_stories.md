@@ -6,7 +6,7 @@ Reference the Writing User Stories final project guide in the course portal for 
 
 [👉🏾👉🏾👉🏾 Include at least at least 1, but no more than 3, user roles.]
 
-Asad is part of a nonprofit organization that runs an sanctuary of 1,200 animals. Him and his team would like to have an effective, efficient, and organized management system to enhance the daily needs of animals, sponsor relationship, and volunteer outreach. They will be using Finding Fido, an efficient management system that will help maintain animal records.
+As a sanctuary staff member, I want to manage animal records, so that I can efficiently support daily animal care, sponsor relationships, and volunteer coordination.
 
 <!-- Can animals be adopted from dedicated sanctuaries?
 answer after reasearch is no  -->
