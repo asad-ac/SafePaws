@@ -24,13 +24,13 @@ Throughout the weeks collaborating on the codepath assignments and bonding, we d
 
 ## Features
 
-* Sorting by date intake, name, or age. For fast user experiences as a staff worker * for an animal sanctuary.
-* Filtering by care status, feeding status, enclosure cleaning status? or tags?.
-* Generate post for an animal to ask for donations or volunteers.
-* React hot toast notifications for adding, updating, and deleting animals for an improved user experience.
-* CRUD modals for improved user experience opposed to navigating to a different page to fill out form?
-* Login with GitHub so each sanctuary can manage their animals?
-* Loading Skeletons for improved user experience.
+* Implement sorting by intake date, name, or age so staff can quickly find and manage animals more efficiently.
+* Provide filtering by care status, feeding status, enclosure cleanliness, and tags to make it easier for staff to organize and monitor animals.
+* Enable post generation for individual animals to support donation campaigns and volunteer outreach.
+* Use modal-based CRUD forms to streamline workflows and reduce unnecessary page navigation for staff.
+* Implement GitHub authentication so staff users can securely manage their assigned sanctuary and its animals.
+* Integrate React Hot Toast notifications to provide immediate feedback when animals are added, updated, or deleted.
+* Incorporate loading skeletons to improve performance and give users a preview of incoming content while data loads.
 
 
 

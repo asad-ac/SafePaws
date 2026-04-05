@@ -6,6 +6,11 @@ Reference the Writing User Stories final project guide in the course portal for 
 
 [👉🏾👉🏾👉🏾 Include at least at least 1, but no more than 3, user roles.]
 
+Asad is part of a nonprofit organization that runs an sanctuary of 1,200 animals. Him and his team would like to have an effective, efficient, and organized management system to enhance the daily needs of animals, sponsor relationship, and volunteer outreach. They will be using Finding Fido, an efficient management system that will help maintain animal records.
+
+<!-- Can animals be adopted from dedicated sanctuaries?
+answer after reasearch is no  -->
+
 ## Draft User Stories
 
 [👉🏾👉🏾👉🏾 Include at least at least 10 user stories in this format:]
@@ -14,7 +19,7 @@ Reference the Writing User Stories final project guide in the course portal for 
 2. As an Admin, I want to update an animal's health status, name, weight, vaccination status, and tags, so that I can ensure accurate care records.
 3. As an Admin, I want to remove an animal that has been transferred to another sanctuary or has passed away from our system, so that I can maintain an up-to-date list of animals.
 4. As an Admin, I want to update tags (friendly, vaccinated, healthy) so that, I can better track each animal’s condition and needs.
-5. As an Admin, I want to delete tags that are no longer applicable, to maintain an updated and organized system.
+5. As an Admin, I want to delete tags that are no longer applicable, to maintain an updated and organsized system.
 6. As an Admin, I want to view all the animals in a grid so that, I can scan through and organize next steps. 
 7. As an Admin, I want to filter animals by care status, feeding status, and enclosure cleaning status to know what to follow up on.
 8. As an Admin, I want to sort animals by intake date, name, and age.
