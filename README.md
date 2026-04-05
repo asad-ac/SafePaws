@@ -6,13 +6,11 @@ Designed and developed by: Rajiv Chevannes, Samantha Milo, Asad Chaudhry, Baire 
 
 ## Description and Purpose
 
-Finding Fido is a web app about finding man's best friend and your newest partner! Our mission is to ensure every dog is able to find stability and love in a caring home. We've come together to build a website that displays local Dog Shelter's in your area and the dogs ready and waiting for a new home! We do everything we can to support a dog's journey into a new life.
-
-Finding Fido is a web app that allows sanctuary staff members to manage animals, sponsor relationships, and volunteer outreach. It provides organization for animals that 
+Finding Fido is a web app that allows sanctuary staff members to manage animals, sponsor relationships, and volunteer outreach. It provides strong record management for animals that are rescued from neglect, abuse, or dangerous situations, ensuring they live out their lives in a safe, non-exploitative environment.
 
 ## Inspiration
 
-Throughout the weeks collaborating on the codepath assignments and bonding, we discovered we all have dogs! Our pets are a large part of our lives - they're close family that we're excited see coming home , just as they are seeing us arrive. They provide us comfort and joy throughout our days and we'd love to give back to our furry friends! Knowing that so many dogs stay on the streets, cold, hungry, and alone breaks our hearts. We want to ensure that every dog without an owner can find their new family ASAP!
+Throughout the weeks collaborating on assignments and bonding, we discovered we all love animals! Our pets are a large part of our lives, they're close family that we're excited see coming home, just as they are seeing us arrive. They provide us comfort and joy throughout our days and we'd love to give back. All animals deserve a good environment and should not have to go through abuse, injuries, or neglect. Any organization that dedicates an ample amount of time to serving an incredible wildlife, deserves help.
 
 ## Tech Stack
 
