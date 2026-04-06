@@ -26,53 +26,27 @@ Throughout the weeks collaborating on assignments and bonding, we discovered we 
 
 ## Features
 
-* Implement sorting by intake date, name, or age so staff can quickly find and manage animals more efficiently.
-* Provide filtering by care status, feeding status, enclosure cleanliness, and tags to make it easier for staff to organize and monitor animals.
-* Enable post generation for individual animals to support donation campaigns and volunteer outreach.
-* Use modal-based CRUD forms to streamline workflows and reduce unnecessary page navigation for staff.
-* Implement GitHub authentication so staff users can securely manage their assigned sanctuary and its animals.
-* Integrate React Hot Toast notifications to provide immediate feedback when animals are added, updated, or deleted.
-* Incorporate loading skeletons to improve performance and give users a preview of incoming content while data loads.
-
-
-
-
-
-[Name of Feature 1]
-
-[short description goes here]
-
-[gif goes here]
-
-[Name of Feature 2]
-
-[short description goes here]
-
-[gif goes here]
-
-[Name of Feature 3]
-
-[short description goes here]
-
-[gif goes here]
-
-[Name of Feature 4]
-
-[short description goes here]
-
-[gif goes here]
-
-[Name of Feature 5]
-
-[short description goes here]
-
-[gif goes here]
-
-[Name of Feature 6]
-
-[short description goes here]
-
-[gif goes here]
+- **Sorting Pet Attributes:**
+  - Implement sorting by intake date, name, or age so staff can quickly find and manage animals more efficiently.
+  - [gif goes here]
+- **Animal Status's**
+  - Provide filtering by care status, feeding status, enclosure cleanliness, and tags to make it easier for staff to organize and monitor animals.
+  - [gif goes here]
+- **Social Media Post Generation:**
+  - Enable post generation for individual animals to support donation campaigns and volunteer outreach.
+  - [gif goes here]
+- **CRUD Workflow:**
+  - Use modal-based CRUD forms to streamline workflows and reduce unnecessary page navigation for staff.
+  - [gif goes here]
+- **GitHub Authentication:**
+  - Implement GitHub authentication so staff users can securely manage their assigned sanctuary and its animals.
+  - [gif goes here]
+- **Hot Toast Confirmations:**
+  - Integrate React Hot Toast notifications to provide immediate feedback when animals are added, updated, or deleted.
+  - [gif goes here]
+- **Loading Skeletons:**
+  - Incorporate loading skeletons to improve performance and give users a preview of incoming content while data loads.
+  - [gif goes here]
 
 [ADDITIONAL FEATURES GO HERE - ADD ALL FEATURES HERE IN THE FORMAT ABOVE; you will check these off and add gifs as you complete them]
 
