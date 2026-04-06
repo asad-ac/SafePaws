@@ -16,7 +16,7 @@ Throughout the weeks collaborating on assignments and bonding, we discovered we 
 
 ## Tech Stack
 
-- **Frontend**
+- **Frontend:**
   - **Languages:** JavaScript
   - **Frameworks:** React.js (Vite)
 - **Backend:**
