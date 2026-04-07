@@ -1,4 +1,4 @@
-# Finding Fido
+# SafePaws
 
 CodePath WEB103 Final Project
 
@@ -8,7 +8,7 @@ Designed and developed by: Rajiv Chevannes, Samantha Milo, Asad Chaudhry, Baire 
 
 ### Description and Purpose
 
-Finding Fido is a web app that allows animal sanctuary staff members to manage animals, sponsor relationships, and volunteer outreach. It provides strong record management for animals that are rescued from neglect, abuse, or dangerous situations, ensuring they live out their lives in a safe, non-exploitative environment. This application will improve management for an animal sanctuary at a large scale, helping organizations with every animal's needs.
+SafePaws is a web app that allows animal sanctuary staff members to manage animals, sponsor relationships, and volunteer outreach. It provides strong record management for animals that are rescued from neglect, abuse, or dangerous situations, ensuring they live out their lives in a safe, non-exploitative environment. This application will improve management for an animal sanctuary at a large scale, helping organizations with every animal's needs.
 
 ### Inspiration
 
