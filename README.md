@@ -12,7 +12,7 @@ Finding Fido is a web app that allows animal sanctuary staff members to manage a
 
 ### Inspiration
 
-Throughout the weeks collaborating on assignments and bonding, we discovered we all have a passion for animals. Our pets are a large part of our lives; they're close family whom we are excited to see when we come home, just as they are excited to see us arrive. They provide us with comfort and joy, and we'd love to give back. All animals deserve a good environment and should not have to go through abuse, dangerous situations, injuries, or neglect. Any organization that dedicates an ample amount of time to serving incredible wildlife deserves our help.
+Throughout the weeks collaborating on assignments and bonding, we discovered we all have a passion for animals. Our pets are a large part of our lives; they're close family whom we are excited to see when we come home. They provide us with comfort and joy, and we'd love to give back. All animals deserve a good environment and should not have to go through abuse, dangerous situations, injuries, or neglect. Any organization that dedicates an ample amount of time to serving incredible wildlife deserves our help.
 
 ## Tech Stack
 
