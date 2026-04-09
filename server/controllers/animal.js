@@ -29,7 +29,7 @@ const createAnimal = async (req, res) => {
             [name, description, age, weight, image_url, date_intake, cleaning_status, care_status, feeding_status, category_id, sanctuary_id]);
         res.status(201).json(results.rows[0]);
     } catch (error) {
-        res.status(409).json({ error: error.message });
+        res.status(409).json({error: error.message});
     }
 };
 
@@ -43,7 +43,7 @@ const updateAnimal = async (req, res) => {
             [name, description, age, weight, image_url, date_intake, cleaning_status, care_status, feeding_status, category_id, sanctuary_id, animal_id]);
         res.status(200).json(results.rows[0]);
     } catch (error) {
-        res.status(409).json({ error: error.message });
+        res.status(409).json({error: error.message});
     }
 };
 
@@ -54,7 +54,7 @@ const deleteAnimal = async (req, res) => {
 
         res.status(200).json(results.rows[0]);
     } catch (error) {
-        res.status(409).json({ error: error.message });
+        res.status(409).json({error: error.message});
     }
 };
 
