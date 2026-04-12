@@ -2,24 +2,18 @@
 
 Reference the Creating an Entity Relationship Diagram final project guide in the course portal for more information about how to complete this deliverable.
 
-## Create the List of Tables
+## List of Tables
 
 * sanctuary Table
 * volunteer Table
 * sponsor Table
 * animal Table
-* animal_tag (JOIN Table)
+* animal_tag (Join Table)
 * tag Table
 
-## Add the Entity Relationship Diagram
+## Entity Relationship Diagram
 
 ![Entity Relationship Diagram](./er_diagram/er_diagram_safepaws.png)
-
-| Column Name | Type | Description |
-|-------------|------|-------------|
-| id | integer | primary key |
-| name | text | name of the shoe model |
-| ... | ... | ... |
 
 ### sanctuary
 
