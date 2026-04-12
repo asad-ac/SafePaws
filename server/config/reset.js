@@ -22,7 +22,7 @@ const createCategoryTable = async () => {
 
 // TODO: seed individual tag data
 // TODO: seed category data
-// TODO: seed 4 - 5 animals
+// TODO: seed 4 - 5 animals for each category
 // instead of booleans for animal table? seed different values for each?
 
 const createSanctuaryTable = async () => {
