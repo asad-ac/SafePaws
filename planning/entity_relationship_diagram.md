@@ -4,12 +4,12 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ## Create the List of Tables
 
-* Sanctuary Table
-* Volunteer Table
-* Sponsor Table
-* Animal Table
-* Animal and Tag JOIN Table
-* Tag Table
+* sanctuary Table
+* volunteer Table
+* sponsor Table
+* animal Table
+* animal_tag (JOIN Table)
+* tag Table
 
 ## Add the Entity Relationship Diagram
 
@@ -26,11 +26,11 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 | Column        | Type         | Description        |
 |---------------|-------------|--------------------|
 | sanctuary_id  | SERIAL      | PRIMARY KEY        |
-| name          | VARCHAR(50) |                    |
-| address       | VARCHAR(255)|                    |
-| phone         | VARCHAR(20) |                    |
-| email         | VARCHAR(50) |                    |
-| capacity      | INT         |                    |
+| name          | VARCHAR(50) | name of sanctuary                   |
+| address       | VARCHAR(255)| address of sanctuary                 |
+| phone         | VARCHAR(20) | phone of sanctuary                 |
+| email         | VARCHAR(50) | email of sanctuary                  |
+| capacity      | INT         | animal capacity of sanctuary                 |
 
 ### animal
 
@@ -38,25 +38,25 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 |-----------------|--------------|--------------------|
 | animal_id       | SERIAL       | PRIMARY KEY        |
 | sanctuary_id    | INT          | FOREIGN KEY        |
-| name            | VARCHAR(50)  |                    |
-| description     | VARCHAR(255) |                    |
-| age             | INT          |                    |
-| weight          | DECIMAL      |                    |
-| height          | DECIMAL      |                    |
-| image_url       | VARCHAR(255) |                    |
-| date_intake     | DATE         |                    |
-| species         | VARCHAR(50)  |                    |
-| cleaning_status | BOOLEAN      |                    |
-| care_status     | BOOLEAN      |                    |
-| feeding_status  | BOOLEAN      |                    |
+| name            | VARCHAR(50)  | name of animal                 |
+| description     | VARCHAR(255) | description of animal                  |
+| age             | INT          | age of animal                   |
+| weight          | DECIMAL      | weight of animal                 |
+| height          | DECIMAL      | height of animal                 |
+| image_url       | VARCHAR(255) | image link of animal                   |
+| date_intake     | DATE         | joining sanctuary date                   |
+| species         | VARCHAR(50)  | species of animal                   |
+| cleaning_status | BOOLEAN      | completed or not completed                  |
+| care_status     | BOOLEAN      | stable or not stable                 |
+| feeding_status  | BOOLEAN      | fed or not fed                |
 
 ### tag
 
 | Column     | Type         | Description |
 |------------|-------------|-------------|
 | tag_id     | INT         | PRIMARY KEY |
-| name       | VARCHAR(25) |             |
-| description| VARCHAR(50) |             |
+| name       | VARCHAR(25) | name of tag            |
+| description| VARCHAR(50) | description of tag           |
 
 ### animal_tag (Join Table)
 
@@ -64,7 +64,7 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 |-----------|------|----------------------------|
 | animal_id | INT  | FOREIGN KEY                |
 | tag_id    | INT  | FOREIGN KEY                |
-| (PK)      |      | (animal_id, tag_id)        |
+| animal_id, tag_id|       | PRIMARY KEY        |
 
 ### sponsor
 
@@ -72,11 +72,11 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 |----------------|-------------|--------------------|
 | sponsorship_id | SERIAL      | PRIMARY KEY        |
 | animal_id      | INT         | FOREIGN KEY        |
-| name           | VARCHAR(50) |                    |
-| amount         | DECIMAL     |                    |
-| address        | VARCHAR(255)|                    |
-| phone          | VARCHAR(20) |                    |
-| email          | VARCHAR(50) |                    |
+| name           | VARCHAR(50) | name of sponsor                 |
+| amount         | DECIMAL     | amount pledged to animal                 |
+| address        | VARCHAR(255)| address of sponsor                 |
+| phone          | VARCHAR(20) | phone of sponsor                   |
+| email          | VARCHAR(50) | email of sponsor                  |
 
 ### volunteer 
 
@@ -84,11 +84,11 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 |---------------|-------------|--------------------|
 | volunteer_id  | SERIAL      | PRIMARY KEY        |
 | sanctuary_id  | INT         | FOREIGN KEY        |
-| name          | VARCHAR(50) |                    |
-| address       | VARCHAR(255)|                    |
-| phone         | VARCHAR(20) |                    |
-| email         | VARCHAR(50) |                    |
-| assigned_duty | VARCHAR(50) |                    |
+| name          | VARCHAR(50) | name of volunteer                |
+| address       | VARCHAR(255)| address of volunteer                  |
+| phone         | VARCHAR(20) | phone of volunteer                   |
+| email         | VARCHAR(50) | email of volunteer                   |
+| assigned_duty | VARCHAR(50) | assigned duty of volunteer                  |
 
 ### Relationships
 
