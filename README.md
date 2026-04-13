@@ -52,14 +52,6 @@ Throughout the weeks collaborating on assignments and bonding, we discovered we 
 
 ## Installation Instructions
 
-1. Git clone 
-2. cd server, npm install
-3. cd client, npm install
-4. Starting server: cd server, npm run start
-5. Starting client : cd client, npm run dev
-
-## Installation Instructions
-
 ### 1. Clone the Repository
 
 ```bash
