@@ -58,12 +58,6 @@ Throughout the weeks collaborating on assignments and bonding, we discovered we 
 4. Starting server: cd server, npm run start
 5. Starting client : cd client, npm run dev
 
-# 🐾 Finding Fido
-
-A web app that helps animal sanctuary staff manage animals, track care, and organize operations efficiently.
-
----
-
 ## Installation Instructions
 
 ### 1. Clone the Repository
