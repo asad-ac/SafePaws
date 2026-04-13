@@ -52,14 +52,14 @@ Throughout the weeks collaborating on assignments and bonding, we discovered we 
 
 ## Installation Instructions
 
-### 1. Clone the Repository
+### 1. Clone Repository
 
 ```bash
 git clone https://github.com/asad-ac/SafePaws.git
 cd SafePaws
 ```
 
-### 2. Create a `.env` file in the `server` directory
+### 2. Create `.env` file in `server` folder
 
 Environment Variables (Neon Database)
 
@@ -69,6 +69,8 @@ This project uses a PostgreSQL database hosted on Neon.
 cd server
 touch .env
 ```
+
+Look at server/.env.example for guidance.
 
 ### 3. Install Dependencies
 
@@ -89,14 +91,14 @@ npm install
 
 ### 4. Run Application
 
-Start Server:
+Server:
 
 ```bash
 cd server
 npm start
 ```
 
-Start Client:
+Client:
 
 ```bash
 cd ..
