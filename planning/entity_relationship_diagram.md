@@ -24,6 +24,30 @@
 | email         | VARCHAR(50) | email of sanctuary                  |
 | capacity      | INT         | animal capacity of sanctuary                 |
 
+### volunteer 
+
+| Column        | Type         | Description        |
+|---------------|-------------|--------------------|
+| volunteer_id  | SERIAL      | PRIMARY KEY        |
+| sanctuary_id  | INT         | FOREIGN KEY        |
+| name          | VARCHAR(50) | name of volunteer                |
+| address       | VARCHAR(255)| address of volunteer                  |
+| phone         | VARCHAR(20) | phone of volunteer                   |
+| email         | VARCHAR(50) | email of volunteer                   |
+| assigned_duty | VARCHAR(50) | assigned duty of volunteer
+
+### sponsor
+
+| Column         | Type         | Description        |
+|----------------|-------------|--------------------|
+| sponsorship_id | SERIAL      | PRIMARY KEY        |
+| animal_id      | INT         | FOREIGN KEY        |
+| name           | VARCHAR(50) | name of sponsor                 |
+| amount         | DECIMAL     | amount pledged to animal                 |
+| address        | VARCHAR(255)| address of sponsor                 |
+| phone          | VARCHAR(20) | phone of sponsor                   |
+| email          | VARCHAR(50) | email of sponsor                  |                  |
+
 ### animal
 
 | Column          | Type          | Description        |
@@ -40,7 +64,15 @@
 | species         | VARCHAR(50)  | species of animal                   |
 | cleaning_status | BOOLEAN      | completed or not completed                  |
 | care_status     | BOOLEAN      | stable or not stable                 |
-| feeding_status  | BOOLEAN      | fed or not fed                |
+| feeding_status  | BOOLEAN      | fed or not fed
+
+### animal_tag (Join Table)
+
+| Column    | Type | Description                |
+|-----------|------|----------------------------|
+| animal_id | INT  | FOREIGN KEY                |
+| tag_id    | INT  | FOREIGN KEY                |
+| animal_id, tag_id|       | PRIMARY KEY        |                |
 
 ### tag
 
@@ -49,38 +81,6 @@
 | tag_id     | INT         | PRIMARY KEY |
 | name       | VARCHAR(25) | name of tag            |
 | description| VARCHAR(50) | description of tag           |
-
-### animal_tag (Join Table)
-
-| Column    | Type | Description                |
-|-----------|------|----------------------------|
-| animal_id | INT  | FOREIGN KEY                |
-| tag_id    | INT  | FOREIGN KEY                |
-| animal_id, tag_id|       | PRIMARY KEY        |
-
-### sponsor
-
-| Column         | Type         | Description        |
-|----------------|-------------|--------------------|
-| sponsorship_id | SERIAL      | PRIMARY KEY        |
-| animal_id      | INT         | FOREIGN KEY        |
-| name           | VARCHAR(50) | name of sponsor                 |
-| amount         | DECIMAL     | amount pledged to animal                 |
-| address        | VARCHAR(255)| address of sponsor                 |
-| phone          | VARCHAR(20) | phone of sponsor                   |
-| email          | VARCHAR(50) | email of sponsor                  |
-
-### volunteer 
-
-| Column        | Type         | Description        |
-|---------------|-------------|--------------------|
-| volunteer_id  | SERIAL      | PRIMARY KEY        |
-| sanctuary_id  | INT         | FOREIGN KEY        |
-| name          | VARCHAR(50) | name of volunteer                |
-| address       | VARCHAR(255)| address of volunteer                  |
-| phone         | VARCHAR(20) | phone of volunteer                   |
-| email         | VARCHAR(50) | email of volunteer                   |
-| assigned_duty | VARCHAR(50) | assigned duty of volunteer                  |
 
 ### Relationships
 
