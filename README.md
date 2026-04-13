@@ -57,3 +57,65 @@ Throughout the weeks collaborating on assignments and bonding, we discovered we 
 3. cd client, npm install
 4. Starting server: cd server, npm run start
 5. Starting client : cd client, npm run dev
+
+# 🐾 Finding Fido
+
+A web app that helps animal sanctuary staff manage animals, track care, and organize operations efficiently.
+
+---
+
+## Installation Instructions
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/asad-ac/SafePaws.git
+cd SafePaws
+```
+
+### 3. Create a `.env` file in the `server` directory
+
+Environment Variables (Neon Database)
+
+This project uses a PostgreSQL database hosted on Neon.
+
+```bash
+cd server
+touch .env
+```
+
+### 4. Install Dependencies
+
+Server:
+
+```bash
+cd server
+npm install
+```
+
+Client:
+
+```bash
+cd ..
+cd client
+npm install
+```
+
+### 5. Run Application
+
+Start Server:
+
+```bash
+cd server
+npm start
+```
+
+Start Client:
+
+```bash
+cd ..
+cd client
+npm run dev
+```
+
+Enjoy!
