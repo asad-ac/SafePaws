@@ -1,11 +1,23 @@
 import { pool } from "../config/database.js";
 
+import testData from "../data/animals.js"
+
 //TODO: do all filtering and sorting logic in backend?
 
 const getAllAnimals = async (req, res) => {
     try {
         const results = await pool.query(`SELECT * FROM animal ORDER BY animal_id DESC`)
         res.status(200).json(results.rows)
+    }
+    catch (error) {
+        res.status(409).json({error: error.message})
+    }
+}
+
+const getAllTestAnimals = async (req, res) => {
+    try {
+        const results = testData
+        res.status(200).json(results)
     }
     catch (error) {
         res.status(409).json({error: error.message})
@@ -63,7 +75,8 @@ export default {
     getAnimalsByCategory,
     createAnimal,
     updateAnimal,
-    deleteAnimal
+    deleteAnimal,
+    getAllTestAnimals
 }
 
 

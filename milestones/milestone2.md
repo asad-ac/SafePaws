@@ -18,12 +18,12 @@ This unit, be sure to complete all tasks listed below. To complete a task, place
 
 ### 1. What went well during this unit?
 
-We were already working ahead so that was nice.
+Thankfully we were already working ahead so the deadline wasn't a big challenge.
 
 ### 2. What were some challenges your group faced in this unit?
 
-Fine tuning small details as well as discussing over text.
+Some challenges we faced were about fine tuning the look and theme of our web pages, as well as small difficulties conversing over text.
 
 ### 3. What additional support will you need in upcoming units as you continue to work on your final project?
 
-Login.
+we may need additional support implementing the Login page for the website. We'll be sure to use the study time and AI assistance with implementing these features. 
