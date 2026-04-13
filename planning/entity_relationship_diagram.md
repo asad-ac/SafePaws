@@ -86,5 +86,5 @@
 
 sanctuary (One) ──> (Many) animal  
 sanctuary (One) ──> (Many) volunteer  
-animal (One) ──> (Many) sponsor  
+sanctuary (One) ──> (Many) sponsor  
 animal (Many) ──> (Many) tag (via animal_tag)
