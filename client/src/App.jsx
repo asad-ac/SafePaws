@@ -4,8 +4,6 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 
-// navbar and routes done here either using useRoutes hook or browserrouter, routes, route component
-
 function App() {
   const [count, setCount] = useState(0)
 

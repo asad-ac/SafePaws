@@ -41,7 +41,7 @@
 | Column         | Type         | Description        |
 |----------------|-------------|--------------------|
 | sponsorship_id | SERIAL      | PRIMARY KEY        |
-| animal_id      | INT         | FOREIGN KEY        |
+| sanctuary_id      | INT         | FOREIGN KEY        |
 | name           | VARCHAR(50) | name of sponsor                 |
 | amount         | DECIMAL     | amount pledged to animal                 |
 | address        | VARCHAR(255)| address of sponsor                 |

@@ -3,7 +3,7 @@ import React from 'react'
 const NavBar = () =>{
     return (
         <nav>
-            <div class='SafePaws-Logo'>
+            <div className='SafePaws-Logo'>
                 <img href=''></img>
             </div>
             <ul>
@@ -19,7 +19,7 @@ const NavBar = () =>{
                 Settings
             </ul>
             {/* profile icon could also be a component? */}
-            <div class='Profile-Icon'>
+            <div className='Profile-Icon'>
                 <img href=''></img>
             </div>
         </nav>
