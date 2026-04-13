@@ -40,3 +40,4 @@ const animalData = [
     "category_id": "Bird"
   }
 ];
+export default animalData
