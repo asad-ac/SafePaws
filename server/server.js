@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 
-import animalsRouter from './router/animals.js'
+import animalsRouter from './routes/animals.js'
 
 const app = express()
 
