@@ -73,7 +73,7 @@ git clone https://github.com/asad-ac/SafePaws.git
 cd SafePaws
 ```
 
-### 3. Create a `.env` file in the `server` directory
+### 2. Create a `.env` file in the `server` directory
 
 Environment Variables (Neon Database)
 
@@ -84,7 +84,7 @@ cd server
 touch .env
 ```
 
-### 4. Install Dependencies
+### 3. Install Dependencies
 
 Server:
 
@@ -101,7 +101,7 @@ cd client
 npm install
 ```
 
-### 5. Run Application
+### 4. Run Application
 
 Start Server:
 
