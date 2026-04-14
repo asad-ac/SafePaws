@@ -1,5 +1,7 @@
 import { pool } from "../config/database.js"
 
+// to render checkboxes
+
 const getTags = async (req, res) => {
     try {
         const results = await pool.query('SELECT * FROM tag ORDER BY tag_id ASC');

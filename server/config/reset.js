@@ -8,6 +8,14 @@ import { pool } from "./database.js";
 // TODO: seed animal_tag data
 // TODO: want (amount) field on sponsor table - yes or no.
 
+// seed order:
+// sanctuary
+// tag
+// animal
+// volunteer
+// sponsor
+// animal_tag
+
 const createSanctuaryTable = async () => {
     const create = `
     DROP TABLE IF EXISTS sanctuary CASCADE;
