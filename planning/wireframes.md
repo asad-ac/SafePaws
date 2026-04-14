@@ -19,9 +19,9 @@
 
 ![Login Wireframe](./wireframe/login.png)
 
-## Wireframe 3: [Dashboard Page] ⭐️
+## Wireframe 3: [Animals Page] ⭐️
 
-![Dashboard Wireframe](./wireframe/dashboard.png)
+![Animals Wireframe](./wireframe/dashboard.png)
 
 ## Wireframe 4: [Animal Detail Page] ⭐️ 
 

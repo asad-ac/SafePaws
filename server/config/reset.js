@@ -1,28 +1,18 @@
 import { pool } from "./database.js";
 
-const createCategoryTable = async () => {
-    const create = `
-    DROP TABLE IF EXISTS category CASCADE;
-    
-    CREATE TABLE IF NOT EXISTS category (
-        category_id SERIAL PRIMARY KEY,
-        name varchar(25) NOT NULL,
-        description varchar(50)
-        );
-    `;
+// TODO: seed sanctuary
+// TODO: seed tag data
+// TODO: seed animal data
+// TODO: seed volunteer data
+// TODO: seed sponsor data
+// TODO: seed animal_tag data
 
-    try {
-        await pool.query(create)
-        console.log('✅ category table created successfully')
-    }
-    catch (err) {
-        console.log('🛑 error creating category table', err)
-    }
-}
+// TODO: build volunteer controller/routes (get, create, update, delete)
+// TODO: build sponsor controller/routes (get, create, update, delete)
+// TODO: build sanctuary controller/routes (get, update)
+// TODO: build tag controller/routes (read)
 
-// TODO: seed individual tag data
-// TODO: seed category data
-// TODO: seed 4 - 5 animals for each category
+// TODO: want (amount) field on sponsor table - yes or no.
 
 const createSanctuaryTable = async () => {
     const create = `
@@ -33,7 +23,8 @@ const createSanctuaryTable = async () => {
         name varchar(50) NOT NULL,
         address varchar(255) NOT NULL,
         phone varchar(50) NOT NULL,
-        email varchar(50)
+        email varchar(50),
+        capacity INTEGER NOT NULL
         );
     `;
 
@@ -74,16 +65,16 @@ const createAnimalTable = async () => {
             animal_id SERIAL PRIMARY KEY,
             name varchar(50) NOT NULL,
             description varchar(255) NOT NULL,
-            age integer NOT NULL,
+            age INTEGER NOT NULL,
             weight decimal NOT NULL,
+            height decimal NOT NULL,
             image_url varchar(255),
             date_intake date NOT NULL,
-            cleaning_status BOOLEAN,
-            care_status BOOLEAN,
-            feeding_status BOOLEAN,
-            category_id INTEGER,
+            species varchar(50) NOT NULL,
+            cleaning_status BOOLEAN NOT NULL,
+            care_status BOOLEAN NOT NULL,
+            feeding_status BOOLEAN NOT NULL,
             sanctuary_id INTEGER,
-            FOREIGN KEY(category_id) REFERENCES category(category_id),
             FOREIGN KEY(sanctuary_id) REFERENCES sanctuary(sanctuary_id)
             );
         `;
@@ -107,6 +98,7 @@ const createVolunteerTable = async () => {
         address varchar(255) NOT NULL,
         phone varchar(50) NOT NULL,
         email varchar(50) NOT NULL,
+        assigned_duty varchar(50) NOT NULL,
         sanctuary_id INTEGER,
         FOREIGN KEY(sanctuary_id) REFERENCES sanctuary(sanctuary_id)
         );
@@ -121,13 +113,36 @@ const createVolunteerTable = async () => {
     }
 }
 
+const createSponsorTable = async () => {
+    const create = `
+    DROP TABLE IF EXISTS sponsor CASCADE;
+
+    CREATE TABLE IF NOT EXISTS sponsor (
+        sponsorship_id SERIAL PRIMARY KEY,
+        name varchar(50) NOT NULL,
+        address varchar(50) NOT NULL,
+        phone varchar(50) NOT NULL,
+        email varchar(50) NOT NULL,
+        sanctuary_id INTEGER,
+        FOREIGN KEY(sanctuary_id) REFERENCES sanctuary(sanctuary_id)
+        );
+    `;
+    try {
+        await pool.query(create)
+        console.log('✅ sponsor table created successfully')
+    }
+    catch (err) {
+        console.log('🛑 error creating sponsor table', err)
+    }
+}
+
 const createAnimalTagTable = async () => {
     const create = `
     DROP TABLE IF EXISTS animal_tag CASCADE;
     
     CREATE TABLE IF NOT EXISTS animal_tag (
-        animal_id integer NOT NULL,
-        tag_id integer NOT NULL,
+        animal_id INTEGER NOT NULL,
+        tag_id INTEGER NOT NULL,
         PRIMARY KEY (animal_id, tag_id),
         FOREIGN KEY (animal_id) REFERENCES animal(animal_id),
         FOREIGN KEY (tag_id) REFERENCES tag(tag_id)

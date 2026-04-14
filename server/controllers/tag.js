@@ -1,13 +1,18 @@
-import { pool } from "../config/database.js";
+import { pool } from "../config/database.js"
 
 const getTags = async (req, res) => {
     try {
         const results = await pool.query('SELECT * FROM tag ORDER BY tag_id ASC');
         res.status(200).json(results.rows);
-    } catch (error) {
+    } 
+    catch (error) {
         res.status(409).json({error: error.message});
     }
 };
+
+// update tags bc user can select different tags.
+
+// delete tags?
 
 export default {
     getTags

@@ -1,4 +1,3 @@
-// this just stores temp animals to test the data
 const animalData = [
   {
     "sanctuary_id": 101,
