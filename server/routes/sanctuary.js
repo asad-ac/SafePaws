@@ -1,5 +1,5 @@
 import express from 'express'
-import sanctuaryController from '../controllers/sanctuary'
+import sanctuaryController from '../controllers/sanctuary.js'
 
 const router = express.Router()
 

@@ -5,8 +5,8 @@ const router = express.Router()
 
 router.get('/', animalsController.getAllTestAnimals)
 // router.get('/', animalsController.getAllAnimals)
-router.post('/:', volunteerController.createVolunteer)
-router.patch('/:volunteer_id', volunteerController.updateVolunteer)
-router.delete('/:volunteer_id', volunteerController.deleteVolunteer)
+router.post('/', animalsController.createAnimal)
+router.patch('/:animal_id', animalsController.updateAnimal)
+router.delete('/:animal_id', animalsController.deleteAnimal)
 
 export default router
