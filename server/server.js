@@ -1,7 +1,10 @@
 import express from 'express'
 import cors from 'cors'
 
-import animalsRouter from './routes/animals.js'
+import animalRouter from './routes/animals.js'
+import sanctuaryRouter from './routes/sanctuary.js'
+import sponsorRouter from './routes/sponsor.js'
+import volunteerRouter from './routes/volunteer.js'
 
 const app = express()
 
@@ -13,7 +16,10 @@ app.get('/', (req, res) => {
     res.status(200).send('<h1 style="text-align: center; margin-top: 50px;">✈️ SafePaws API</h1>')
 })
 
-app.use("/animals", animalsRouter)
+app.use("/animals", animalRouter)
+app.use("/sanctuary", sanctuaryRouter)
+app.use("/sponsors", sponsorRouter)
+app.use("/volunteers", volunteerRouter)
 
 const PORT = process.env.PORT || 3001
 
