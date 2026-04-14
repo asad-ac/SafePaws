@@ -118,7 +118,7 @@ const createSponsorTable = async () => {
     DROP TABLE IF EXISTS sponsor CASCADE;
 
     CREATE TABLE IF NOT EXISTS sponsor (
-        sponsorship_id SERIAL PRIMARY KEY,
+        sponsor_id SERIAL PRIMARY KEY,
         name varchar(50) NOT NULL,
         address varchar(50) NOT NULL,
         phone varchar(50) NOT NULL,
