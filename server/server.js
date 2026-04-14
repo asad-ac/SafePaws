@@ -1,10 +1,11 @@
 import express from 'express'
 import cors from 'cors'
 
-import animalRouter from './routes/animals.js'
+import animalRouter from './routes/animal.js'
 import sanctuaryRouter from './routes/sanctuary.js'
 import sponsorRouter from './routes/sponsor.js'
 import volunteerRouter from './routes/volunteer.js'
+import tagRouter from './routes/tag.js'
 
 const app = express()
 
@@ -20,6 +21,7 @@ app.use("/animals", animalRouter)
 app.use("/sanctuary", sanctuaryRouter)
 app.use("/sponsors", sponsorRouter)
 app.use("/volunteers", volunteerRouter)
+app.use("/tags", tagRouter)
 
 const PORT = process.env.PORT || 3001
 

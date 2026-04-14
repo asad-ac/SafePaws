@@ -23,8 +23,6 @@ const createSponsor = async (req, res) => {
 };
 
 // TODO: try coalesce keyword for all update functions to make it patch testing?
-// TODO: research if reset.js attributes for all fields should be not null since all the update functions 
-      // are technically all best for puts
 
 const updateSponsor = async (req, res) => {
     try {

@@ -6,12 +6,6 @@ import { pool } from "./database.js";
 // TODO: seed volunteer data
 // TODO: seed sponsor data
 // TODO: seed animal_tag data
-
-// TODO: build volunteer controller/routes (get, create, update, delete)
-// TODO: build sponsor controller/routes (get, create, update, delete)
-// TODO: build sanctuary controller/routes (get, update)
-// TODO: build tag controller/routes (read)
-
 // TODO: want (amount) field on sponsor table - yes or no.
 
 const createSanctuaryTable = async () => {
