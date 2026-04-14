@@ -10,10 +10,6 @@ const getTags = async (req, res) => {
     }
 };
 
-// update tags bc user can select different tags.
-
-// delete tags?
-
 export default {
     getTags
 }

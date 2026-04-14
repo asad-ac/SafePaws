@@ -23,7 +23,7 @@ const createSanctuaryTable = async () => {
         name varchar(50) NOT NULL,
         address varchar(255) NOT NULL,
         phone varchar(50) NOT NULL,
-        email varchar(50),
+        email varchar(50) NOT NULL,
         capacity INTEGER NOT NULL
         );
     `;
@@ -74,7 +74,7 @@ const createAnimalTable = async () => {
             cleaning_status BOOLEAN NOT NULL,
             care_status BOOLEAN NOT NULL,
             feeding_status BOOLEAN NOT NULL,
-            sanctuary_id INTEGER,
+            sanctuary_id INTEGER NOT NULL,
             FOREIGN KEY(sanctuary_id) REFERENCES sanctuary(sanctuary_id)
             );
         `;
@@ -99,7 +99,7 @@ const createVolunteerTable = async () => {
         phone varchar(50) NOT NULL,
         email varchar(50) NOT NULL,
         assigned_duty varchar(50) NOT NULL,
-        sanctuary_id INTEGER,
+        sanctuary_id INTEGER NOT NULL,
         FOREIGN KEY(sanctuary_id) REFERENCES sanctuary(sanctuary_id)
         );
     `;
@@ -120,10 +120,10 @@ const createSponsorTable = async () => {
     CREATE TABLE IF NOT EXISTS sponsor (
         sponsor_id SERIAL PRIMARY KEY,
         name varchar(50) NOT NULL,
-        address varchar(50) NOT NULL,
+        address varchar(255) NOT NULL,
         phone varchar(50) NOT NULL,
         email varchar(50) NOT NULL,
-        sanctuary_id INTEGER,
+        sanctuary_id INTEGER NOT NULL,
         FOREIGN KEY(sanctuary_id) REFERENCES sanctuary(sanctuary_id)
         );
     `;

@@ -1,6 +1,6 @@
 import { pool } from "../config/database.js"
 
-const getSponsor = async (req, res) => {
+const getSponsors = async (req, res) => {
     try {
         const results = await pool.query('SELECT * FROM sponsor ORDER BY sponsor_id DESC')
         res.status(200).json(results.rows)
@@ -12,9 +12,9 @@ const getSponsor = async (req, res) => {
 
 const createSponsor = async (req, res) => {
     try {
-        const {name, address, phone, email} = req.body
-        const results = await pool.query(`INSERT INTO sponsor (name, address, phone, email) VALUES ($1, $2, $3, $4) RETURNING *`,
-            [name, address, phone, email]);
+        const {name, address, phone, email, sanctuary_id} = req.body
+        const results = await pool.query(`INSERT INTO sponsor (name, address, phone, email, sanctuary_id) VALUES ($1, $2, $3, $4, $5) RETURNING *`,
+            [name, address, phone, email, sanctuary_id]);
         res.status(201).json(results.rows[0]);
     } 
     catch (error) {
@@ -29,10 +29,10 @@ const createSponsor = async (req, res) => {
 const updateSponsor = async (req, res) => {
     try {
         const sponsor_id = parseInt(req.params.sponsor_id);
-        const {name, address, phone, email} = req.body;
+        const {name, address, phone, email, sanctuary_id} = req.body;
 
-        const results = await pool.query(`UPDATE sponsor SET name = $1, address = $2, phone = $3, email = $4, WHERE sponsor_id = $5 RETURNING *`,
-            [name, address, phone, email, sponsor_id]);
+        const results = await pool.query(`UPDATE sponsor SET name = $1, address = $2, phone = $3, email = $4, sanctuary_id = $5 WHERE sponsor_id = $6 RETURNING *`,
+            [name, address, phone, email, sanctuary_id, sponsor_id]);
         res.status(200).json(results.rows[0]);
     } 
     catch (error) {
@@ -53,7 +53,7 @@ const deleteSponsor = async (req, res) => {
 };
 
 export default {
-    getSponsor,
+    getSponsors,
     createSponsor,
     updateSponsor,
     deleteSponsor
