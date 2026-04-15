@@ -2,7 +2,8 @@ import { pool } from "../config/database.js"
 
 const getSanctuary = async (req, res) => {
     try {
-        const results = await pool.query('SELECT * FROM sanctuary')
+        const sanctuary_id = parseInt(req.params.sanctuary_id)
+        const results = await pool.query('SELECT * FROM sanctuary WHERE sanctuary_id = $1', [sanctuary_id])
         res.status(200).json(results.rows)
     }
     catch (error) {
@@ -28,4 +29,3 @@ export default {
     getSanctuary,
     updateSanctuary
 }
-

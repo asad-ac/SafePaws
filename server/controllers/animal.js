@@ -28,9 +28,39 @@ const getAllAnimals = async (req, res) => {
         res.status(200).json(results.rows)
     }
     catch (error) {
-        res.status(409).json({ error: error.message })
+        res.status(409).json({error: error.message})
     }
 };
+
+const getAnimalById = async (req, res) => {
+    try {
+        const { id } = req.params
+
+        const results = await pool.query(`
+            SELECT
+                a.*,
+                COALESCE(
+                    json_agg(
+                        json_build_object(
+                            'tag_id', t.tag_id,
+                            'name', t.name,
+                            'description', t.description
+                        )
+                    ) FILTER (WHERE t.tag_id IS NOT NULL),
+                    '[]'
+                ) AS tags
+            FROM animal a
+            LEFT JOIN animal_tag at ON a.animal_id = at.animal_id
+            LEFT JOIN tag t ON at.tag_id = t.tag_id
+            WHERE a.animal_id = $1
+            GROUP BY a.animal_id
+        `, [id])
+
+        res.status(200).json(results.rows[0])
+    } catch (error) {
+        res.status(409).json({error: error.message})
+    }
+}
 
 const getAllTestAnimals = async (req, res) => {
     try {
@@ -67,13 +97,14 @@ const createAnimal = async (req, res) => {
         res.status(201).json(newAnimal)
     } catch (error) {
         await client.query('ROLLBACK')
-        res.status(409).json({ error: error.message })
+        res.status(409).json({error: error.message})
     } finally {
         client.release()
     }
 };
 
 // this wont work for patch request, only put right now!
+
 const updateAnimal = async (req, res) => {
     const client = await pool.connect()
     try {
@@ -98,7 +129,7 @@ const updateAnimal = async (req, res) => {
         res.status(200).json(animalResult.rows[0])
     } catch (error) {
         await client.query('ROLLBACK')
-        res.status(409).json({ error: error.message })
+        res.status(409).json({error: error.message})
     } finally {
         client.release()
     }
@@ -119,12 +150,9 @@ const deleteAnimal = async (req, res) => {
 
 export default {
     getAllAnimals,
+    getAnimalById,
     createAnimal,
     updateAnimal,
     deleteAnimal,
     getAllTestAnimals
 }
-
-
-
-

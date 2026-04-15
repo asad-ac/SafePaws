@@ -3,7 +3,7 @@ import sanctuaryController from '../controllers/sanctuary.js'
 
 const router = express.Router()
 
-router.get('/', sanctuaryController.getSanctuary)
+router.get('/:sanctuary_id', sanctuaryController.getSanctuary)
 router.patch('/:sanctuary_id', sanctuaryController.updateSanctuary)
 
 export default router

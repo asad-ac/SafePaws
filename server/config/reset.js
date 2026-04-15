@@ -16,6 +16,8 @@ import { pool } from "./database.js";
 // sponsor
 // animal_tag
 
+// TODO: review update functions with reset.js table for them as well as seed data
+
 const createSanctuaryTable = async () => {
     const create = `
     DROP TABLE IF EXISTS sanctuary CASCADE;
