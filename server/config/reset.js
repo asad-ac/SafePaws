@@ -8,6 +8,9 @@ import { pool } from "./database.js";
 // TODO: seed animal_tag data
 // TODO: want (amount) field on sponsor table - yes or no.
 
+import animalData from "../data/animal.js";
+import animalTagData from "../data/animal_tag.js";
+
 // seed order:
 // sanctuary
 // tag
@@ -90,6 +93,35 @@ const createAnimalTable = async () => {
         }
 }
 
+const seedAnimals = async () => {
+    try {
+        for (const animal of animalData) {
+            await pool.query(
+                `INSERT INTO animal 
+                (name, description, age, weight, height, image_url, date_intake, species, cleaning_status, care_status, feeding_status, sanctuary_id)
+                VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)`,
+                [animal.name, animal.description, animal.age, animal.weight, animal.height, animal.image_url, animal.date_intake, animal.species, animal.cleaning_status, animal.care_status, animal.feeding_status, animal.sanctuary_id]);
+        }
+
+        console.log("✅ animals seeded");
+    } catch (err) {
+        console.log("🛑 error seeding animals", err);
+    }
+};
+
+const seedAnimalTags = async () => {
+    try {
+        for (const at of animalTagData) {
+            await pool.query(
+                `INSERT INTO animal_tag (animal_id, tag_id) VALUES ($1, $2)`, [at.animal_id, at.tag_id]);
+        }
+
+        console.log("✅ animal_tag seeded");
+    } catch (err) {
+        console.log("🛑 error seeding animal_tag", err);
+    }
+};
+
 const createVolunteerTable = async () => {
     const create = `
     DROP TABLE IF EXISTS volunteer CASCADE;
@@ -170,14 +202,14 @@ const resetDatabase = async () => {
     await createAnimalTable()
     await seedAnimals()
 
+    await createAnimalTagTable()
+    await seedAnimalTags()
+
     await createVolunteerTable()
     await seedVolunteers()
 
     await createSponsorTable()
     await seedSponsors()
-
-    await createAnimalTagTable()
-    await seedAnimalTags()
 }
 
 resetDatabase()
