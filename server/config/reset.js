@@ -17,6 +17,7 @@ import { pool } from "./database.js";
 // animal_tag
 
 // TODO: review update functions with reset.js table for them as well as seed data
+// TODO: function calls in reset.js
 
 const createSanctuaryTable = async () => {
     const create = `

@@ -34,7 +34,7 @@ const getAllAnimals = async (req, res) => {
 
 const getAnimalById = async (req, res) => {
     try {
-        const { id } = req.params
+        const {animal_id} = req.params
 
         const results = await pool.query(`
             SELECT
@@ -54,7 +54,7 @@ const getAnimalById = async (req, res) => {
             LEFT JOIN tag t ON at.tag_id = t.tag_id
             WHERE a.animal_id = $1
             GROUP BY a.animal_id
-        `, [id])
+        `, [animal_id])
 
         res.status(200).json(results.rows[0])
     } catch (error) {
@@ -71,7 +71,6 @@ const getAllTestAnimals = async (req, res) => {
         res.status(409).json({error: error.message})
     }
 };
-
 
 const createAnimal = async (req, res) => {
     const client = await pool.connect()

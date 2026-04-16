@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 })
 
 app.use("/animals", animalRouter)
-app.use("/sanctuary", sanctuaryRouter)
+app.use("/sanctuaries", sanctuaryRouter)
 app.use("/sponsors", sponsorRouter)
 app.use("/volunteers", volunteerRouter)
 app.use("/tags", tagRouter)
