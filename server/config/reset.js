@@ -38,6 +38,19 @@ const createSanctuaryTable = async () => {
     }
 }
 
+const seedSanctuary = async () => {
+    try {
+        for (const s of sanctuaryData) {
+            await pool.query(`INSERT INTO sanctuary (name, address, phone, email, capacity) VALUES ($1, $2, $3, $4, $5)`,
+                [s.name, s.address, s.phone, s.email, s.capacity]);
+        }
+
+        console.log("✅ sanctuary seeded");
+    } catch (err) {
+        console.log("🛑 error seeding sanctuary", err);
+    }
+};
+
 const createTagTable = async () => {
     const create = `
     DROP TABLE IF EXISTS tag CASCADE;
