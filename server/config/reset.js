@@ -1,15 +1,12 @@
 import { pool } from "./database.js";
 
-// TODO: seed sanctuary
-// TODO: seed tag data
-// TODO: seed animal data
 // TODO: seed volunteer data
 // TODO: seed sponsor data
-// TODO: seed animal_tag data
 // TODO: want (amount) field on sponsor table - yes or no.
 
 import animalData from "../data/animal.js";
 import animalTagData from "../data/animal_tag.js";
+import sponsorData from "../data/sponsor.js";
 
 // seed order:
 // sanctuary
@@ -109,19 +106,6 @@ const seedAnimals = async () => {
     }
 };
 
-const seedAnimalTags = async () => {
-    try {
-        for (const at of animalTagData) {
-            await pool.query(
-                `INSERT INTO animal_tag (animal_id, tag_id) VALUES ($1, $2)`, [at.animal_id, at.tag_id]);
-        }
-
-        console.log("✅ animal_tag seeded");
-    } catch (err) {
-        console.log("🛑 error seeding animal_tag", err);
-    }
-};
-
 const createVolunteerTable = async () => {
     const create = `
     DROP TABLE IF EXISTS volunteer CASCADE;
@@ -170,6 +154,22 @@ const createSponsorTable = async () => {
     }
 }
 
+const seedSponsors = async () => {
+    try {
+        for (const s of sponsorData) {
+            await pool.query(
+                `INSERT INTO sponsor (name, address, phone, email, sanctuary_id)
+                 VALUES ($1, $2, $3, $4, $5)`,
+                [s.name, s.address, s.phone, s.email, s.sanctuary_id]
+            );
+        }
+
+        console.log("✅ sponsors seeded");
+    } catch (err) {
+        console.log("🛑 error seeding sponsors", err);
+    }
+};
+
 const createAnimalTagTable = async () => {
     const create = `
     DROP TABLE IF EXISTS animal_tag CASCADE;
@@ -191,6 +191,18 @@ const createAnimalTagTable = async () => {
         console.log('🛑 error creating animal_tag join table', err)
     }
 }
+
+const seedAnimalTags = async () => {
+    try {
+        for (const at of animalTagData) {
+            await pool.query(`INSERT INTO animal_tag (animal_id, tag_id) VALUES ($1, $2)`, [at.animal_id, at.tag_id]);
+        }
+
+        console.log("✅ animal_tag seeded");
+    } catch (err) {
+        console.log("🛑 error seeding animal_tag", err);
+    }
+};
 
 const resetDatabase = async () => {
     await createSanctuaryTable()
