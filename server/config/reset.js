@@ -1,12 +1,11 @@
 import { pool } from "./database.js";
-
-// TODO: seed volunteer data
-// TODO: seed sponsor data
 // TODO: want (amount) field on sponsor table - yes or no.
-
+import sanctuaryData from "../data/sanctuary.js";
+import tagData from "../data/tag.js"
 import animalData from "../data/animal.js";
-import animalTagData from "../data/animal_tag.js";
+import volunteerData from "../data/volunteer.js";
 import sponsorData from "../data/sponsor.js";
+import animalTagData from "../data/animal_tag.js";
 
 // seed order:
 // sanctuary
@@ -130,6 +129,29 @@ const createVolunteerTable = async () => {
         console.log('🛑 error creating volunteer table', err)
     }
 }
+
+const seedVolunteers = async () => {
+    try {
+        for (const v of volunteerData) {
+            await pool.query(
+                `INSERT INTO volunteer (name, address, phone, email, assigned_duty, sanctuary_id)
+                 VALUES ($1, $2, $3, $4, $5, $6)`,
+                [
+                    v.name,
+                    v.address,
+                    v.phone,
+                    v.email,
+                    v.assigned_duty,
+                    v.sanctuary_id
+                ]
+            );
+        }
+
+        console.log("✅ volunteers seeded");
+    } catch (err) {
+        console.log("🛑 error seeding volunteers", err);
+    }
+};
 
 const createSponsorTable = async () => {
     const create = `
