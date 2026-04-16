@@ -71,6 +71,22 @@ const createTagTable = async () => {
     }
 }
 
+const seedTags = async () => {
+    try {
+        for (const t of tagData) {
+            await pool.query(
+                `INSERT INTO tag (name, description)
+                 VALUES ($1, $2)`,
+                [t.name, t.description]
+            );
+        }
+
+        console.log("✅ tags seeded");
+    } catch (err) {
+        console.log("🛑 error seeding tags", err);
+    }
+};
+
 const createAnimalTable = async () => {
     const create = `
         DROP TABLE IF EXISTS animal CASCADE;
@@ -259,4 +275,14 @@ const resetDatabase = async () => {
     await seedSponsors()
 }
 
-resetDatabase()
+const run = async () => {
+    try {
+        await resetDatabase()
+        console.log("Database reset successfully ✅")
+    }
+    catch (err) {
+        console.log("🛑 Database reset failed", err)
+    }
+}
+
+run()
