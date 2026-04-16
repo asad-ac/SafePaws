@@ -47,7 +47,7 @@ const getAnimalById = async (req, res) => {
                             'description', t.description
                         )
                     ) FILTER (WHERE t.tag_id IS NOT NULL),
-                    '[]'
+                    '[]::json'
                 ) AS tags
             FROM animal a
             LEFT JOIN animal_tag at ON a.animal_id = at.animal_id

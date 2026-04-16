@@ -16,9 +16,6 @@ import { pool } from "./database.js";
 // sponsor
 // animal_tag
 
-// TODO: review update functions with reset.js table for them as well as seed data
-// TODO: function calls in reset.js
-
 const createSanctuaryTable = async () => {
     const create = `
     DROP TABLE IF EXISTS sanctuary CASCADE;
@@ -162,3 +159,25 @@ const createAnimalTagTable = async () => {
         console.log('🛑 error creating animal_tag join table', err)
     }
 }
+
+const resetDatabase = async () => {
+    await createSanctuaryTable()
+    await seedSanctuary()
+
+    await createTagTable()
+    await seedTags()
+
+    await createAnimalTable()
+    await seedAnimals()
+
+    await createVolunteerTable()
+    await seedVolunteers()
+
+    await createSponsorTable()
+    await seedSponsors()
+
+    await createAnimalTagTable()
+    await seedAnimalTags()
+}
+
+resetDatabase()
