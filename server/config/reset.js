@@ -1,11 +1,12 @@
 import { pool } from "./database.js";
-// TODO: want (amount) field on sponsor table - yes or no.
 import sanctuaryData from "../data/sanctuary.js";
 import tagData from "../data/tag.js"
 import animalData from "../data/animal.js";
 import volunteerData from "../data/volunteer.js";
 import sponsorData from "../data/sponsor.js";
 import animalTagData from "../data/animal_tag.js";
+
+// TODO: want (amount) field on sponsor table - yes or no.
 
 const createSanctuaryTable = async () => {
     const create = `
@@ -152,23 +153,12 @@ const createVolunteerTable = async () => {
 const seedVolunteers = async () => {
     try {
         for (const v of volunteerData) {
-            await pool.query(
-                `INSERT INTO volunteer (name, address, phone, email, assigned_duty, sanctuary_id)
-                 VALUES ($1, $2, $3, $4, $5, $6)`,
-                [
-                    v.name,
-                    v.address,
-                    v.phone,
-                    v.email,
-                    v.assigned_duty,
-                    v.sanctuary_id
-                ]
-            );
+            await pool.query(`INSERT INTO volunteer (name, address, phone, email, assigned_duty, sanctuary_id) VALUES ($1, $2, $3, $4, $5, $6)`, [v.name, v.address, v.phone, v.email, v.assigned_duty, v.sanctuary_id])
         }
-
-        console.log("✅ volunteers seeded");
-    } catch (err) {
-        console.log("🛑 error seeding volunteers", err);
+        console.log("✅ volunteers seeded")
+    }
+    catch (err) {
+        console.log("🛑 error seeding volunteers", err)
     }
 };
 
@@ -179,6 +169,7 @@ const createSponsorTable = async () => {
     CREATE TABLE IF NOT EXISTS sponsor (
         sponsor_id SERIAL PRIMARY KEY,
         name varchar(50) NOT NULL,
+        amount DECIMAL NOT NULL,
         address varchar(255) NOT NULL,
         phone varchar(50) NOT NULL,
         email varchar(50) NOT NULL,
@@ -198,16 +189,14 @@ const createSponsorTable = async () => {
 const seedSponsors = async () => {
     try {
         for (const s of sponsorData) {
-            await pool.query(
-                `INSERT INTO sponsor (name, address, phone, email, sanctuary_id)
-                 VALUES ($1, $2, $3, $4, $5)`,
-                [s.name, s.address, s.phone, s.email, s.sanctuary_id]
-            );
+            await pool.query(`INSERT INTO sponsor (name, amount, address, phone, email, sanctuary_id)
+                VALUES ($1, $2, $3, $4, $5, $6)`, [s.name, s.amount, s.address, s.phone, s.email, s.sanctuary_id]);
         }
 
-        console.log("✅ sponsors seeded");
-    } catch (err) {
-        console.log("🛑 error seeding sponsors", err);
+        console.log("✅ sponsors seeded")
+    }
+    catch (err) {
+        console.log("🛑 error seeding sponsors", err)
     }
 };
 
@@ -236,12 +225,13 @@ const createAnimalTagTable = async () => {
 const seedAnimalTags = async () => {
     try {
         for (const at of animalTagData) {
-            await pool.query(`INSERT INTO animal_tag (animal_id, tag_id) VALUES ($1, $2)`, [at.animal_id, at.tag_id]);
+            await pool.query(`INSERT INTO animal_tag (animal_id, tag_id) VALUES ($1, $2)`, [at.animal_id, at.tag_id])
         }
 
         console.log("✅ animal_tag seeded");
-    } catch (err) {
-        console.log("🛑 error seeding animal_tag", err);
+    }
+    catch (err) {
+        console.log("🛑 error seeding animal_tag", err)
     }
 };
 

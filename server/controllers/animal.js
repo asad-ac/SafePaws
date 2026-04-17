@@ -46,7 +46,7 @@ const getAnimalById = async (req, res) => {
                             'description', t.description
                         )
                     ) FILTER (WHERE t.tag_id IS NOT NULL),
-                    '[]::json'
+                    '[]'::json
                 ) AS tags
             FROM animal a
             LEFT JOIN animal_tag at ON a.animal_id = at.animal_id
@@ -54,6 +54,10 @@ const getAnimalById = async (req, res) => {
             WHERE a.animal_id = $1
             GROUP BY a.animal_id
         `, [animal_id])
+
+        if (results.rows.length === 0) {
+            return res.status(404).json({ error: "Animal not found" })
+          }
 
         res.status(200).json(results.rows[0])
     } catch (error) {
@@ -65,7 +69,7 @@ const createAnimal = async (req, res) => {
     const client = await pool.connect()
 
     try {
-        const {name, description, age, weight, height, image_url, date_intake, species, cleaning_status, care_status, feeding_status, sanctuary_id,tag_ids = []} = req.body
+        const {name, description, age, weight, height, image_url, date_intake, species, cleaning_status, care_status, feeding_status, sanctuary_id, tag_ids = []} = req.body
 
         await client.query('BEGIN')
 

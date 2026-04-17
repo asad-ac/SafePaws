@@ -41,6 +41,10 @@ const deleteVolunteer = async (req, res) => {
         const volunteer_id = parseInt(req.params.volunteer_id);
         const results = await pool.query(`DELETE FROM volunteer WHERE volunteer_id = $1 RETURNING *`, [volunteer_id]);
 
+        if (results.rows.length === 0) {
+            return res.status(404).json({ error: "Volunteer not found" })
+          }
+
         res.status(200).json(results.rows[0]);
     } 
     catch (error) {
