@@ -2,7 +2,7 @@ import {useState} from 'react'
 
 const EditVolunteer = (props) => {
 
-    const [form, setForm] = useState({name: props.volunteer.name || '', address: props.volunteer.address || '', phone: props.volunteer.address || '', email: props.volunteer.email || '', assigned_duty: props.volunteer.assigned_duty || '', sanctuary_id: props.volunteer.sanctuary_id || 1})
+    const [form, setForm] = useState({name: props.volunteer.name || '', address: props.volunteer.address || '', phone: props.volunteer.address || '', email: props.volunteer.email || '', assigned_duty: props.volunteer.assigned_duty || '', sanctuary_id: props.volunteer.sanctuary_id || 1,})
 
     const handleChange = (e) => {
         const {name, value} = e.target
@@ -22,10 +22,10 @@ const EditVolunteer = (props) => {
             body: JSON.stringify(form)
         }
 
-        const response = await fetch(`http://localhost:3001/volunteers${props.volunteer.volunteer_id}`, options)
+        const response = await fetch(`http://localhost:3001/volunteers/${props.volunteer.volunteer_id}`, options)
         const updatedVolunteer = await response.json()
 
-        props.setSponsors((prev) => 
+        props.setVolunteers((prev) => 
             prev.map((volunteer) => 
                 volunteer.volunteer_id === updatedVolunteer.volunteer_id ? updatedVolunteer : volunteer))
         props.setIsEditOpen(false)

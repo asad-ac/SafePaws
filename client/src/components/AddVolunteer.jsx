@@ -23,7 +23,7 @@ const AddVolunteer = (props) => {
             body: JSON.stringify(form)
         }
 
-        const response = await fetch('http://localhost:3001/sponsors', options)
+        const response = await fetch('http://localhost:3001/volunteers', options)
         const newVolunteer = await response.json()
 
         props.setVolunteers((prev) => [...prev, newVolunteer])
