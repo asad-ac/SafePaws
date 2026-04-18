@@ -5,7 +5,7 @@ const EditSponsor = (props) => {
   const [form, setForm] = useState({name: props.sponsor.name || '', amount: props.sponsor.amount || '', address: props.sponsor.address || '', phone: props.sponsor.phone || '', email: props.sponsor.email || '', sanctuary_id: props.sponsor.sanctuary_id || 1,})
 
   const handleChange = (e) => {
-    const { name, value } = e.target
+    const {name, value} = e.target
     setForm((prev) => ({
       ...prev,
       [name]: value,
@@ -25,11 +25,14 @@ const EditSponsor = (props) => {
     const response = await fetch(`http://localhost:3001/sponsors/${props.sponsor.sponsor_id}`, options)
     const updatedSponsor = await response.json()
 
+    // maps through sponsors to find sponsor we just edited, if it is update it otherwise keep same
     props.setSponsors((prev) =>
       prev.map((sponsor) =>
         sponsor.sponsor_id === updatedSponsor.sponsor_id ? updatedSponsor: sponsor))
     props.setIsEditOpen(false)
   }
+
+   // TODO: add for, id, and autocomplete attributes
 
   return (
     <div>

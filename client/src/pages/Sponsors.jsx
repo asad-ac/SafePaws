@@ -32,8 +32,7 @@ const Sponsors = () => {
                         <p> {sponsor.address} </p>
                         <p> {sponsor.phone} </p>
                         <p> {sponsor.email} </p>
-
-                        <button onClick={() => {setSelected(sponsor),setIsEditOpen(true)}}> Edit </button>
+                        <button onClick={() => {setSelected(sponsor), setIsEditOpen(true)}}> Edit </button>
                     </div>
                 </div>
             )
@@ -41,12 +40,15 @@ const Sponsors = () => {
 
             {isAddOpen && 
             <AddSponsor 
-                setIsAddOpen={setIsAddOpen} 
+                setIsAddOpen={setIsAddOpen}
+                // boolean and add to array of sponsors with spread 
                 setSponsors={setSponsors} />}
 
             {isEditOpen && selected && (
             <EditSponsor 
+                // 
                 sponsor={selected}
+                // boolean and add to array of sponsor with spread
                 setIsEditOpen={setIsEditOpen} 
                 setSponsors={setSponsors} />)}
     </div>

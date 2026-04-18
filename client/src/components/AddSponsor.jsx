@@ -13,8 +13,7 @@ const AddSponsor = (props) => {
     }
 
     const handleSubmit = async (e) => {
-        e.preventDefault
-
+        e.preventDefault()
         const options = {
             method: 'POST',
             headers: {
