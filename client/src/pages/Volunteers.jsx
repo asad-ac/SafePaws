@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import AddVolunteer from '../components/AddVolunteer.jsx'
 import EditVolunteer from '../components/EditVolunteer.jsx'
+import { MdEdit } from "react-icons/md";
 
 const Volunteers = () => {
     
@@ -31,7 +32,7 @@ const Volunteers = () => {
                             <p>{volunteer.phone}</p>
                             <p>{volunteer.email}</p>
                             <p>{volunteer.assigned_duty}</p>
-                            <button onClick={() => {setSelected(volunteer), setIsEditOpen(true)}}> Edit </button>
+                            <button onClick={() => {setSelected(volunteer), setIsEditOpen(true)}}> <MdEdit /> Edit </button>
                         </div>
                     </div>
                 )
