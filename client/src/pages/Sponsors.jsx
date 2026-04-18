@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
-import AddSponsor from '../components/AddSponsor'
-import EditSponsor from '../components/EditSponsor'
+import AddSponsor from '../components/AddSponsor.jsx'
+import EditSponsor from '../components/EditSponsor.jsx'
 
 const Sponsors = () => {
 

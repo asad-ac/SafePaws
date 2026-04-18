@@ -36,12 +36,16 @@ const AddVolunteer = (props) => {
         <label> Name: </label>
         <input required type='text' name='name' value={form.name} onChange={handleChange} />
         <label> Address: </label>
-        <input required type='address' value={form.address} onChange={handleChange} />
+        <input required type='address' name='address' value={form.address} onChange={handleChange} />
         <label> Phone: </label>
-        <input required type='number' value={form.phone} onChange={handleChange} />
-        <labe> Email: </labe>
-        <input required type='email' value={form.email} onChange={handleChange} />
+        <input required type='number' name='phone' value={form.phone} onChange={handleChange} />
+        <label> Email: </label>
+        <input required type='email' name='email' value={form.email} onChange={handleChange} />
+        <label> Assigned Duty: </label>
+        <textarea required name='assigned_duty' value={form.assigned_duty} onChange={handleChange}></textarea>
+        <button type='submit'>+ Add Volunteer</button>
       </form>
+      <button type='button' onClick={() => props.setIsAddOpen(false)}> Cancel</button>
     </div>
   )
 }

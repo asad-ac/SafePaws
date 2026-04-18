@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import AddVolunteer from '../components/AddVolunteer.jsx'
-import EditVolunteer from '../components/EditVolunteer'
+import EditVolunteer from '../components/EditVolunteer.jsx'
 
 const Volunteers = () => {
     

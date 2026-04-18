@@ -42,7 +42,7 @@ const AddSponsor = (props) => {
         <input required type="number" name='phone' value={form.phone} onChange={handleChange} />
         <label>Email: </label>
         <input required type="email" name='email' value={form.email} onChange={handleChange} />
-        <button type="submit">Add Sponsor</button>
+        <button type="submit">+ Add Sponsor</button>
       </form>
         <button type="button" onClick={() => props.setIsAddOpen(false)}> Cancel </button>
     </div>
