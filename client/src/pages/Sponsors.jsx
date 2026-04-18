@@ -11,7 +11,7 @@ const Sponsors = () => {
 
     useEffect(() => {
         const fetchAllSponsors = async () => {
-            const response = await fetch (`http://localhost:3001/sponsors`)
+            const response = await fetch(`http://localhost:3001/sponsors`)
             const data = await response.json()
             setSponsors(data)
         }
@@ -22,7 +22,7 @@ const Sponsors = () => {
     <div>
         <h1> Sponsors </h1>
         {/* we map sponsors state with all fields of name, amount, address, phone, email */}
-        <button onClick={() => setIsAddOpen(true)}>Add Sponsor</button>
+        <button onClick={() => setIsAddOpen(true)}>+ Add Sponsor</button>
         {sponsors.length > 0 ? sponsors.map((sponsor) => {
             return (
                 <div key={sponsor.sponsor_id} className=''>
@@ -46,7 +46,7 @@ const Sponsors = () => {
 
             {isEditOpen && selected && (
             <EditSponsor 
-                // 
+                // the sponsor the user selected
                 sponsor={selected}
                 // boolean and add to array of sponsor with spread
                 setIsEditOpen={setIsEditOpen} 
