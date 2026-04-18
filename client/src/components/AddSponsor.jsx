@@ -2,9 +2,9 @@ import {useState} from 'react'
 
 const AddSponsor = (props) => {
 
-    const [form, setForm] = useState({name: '', amount: '', address: '', phone: '', email: '',})
+    const [form, setForm] = useState({name: '', amount: '', address: '', phone: '', email: '', sanctuary_id: 1})
 
-    const handleChange = async (e) => {
+    const handleChange = (e) => {
         const {name, value} = e.target
         setForm((prev) => ({
             ...prev,
@@ -12,7 +12,8 @@ const AddSponsor = (props) => {
         }))
     }
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault
 
         const options = {
             method: 'POST',
@@ -22,10 +23,10 @@ const AddSponsor = (props) => {
             body: JSON.stringify(form)
         }
 
-        const response = await fetch('http://localhost:3001/sponsors')
-        const newSponsor = response.json()
+        const response = await fetch('http://localhost:3001/sponsors', options)
+        const newSponsor = await response.json()
 
-        setSponsors((prev) => [...prev, newSponsor])
+        props.setSponsors((prev) => [...prev, newSponsor])
         props.setIsAddOpen(false)
     }
 
@@ -33,17 +34,18 @@ const AddSponsor = (props) => {
     <div>
       <form onSubmit={handleSubmit}>
         <label> Name: </label>
-        <input required type="text" value={form.name} onChange={handleChange} />
+        <input required type="text" name='name' value={form.name} onChange={handleChange} />
         <label> Amount: </label>
-        <input required type="text" value={form.amount} onChange={handleChange} />
+        <input required type="text" name='amount' value={form.amount} onChange={handleChange} />
         <label> Address: </label>
-        <input required type="text" value={form.address} onChange={handleChange} />
+        <input required type="text" name='address' value={form.address} onChange={handleChange} />
         <label>Phone: </label>
-        <input required type="number" value={form.phone} onChange={handleChange} />
+        <input required type="number" name='phone' value={form.phone} onChange={handleChange} />
         <label>Email: </label>
-        <input required type="email" value={form.email} onChange={handleChange} />
+        <input required type="email" name='email' value={form.email} onChange={handleChange} />
+        <button type="submit">Add Sponsor</button>
       </form>
-        <button onClick={() => props.setIsAddOpen(false)}> Cancel </button>
+        <button type="button" onClick={() => props.setIsAddOpen(false)}> Cancel </button>
     </div>
   )
 }
