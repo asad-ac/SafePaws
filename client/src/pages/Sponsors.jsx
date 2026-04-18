@@ -1,10 +1,12 @@
 import {useState, useEffect} from 'react'
 import AddSponsor from '../components/AddSponsor'
+import EditSponsor from '../components/EditSponsor'
 
 const Sponsors = () => {
 
     const [sponsors, setSponsors] = useState([])
     const [isAddOpen, setIsAddOpen] = useState(false)
+    const [isEditOpen, setIsEditOpen] = useState(false)
 
     useEffect(() => {
         const fetchAllSponsors = async () => {
@@ -41,6 +43,14 @@ const Sponsors = () => {
             setIsAddOpen={setIsAddOpen}
             setSponsors={setSponsors} />
         )}
+
+        {isEditOpen && (
+            <EditSponsor
+            sponsor = {sponsors}
+            setIsEditOpen={setIsEditOpen}
+            setSponsors={setSponsors} />
+        )}
+        
     </div>
   )
 }
