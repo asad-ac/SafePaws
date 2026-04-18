@@ -16,7 +16,7 @@ const AddSponsor = (props) => {
         e.preventDefault()
         const options = {
             method: 'POST',
-            headers: {
+            headßers: {
                 'Content-Type': 'application/json' 
             },
             body: JSON.stringify(form)
