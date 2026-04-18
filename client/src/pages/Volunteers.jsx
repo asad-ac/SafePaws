@@ -27,10 +27,10 @@ const Volunteers = () => {
                     <div key={volunteer.volunteer_id} className=''>
                         <div className=''>
                             <p>{volunteer.name}</p>
-                            <p>{volunteer.amount}</p>
                             <p>{volunteer.address}</p>
                             <p>{volunteer.phone}</p>
                             <p>{volunteer.email}</p>
+                            <p>{volunteer.assigned_duty}</p>
                             <button onClick={() => {setSelected(volunteer), setIsEditOpen(true)}}> Edit </button>
                         </div>
                     </div>
