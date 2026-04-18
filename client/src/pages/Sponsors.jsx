@@ -15,18 +15,23 @@ const Sponsors = () => {
     
   return (
     <div>
+    <h1> Sponsors </h1>
       {/* we map sponsors state with all fields of name, amount, address, phone, email */}
       {sponsors.length > 0 ? sponsors.map((sponsor) => {
         return (
-            <div key={sponsor.sponsor_id}> 
-                <h1> {sponsor.name} </h1> 
-                <h1> {sponsor.amount} </h1>
-                <h1> {sponsor.address} </h1>
-                <h1> {sponsor.phone} </h1>
-                <h1> {sponsor.email} </h1>
+            <div className=''>
+                <div className='' key={sponsor.sponsor_id}> 
+                    <p> {sponsor.name} </p> 
+                    <p> ${sponsor.amount} / Monthly </p>
+                    <p> {sponsor.address} </p>
+                    <p> {sponsor.phone} </p>
+                    <p> {sponsor.email} </p>
+                    <button> Edit </button>
+                    <button> Delete </button>
+                </div>
             </div>
-    )
-      }) : <h1> No sponsors added </h1>}
+        )
+      }) : <h2> No sponsors added </h2>}
     </div>
   )
 }
