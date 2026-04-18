@@ -169,7 +169,7 @@ const createSponsorTable = async () => {
     CREATE TABLE IF NOT EXISTS sponsor (
         sponsor_id SERIAL PRIMARY KEY,
         name varchar(50) NOT NULL,
-        amount DECIMAL NOT NULL,
+        amount decimal NOT NULL,
         address varchar(255) NOT NULL,
         phone varchar(50) NOT NULL,
         email varchar(50) NOT NULL,
