@@ -1,7 +1,7 @@
 import {useState} from 'react'
 
 const EditSponsor = (props) => {
-    
+
   const [form, setForm] = useState({name: props.sponsor.name || '', amount: props.sponsor.amount || '', address: props.sponsor.address || '', phone: props.sponsor.phone || '', email: props.sponsor.email || '', sanctuary_id: props.sponsor.sanctuary_id || 1,})
 
   const handleChange = (e) => {
@@ -19,7 +19,7 @@ const EditSponsor = (props) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(form),
+      body: JSON.stringify(form)
     }
 
     const response = await fetch(`http://localhost:3001/sponsors/${props.sponsor.sponsor_id}`, options)
@@ -44,9 +44,9 @@ const EditSponsor = (props) => {
         <input required type="text" name="phone" value={form.phone} onChange={handleChange} />
         <label>Email:</label>
         <input required type="email" name="email" value={form.email} onChange={handleChange} />
-        <button type="submit">Save</button>
+        <button type="submit"> Save </button>
       </form>
-      <button type="button" onClick={() => props.setIsEditOpen(false)}> Cancel </button>
+      <button type="button" onClick={() => props.setIsEditOpen(false)}>Cancel </button>
     </div>
   )
 }
