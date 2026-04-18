@@ -4,9 +4,9 @@ const AddSponsor = (props) => {
 
     const [form, setForm] = useState({name: '', amount: '', address: '', phone: '', email: '',})
 
-    const handleChange = async ({e}) => {
+    const handleChange = async (e) => {
         const {name, value} = e.target
-        setFormData((prev) => ({
+        setForm((prev) => ({
             ...prev,
             [name]: value,
         }))
@@ -26,7 +26,7 @@ const AddSponsor = (props) => {
         const newSponsor = response.json()
 
         setSponsors((prev) => [...prev, newSponsor])
-        setIsAddOpen(false)
+        props.setIsAddOpen(false)
     }
 
   return (
@@ -35,15 +35,15 @@ const AddSponsor = (props) => {
         <label> Name: </label>
         <input required type="text" value={form.name} onChange={handleChange} />
         <label> Amount: </label>
-        <input required type="text" value={form.name} onChange={handleChange} />
+        <input required type="text" value={form.amount} onChange={handleChange} />
         <label> Address: </label>
-        <input required type="text" value={form.name} onChange={handleChange} />
+        <input required type="text" value={form.address} onChange={handleChange} />
         <label>Phone: </label>
-        <input required type="number" value={form.name} onChange={handleChange} />
+        <input required type="number" value={form.phone} onChange={handleChange} />
         <label>Email: </label>
-        <input required type="email" value={form.name} onChange={handleChange} />
+        <input required type="email" value={form.email} onChange={handleChange} />
       </form>
-        <button onClick={() => props.setIsAddOpen => () }> Cancel </button>
+        <button onClick={() => props.setIsAddOpen(false)}> Cancel </button>
     </div>
   )
 }
