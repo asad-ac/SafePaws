@@ -2,36 +2,48 @@ import {useState} from 'react'
 
 const AddSponsor = (props) => {
 
-    const [addSponsor, setAddSponsor] = useState([])
+    const [form, setForm] = useState({name: '', amount: '', address: '', phone: '', email: '',})
 
-    const options = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json' 
-        },
-        body: JSON.stringify(addSponsor)
+    const handleChange = async ({e}) => {
+        const {name, value} = e.target
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value,
+        }))
     }
-    
-    const add = async () => {
-        const insert = await fetch('http://localhost:3001/sponsors', options)
-    }   
+
+    const handleSubmit = async () => {
+
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json' 
+            },
+            body: JSON.stringify(form)
+        }
+
+        const response = await fetch('http://localhost:3001/sponsors')
+        const newSponsor = response.json()
+
+        setSponsors((prev) => [...prev, newSponsor])
+        setIsAddOpen(false)
+    }
 
   return (
     <div>
-      <form onSubmit={add}>
+      <form onSubmit={handleSubmit}>
         <label> Name: </label>
-        <input required type="text" />
+        <input required type="text" value={form.name} onChange={handleChange} />
         <label> Amount: </label>
-        <input required type="text" />
+        <input required type="text" value={form.name} onChange={handleChange} />
         <label> Address: </label>
-        <input required type="text" />
+        <input required type="text" value={form.name} onChange={handleChange} />
         <label>Phone: </label>
-        <input required type="number" />
+        <input required type="number" value={form.name} onChange={handleChange} />
         <label>Email: </label>
-        <input required type="email" />
+        <input required type="email" value={form.name} onChange={handleChange} />
       </form>
-      <button onClick={add}> Submit </button>
-        <button> Cancel </button>
+        <button onClick={() => props.setIsAddOpen => () }> Cancel </button>
     </div>
   )
 }
