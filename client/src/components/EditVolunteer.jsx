@@ -2,16 +2,16 @@ import {useState} from 'react'
 
 const EditVolunteer = (props) => {
 
-    const [form, setForm] = useState({name: props.volunteer.name || '', address: props.volunteer.address || '', phone: props.volunteer.address || '', email: props.volunteer.email || '', assigned_duty: props.volunteer.assigned_duty || '', sanctuary_id: props.volunteer.sanctuary_id || 1,})
+    const [form, setForm] = useState({name: props.volunteer.name || '', address: props.volunteer.address || '', phone: props.volunteer.phone || '', email: props.volunteer.email || '', assigned_duty: props.volunteer.assigned_duty || '', sanctuary_id: props.volunteer.sanctuary_id || 1,})
 
     const handleChange = (e) => {
+      e.preventDefault()
         const {name, value} = e.target
         setForm((prev) => ({
             ...prev,
             [name]:value,
         }))
     }
-
 
     const handleSubmit = async () => {
         const options = {
@@ -39,7 +39,7 @@ const EditVolunteer = (props) => {
         <label>Address:</label>
         <input required type='text' name='address' value={form.address} onChange={handleChange} />
         <label>Phone: </label>
-        <input required type='text' name='phone' value={form.phone} onChange={handleChange} />
+        <input required type='tel' name='phone' value={form.phone} onChange={handleChange} />
         <label>Email: </label>
         <input required type='email' name='email' value={form.email} onChange={handleChange} />
         <label>Assigned Duty:</label>

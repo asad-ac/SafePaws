@@ -1,6 +1,9 @@
 import {useState, useEffect} from 'react'
 import AddSponsor from '../components/AddSponsor.jsx'
 import EditSponsor from '../components/EditSponsor.jsx'
+import { MdEdit } from "react-icons/md";
+
+// TODO: delete by id button
 
 const Sponsors = () => {
 
@@ -32,7 +35,7 @@ const Sponsors = () => {
                         <p> {sponsor.address} </p>
                         <p> {sponsor.phone} </p>
                         <p> {sponsor.email} </p>
-                        <button onClick={() => {setSelected(sponsor), setIsEditOpen(true)}}> Edit </button>
+                        <button onClick={() => {setSelected(sponsor), setIsEditOpen(true)}}> <MdEdit /> Edit </button>
                     </div>
                 </div>
             )
