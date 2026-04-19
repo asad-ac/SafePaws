@@ -50,7 +50,7 @@ const EditSponsor = (props) => {
         <input required type="email" name="email" value={form.email} onChange={handleChange} />
         <button type="submit"> Save </button>
       </form>
-      <button type="button" onClick={() => props.setIsEditOpen(false)}>Cancel </button>
+      <button type="button" onClick={() => props.setIsEditOpen(false)}> Cancel </button>
     </div>
   )
 }

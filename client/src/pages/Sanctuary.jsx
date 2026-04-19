@@ -3,7 +3,7 @@ import EditSanctuary from '../components/EditSanctuary.jsx'
 
 const Sanctuary = () => {
 
-    const [sanctuary, setSanctuary] = useState([])
+    const [sanctuary, setSanctuary] = useState(null)
     const [isEditOpen, setIsEditOpen] = useState(false)
 
     useEffect(() => {
@@ -18,23 +18,25 @@ const Sanctuary = () => {
   return (
     <>
         <div>
-        {sanctuary.length > 0 ? data.map((sanc) => {
-            <div key={sanc.sanctuary_id}>
-                <h1> {sanc.name}</h1>
-                <p> {sanc.address} </p>
-                <p> {sanc.phone} </p>
-                <p> {sanc.email}</p>
-                <p> {sanc.capacity} </p>
-            </div>
-        }) : <h1> No sanctuary yet </h1>}
+            {sanctuary ? (
+                <div>
+                    <h1> {sanctuary.name}</h1>
+                    <p> {sanctuary.address} </p>
+                    <p> {sanctuary.phone} </p>
+                    <p> {sanctuary.email}</p>
+                    <p> {sanctuary.capacity} </p>
+                </div>
+            ) : <h1> No sanctuary yet </h1>}
         </div>
-        <button onClick={() => setIsEditOpen(true)}> Edit Sanctuary </button>
+        
+        {sanctuary &&
+        <button onClick={() => setIsEditOpen(true)}> Edit Sanctuary </button>}
         
         {isEditOpen && sanctuary && (
         <EditSanctuary
-        sanctuary={sanctuary} 
-        setSanctuary={setSanctuary}
-        setIsEditOpen={setIsEditOpen}/>)}
+            sanctuary={sanctuary} 
+            setSanctuary={setSanctuary}
+            setIsEditOpen={setIsEditOpen}/>)}
     </>
   )
 }
