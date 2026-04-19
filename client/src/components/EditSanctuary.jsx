@@ -1,10 +1,10 @@
 import {useState} from 'react'
 
-const EditSanctuary = () => {
+const EditSanctuary = (props) => {
 
-    const [form, setForm] = useState({name: '', address: '', phone: '', email: '', capacity: '', sanctuary_id: 1})
+    const [form, setForm] = useState({name: props.setSanctuary.name || '', address: props.setSanctuary.address || '', phone: props.setSanctuary.phone || '', email: props.setSanctuary.email || '', capacity: props.setSanctuary.capcity || '', sanctuary_id: 1})
 
-    const handleChange = () => {
+    const handleChange = (e) => {
         const {name, value} = e.target
         setForm((prev) => ({
             ...prev,
@@ -23,7 +23,7 @@ const EditSanctuary = () => {
             body: JSON.stringify(form)
         }
 
-        const response = await fetch('http://localhost:3001/sanctuaries/1', options)
+        const response = await fetch(`http://localhost:3001/sanctuaries/${form.sanctuary_id}`, options)
         const editedSanctuary = await response.json()
 
         props.setSanctuary(editedSanctuary)

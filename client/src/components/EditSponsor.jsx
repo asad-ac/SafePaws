@@ -4,7 +4,7 @@ const EditSponsor = (props) => {
 
   const [form, setForm] = useState({name: props.sponsor.name || '', amount: props.sponsor.amount || '', address: props.sponsor.address || '', phone: props.sponsor.phone || '', email: props.sponsor.email || '', sanctuary_id: props.sponsor.sanctuary_id || 1,})
 
-  const handleChange = () => {
+  const handleChange = (e) => {
     const {name, value} = e.target
     setForm((prev) => ({
       ...prev,
