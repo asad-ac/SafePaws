@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react'
 import AddVolunteer from '../components/AddVolunteer.jsx'
 import EditVolunteer from '../components/EditVolunteer.jsx'
 import { MdEdit } from "react-icons/md";
+import { IoAddSharp } from "react-icons/io5";
 
 //TODO: delete by id button
 
@@ -24,7 +25,7 @@ const Volunteers = () => {
     return (
         <div>
             <h1> Volunteers </h1>
-            <button onClick={() => setIsAddOpen(true)}>+ Add Volunteer</button>
+            <button onClick={() => setIsAddOpen(true)}><IoAddSharp /> Add Volunteer</button>
             {volunteers.length > 0 ? volunteers.map((volunteer) => {
                 return (
                     <div key={volunteer.volunteer_id} className=''>

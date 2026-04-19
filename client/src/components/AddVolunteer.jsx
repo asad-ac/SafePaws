@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import { IoAddSharp } from "react-icons/io5";
 
 const AddVolunteer = (props) => {
     // boolean prop and setter state passed to add to array
@@ -43,7 +44,7 @@ const AddVolunteer = (props) => {
         <input required type='email' name='email' value={form.email} onChange={handleChange} />
         <label> Assigned Duty: </label>
         <textarea required name='assigned_duty' value={form.assigned_duty} onChange={handleChange}></textarea>
-        <button type='submit'>+ Add Volunteer</button>
+        <button type='submit'> <IoAddSharp /> Add Volunteer</button>
       </form>
       <button type='button' onClick={() => props.setIsAddOpen(false)}> Cancel</button>
     </div>

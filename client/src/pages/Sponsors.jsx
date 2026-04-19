@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react'
 import AddSponsor from '../components/AddSponsor.jsx'
 import EditSponsor from '../components/EditSponsor.jsx'
 import { MdEdit } from "react-icons/md";
+import { IoAddSharp } from "react-icons/io5";
 
 // TODO: delete by id button
 
@@ -25,7 +26,7 @@ const Sponsors = () => {
     <div>
         <h1> Sponsors </h1>
         {/* we map sponsors state with all fields of name, amount, address, phone, email */}
-        <button onClick={() => setIsAddOpen(true)}>+ Add Sponsor</button>
+        <button onClick={() => setIsAddOpen(true)}><IoAddSharp /> Add Sponsor</button>
         {sponsors.length > 0 ? sponsors.map((sponsor) => {
             return (
                 <div key={sponsor.sponsor_id} className=''>
