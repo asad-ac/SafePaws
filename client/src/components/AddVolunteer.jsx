@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import { IoAddSharp } from "react-icons/io5";
+import {IoAddSharp} from "react-icons/io5";
 
 const AddVolunteer = (props) => {
     // boolean prop and setter state passed to add to array

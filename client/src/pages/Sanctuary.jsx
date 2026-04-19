@@ -4,11 +4,11 @@ import EditSanctuary from '../components/EditSanctuary.jsx'
 const Sanctuary = () => {
 
     const [sanctuary, setSanctuary] = useState([])
-    const [isEditOpen, setisEditOpen] = useState(false)
+    const [isEditOpen, setIsEditOpen] = useState(false)
 
     useEffect(() => {
        const getSanctuary = async () => {
-        const response = await fetch('http://localhost:3001/sanctuaries')
+        const response = await fetch('http://localhost:3001/sanctuaries/1')
         const data = await response.json()
         setSanctuary(data)
        }
@@ -28,8 +28,11 @@ const Sanctuary = () => {
             </div>
         }) : <h1> No sanctuary yet </h1>}
         </div>
-
-        <EditSanctuary />
+        <button onClick={() => setIsEditOpen(true)}> Edit Sanctuary </button>
+        
+        {isEditOpen && <EditSanctuary 
+        setSanctuary={setSanctuary}
+        setIsEditOpen={setIsEditOpen}/>}
     </>
   )
 }

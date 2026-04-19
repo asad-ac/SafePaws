@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import { IoAddSharp } from "react-icons/io5";
+import {IoAddSharp} from "react-icons/io5";
 
 const AddSponsor = (props) => {
 
