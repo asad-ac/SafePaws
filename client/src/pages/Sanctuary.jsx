@@ -1,23 +1,36 @@
 import {useEffect, useState} from 'react'
+import EditSanctuary from '../components/EditSanctuary.jsx'
 
 const Sanctuary = () => {
 
-    const[data, setData] = useState([])
+    const [sanctuary, setSanctuary] = useState([])
+    const [isEditOpen, setisEditOpen] = useState(false)
 
     useEffect(() => {
        const getSanctuary = async () => {
         const response = await fetch('http://localhost:3001/sanctuaries')
         const data = await response.json()
-        setData(data)
+        setSanctuary(data)
        }
+       getSanctuary()
     },[])
 
   return (
-    <div>
-      {data.length > 0 ? data.map((sanctuary) => {
-        
-      }) : <h1> No sanctuary yet </h1>}
-    </div>
+    <>
+        <div>
+        {sanctuary.length > 0 ? data.map((sanc) => {
+            <div key={sanc.sanctuary_id}>
+                <h1> {sanc.name}</h1>
+                <p> {sanc.address} </p>
+                <p> {sanc.phone} </p>
+                <p> {sanc.email}</p>
+                <p> {sanc.capacity} </p>
+            </div>
+        }) : <h1> No sanctuary yet </h1>}
+        </div>
+
+        <EditSanctuary />
+    </>
   )
 }
 

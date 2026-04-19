@@ -23,23 +23,25 @@ const Volunteers = () => {
     },[])
     
     return (
-        <div>
-            <h1> Volunteers </h1>
-            <button onClick={() => setIsAddOpen(true)}><IoAddSharp /> Add Volunteer</button>
-            {volunteers.length > 0 ? volunteers.map((volunteer) => {
-                return (
-                    <div key={volunteer.volunteer_id} className=''>
-                        <div className=''>
-                            <p>{volunteer.name}</p>
-                            <p>{volunteer.address}</p>
-                            <p>{volunteer.phone}</p>
-                            <p>{volunteer.email}</p>
-                            <p>{volunteer.assigned_duty}</p>
-                            <button onClick={() => {setSelected(volunteer), setIsEditOpen(true)}}> <MdEdit /> Edit </button>
+        <>
+            <div>
+                <h1> Volunteers </h1>
+                <button onClick={() => setIsAddOpen(true)}><IoAddSharp /> Add Volunteer</button>
+                {volunteers.length > 0 ? volunteers.map((volunteer) => {
+                    return (
+                        <div key={volunteer.volunteer_id} className=''>
+                            <div className=''>
+                                <p>{volunteer.name}</p>
+                                <p>{volunteer.address}</p>
+                                <p>{volunteer.phone}</p>
+                                <p>{volunteer.email}</p>
+                                <p>{volunteer.assigned_duty}</p>
+                                <button onClick={() => {setSelected(volunteer), setIsEditOpen(true)}}> <MdEdit /> Edit </button>
+                            </div>
                         </div>
-                    </div>
-                )
-            }) : <h2> No volunteers added</h2>}
+                    )
+                }) : <h2> No volunteers added</h2>}
+            </div>
 
             {isAddOpen && 
             <AddVolunteer
@@ -51,7 +53,7 @@ const Volunteers = () => {
                 volunteer={selected}
                 setIsEditOpen={setIsEditOpen}
                 setVolunteers={setVolunteers}/>)}
-        </div>
+        </>
     )
 }
 
