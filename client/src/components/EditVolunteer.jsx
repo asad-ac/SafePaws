@@ -4,8 +4,7 @@ const EditVolunteer = (props) => {
 
     const [form, setForm] = useState({name: props.volunteer.name || '', address: props.volunteer.address || '', phone: props.volunteer.phone || '', email: props.volunteer.email || '', assigned_duty: props.volunteer.assigned_duty || '', sanctuary_id: props.volunteer.sanctuary_id || 1,})
 
-    const handleChange = (e) => {
-      e.preventDefault()
+    const handleChange = () => {
         const {name, value} = e.target
         setForm((prev) => ({
             ...prev,
@@ -13,7 +12,8 @@ const EditVolunteer = (props) => {
         }))
     }
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
+      e.preventDefault()
         const options = {
             method: 'PATCH',
             headers: {
@@ -34,15 +34,15 @@ const EditVolunteer = (props) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label>Name: </label>
+        <label> Name: </label>
         <input required type='text' name='name' value={form.name} onChange={handleChange} />
-        <label>Address:</label>
+        <label> Address:</label>
         <input required type='text' name='address' value={form.address} onChange={handleChange} />
-        <label>Phone: </label>
+        <label> Phone: </label>
         <input required type='tel' name='phone' value={form.phone} onChange={handleChange} />
-        <label>Email: </label>
+        <label> Email: </label>
         <input required type='email' name='email' value={form.email} onChange={handleChange} />
-        <label>Assigned Duty:</label>
+        <label> Assigned Duty: </label>
         <textarea required type='text' name='assigned_duty' value={form.assigned_duty} onChange={handleChange}></textarea>
         <button type='submit'> Save </button>
       </form>

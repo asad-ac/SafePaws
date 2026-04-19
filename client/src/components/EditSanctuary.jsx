@@ -4,7 +4,7 @@ const EditSanctuary = () => {
 
     const [form, setForm] = useState({name: '', address: '', phone: '', email: '', capacity: '', sanctuary_id: 1})
 
-    const handleChange = (e) => {
+    const handleChange = () => {
         const {name, value} = e.target
         setForm((prev) => ({
             ...prev,
@@ -32,17 +32,19 @@ const EditSanctuary = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label></label>
-        <input onChange={handleChange} name='' value={} required type=''  />
-        <label></label>
-        <input onChange={handleChange} name='' value={} required type='' />
-        <label></label>
-        <input onChange={handleChange} name='' value={} required type='' />
-        <label></label>
-        <input onChange={handleChange} name='' value={} required type='' />
-        <label></label>
-        <input onChange={handleChange} name='' value={} required type='' />
+        <label> Name: </label>
+        <input onChange={handleChange} name='name' value={form.name} required type='text'  />
+        <label> Address: </label>
+        <input onChange={handleChange} name='address' value={form.address} required type='text' />
+        <label> Phone: </label>
+        <input onChange={handleChange} name='phone' value={form.phone} required type='tel' />
+        <label> Email: </label>
+        <input onChange={handleChange} name='email' value={form.email} required type='email' />
+        <label> Capacity: </label>
+        <input onChange={handleChange} name='capacity' value={form.capacity} required type='number' />
+        <button type='submit'> Save </button>
       </form>
+      <button type='button' onClick={() => props.setIsEditOpen(false)}> Cancel </button>
     </div>
   )
 }

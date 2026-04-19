@@ -4,7 +4,7 @@ const EditSponsor = (props) => {
 
   const [form, setForm] = useState({name: props.sponsor.name || '', amount: props.sponsor.amount || '', address: props.sponsor.address || '', phone: props.sponsor.phone || '', email: props.sponsor.email || '', sanctuary_id: props.sponsor.sanctuary_id || 1,})
 
-  const handleChange = (e) => {
+  const handleChange = () => {
     const {name, value} = e.target
     setForm((prev) => ({
       ...prev,
@@ -14,6 +14,7 @@ const EditSponsor = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
     const options = {
       method: 'PATCH',
       headers: {
@@ -37,15 +38,15 @@ const EditSponsor = (props) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label>Name:</label>
+        <label> Name: </label>
         <input required type="text" name="name" value={form.name} onChange={handleChange} />
-        <label>Amount:</label>
+        <label> Amount: </label>
         <input required type="number" name="amount" value={form.amount} onChange={handleChange} />
-        <label>Address:</label>
+        <label> Address: </label>
         <input required type="text" name="address" value={form.address} onChange={handleChange} />
-        <label>Phone:</label>
+        <label> Phone: </label>
         <input required type="tel" name="phone" value={form.phone} onChange={handleChange} />
-        <label>Email:</label>
+        <label> Email: </label>
         <input required type="email" name="email" value={form.email} onChange={handleChange} />
         <button type="submit"> Save </button>
       </form>
