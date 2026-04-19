@@ -30,9 +30,11 @@ const Sanctuary = () => {
         </div>
         <button onClick={() => setIsEditOpen(true)}> Edit Sanctuary </button>
         
-        {isEditOpen && <EditSanctuary 
+        {isEditOpen && sanctuary && (
+        <EditSanctuary
+        sanctuary={sanctuary} 
         setSanctuary={setSanctuary}
-        setIsEditOpen={setIsEditOpen}/>}
+        setIsEditOpen={setIsEditOpen}/>)}
     </>
   )
 }

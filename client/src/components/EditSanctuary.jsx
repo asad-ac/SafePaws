@@ -2,7 +2,7 @@ import {useState} from 'react'
 
 const EditSanctuary = (props) => {
 
-    const [form, setForm] = useState({name: props.setSanctuary.name || '', address: props.setSanctuary.address || '', phone: props.setSanctuary.phone || '', email: props.setSanctuary.email || '', capacity: props.setSanctuary.capcity || '', sanctuary_id: 1})
+    const [form, setForm] = useState({name: props.sanctuary.name || '', address: props.sanctuary.address || '', phone: props.sanctuary.phone || '', email: props.sanctuary.email || '', capacity: props.sanctuary.capacity || '', sanctuary_id: props.sanctuary.sanctuary_id || 1})
 
     const handleChange = (e) => {
         const {name, value} = e.target
