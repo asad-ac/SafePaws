@@ -28,11 +28,11 @@ Project Planning and using the board.
 
 Making sure we plan efficiently for the remaining time we have.
 
-### Did you finish all of your tasks in your sprint plan for this week? If you did not finish all of the planned tasks, how would you prioritize the remaining tasks on your list?
+### 3. Did you finish all of your tasks in your sprint plan for this week? If you did not finish all of the planned tasks, how would you prioritize the remaining tasks on your list?
 
 Yes, looking good so far. Just need to keep foot on the gas.
 
-### Which features and user stories would you consider “at risk”? How will you change your plan if those items remain “at risk”?
+### 4. Which features and user stories would you consider “at risk”? How will you change your plan if those items remain “at risk”?
 
 Social media post generation. We will try to implement a smaller feature maybe to still give the admin something but we don't want to rush it.
 
