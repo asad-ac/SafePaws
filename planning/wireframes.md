@@ -1,21 +1,40 @@
 # Wireframes
 
-Reference the Creating an Entity Relationship Diagram final project guide in the course portal for more information about how to complete this deliverable.
-
 ## List of Pages
 
-[👉🏾👉🏾👉🏾 List the pages you expect to have in your app, with a ⭐ next to pages you have wireframed]
+* Hero Page
+* Login Page
+* Dashboard Page
+* Animal Detail Page
+* Volunteers Page
+* Sponsors Page
+* 404 Page
 
-## Wireframe 1: [page title]
 
-[👉🏾👉🏾👉🏾 include wireframe 1]
+## Wireframe 1: [Hero Page] ⭐️
 
-## Wireframe 2: [page title]
+![Hero Wireframe](./wireframe/hero.png)
 
-[👉🏾👉🏾👉🏾 include wireframe 2]
+## Wireframe 2: [Login Page] ⭐️
 
-## Wireframe 3: [page title]
+![Login Wireframe](./wireframe/login.png)
 
-[👉🏾👉🏾👉🏾 include wireframe 3]
+## Wireframe 3: [Animals Page] ⭐️
 
-[👉🏾👉🏾👉🏾 include more wireframes as desired]
+![Animals Wireframe](./wireframe/dashboard.png)
+
+## Wireframe 4: [Animal Detail Page] ⭐️ 
+
+![Animal Detail Wireframe](./wireframe/animal-detail.png)
+
+## Wireframe 5: [Volunteers Page] ⭐️
+
+![Volunteers Wireframe](./wireframe/volunteers.png)
+
+## Wireframe 7: [Sponsors Page] ⭐️
+
+![Sponsors Wireframe](./wireframe/sponsors.png)
+
+## Wireframe 8: [404 Page] ⭐️
+
+![404 Wireframe](./wireframe/404.png)
