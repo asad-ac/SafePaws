@@ -23,14 +23,15 @@ const Volunteers = () => {
         fetchAllVolunteers()
     },[])
 
-    const deleteVolunteer = async (volunteer_id) => {
+    const deleteVolunteer = async (volunteer) => {
         const options = {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            body: JSON.stringify(volunteer)
         }
-        const response = await fetch(`http://localhost:3001/volunteers/${volunteer_id}`, options)
+        const response = await fetch(`http://localhost:3001/volunteers/${volunteer.volunteer_id}`, options)
         const data = await response.json()
         return data
     }
@@ -50,7 +51,7 @@ const Volunteers = () => {
                                 <p>{volunteer.email}</p>
                                 <p>{volunteer.assigned_duty}</p>
                                 <button onClick={() => {setSelected(volunteer), setIsEditOpen(true)}}> <MdEdit /> Edit </button>
-                                <button onClick={() => deleteVolunteer(volunteer.volunteer_id)}> Delete </button>
+                                <button onClick={() => deleteVolunteer(volunteer)}> Delete </button>
                             </div>
                         </div>
                     )
