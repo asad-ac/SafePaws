@@ -4,8 +4,6 @@ import {IoAddSharp} from "react-icons/io5";
 import AddSponsor from '../components/AddSponsor.jsx'
 import EditSponsor from '../components/EditSponsor.jsx'
 
-// TODO: delete by id button
-
 const Sponsors = () => {
 
     const [sponsors, setSponsors] = useState([])

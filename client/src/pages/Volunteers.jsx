@@ -4,8 +4,6 @@ import {IoAddSharp} from "react-icons/io5";
 import AddVolunteer from '../components/AddVolunteer.jsx'
 import EditVolunteer from '../components/EditVolunteer.jsx'
 
-//TODO: delete by id button
-
 const Volunteers = () => {
     
     const [volunteers, setVolunteers] = useState([])
