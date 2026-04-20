@@ -28,9 +28,11 @@ We discovered we are all passionate about animals. Our pets are a large part of 
 
 ### Sorting Pet Attributes
   Implement sorting by name, age, or weight so staff can quickly find and manage animals more efficiently.
+
    [![Watch the demo](https://cdn.loom.com/sessions/thumbnails/d96fef29bffc4ea799ab5fcb1d4e8e9b-87bb6542300468f8-full-play.gif)](https://www.loom.com/share/d96fef29bffc4ea799ab5fcb1d4e8e9bD)
 ### Animal Status
   Provide filtering by care status, feeding status, enclosure cleanliness, and tags to make it easier for staff to organize and monitor animals.
+  
   [![Watch the demo](https://cdn.loom.com/sessions/thumbnails/d96fef29bffc4ea799ab5fcb1d4e8e9b-87bb6542300468f8-full-play.gif)](https://www.loom.com/share/d96fef29bffc4ea799ab5fcb1d4e8e9bD)
 ### Social Media Post Generation
   Enable post generation for individual animals to support donation campaigns and volunteer outreach.
@@ -48,7 +50,8 @@ We discovered we are all passionate about animals. Our pets are a large part of 
   Incorporate loading skeletons to improve performance and give users a preview of incoming content while data loads.
   [gif goes here]
 ## Error Handling
-  Handle errors effectively for smooth user experience and data integrity.
+Handle errors gracefully to maintain a smooth user experience and strong data integrity.
+
   ![Demo](./milestones/demo/error-handling.gif)
   
 
