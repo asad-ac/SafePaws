@@ -50,7 +50,7 @@ We discovered we are all passionate about animals. Our pets are a large part of 
 ### Loading Skeletons
   Incorporate loading skeletons to improve performance and give users a preview of incoming content while data loads.
   [gif goes here]
-## ✅ Error Handling
+### ✅ Error Handling
   Handle errors gracefully to maintain a smooth user experience and strong data integrity.
 
   ![Demo](./milestones/demo/error-handling.gif)
