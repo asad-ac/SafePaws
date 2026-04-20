@@ -12,7 +12,7 @@ SafePaws is a web application that allows animal sanctuary staff members to mana
 
 ### Inspiration
 
-We discovered we are all passionate about animals. Our pets are a large part of our lives and are close family whom we are excited to see when we come home. They provide comfort and joy. All animals deserve a good environment and should not have to go through abuse, dangerous situations, injuries, or neglect. Any organization that dedicates an ample amount of time to serving incredible wildlife deserves our help.
+We discovered we're all passionate about animals. Our pets are a huge part of our lives and are close family we're excited to see when we come home. All animals deserve a good environment and should not have to go through abuse, dangerous situations, injuries, or neglect. Any organization that dedicates an ample amount of time to serving incredible wildlife deserves our help.
 
 ## Tech Stack
 
