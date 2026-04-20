@@ -11,6 +11,7 @@ const Volunteers = () => {
     const [volunteers, setVolunteers] = useState([])
     const [isAddOpen, setIsAddOpen] = useState(false)
     const [isEditOpen, setIsEditOpen] = useState(false)
+    const [isDeleteOpen, setIsDeleteOpen] = useState(false)
     const [selected, setSelected] = useState(null)
 
     useEffect(() => {
@@ -21,6 +22,18 @@ const Volunteers = () => {
         }
         fetchAllVolunteers()
     },[])
+
+    const deleteVolunteer = async (volunteer_id) => {
+        const options = {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        const response = await fetch(`http://localhost:3001/volunteers/${volunteer_id}`, options)
+        const data = await response.json()
+        return data
+    }
     
     return (
         <>
@@ -37,6 +50,7 @@ const Volunteers = () => {
                                 <p>{volunteer.email}</p>
                                 <p>{volunteer.assigned_duty}</p>
                                 <button onClick={() => {setSelected(volunteer), setIsEditOpen(true)}}> <MdEdit /> Edit </button>
+                                <button onClick={() => deleteVolunteer(volunteer.volunteer_id)}> Delete </button>
                             </div>
                         </div>
                     )

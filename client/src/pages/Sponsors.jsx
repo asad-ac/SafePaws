@@ -38,6 +38,7 @@ const Sponsors = () => {
                             <p> {sponsor.phone} </p>
                             <p> {sponsor.email} </p>
                             <button onClick={() => {setSelected(sponsor), setIsEditOpen(true)}}> <MdEdit /> Edit </button>
+                            <button> Delete </button>
                         </div>
                     </div>
                 )
