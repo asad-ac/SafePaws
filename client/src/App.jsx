@@ -1,12 +1,11 @@
-import { useState } from 'react'
 import './App.css'
-import Sanctuary from './pages/Sanctuary'
+import Sponsors from './pages/sponsors'
 
 function App() {
 
   return (
     <>
-      <Sanctuary />
+      <Sponsors />
     </>
   )
 }
