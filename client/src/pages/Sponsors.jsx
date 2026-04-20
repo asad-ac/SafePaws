@@ -34,7 +34,7 @@ const Sponsors = () => {
         const data = await response.json()
 
         // goes through array of sponsors and returns array of sponsors who are not the one that was deleted 
-        setSponsors((prev) => prev.map((s) => s.sponsor_id !== sponsor.id))
+        setSponsors((prev) => prev.filter((s) => s.sponsor_id !== sponsor.sponsor_id))
 
         return data
     }
