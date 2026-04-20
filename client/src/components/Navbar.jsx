@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, NavLink} from 'react-router-dom'
 
 const NavBar = () =>{
     return (
@@ -7,10 +7,10 @@ const NavBar = () =>{
             <div className='SafePaws-Logo'>
                 <img href=''></img>
             </div>
-            <Link> Animals </Link>
-            <Link> Sponsors </Link>
-            <Link> Volunteers </Link>
-            <Link> Settings </Link>
+            <Link to='/animals'> Animals </Link>
+            <Link to='/sponsors'> Sponsors </Link>
+            <Link to='/volunteers'> Volunteers </Link>
+            <Link to='/sanctuary'> Settings </Link>
             {/* profile icon could also be a component? */}
             <div className='Profile-Icon'>
                 <img href=''></img>
