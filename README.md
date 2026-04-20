@@ -37,19 +37,14 @@ We discovered we are all passionate about animals. Our pets are a large part of 
 
 ### Social Media Post Generation
   Enable post generation for individual animals to support donation campaigns and volunteer outreach.
-  [gif goes here]
 ### CRUD Workflow
   Use modal-based CRUD forms to streamline workflows and reduce unnecessary page navigation for staff.
-  [gif goes here]
 ### GitHub Authentication
   Implement GitHub authentication so staff users can securely manage their assigned sanctuary and its animals.
-  [gif goes here]
 ### Hot Toast Confirmations
   Integrate React Hot Toast notifications to provide immediate feedback when animals, sanctuaries, sponsors, or volunteers are added, updated, or deleted.
-  [gif goes here]
 ### Loading Skeletons
   Incorporate loading skeletons to improve performance and give users a preview of incoming content while data loads.
-  [gif goes here]
 ### ✅ Error Handling
   Handle errors gracefully to maintain a smooth user experience and strong data integrity.
 
