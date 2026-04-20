@@ -13,6 +13,8 @@ const Animals = () => {
         fetchAllAnimals()
     },[])
 
+    // TODO: 3 status values booleans mapping
+
   return (
     <>
         <div>
@@ -29,6 +31,12 @@ const Animals = () => {
                                 </div>
                             )
                         }): null}
+                        <div>
+                            {/* 3 status values booleans mapping */}
+                            {!animal.cleaning_status  && <p> Enrichment Needs Cleaning </p>}
+                            {!animal.feeding_status && <p> Needs Feeding </p> }
+                            {!animal.care_status && <p> Needs Attention </p>}
+                        </div>
                     </div>
                 )
                 }): <h1>No animals added </h1>}
