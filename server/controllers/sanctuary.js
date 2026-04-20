@@ -4,7 +4,7 @@ const getSanctuary = async (req, res) => {
     try {
         const sanctuary_id = parseInt(req.params.sanctuary_id)
         const results = await pool.query('SELECT * FROM sanctuary WHERE sanctuary_id = $1', [sanctuary_id])
-        res.status(200).json(results.rows)
+        res.status(200).json(results.rows[0])
     }
     catch (error) {
         res.status(409).json({error: error.message})

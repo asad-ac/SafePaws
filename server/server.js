@@ -14,7 +14,7 @@ app.use(express.json())
 app.use(cors())
 
 app.get('/', (req, res) => {
-    res.status(200).send('<h1 style="text-align: center; margin-top: 50px;">✈️ SafePaws API</h1>')
+    res.status(200).send('<h1 style="text-align: center; margin-top: 50px;">🐾 SafePaws API</h1>')
 })
 
 app.use("/animals", animalRouter)
