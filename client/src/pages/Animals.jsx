@@ -13,10 +13,18 @@ const Animals = () => {
         fetchAllAnimals()
     },[])
 
-    // TODO: 3 status values booleans mapping
+    // TODO: make sure backend receives not in string, but in boolean. assign value on inputs as true or false.
+    // TODO: filter functions for counts
+
+    const needsCleaning = animals.filter(animal => !animal.cleaning_status).length
+    const needsFeeding = animals.filter(animal => !animal.feeding_status).length
+    const needsCaring = animals.filter(animal => !animal.care_status).length
 
   return (
     <>
+        <div>
+            
+        </div>
         <div>
             {animals.length > 0 ? animals.map((animal) => {
                 return (
@@ -32,14 +40,13 @@ const Animals = () => {
                             )
                         }): null}
                         <div>
-                            {/* 3 status values booleans mapping */}
                             {!animal.cleaning_status  && <p> Enrichment Needs Cleaning </p>}
                             {!animal.feeding_status && <p> Needs Feeding </p> }
                             {!animal.care_status && <p> Needs Attention </p>}
                         </div>
                     </div>
                 )
-                }): <h1>No animals added </h1>}
+                }): <h1> No animals added </h1>}
         </div>
     </>
   )

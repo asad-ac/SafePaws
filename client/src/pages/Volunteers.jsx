@@ -56,7 +56,7 @@ const Volunteers = () => {
                             </div>
                         </div>
                     )
-                }) : <h2> No volunteers added</h2>}
+                }) : <h2> No volunteers added </h2>}
             </div>
 
             {isAddOpen && 
