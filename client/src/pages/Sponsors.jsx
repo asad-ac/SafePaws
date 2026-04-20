@@ -30,10 +30,13 @@ const Sponsors = () => {
             }
         }
 
-        const response = await fetch(`http://localhost:3001/sponsors${sponsor.sponsor_id}`, options)
+        const response = await fetch(`http://localhost:3001/sponsors/${sponsor.sponsor_id}`, options)
         const data = await response.json()
 
-        
+        // goes through array of sponsors and returns array of sponsors who are not the one that was deleted 
+        setSponsors(prev => prev.map((s) => s.sponsor_id !== sponsor.id))
+
+        return data
     }
     
   return (
