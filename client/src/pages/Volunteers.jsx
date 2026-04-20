@@ -11,7 +11,6 @@ const Volunteers = () => {
     const [volunteers, setVolunteers] = useState([])
     const [isAddOpen, setIsAddOpen] = useState(false)
     const [isEditOpen, setIsEditOpen] = useState(false)
-    const [isDeleteOpen, setIsDeleteOpen] = useState(false)
     const [selected, setSelected] = useState(null)
 
     useEffect(() => {
@@ -28,11 +27,15 @@ const Volunteers = () => {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(volunteer)
+            }
         }
         const response = await fetch(`http://localhost:3001/volunteers/${volunteer.volunteer_id}`, options)
         const data = await response.json()
+
+        // keep every volunteer whose ID is NOT equal to the one admin deletes
+
+        setVolunteers((prev) => prev.filter((v) => v.volunteer_id !== volunteer.volunteer_id))
+
         return data
     }
     
@@ -40,7 +43,7 @@ const Volunteers = () => {
         <>
             <div>
                 <h1> Volunteers </h1>
-                <button onClick={() => setIsAddOpen(true)}><IoAddSharp /> Add Volunteer</button>
+                <button onClick={() => setIsAddOpen(true)}> <IoAddSharp /> Add Volunteer</button>
                 {volunteers.length > 0 ? volunteers.map((volunteer) => {
                     return (
                         <div key={volunteer.volunteer_id} className=''>
