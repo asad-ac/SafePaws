@@ -21,6 +21,20 @@ const Sponsors = () => {
         }
         fetchAllSponsors()
     },[])
+
+    const deleteSponsor = async (sponsor) => {
+        const options = {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        const response = await fetch(`http://localhost:3001/sponsors${sponsor.sponsor_id}`, options)
+        const data = await response.json()
+
+        
+    }
     
   return (
     <>
@@ -38,7 +52,7 @@ const Sponsors = () => {
                             <p> {sponsor.phone} </p>
                             <p> {sponsor.email} </p>
                             <button onClick={() => {setSelected(sponsor), setIsEditOpen(true)}}> <MdEdit /> Edit </button>
-                            <button> Delete </button>
+                            <button onClick={() => deleteSponsor(sponsor)}> Delete </button>
                         </div>
                     </div>
                 )
