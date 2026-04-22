@@ -1,10 +1,12 @@
 import {useState, useEffect} from 'react'
+import AddAnimal from '../components/AddAnimal'
 import {Link} from 'react-router-dom'
 import {IoAddSharp} from 'react-icons/io5'
 
 const Animals = () => {
 
     const [animals, setAnimals] = useState([])
+    const [isAddOpen, setIsAddOpen] = useState(false)
 
     useEffect(() => {
         const fetchAllAnimals = async () => {
@@ -28,7 +30,7 @@ const Animals = () => {
             <p> Feedings Left: {needsFeeding} </p>
             <p> Cleanings Left: {needsCleaning} </p>
             <p> Enrichments Left: {needsCaring} </p>
-        <button> <IoAddSharp /> Add Animal </button>
+        <button onClick={() => setIsAddOpen(true)}> <IoAddSharp /> Add Animal </button>
         </div>
         <div>
             {animals.length > 0 ? animals.map((animal) => {
@@ -57,6 +59,12 @@ const Animals = () => {
                 )
                 }): <h1> No animals added </h1>}
         </div>
+
+        {isAddOpen && 
+        <AddAnimal
+            setIsAddOpen={setIsAddOpen}
+            // boolean and add to array of sponsors with spread 
+            setAnimals={setAnimals} />}
     </>
   )
 }

@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import {IoAddSharp} from "react-icons/io5";
 
-const AddAnimal = () => {
+const AddAnimal = (props) => {
 
     // TODO: fetch tags
     // TODO: selected tags
@@ -32,7 +32,6 @@ const AddAnimal = () => {
 
     const handleSelectChange = (e) => {
         const {name, value} = e.target
-      
         setForm((prev) => ({
           ...prev,
           [name]: value === "true"
@@ -59,7 +58,10 @@ const AddAnimal = () => {
         }
 
         const response = await fetch(`http://localhost:3001/animals`, options)
-        const data = await response.json()
+        const newAnimal = await response.json()
+
+        props.setAnimals(prev => [...prev, newAnimal])
+        props.setIsAddOpen(false)
 
         setForm({name: '', description: '', age: '', weight: '', height: '', image_url: '', date_intake: '', species: '', cleaning_status: false, care_status: false, feeding_status: false, sanctuary_id: 1})
           
@@ -93,15 +95,17 @@ const AddAnimal = () => {
         <input required type='date' name='date_intake' value={form.date_intake} onChange={handleChange} />
         <label> Species </label>
         <input required type='text' name='species' value={form.species} onChange={handleChange} />
-
+        <label> Feeding Status </label>
         <select name='feeding_status' value={form.feeding_status} onChange={handleSelectChange}>
             <option value="false"> Pending </option>
             <option value="true"> Complete </option>
         </select>
+        <label> Cleaning Status </label>
         <select name='cleaning_status' value={form.cleaning_status} onChange={handleSelectChange}>
             <option value="false"> Pending </option>
             <option value="true"> Complete </option>
         </select>
+        <label> Care Status </label>
         <select name='care_status' value={form.care_status} onChange={handleSelectChange}>
             <option value="false"> Pending </option>
             <option value="true"> Complete </option>
@@ -117,6 +121,7 @@ const AddAnimal = () => {
         </div>
         <button type='submit'> <IoAddSharp /> Add Animal </button>
       </form>
+      <button type='button' onClick={() => props.setIsAddOpen(false)}> Cancel </button>
     </div>
   )
 }
