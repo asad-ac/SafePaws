@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react'
+import {IoAddSharp} from "react-icons/io5";
 
 const AddAnimal = () => {
 
@@ -34,18 +35,27 @@ const AddAnimal = () => {
       
         setForm((prev) => ({
           ...prev,
-          [name]: value === "true" // false === true: false, true === true: true
+          [name]: value === "true"
         }))
       }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+
+        const payload = {
+            ...form,
+            age: Number(form.age),
+            weight: Number(form.weight),
+            height: Number(form.height),
+            tag_ids: selectedTags
+          }
+
         const options = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({...form, tag_ids: selectedTags})
+            body: JSON.stringify(payload)
         }
 
         const response = await fetch(`http://localhost:3001/animals`, options)
@@ -100,11 +110,12 @@ const AddAnimal = () => {
         <div>
             <h3> Select Tags </h3>
             {tags.map(tag => (
-                <label key={tag.name} style={{ display: "block" }}>
+                <label key={tag.tag_id} style={{ display: "block" }}>
                 <input type="checkbox" checked={selectedTags.includes(tag.tag_id)} onChange={() => toggleTag(tag.tag_id)}/>
                 {tag.name} </label>
             ))}
         </div>
+        <button type='submit'> <IoAddSharp /> Add Animal </button>
       </form>
     </div>
   )
