@@ -45,19 +45,22 @@ const AddAnimal = () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(form)
+            body: JSON.stringify({...form, tag_ids: selectedTags})
         }
 
         const response = await fetch(`http://localhost:3001/animals`, options)
         const data = await response.json()
 
+        setForm({name: '', description: '', age: '', weight: '', height: '', image_url: '', date_intake: '', species: '', cleaning_status: false, care_status: false, feeding_status: false, sanctuary_id: 1})
+          
+        setSelectedTags([])
     }
 
-    const toggleTag = (tagName) => {
+    const toggleTag = (tagId) => {
         setSelectedTags(prev =>
-          prev.includes(tagName)
-            ? prev.filter(t => t !== tagName)
-            : [...prev, tagName]
+          prev.includes(tagId)
+            ? prev.filter(id => id !== tagId)
+            : [...prev, tagId]
         )
       }
 
@@ -98,7 +101,7 @@ const AddAnimal = () => {
             <h3> Select Tags </h3>
             {tags.map(tag => (
                 <label key={tag.name} style={{ display: "block" }}>
-                <input type="checkbox" checked={selectedTags.includes(tag.name)} onChange={() => toggleTag(tag.name)}/>
+                <input type="checkbox" checked={selectedTags.includes(tag.tag_id)} onChange={() => toggleTag(tag.tag_id)}/>
                 {tag.name} </label>
             ))}
         </div>
