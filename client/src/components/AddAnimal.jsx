@@ -77,7 +77,7 @@ const AddAnimal = () => {
         <label> Image Link  </label>
         <input required type="text" name='image_url' value={form.image_url} onChange={handleChange} />
         <label> Date Intake  </label>
-        <input require type='date' name='date_intake' value={form.date_intake} onChange={handleChange} />
+        <input required type='date' name='date_intake' value={form.date_intake} onChange={handleChange} />
         <label> Species </label>
         <input required type='text' name='species' value={form.species} onChange={handleChange} />
 
@@ -99,8 +99,7 @@ const AddAnimal = () => {
             {tags.map(tag => (
                 <label key={tag.name} style={{ display: "block" }}>
                 <input type="checkbox" checked={selectedTags.includes(tag.name)} onChange={() => toggleTag(tag.name)}/>
-                {tag.name}
-                </label>
+                {tag.name} </label>
             ))}
         </div>
       </form>
