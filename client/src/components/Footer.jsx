@@ -1,6 +1,7 @@
 import React from 'react'
 
-const Footer = () =>{
+const Footer = () => {
+    
     return (
         <div className="footer">
             <span>SafePaws — Rehabilitation and Sanctuary</span>

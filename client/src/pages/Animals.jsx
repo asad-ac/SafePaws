@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
-import {IoAddSharp} from 'react-icons/io5'
 import {Link} from 'react-router-dom'
+import {IoAddSharp} from 'react-icons/io5'
 
 const Animals = () => {
 
@@ -28,8 +28,8 @@ const Animals = () => {
             <p> Feedings Left: {needsFeeding} </p>
             <p> Cleanings Left: {needsCleaning} </p>
             <p> Enrichments Left: {needsCaring} </p>
-        </div>
         <button> <IoAddSharp /> Add Animal </button>
+        </div>
         <div>
             {animals.length > 0 ? animals.map((animal) => {
                 return (
