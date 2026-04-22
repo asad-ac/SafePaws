@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
 import {IoAddSharp} from 'react-icons/io5'
+import {Link} from 'react-router-dom'
 
 const Animals = () => {
 
@@ -33,24 +34,25 @@ const Animals = () => {
             {animals.length > 0 ? animals.map((animal) => {
                 return (
                     <div>
-                        
-                    </div>
-                    <div key={animal.animal_id} style={{backgroundImage: `url(${animal.image_url})`}}>
-                        <h1> {animal.name} </h1>
-                        <p> {animal.species} </p>
-                        <p> {animal.weight} Pounds </p>
-                        {animal.tags.length > 0 ? animal.tags.map((tag) => {
-                            return (
-                                <div key={tag.tag_id}>
-                                    <p> {tag.name} </p>
-                                </div>
-                            )
-                        }): null}
-                        <div>
-                            {!animal.cleaning_status  && <p> Enrichment Needs Cleaning </p>}
-                            {!animal.feeding_status && <p> Needs Feeding </p> }
-                            {!animal.care_status && <p> Needs Attention </p>}
+                        <Link key={animal.animal_id} to={`/animals/${animal.animal_id}`}>
+                        <div style={{backgroundImage: `url(${animal.image_url})`}}>
+                            <h1> {animal.name} </h1>
+                            <p> {animal.species} </p>
+                            <p> {animal.weight} Pounds </p>
+                            {animal.tags.length > 0 ? animal.tags.map((tag) => {
+                                return (
+                                    <div key={tag.tag_id}>
+                                        <p> {tag.name} </p>
+                                    </div>
+                                )
+                            }): null}
+                            <div>
+                                {!animal.cleaning_status  && <p> Enrichment Needs Cleaning </p>}
+                                {!animal.feeding_status && <p> Needs Feeding </p> }
+                                {!animal.care_status && <p> Needs Attention </p>}
+                            </div>
                         </div>
+                    </Link>
                     </div>
                 )
                 }): <h1> No animals added </h1>}
