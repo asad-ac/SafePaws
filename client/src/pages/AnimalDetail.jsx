@@ -33,9 +33,9 @@ const AnimalDetail = () => {
                 <h2> <strong> Intake </strong> {" "}{new Date(a.date_intake).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'})} </h2>
 
                 <div>
-                    <h2> <strong> Feeding </strong> {a.feeding_status ? 'Complete' : 'Pending'} </h2>
-                    <h2> <strong> Cleaning </strong> {a.cleaning_status ? 'Complete' : 'Pending'} </h2>
-                    <h2> <strong> Enrichment </strong> {a.care_status ? 'Complete' : 'Pending'} </h2>
+                    <h2> <strong> Feeding </strong> <span style={{a.feeding_status ? backgroundColor: 'green' : backgroundColor: 'red'}}> {a.feeding_status ? 'Complete' : 'Pending'} </span> </h2>
+                    <h2> <strong> Cleaning </strong> <span> {a.cleaning_status ? 'Complete' : 'Pending'} </span> </h2>
+                    <h2> <strong> Enrichment </strong> <span> {a.care_status ? 'Complete' : 'Pending'} </span> </h2>
                 </div>
 
             </div>
