@@ -1,6 +1,7 @@
 import './App.css'
-import Animals from './pages/Animals'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Animals from './pages/Animals.jsx'
+import AnimalDetail from './pages/AnimalDetail.jsx'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 function App() {
 
@@ -9,7 +10,7 @@ function App() {
       <BrowserRouter>
       <Routes>
         <Route path='/animals' element={<Animals />} />
-        <Route path='/animals:animal_id' element={<AnimalDetail />} />
+        <Route path='/animals/:animal_id' element={<AnimalDetail />} />
       </Routes>
       </BrowserRouter>
     </>

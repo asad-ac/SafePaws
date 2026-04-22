@@ -39,7 +39,7 @@ const Animals = () => {
                             <h1> {animal.name} </h1>
                             <p> {animal.species} </p>
                             <p> {animal.weight} Pounds </p>
-                            {animal.tags.length > 0 ? animal.tags.map((tag) => {
+                            {animal.tags?.length > 0 ? animal.tags.map((tag) => {
                                 return (
                                     <div key={tag.tag_id}>
                                         <p> {tag.name} </p>
