@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react'
+import {IoAddSharp} from 'react-icons/io5'
 
 const Animals = () => {
 
@@ -23,15 +24,21 @@ const Animals = () => {
   return (
     <>
         <div>
-            
+            <p> Feedings Left: {needsFeeding} </p>
+            <p> Cleanings Left: {needsCleaning} </p>
+            <p> Enrichments Left: {needsCaring} </p>
         </div>
+        <button> <IoAddSharp /> Add Animal </button>
         <div>
             {animals.length > 0 ? animals.map((animal) => {
                 return (
+                    <div>
+                        
+                    </div>
                     <div key={animal.animal_id} style={{backgroundImage: `url(${animal.image_url})`}}>
                         <h1> {animal.name} </h1>
                         <p> {animal.species} </p>
-                        <p> {animal.weight} </p>
+                        <p> {animal.weight} Pounds </p>
                         {animal.tags.length > 0 ? animal.tags.map((tag) => {
                             return (
                                 <div key={tag.tag_id}>
