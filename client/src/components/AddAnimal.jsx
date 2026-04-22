@@ -2,12 +2,14 @@ import {useState} from 'react'
 
 const AddAnimal = () => {
 
+    // TODO: fetch tags
     // TODO: selected tags
     // TODO: fix handlesubmit with spread
     // TODO: cleaning status, care status, feeding status
     // TODO: pass props?
 
     const [form, setForm] = useState({name: '', description: '', age: '', weight: '', height: '', image_url: '', date_intake: '', species: '', cleaning_status: false, care_status: false, feeding_status: false, sanctuary_id: 1})
+    const [tags, setTags] = useState(null)
     const [selectedTags, setSelectedTags] = useState([])
 
     const handleChange = (e) => {
@@ -18,12 +20,15 @@ const AddAnimal = () => {
         }))
     }
 
+    const 
+
+
     const handleSelectChange = (e) => {
-        const { name, value } = e.target
+        const {name, value} = e.target
       
         setForm((prev) => ({
           ...prev,
-          [name]: value === "true"
+          [name]: value === "true" // false === true: false, true === true: true
         }))
       }
 
@@ -61,6 +66,7 @@ const AddAnimal = () => {
         <input required type='date' name='date_intake' value={form.date_intake} onChange={handleChange} />
         <label> Species </label>
         <input required type='text' name='species' value={form.species} onChange={handleChange} />
+
         <select name='feeding_status' value={form.feeding_status} onChange={handleSelectChange}>
             <option value="false"> Pending </option>
             <option value="true"> Complete </option>
@@ -73,6 +79,7 @@ const AddAnimal = () => {
             <option value="false"> Pending </option>
             <option value="true"> Complete </option>
         </select>
+
       </form>
     </div>
   )
