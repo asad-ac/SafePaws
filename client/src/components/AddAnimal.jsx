@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
 const AddAnimal = () => {
 
@@ -9,8 +9,17 @@ const AddAnimal = () => {
     // TODO: pass props?
 
     const [form, setForm] = useState({name: '', description: '', age: '', weight: '', height: '', image_url: '', date_intake: '', species: '', cleaning_status: false, care_status: false, feeding_status: false, sanctuary_id: 1})
-    const [tags, setTags] = useState(null)
+    const [tags, setTags] = useState([])
     const [selectedTags, setSelectedTags] = useState([])
+
+    useEffect(() => {
+        const getTags = async () => {
+            const response = await fetch('http://localhost:3001/tags')
+            const data = await response.json()
+            setTags(data)
+        }
+        getTags()
+    },[])
 
     const handleChange = (e) => {
         const {name, value} = e.target
@@ -19,9 +28,6 @@ const AddAnimal = () => {
             [name]: value,
         }))
     }
-
-    const 
-
 
     const handleSelectChange = (e) => {
         const {name, value} = e.target
@@ -47,6 +53,14 @@ const AddAnimal = () => {
 
     }
 
+    const toggleTag = (tagName) => {
+        setSelectedTags(prev =>
+          prev.includes(tagName)
+            ? prev.filter(t => t !== tagName)
+            : [...prev, tagName]
+        )
+      }
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -63,7 +77,7 @@ const AddAnimal = () => {
         <label> Image Link  </label>
         <input required type="text" name='image_url' value={form.image_url} onChange={handleChange} />
         <label> Date Intake  </label>
-        <input required type='date' name='date_intake' value={form.date_intake} onChange={handleChange} />
+        <input require type='date' name='date_intake' value={form.date_intake} onChange={handleChange} />
         <label> Species </label>
         <input required type='text' name='species' value={form.species} onChange={handleChange} />
 
@@ -80,6 +94,15 @@ const AddAnimal = () => {
             <option value="true"> Complete </option>
         </select>
 
+        <div>
+            <h3> Select Tags </h3>
+            {tags.map(tag => (
+                <label key={tag.name} style={{ display: "block" }}>
+                <input type="checkbox" checked={selectedTags.includes(tag.name)} onChange={() => toggleTag(tag.name)}/>
+                {tag.name}
+                </label>
+            ))}
+        </div>
       </form>
     </div>
   )
