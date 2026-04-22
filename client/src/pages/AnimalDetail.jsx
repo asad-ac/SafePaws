@@ -48,7 +48,6 @@ const AnimalDetail = () => {
                         {animal.tags && animal.tags.length > 0 && animal.tags.map((tag) => (
                         <div key={tag.id}>
                             <p>{tag.name}</p>
-                            <p>{tag.description}</p>
                         </div>
                         ))}
                     </div>
