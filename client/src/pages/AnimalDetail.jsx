@@ -1,6 +1,8 @@
 import {useState, useEffect} from 'react'
-import {useParams} from 'react-router-dom'
+import {useParams, Link} from 'react-router-dom'
 import {IoReturnDownBackOutline} from "react-icons/io5";
+import {MdEdit} from "react-icons/md";
+import {FaRegTrashAlt} from "react-icons/fa";
 
 const AnimalDetail = () => {
 
@@ -22,24 +24,35 @@ const AnimalDetail = () => {
         <h1> View Animal </h1>
         <Link to='/animals'> <IoReturnDownBackOutline /> Back </Link>
         <div>
-        {animal.length > 0 ? animal.map((a) => {
-            <div>
-                <img src={a.image_url} alt={`${a.name} the ${a.species}`} />
-                <h2> <strong> Name </strong> {a.name} </h2>
-                <h2> <strong> Species </strong> {a.species} </h2>
-                <h2> <strong> Age </strong> {a.age} </h2>
-                <h2> <strong> Weight (pounds) </strong> {a.weight} lbs </h2>
-                <h2> <strong> Height (feet) </strong> {a.height} ft </h2>
-                <h2> <strong> Intake </strong> {" "}{new Date(a.date_intake).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'})} </h2>
+            {animal && animal.animal_id ? (
+                    <div>
+                        <img src={animal.image_url} alt={`${animal.name} the ${animal.species}`} />
+                        <h2> <strong> Name </strong> {animal.name} </h2>
+                        <h2> <strong> Species </strong> {animal.species} </h2>
+                        <h2> <strong> Age </strong> {animal.age} </h2>
+                        <h2> <strong> Weight (pounds) </strong> {animal.weight} lbs </h2>
+                        <h2> <strong> Height (feet) </strong> {animal.height} ft </h2>
+                        <h2> <strong> Intake </strong> {" "}{animal.date_intake && new Date(animal.date_intake).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'})} </h2>
 
-                <div>
-                    <h2> <strong> Feeding </strong> <span style={{a.feeding_status ? backgroundColor: 'green' : backgroundColor: 'red'}}> {a.feeding_status ? 'Complete' : 'Pending'} </span> </h2>
-                    <h2> <strong> Cleaning </strong> <span> {a.cleaning_status ? 'Complete' : 'Pending'} </span> </h2>
-                    <h2> <strong> Enrichment </strong> <span> {a.care_status ? 'Complete' : 'Pending'} </span> </h2>
-                </div>
+                        <div>
+                            <h2> <strong> Feeding </strong> <span style={{backgroundColor: animal.feeding_status ? 'green' : 'red'}}> {animal.feeding_status ? 'Complete' : 'Pending'} </span> </h2>
+                            <h2> <strong> Cleaning </strong> <span style={{backgroundColor: animal.cleaning_status ? 'green' : 'red'}}> {animal.cleaning_status ? 'Complete' : 'Pending'} </span> </h2>
+                            <h2> <strong> Enrichment </strong> <span style={{backgroundColor: animal.care_status ? 'green' : 'red'}}> {animal.care_status ? 'Complete' : 'Pending'} </span> </h2>
+                        </div>
 
-            </div>
-            }): <h1> No animal here </h1>}
+                        <div>
+                            <button> <MdEdit /> Edit </button>
+                            <button> <FaRegTrashAlt /> Delete </button>
+                        </div>
+
+                        {animal.tags && animal.tags.length > 0 && animal.tags.map((tag) => (
+                        <div key={tag.id}>
+                            <p>{tag.name}</p>
+                            <p>{tag.description}</p>
+                        </div>
+                        ))}
+                    </div>
+            ): <h1> No animal here </h1>}
         </div>
     </div>
   )

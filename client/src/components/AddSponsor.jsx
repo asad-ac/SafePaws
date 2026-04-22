@@ -43,7 +43,7 @@ const AddSponsor = (props) => {
         <input required type="tel" name='phone' value={form.phone} onChange={handleChange} />
         <label>Email: </label>
         <input required type="email" name='email' value={form.email} onChange={handleChange} />
-        <button type="submit"> <IoAddSharp /> Add Sponsor</button>
+        <button type="submit"> <IoAddSharp /> Add Sponsor </button>
       </form>
         <button type="button" onClick={() => props.setIsAddOpen(false)}> Cancel </button>
     </div>

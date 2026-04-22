@@ -33,8 +33,8 @@ const Animals = () => {
         <div>
             {animals.length > 0 ? animals.map((animal) => {
                 return (
-                    <div>
-                        <Link key={animal.animal_id} to={`/animals/${animal.animal_id}`}>
+                    <div key={animal.animal_id}>
+                        <Link to={`/animals/${animal.animal_id}`}>
                         <div style={{backgroundImage: `url(${animal.image_url})`}}>
                             <h1> {animal.name} </h1>
                             <p> {animal.species} </p>
@@ -53,7 +53,7 @@ const Animals = () => {
                             </div>
                         </div>
                     </Link>
-                    </div>
+                </div>
                 )
                 }): <h1> No animals added </h1>}
         </div>
