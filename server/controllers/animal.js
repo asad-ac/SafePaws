@@ -1,4 +1,4 @@
-import { pool } from "../config/database.js"
+import {pool} from "../config/database.js"
 
 //TODO: do all filtering and sorting logic in backend?
 

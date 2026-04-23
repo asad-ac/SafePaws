@@ -1,10 +1,9 @@
 import {useState, useEffect} from 'react'
-import {MdEdit} from "react-icons/md";
-import {IoAddSharp} from "react-icons/io5";
 import AddVolunteer from '../components/AddVolunteer.jsx'
 import EditVolunteer from '../components/EditVolunteer.jsx'
-
-//TODO: delete by id button
+import {MdEdit} from "react-icons/md";
+import {IoAddSharp} from "react-icons/io5";
+import {FaRegTrashAlt} from "react-icons/fa";
 
 const Volunteers = () => {
     
@@ -54,11 +53,11 @@ const Volunteers = () => {
                                 <p>{volunteer.email}</p>
                                 <p>{volunteer.assigned_duty}</p>
                                 <button onClick={() => {setSelected(volunteer), setIsEditOpen(true)}}> <MdEdit /> Edit </button>
-                                <button onClick={() => deleteVolunteer(volunteer)}> Delete </button>
+                                <button onClick={() => deleteVolunteer(volunteer)}> <FaRegTrashAlt /> Delete </button>
                             </div>
                         </div>
                     )
-                }) : <h2> No volunteers added</h2>}
+                }) : <h2> No volunteers added </h2>}
             </div>
 
             {isAddOpen && 

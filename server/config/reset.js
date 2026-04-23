@@ -1,4 +1,4 @@
-import { pool } from "./database.js";
+import {pool} from "./database.js";
 import sanctuaryData from "../data/sanctuary.js";
 import tagData from "../data/tag.js"
 import animalData from "../data/animal.js";

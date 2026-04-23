@@ -17,7 +17,7 @@ const animalData = [
       name: "Maya",
       description: "Elephant with a leg injury requiring medication and special care",
       age: 12,
-      weight: 1200,
+      weight: 5000,
       height: 9.5,
       image_url: "https://images.unsplash.com/photo-1557050543-4d5f4e07ef46",
       date_intake: "2026-02-20",
