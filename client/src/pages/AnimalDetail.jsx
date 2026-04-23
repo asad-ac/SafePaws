@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
 import {useParams, Link} from 'react-router-dom'
+import EditAnimal from '../components/EditAnimal.jsx'
 import {IoReturnDownBackOutline} from "react-icons/io5";
 import {MdEdit} from "react-icons/md";
 import {FaRegTrashAlt} from "react-icons/fa";
@@ -9,6 +10,7 @@ const AnimalDetail = () => {
     const {animal_id} = useParams()
 
     const [animal, setAnimal] = useState({})
+    const [isEditOpen, setIsEditOpen] = useState(false)
 
     useEffect(() => {
         const fetchAnimalById = async () => {
@@ -18,6 +20,12 @@ const AnimalDetail = () => {
         }
         fetchAnimalById()
     },[animal_id])
+
+    const deleteAnimal = async (animal) => {
+        if (setAnimal) {
+            
+        }
+    }
 
   return (
     <div>
@@ -42,9 +50,12 @@ const AnimalDetail = () => {
                         </div>
 
                         <div>
-                            <button> <MdEdit /> Edit </button>
+                            <button onClick={setIsEditOpen(true)}> <MdEdit /> Edit </button>
                             <button> <FaRegTrashAlt /> Delete </button>
                         </div>
+
+                        {isEditOpen && <EditAnimal 
+                        />}
 
                         <h3> Tags </h3>
                         {animal.tags && animal.tags.length > 0 && animal.tags.map((tag) => (

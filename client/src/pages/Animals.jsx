@@ -33,18 +33,9 @@ const Animals = () => {
         const response = await fetch(`http://localhost:3001/animals/${animal.animal_id}`, options)
         const data = await response.json()
 
-        // for animals page
+        // keep every animal whose ID is NOT equal to the one admin deletes
 
-        if (props.setAnimals) {
-            props.setAnimals((prev) =>
-              prev.filter((a) => a.animal_id !== animal.animal_id)
-            )
-          }
-          
-          // for animals detail page
-          if (props.setAnimal) {
-            
-          }
+        setAnimals((prev) => prev.filter((a) => a.animal_id !== animal.animal_id))
 
         return data
     }
