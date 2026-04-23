@@ -1,6 +1,9 @@
-import React from 'react'
+import {useState} from 'react'
 
-const EditAnimal = () => {
+const EditAnimal = (props) => {
+
+  const [form, setForm] = useState({name: props.animal.name || "", })
+
   return (
     <div>
       

@@ -3,6 +3,8 @@ import AddAnimal from '../components/AddAnimal.jsx'
 import EditAnimal from '../components/EditAnimal.jsx'
 import {Link} from 'react-router-dom'
 import {IoAddSharp} from 'react-icons/io5'
+import {MdEdit} from "react-icons/md";
+import {FaRegTrashAlt} from "react-icons/fa";
 
 const Animals = () => {
 
@@ -58,6 +60,8 @@ const Animals = () => {
                             </div>
                         </div>
                     </Link>
+                    <button onClick={() => {setSelected(animal), setIsAddOpen(true)}}> <MdEdit /> Edit </button>
+                    <button> <FaRegTrashAlt /> Delete </button>
                 </div>
                 )
                 }): <h1> No animals added </h1>}
@@ -71,10 +75,9 @@ const Animals = () => {
 
         {isEditOpen && selected && (
             <EditAnimal
-                animal = {selected}
+                animal={selected}
                 setIsEditOpen={setIsEditOpen}
-                setAnimals={setAnimals}
-            />)}
+                setAnimals={setAnimals}/>)}
     </>
   )
 }

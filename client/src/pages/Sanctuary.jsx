@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
 import EditSanctuary from '../components/EditSanctuary.jsx'
+import {MdEdit} from "react-icons/md";
 
 const Sanctuary = () => {
 
@@ -30,7 +31,7 @@ const Sanctuary = () => {
         </div>
         
         {sanctuary &&
-        <button onClick={() => setIsEditOpen(true)}> Edit Sanctuary </button>}
+        <button onClick={() => setIsEditOpen(true)}> <MdEdit /> Edit Sanctuary </button>}
         
         {isEditOpen && sanctuary && (
         <EditSanctuary

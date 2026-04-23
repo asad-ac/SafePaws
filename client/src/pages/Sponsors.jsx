@@ -3,6 +3,7 @@ import AddSponsor from '../components/AddSponsor.jsx'
 import EditSponsor from '../components/EditSponsor.jsx'
 import {MdEdit} from "react-icons/md";
 import {IoAddSharp} from "react-icons/io5";
+import {FaRegTrashAlt} from "react-icons/fa";
 
 const Sponsors = () => {
 
@@ -53,7 +54,7 @@ const Sponsors = () => {
                             <p> {sponsor.phone} </p>
                             <p> {sponsor.email} </p>
                             <button onClick={() => {setSelected(sponsor), setIsEditOpen(true)}}> <MdEdit /> Edit </button>
-                            <button onClick={() => deleteSponsor(sponsor)}> Delete </button>
+                            <button onClick={() => deleteSponsor(sponsor)}> <FaRegTrashAlt /> Delete </button>
                         </div>
                     </div>
                 )
