@@ -17,7 +17,7 @@ const EditAnimal = (props) => {
 
   useEffect(() => {
     if (props.animal.tags) {
-      setSelectedTags(props.animal.tags.map((tag) => tag.tag_id))
+      setSelectedTags(props.animal.tags.map((tag) => Number(tag.tag_id)))
     }
   }, [props.animal])
 
@@ -123,7 +123,7 @@ const EditAnimal = (props) => {
           <h3> Select Tags </h3>
             {tags.map(tag => (
                 <label key={tag.tag_id}>
-                <input type="checkbox" checked={selectedTags.includes(tag.tag_id)} onChange={() => toggleTag(tag.tag_id)}/> {tag.name} </label>))}
+                <input type="checkbox" checked={selectedTags.includes(Number(tag.tag_id))} onChange={() => toggleTag(tag.tag_id)}/> {tag.name} </label>))}
         </div>
         <button type='submit'> Save </button>
     </form>
