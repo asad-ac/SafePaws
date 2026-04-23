@@ -16,7 +16,7 @@ const AnimalDetail = () => {
 
     useEffect(() => {
         const fetchAnimalById = async () => {
-            const response = await fetch(`http://localhost:3001/animals/${animal_id}`, options)
+            const response = await fetch(`http://localhost:3001/animals/${animal_id}`)
             const data = await response.json()
             setAnimal(data)
         }
@@ -33,7 +33,6 @@ const AnimalDetail = () => {
         }
 
         const response = await fetch(`http://localhost:3001/animals/${animal_id}`, options)
-        const data = await response.json()
         navigate('/animals')
     }
 
@@ -46,7 +45,7 @@ const AnimalDetail = () => {
                     <div>
                         <img src={animal.image_url} alt={`${animal.name} the ${animal.species}`} />
                         <h2> <strong> Name </strong> {animal.name} </h2>
-                        <h2> <strong> Description </strong> {animal.description} ft </h2>
+                        <h2> <strong> Description </strong> {animal.description} </h2>
                         <h2> <strong> Species </strong> {animal.species} </h2>
                         <h2> <strong> Age </strong> {animal.age} years old </h2>
                         <h2> <strong> Weight (pounds) </strong> {animal.weight} lbs </h2>
@@ -66,12 +65,12 @@ const AnimalDetail = () => {
 
                         {isEditOpen && <EditAnimal
                             animal={animal}
-                            setAnimals={setAnimal}
-                            setIsEditOpen={setIsEditOpen} />}
+                            setIsEditOpen={setIsEditOpen}
+                            setAnimal={setAnimal} />}
 
                         <h3> Tags </h3>
                         {animal.tags && animal.tags.length > 0 && animal.tags.map((tag) => (
-                        <div key={tag.id}>
+                        <div key={tag.tag_id}>
                             <p> {tag.name} </p>
                         </div>
                         ))}
