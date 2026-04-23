@@ -23,6 +23,14 @@ const EditAnimal = (props) => {
     }))
   }
 
+  const handleSelectChange = (e) => {
+    const {name, value} = e.target
+    setForm((prev) => ({
+      ...prev,
+      [name]: value === "true"
+    }))
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -59,13 +67,62 @@ const EditAnimal = (props) => {
     }
     
     props.setIsEditOpen(false)
+  }
 
+  const toggleTag = (tagId) => {
+    setSelectedTags(prev =>
+      prev.includes(tagId)
+        ? prev.filter(id => id !== tagId)
+        : [...prev, tagId]
+    )
   }
 
   return (
     <div>
+      <form onSubmit={handleSubmit}>
+        <label> Name </label>
+        <input required type='text' name='name' value={form.name} onChange={handleChange} />
+        <label> Description </label>
+        <textarea name='description' value={form.description} onChange={handleChange}></textarea>
+        <label> Age </label>
+        <input required type="text" name='age' value={form.age} onChange={handleChange} />
+        <label> Weight </label>
+        <input required type="number" name='weight' value={form.weight} onChange={handleChange} />
+        <label> Height </label>
+        <input required type="text" name='height' value={form.height} onChange={handleChange} />
+        <label> Image Link </label>
+        <input required type="text" name='image_url' value={form.image_url} onChange={handleChange} />
+        <label> Date Intake </label>
+        <input required type='date' name='date_intake' value={form.date_intake} onChange={handleChange} />
+        <label> Species </label>
+        <input required type='text' name='species' value={form.species} onChange={handleChange} />
+              
+        <label> Feeding Status </label>
+        <select name='feeding_status' value={form.feeding_status} onChange={handleSelectChange}>
+          <option value="false"> Pending </option>
+          <option value="true"> Complete </option>
+        </select>
+        <label> Cleaning Status </label>
+        <select name='cleaning_status' value={form.cleaning_status} onChange={handleSelectChange}>
+            <option value="false"> Pending </option>
+            <option value="true"> Complete </option>
+        </select>
+        <label> Care Status </label>
+          <select name='care_status' value={form.care_status} onChange={handleSelectChange}>
+            <option value="false"> Pending </option>
+            <option value="true"> Comssplete </option>
+        </select>
       
-    </div>
+        <div>
+          <h3> Select Tags </h3>
+            {tags.map(tag => (
+                <label key={tag.tag_id}>
+                <input type="checkbox" checked={selectedTags.includes(tag.tag_id)} onChange={() => toggleTag(tag.tag_id)}/> {tag.name} </label>))}
+        </div>
+        <button type='submit'> Save </button>
+    </form>
+        <button type='button' onClick={() => props.setIsEditOpen(false)}> Cancel </button>
+  </div>
   )
 }
 
