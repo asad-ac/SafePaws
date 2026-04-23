@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
-import AddAnimal from '../components/AddAnimal'
+import AddAnimal from '../components/AddAnimal.jsx'
+import EditAnimal from '../components/EditAnimal.jsx'
 import {Link} from 'react-router-dom'
 import {IoAddSharp} from 'react-icons/io5'
 
@@ -7,6 +8,8 @@ const Animals = () => {
 
     const [animals, setAnimals] = useState([])
     const [isAddOpen, setIsAddOpen] = useState(false)
+    const [isEditOpen, setIsEditOpen] = useState(false)
+    const [selected, setSelected] = useState(null)
 
     useEffect(() => {
         const fetchAllAnimals = async () => {
@@ -65,6 +68,13 @@ const Animals = () => {
             setIsAddOpen={setIsAddOpen}
             // boolean and add to array of sponsors with spread 
             setAnimals={setAnimals} />}
+
+        {isEditOpen && selected && (
+            <EditAnimal
+                animal = {selected}
+                setIsEditOpen={setIsEditOpen}
+                setAnimals={setAnimals}
+            />)}
     </>
   )
 }

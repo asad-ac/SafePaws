@@ -1,19 +1,21 @@
 import './App.css'
 import Animals from './pages/Animals.jsx'
 import AnimalDetail from './pages/AnimalDetail.jsx'
+import Sponsors from './pages/Sponsors.jsx'
+import Volunteers from './pages/Volunteers.jsx'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 function App() {
 
   return (
-    <>
       <BrowserRouter>
-      <Routes>
-        <Route path='/animals' element={<Animals />} />
-        <Route path='/animals/:animal_id' element={<AnimalDetail />} />
-      </Routes>
+        <Routes>
+          <Route path='/animals' element={<Animals />} />
+          <Route path='/sponsors' element={<Sponsors />} />
+          <Route path='/volunteers' element={<Volunteers />} />
+          <Route path='/animals/:animal_id' element={<AnimalDetail />} />
+        </Routes>
       </BrowserRouter>
-    </>
   )
 }
 
