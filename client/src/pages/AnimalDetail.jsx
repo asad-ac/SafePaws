@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import {useParams, Link} from 'react-router-dom'
+import {useParams, Link, useNavigate} from 'react-router-dom'
 import EditAnimal from '../components/EditAnimal.jsx'
 import {IoReturnDownBackOutline} from "react-icons/io5";
 import {MdEdit} from "react-icons/md";
@@ -9,22 +9,32 @@ const AnimalDetail = () => {
 
     const {animal_id} = useParams()
 
+    const navigate = useNavigate()
+
     const [animal, setAnimal] = useState({})
     const [isEditOpen, setIsEditOpen] = useState(false)
 
     useEffect(() => {
         const fetchAnimalById = async () => {
-            const response = await fetch(`http://localhost:3001/animals/${animal_id}`)
+            const response = await fetch(`http://localhost:3001/animals/${animal_id}`, options)
             const data = await response.json()
             setAnimal(data)
         }
         fetchAnimalById()
     },[animal_id])
 
-    const deleteAnimal = async (animal) => {
-        if (setAnimal) {
-            
+    const deleteAnimal = async () => {
+
+        const options = {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
         }
+
+        const response = await fetch(`http://localhost:3001/animals/${animal_id}`, options)
+        const data = await response.json()
+        navigate('/animals')
     }
 
   return (
@@ -50,12 +60,14 @@ const AnimalDetail = () => {
                         </div>
 
                         <div>
-                            <button onClick={setIsEditOpen(true)}> <MdEdit /> Edit </button>
-                            <button> <FaRegTrashAlt /> Delete </button>
+                            <button onClick={() => setIsEditOpen(true)}> <MdEdit /> Edit </button>
+                            <button onClick={deleteAnimal}> <FaRegTrashAlt /> Delete </button>
                         </div>
 
-                        {isEditOpen && <EditAnimal 
-                        />}
+                        {isEditOpen && <EditAnimal
+                            animal={animal}
+                            setAnimals={setAnimal}
+                            setIsEditOpen={setIsEditOpen} />}
 
                         <h3> Tags </h3>
                         {animal.tags && animal.tags.length > 0 && animal.tags.map((tag) => (
