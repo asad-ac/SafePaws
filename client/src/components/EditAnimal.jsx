@@ -69,7 +69,9 @@ const EditAnimal = (props) => {
     }
     
     if (props.setAnimal) {
-      props.setAnimal(updatedAnimal)
+      const refreshedResponse = await fetch(`http://localhost:3001/animals/${props.animal.animal_id}`)
+      const refreshedAnimal = await refreshedResponse.json()
+      props.setAnimal(refreshedAnimal)
     }
     
     props.setIsEditOpen(false)
