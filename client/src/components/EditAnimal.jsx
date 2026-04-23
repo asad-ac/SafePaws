@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react'
 
 const EditAnimal = (props) => {
 
-  const [form, setForm] = useState({name: props.animal.name || "", description: props.animal.description || "", age: props.animal.age || "", weight: props.animal.weight || "", height: props.animal.height || "", image_url: props.animal.image_url || "", date_intake: props.animal.date_intake || "", species: props.animal.species || "", cleaning_status: props.animal.cleaning_status || false, care_status: props.animal.care_status || false, feeding_status: props.animal.feeding_status || false, sanctuary_id: props.animal.sanctuary_id || 1})
+  const [form, setForm] = useState({name: props.animal.name || "", description: props.animal.description || "", age: props.animal.age || "", weight: props.animal.weight || "", height: props.animal.height || "", image_url: props.animal.image_url || "", date_intake: props.animal.date_intake ? ? props.animal.date_intake.split('T')[0], species: props.animal.species || "", cleaning_status: props.animal.cleaning_status || false, care_status: props.animal.care_status || false, feeding_status: props.animal.feeding_status || false, sanctuary_id: props.animal.sanctuary_id || 1})
   const [tags, setTags] = useState([])
   const [selectedTags, setSelectedTags] = useState([])
 
@@ -14,6 +14,12 @@ const EditAnimal = (props) => {
     }
     getTags()
   }, [])
+
+  useEffect(() => {
+    if (props.animal.tags) {
+      setSelectedTags(props.animal.tags.map((tag) => tag.tag_id))
+    }
+  }, [props.animal])
 
   const handleChange = (e) => {
     const {name, value} = e.target
@@ -110,7 +116,7 @@ const EditAnimal = (props) => {
         <label> Care Status </label>
           <select name='care_status' value={form.care_status} onChange={handleSelectChange}>
             <option value="false"> Pending </option>
-            <option value="true"> Comssplete </option>
+            <option value="true"> Complete </option>
         </select>
       
         <div>

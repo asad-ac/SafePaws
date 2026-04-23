@@ -109,7 +109,7 @@ const AddAnimal = (props) => {
         <label> Care Status </label>
         <select name='care_status' value={form.care_status} onChange={handleSelectChange}>
             <option value="false"> Pending </option>
-            <option value="true"> Comssplete </option>
+            <option value="true"> Complete </option>
         </select>
 
         <div>
