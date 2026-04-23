@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react'
 
 const EditAnimal = (props) => {
 
-  const [form, setForm] = useState({name: props.animal.name || "", description: props.animal.description || "", age: props.animal.age || "", weight: props.animal.weight || "", height: props.animal.height || "", image_url: props.animal.image_url || "", date_intake: props.animal.date_intake || "", species: props.animal.species || "", cleaning_status: props.animal.cleaning_status || "", care_status: props.animal.care_status || "", feeding_status: props.animal.feeding_status || "", sanctuary_id: props.animal.sanctuary_id || 1})
+  const [form, setForm] = useState({name: props.animal.name || "", description: props.animal.description || "", age: props.animal.age || "", weight: props.animal.weight || "", height: props.animal.height || "", image_url: props.animal.image_url || "", date_intake: props.animal.date_intake || "", species: props.animal.species || "", cleaning_status: props.animal.cleaning_status || false, care_status: props.animal.care_status || false, feeding_status: props.animal.feeding_status || false, sanctuary_id: props.animal.sanctuary_id || 1})
   const [tags, setTags] = useState([])
   const [selectedTags, setSelectedTags] = useState([])
 
@@ -46,15 +46,20 @@ const EditAnimal = (props) => {
     const updatedAnimal = await response.json()
 
      // maps through animals to find animal we just edited, if it is update it otherwise keep same
-    props.setAnimals((prev) =>
-      prev.map((animal) =>
-        animal.animal_id === updatedAnimal.animal_id ? updatedAnimal: animal))
+     if (props.setAnimals) {
+      props.setAnimals((prev) =>
+        prev.map((animal) =>
+          animal.animal_id === updatedAnimal.animal_id ? updatedAnimal : animal
+        )
+      )
+    }
     
     if (props.setAnimal) {
       props.setAnimal(updatedAnimal)
     }
     
     props.setIsEditOpen(false)
+
   }
 
   return (
