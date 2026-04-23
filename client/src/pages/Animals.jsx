@@ -22,6 +22,33 @@ const Animals = () => {
         fetchAllAnimals()
     },[])
 
+    const deleteAnimal = async (animal) => {
+        const options = {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        const response = await fetch(`http://localhost:3001/animals/${animal.animal_id}`, options)
+        const data = await response.json()
+
+        // for animals page
+
+        if (props.setAnimals) {
+            props.setAnimals((prev) =>
+              prev.filter((a) => a.animal_id !== animal.animal_id)
+            )
+          }
+          
+          // for animals detail page
+          if (props.setAnimal) {
+            
+          }
+
+        return data
+    }
+
     // TODO: make sure backend receives not in string, but in boolean. assign value on inputs as true or false.
     // TODO: filter functions for counts
 
@@ -60,8 +87,8 @@ const Animals = () => {
                             </div>
                         </div>
                     </Link>
-                    <button onClick={() => {setSelected(animal), setIsAddOpen(true)}}> <MdEdit /> Edit </button>
-                    <button> <FaRegTrashAlt /> Delete </button>
+                    <button onClick={() => {setSelected(animal), setIsEditOpen(true)}}> <MdEdit /> Edit </button>
+                    <button onClick={() => deleteAnimal(animal)}> <FaRegTrashAlt /> Delete </button>
                 </div>
                 )
                 }): <h1> No animals added </h1>}
