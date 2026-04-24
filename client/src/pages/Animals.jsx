@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 import {IoAddSharp} from 'react-icons/io5'
 import {MdEdit} from "react-icons/md";
 import {FaRegTrashAlt} from "react-icons/fa";
+import { IoIosWarning } from "react-icons/io";
 
 const Animals = () => {
 
@@ -66,7 +67,10 @@ const Animals = () => {
         a.species.toLowerCase().includes(search.trim().toLowerCase()))
     .sort((a,b) => {
         if (sortBy === 'name') {
-            return a.name.localeCompare(b.name) // alphabetical order and localcompare bc cant subtract strings
+            return a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }) 
+            // alphabetical order and localcompare bc cant subtract strings
+            // undefined to use browser default language
+            // sensitivity base to ignore whitespace
         }
         if (sortBy === 'age') {
             return b.age - a.age // oldest to youngest
@@ -131,9 +135,9 @@ const Animals = () => {
                                 )
                             }): null}
                             <div>
-                                {!animal.cleaning_status  && <p> Enrichment Needs Cleaning </p>}
-                                {!animal.feeding_status && <p> Needs Feeding </p> }
-                                {!animal.care_status && <p> Needs Attention </p>}
+                                {!animal.cleaning_status  && <p> <IoIosWarning /> Enrichment Needs Cleaning </p>}
+                                {!animal.feeding_status && <p> <IoIosWarning /> Needs Feeding </p> }
+                                {!animal.care_status && <p> <IoIosWarning /> Needs Attention </p>}
                             </div>
                         </div>
                     </Link>
