@@ -52,7 +52,7 @@ const Animals = () => {
     const needsCaring = animals.filter(animal => !animal.care_status).length
 
     const searchedAnimals = animals.filter((a) =>
-        a.name.toLowerCase().includes(search.trim()toLowerCase())
+        a.name.toLowerCase().includes(search.trim().toLowerCase())
       )
 
   return (
@@ -69,7 +69,7 @@ const Animals = () => {
             <button onClick={() => setIsAddOpen(true)}> <IoAddSharp /> Add Animal </button>
         </div>
         <div>
-            {animals.length > 0 ? animals.map((animal) => {
+            {animals.length > 0 ? searchedAnimals.map((animal) => {
                 return (
                     <div key={animal.animal_id}>
                         <Link to={`/animals/${animal.animal_id}`}>
