@@ -63,6 +63,9 @@ const Animals = () => {
     // search, filter, and sort function
     // TODO: reset button to clear all filters
 
+    // TODO: allow user to select multiple status
+    // TODO: select tags
+
     const processedAnimals = animals.filter((a) =>
         a.name.toLowerCase().includes(search.trim().toLowerCase()) ||
         a.species.toLowerCase().includes(search.trim().toLowerCase()))
@@ -112,9 +115,9 @@ const Animals = () => {
             <div>
                 <label htmlFor='sort'> Sort By </label>
                 <select id='sort' value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-                    <option value="name"> Name </option>
-                    <option value="age"> Age </option>
-                    <option value="intake_date"> Intake Date </option>
+                    <option value="name"> Name (A - Z) </option>
+                    <option value="age"> Age (Oldest - Youngest) </option>
+                    <option value="intake_date"> Intake Date (Oldest - Newest) </option>
                 </select>
             </div>
 

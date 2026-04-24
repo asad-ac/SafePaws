@@ -69,9 +69,7 @@ const EditAnimal = (props) => {
     }
     
     if (props.setAnimal) {
-      const refreshedResponse = await fetch(`http://localhost:3001/animals/${props.animal.animal_id}`)
-      const refreshedAnimal = await refreshedResponse.json()
-      props.setAnimal(refreshedAnimal)
+      props.setAnimal(updatedAnimal)
     }
     
     props.setIsEditOpen(false)
@@ -125,7 +123,7 @@ const EditAnimal = (props) => {
           <h3> Select Tags </h3>
             {tags.map(tag => (
                 <label key={tag.tag_id}>
-                <input type="checkbox" checked={selectedTags.includes(Number(tag.tag_id))} onChange={() => toggleTag(tag.tag_id)}/> {tag.name} </label>))}
+                <input type="checkbox" checked={selectedTags.includes(Number(tag.tag_id))} onChange={() => toggleTag(Number(tag.tag_id))}/> {tag.name} </label>))}
         </div>
         <button type='submit'> Save </button>
     </form>
