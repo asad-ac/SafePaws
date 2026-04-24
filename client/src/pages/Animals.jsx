@@ -24,7 +24,7 @@ const Animals = () => {
 
     // filter state
 
-    const [statusFilter, setStatusFilter] = useState('')
+    const [statusFilter, setStatusFilter] = useState('all')
 
     useEffect(() => {
         const fetchAllAnimals = async () => {
@@ -60,7 +60,7 @@ const Animals = () => {
     const needsFeeding = animals.filter(animal => !animal.feeding_status).length
     const needsCaring = animals.filter(animal => !animal.care_status).length
 
-    // filter and sort function
+    // search, filter, and sort function
 
     const processedAnimals = animals.filter((a) =>
         a.name.toLowerCase().includes(search.trim().toLowerCase()) ||
@@ -110,7 +110,8 @@ const Animals = () => {
             </div>
 
             <div>
-                <select value={filterBy} onChange={() => setFilterBy(e.target.value)}>
+                <label> Filter By </label>
+                <select value={statusFilter} onChange={() => setStatusFilter(e.target.value)}>
                     <option></option>
                     <option></option>
                     <option></option>
