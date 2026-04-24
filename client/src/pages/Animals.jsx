@@ -24,7 +24,7 @@ const Animals = () => {
 
     // filter state
 
-    const [filterBy, setFilterBy] = useState('')
+    const [statusFilter, setStatusFilter] = useState('')
 
     useEffect(() => {
         const fetchAllAnimals = async () => {
@@ -65,12 +65,18 @@ const Animals = () => {
     const processedAnimals = animals.filter((a) =>
         a.name.toLowerCase().includes(search.trim().toLowerCase()) ||
         a.species.toLowerCase().includes(search.trim().toLowerCase()))
+        .filter((a) => {
+            if (statusFilter === "needsFeeding") return !a.feeding_status
+            if (statusFilter === "needsCleaning") return !a.cleaning_status
+            if (statusFilter === "needsCaring") return !a.care_status
+            return true
+          })
     .sort((a,b) => {
         if (sortBy === 'name') {
             return a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }) 
             // alphabetical order and localcompare bc cant subtract strings
             // undefined to use browser default language
-            // sensitivity base to ignore whitespace
+            // sensitivity base to ignore uppercase vs lowercase on comparison of input animal names
         }
         if (sortBy === 'age') {
             return b.age - a.age // oldest to youngest
