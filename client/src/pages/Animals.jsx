@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 import {IoAddSharp} from 'react-icons/io5'
 import {MdEdit} from "react-icons/md";
 import {FaRegTrashAlt} from "react-icons/fa";
-import { IoIosWarning } from "react-icons/io";
+import {IoIosWarning} from "react-icons/io";
 
 const Animals = () => {
 
@@ -67,18 +67,20 @@ const Animals = () => {
         a.name.toLowerCase().includes(search.trim().toLowerCase()) ||
         a.species.toLowerCase().includes(search.trim().toLowerCase()))
         .filter((a) => {
-            if (statusFilter === "needsFeeding") return !a.feeding_status
-            if (statusFilter === "needsCleaning") return !a.cleaning_status
-            if (statusFilter === "needsCaring") return !a.care_status
+            if (statusFilter === 'needsFeeding') return !a.feeding_status
+            if (statusFilter === 'needsCleaning') return !a.cleaning_status
+            if (statusFilter === 'needsCaring') return !a.care_status
             return true
-          })
-    .sort((a,b) => {
+        })
+        
+        .sort((a,b) => {
         if (sortBy === 'name') {
             return a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }) 
             // alphabetical order and localcompare bc cant subtract strings
             // undefined to use browser default language
             // sensitivity base to ignore uppercase vs lowercase on comparison of input animal names
         }
+
         if (sortBy === 'age') {
             return b.age - a.age // oldest to youngest
         }
@@ -91,6 +93,12 @@ const Animals = () => {
     })
 
     // TODO: tell user order of sorts in jsx
+
+    const reset = () => {
+        setSearch('')
+        setSortBy('name')
+        setStatusFilter('all')
+    }
 
   return (
     <>
@@ -119,6 +127,8 @@ const Animals = () => {
                     <option value='needsCaring'> Needs Attention </option>
                 </select>
             </div>
+            <p> Results: {processedAnimals.length} </p>
+            <button onClick={reset}> Reset All </button>
         </div>
 
         <div>
