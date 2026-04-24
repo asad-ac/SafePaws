@@ -69,7 +69,7 @@ const Animals = () => {
             <button onClick={() => setIsAddOpen(true)}> <IoAddSharp /> Add Animal </button>
         </div>
         <div>
-            {animals.length > 0 ? searchedAnimals.map((animal) => {
+            {searchedAnimals.length > 0 ? searchedAnimals.map((animal) => {
                 return (
                     <div key={animal.animal_id}>
                         <Link to={`/animals/${animal.animal_id}`}>
