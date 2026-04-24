@@ -12,11 +12,18 @@ const Animals = () => {
     const [isAddOpen, setIsAddOpen] = useState(false)
     const [isEditOpen, setIsEditOpen] = useState(false)
     const [selected, setSelected] = useState(null)
-    const [sortBy, setSortBy] = useState('name')
 
-    // searching
+    // searching state
 
     const [search, setSearch] = useState("")
+
+    // sort state
+
+    const [sortBy, setSortBy] = useState('name')
+
+    // filter state
+
+    const [filterBy, setFilterBy] = useState('')
 
     useEffect(() => {
         const fetchAllAnimals = async () => {
@@ -52,13 +59,14 @@ const Animals = () => {
     const needsFeeding = animals.filter(animal => !animal.feeding_status).length
     const needsCaring = animals.filter(animal => !animal.care_status).length
 
+    // filter and sort function
+
     const processedAnimals = animals.filter((a) =>
         a.name.toLowerCase().includes(search.trim().toLowerCase()) ||
-        a.species.toLowerCase().includes(search.trim().toLowerCase())
-        )
+        a.species.toLowerCase().includes(search.trim().toLowerCase()))
     .sort((a,b) => {
-        if(sortBy === 'name') {
-            return a.name.localeCompare(b.name) // alphabetical order
+        if (sortBy === 'name') {
+            return a.name.localeCompare(b.name) // alphabetical order and localcompare bc cant subtract strings
         }
         if (sortBy === 'age') {
             return b.age - a.age // oldest to youngest
@@ -68,24 +76,38 @@ const Animals = () => {
             return new Date(a.date_intake) - new Date(b.date_intake) // oldest to newest
         }
 
-        return 0
+        return 0 // keep order same
     })
+
+    // TODO: tell user order of sorts in jsx
 
   return (
     <>
-        <div>
-            <h1> Animals </h1>
-            <label> Search By </label>
-            <input type='search' placeholder='Search by name or species' value={search} onChange={(e) => setSearch(e.target.value)} />
+        <div className='sidebar-based-on-figma-file'>
+                <h1> Animals </h1>
+            <div>
+                <label> Search By </label>
+                <input type='search' placeholder='Search by name or species' value={search} onChange={(e) => setSearch(e.target.value)} />
+            </div>
+
+            <div>
+                <label htmlFor='sort'> Sort By </label>
+                <select id='sort' value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+                    <option value="name"> Name </option>
+                    <option value="age"> Age </option>
+                    <option value="intake_date"> Intake Date </option>
+                </select>
+            </div>
+
+            <div>
+                <select value={filterBy} onChange={() => setFilterBy(e.target.value)}>
+                    <option></option>
+                    <option></option>
+                    <option></option>
+                </select>
+            </div>
         </div>
 
-        <div>
-            <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-                <option value="name"> Name </option>
-                <option value="age"> Age </option>
-                <option value="intake_date"> Intake Date </option>
-            </select>
-        </div>
         <div>
             <p> Feedings Left: {needsFeeding} </p>
             <p> Cleanings Left: {needsCleaning} </p>
