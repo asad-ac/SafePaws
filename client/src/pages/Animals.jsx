@@ -12,7 +12,7 @@ const Animals = () => {
     const [isAddOpen, setIsAddOpen] = useState(false)
     const [isEditOpen, setIsEditOpen] = useState(false)
     const [selected, setSelected] = useState(null)
-    const [sort, setSortBy] = useState('name')
+    const [sortBy, setSortBy] = useState('name')
 
     // searching
 
@@ -52,20 +52,35 @@ const Animals = () => {
     const needsFeeding = animals.filter(animal => !animal.feeding_status).length
     const needsCaring = animals.filter(animal => !animal.care_status).length
 
-    const searchedAnimals = animals.filter((a) =>
-        a.name.toLowerCase().includes(search.trim().toLowerCase())
-      )
+    const processedAnimals = animals.filter((a) =>
+        a.name.toLowerCase().includes(search.trim().toLowerCase()) ||
+        a.species.toLowerCase().includes(search.trim().toLowerCase())
+        )
+    .sort((a,b) => {
+        if(sortBy === 'name') {
+            return a.name.localeCompare(b.name) // alphabetical order
+        }
+        if (sortBy === 'age') {
+            return b.age - a.age // oldest to youngest
+        }
+
+        if (sortBy === 'intake_date') {
+            return new Date(a.date_intake) - new Date(b.date_intake) // oldest to newest
+        }
+
+        return 0
+    })
 
   return (
     <>
         <div>
             <h1> Animals </h1>
             <label> Search By </label>
-            <input type='search' placeholder='Search by name' value={search} onChange={(e) => setSearch(e.target.value)} />
+            <input type='search' placeholder='Search by name or species' value={search} onChange={(e) => setSearch(e.target.value)} />
         </div>
 
         <div>
-            <select on>
+            <select value={sortBy}>
                 <option value="name"> Name </option>
                 <option value="age"> Age </option>
                 <option value="intake_date"> Intake Date </option>
@@ -78,7 +93,7 @@ const Animals = () => {
             <button onClick={() => setIsAddOpen(true)}> <IoAddSharp /> Add Animal </button>
         </div>
         <div>
-            {searchedAnimals.length > 0 ? searchedAnimals.map((animal) => {
+            {processedAnimals.length > 0 ? processedAnimals.map((animal) => {
                 return (
                     <div key={animal.animal_id}>
                         <Link to={`/animals/${animal.animal_id}`}>
