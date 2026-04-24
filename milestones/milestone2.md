@@ -26,4 +26,4 @@ Some challenges we faced were about fine tuning the look and theme of our web pa
 
 ### 3. What additional support will you need in upcoming units as you continue to work on your final project?
 
-we may need additional support implementing the Login page for the website. We'll be sure to use the study time and AI assistance with implementing these features. 
+We may need additional support implementing the Login page for the website. We'll be sure to use the study time and AI assistance with implementing these features. 

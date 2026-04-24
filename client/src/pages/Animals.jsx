@@ -50,10 +50,15 @@ const Animals = () => {
   return (
     <>
         <div>
+        <h1> Animals </h1>
+        <label> Search By </label>
+        <input type='search' placeholder='Search by name' />
+        </div>
+        <div>
             <p> Feedings Left: {needsFeeding} </p>
             <p> Cleanings Left: {needsCleaning} </p>
             <p> Enrichments Left: {needsCaring} </p>
-        <button onClick={() => setIsAddOpen(true)}> <IoAddSharp /> Add Animal </button>
+            <button onClick={() => setIsAddOpen(true)}> <IoAddSharp /> Add Animal </button>
         </div>
         <div>
             {animals.length > 0 ? animals.map((animal) => {
