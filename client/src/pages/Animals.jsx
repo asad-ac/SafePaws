@@ -12,6 +12,7 @@ const Animals = () => {
     const [isAddOpen, setIsAddOpen] = useState(false)
     const [isEditOpen, setIsEditOpen] = useState(false)
     const [selected, setSelected] = useState(null)
+    const [sort, setSortBy] = useState('name')
 
     // searching
 
@@ -61,6 +62,14 @@ const Animals = () => {
             <h1> Animals </h1>
             <label> Search By </label>
             <input type='search' placeholder='Search by name' value={search} onChange={(e) => setSearch(e.target.value)} />
+        </div>
+
+        <div>
+            <select on>
+                <option value="name"> Name </option>
+                <option value="age"> Age </option>
+                <option value="intake_date"> Intake Date </option>
+            </select>
         </div>
         <div>
             <p> Feedings Left: {needsFeeding} </p>
