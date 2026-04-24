@@ -61,6 +61,7 @@ const Animals = () => {
     const needsCaring = animals.filter(animal => !animal.care_status).length
 
     // search, filter, and sort function
+    // TODO: reset button to clear all filters
 
     const processedAnimals = animals.filter((a) =>
         a.name.toLowerCase().includes(search.trim().toLowerCase()) ||
@@ -96,8 +97,8 @@ const Animals = () => {
         <div className='sidebar-based-on-figma-file'>
                 <h1> Animals </h1>
             <div>
-                <label> Search By </label>
-                <input type='search' placeholder='Search by name or species' value={search} onChange={(e) => setSearch(e.target.value)} />
+                <label htmlFor='search'> Search By </label>
+                <input id='search' type='search' placeholder='Search by name or species' value={search} onChange={(e) => setSearch(e.target.value)} />
             </div>
 
             <div>
@@ -110,11 +111,12 @@ const Animals = () => {
             </div>
 
             <div>
-                <label> Filter By </label>
-                <select value={statusFilter} onChange={() => setStatusFilter(e.target.value)}>
-                    <option></option>
-                    <option></option>
-                    <option></option>
+                <label htmlFor='status'> Filter By </label>
+                <select id='status' value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
+                    <option value='all'> All </option>
+                    <option value='needsFeeding'> Needs Feeding </option>
+                    <option value='needsCleaning'> Needs Cleaning </option>
+                    <option value='needsCaring'> Needs Attention </option>
                 </select>
             </div>
         </div>
