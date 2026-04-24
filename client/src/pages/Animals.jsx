@@ -13,6 +13,10 @@ const Animals = () => {
     const [isEditOpen, setIsEditOpen] = useState(false)
     const [selected, setSelected] = useState(null)
 
+    // searching
+
+    const [search, setSearch] = useState("")
+
     useEffect(() => {
         const fetchAllAnimals = async () => {
             const response = await fetch('http://localhost:3001/animals')
@@ -50,9 +54,9 @@ const Animals = () => {
   return (
     <>
         <div>
-        <h1> Animals </h1>
-        <label> Search By </label>
-        <input type='search' placeholder='Search by name' />
+            <h1> Animals </h1>
+            <label> Search By </label>
+            <input type='search' placeholder='Search by name' value={search} onChange={() => setSearch(e.target.value)} />
         </div>
         <div>
             <p> Feedings Left: {needsFeeding} </p>
