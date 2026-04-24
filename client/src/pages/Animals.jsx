@@ -80,7 +80,7 @@ const Animals = () => {
         </div>
 
         <div>
-            <select value={sortBy}>
+            <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
                 <option value="name"> Name </option>
                 <option value="age"> Age </option>
                 <option value="intake_date"> Intake Date </option>
