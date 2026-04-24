@@ -60,7 +60,7 @@ const Animals = () => {
         <div>
             <h1> Animals </h1>
             <label> Search By </label>
-            <input type='search' placeholder='Search by name' value={search} onChange={() => setSearch(e.target.value)} />
+            <input type='search' placeholder='Search by name' value={search} onChange={(e) => setSearch(e.target.value)} />
         </div>
         <div>
             <p> Feedings Left: {needsFeeding} </p>
