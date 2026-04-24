@@ -51,6 +51,10 @@ const Animals = () => {
     const needsFeeding = animals.filter(animal => !animal.feeding_status).length
     const needsCaring = animals.filter(animal => !animal.care_status).length
 
+    const searchedAnimals = animals.filter((a) =>
+        a.name.toLowerCase().includes(search.trim()toLowerCase())
+      )
+
   return (
     <>
         <div>
