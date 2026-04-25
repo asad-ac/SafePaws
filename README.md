@@ -30,6 +30,7 @@ We discovered we're all passionate about animals. Our pets are a huge part of ou
   Implement sorting by name, age, or weight so staff can quickly find and manage animals more efficiently.
 
    [![Watch the demo](https://cdn.loom.com/sessions/thumbnails/d96fef29bffc4ea799ab5fcb1d4e8e9b-87bb6542300468f8-full-play.gif)](https://www.loom.com/share/d96fef29bffc4ea799ab5fcb1d4e8e9bD)
+
 ### ✅ Animal Status
   Provide filtering by care status, feeding status, enclosure cleanliness, and tags to make it easier for staff to organize and monitor animals.
 
@@ -41,8 +42,8 @@ We discovered we're all passionate about animals. Our pets are a huge part of ou
   Use modal-based CRUD forms to streamline workflows and reduce unnecessary page navigation for staff.
 ### GitHub Authentication
   Implement GitHub authentication so staff users can securely manage their assigned sanctuary and its animals.
-### Hot Toast Confirmations
-  Integrate React Hot Toast notifications to provide immediate feedback when animals, sanctuaries, sponsors, or volunteers are added, updated, or deleted.
+### Toast Notifications
+  Integrate toast notifications to provide feedback when animals, sponsors, or volunteers are successfully or unsuccessfully added, updated, or deleted in record system.
 ### Loading Skeletons
   Incorporate loading skeletons to improve performance and give users a preview of incoming content while data loads.
 ### ✅ Error Handling
