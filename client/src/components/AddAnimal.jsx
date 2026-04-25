@@ -115,8 +115,8 @@ const AddAnimal = (props) => {
         <div>
             <h3> Select Tags: </h3>
             {tags.map(tag => (
-                <label htmlFor={tag.tag.id} key={tag.tag_id}>
-                <input id={tag.tag.id} type="checkbox" checked={selectedTags.includes(tag.tag_id)} onChange={() => toggleTag(tag.tag_id)}/> {tag.name} </label>))}
+                <label htmlFor={`tag-${tag.tag_id}`} key={tag.tag_id}>
+                <input id={`tag-${tag.tag_id}`} type="checkbox" checked={selectedTags.includes(tag.tag_id)} onChange={() => toggleTag(tag.tag_id)}/> {tag.name} </label>))}
         </div>
         <button type='submit'> <IoAddSharp /> Add Animal </button>
       </form>
