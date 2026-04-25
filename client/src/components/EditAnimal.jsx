@@ -89,7 +89,7 @@ const EditAnimal = (props) => {
         <label htmlFor="name"> Name: </label>
         <input id="name" required type='text' name='name' value={form.name} onChange={handleChange} />
         <label htmlFor="description"> Description: </label>
-        <textarea id="description" name='description' value={form.description} onChange={handleChange}></textarea>
+        <textarea rows={3} style={{resize: 'none'}} id="description" name='description' value={form.description} onChange={handleChange}></textarea>
         <label htmlFor="age"> Age: </label>
         <input id="age" required type="text" name='age' value={form.age} onChange={handleChange} />
         <label htmlFor="weight"> Weight: </label>

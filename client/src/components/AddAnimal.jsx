@@ -82,7 +82,7 @@ const AddAnimal = (props) => {
         <label htmlFor='name'> Name: </label>
         <input id='name' required type='text' name='name' value={form.name} onChange={handleChange} />
         <label htmlFor='description'> Description: </label>
-        <textarea id='description' name='description' value={form.description} onChange={handleChange}></textarea>
+        <textarea style={{resize: 'none'}} rows={3} id='description' name='description' value={form.description} onChange={handleChange}></textarea>
         <label htmlFor='age'> Age: </label>
         <input id='age' required type="text" name='age' value={form.age} onChange={handleChange} />
         <label htmlFor='weight'> Weight: </label>

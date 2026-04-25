@@ -38,16 +38,16 @@ const EditSponsor = (props) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label> Name: </label>
-        <input required type="text" name="name" value={form.name} onChange={handleChange} />
-        <label> Amount: </label>
-        <input required type="number" name="amount" value={form.amount} onChange={handleChange} />
-        <label> Address: </label>
-        <input required type="text" name="address" value={form.address} onChange={handleChange} />
-        <label> Phone: </label>
-        <input required type="tel" name="phone" value={form.phone} onChange={handleChange} />
-        <label> Email: </label>
-        <input required type="email" name="email" value={form.email} onChange={handleChange} />
+        <label htmlFor="name"> Name: </label>
+        <input id="name" required type="text" name="name" value={form.name} onChange={handleChange} />
+        <label htmlFor="amount"> Amount: </label>
+        <input id="amount" required type="number" name="amount" value={form.amount} onChange={handleChange} />
+        <label htmlFor="address"> Address: </label>
+        <input id="address" required type="text" name="address" value={form.address} onChange={handleChange} />
+        <label htmlFor="phone"> Phone: </label>
+        <input id="phone" required type="tel" name="phone" value={form.phone} onChange={handleChange} />
+        <label htmlFor="email"> Email: </label>
+        <input id="email" required type="email" name="email" value={form.email} onChange={handleChange} />
         <button type="submit"> Save </button>
       </form>
       <button type="button" onClick={() => props.setIsEditOpen(false)}> Cancel </button>
