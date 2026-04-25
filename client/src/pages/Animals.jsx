@@ -97,6 +97,8 @@ const Animals = () => {
             return true
         })
 
+        // or behavior not AND for checkboxes.
+
         .filter((a) => {
             if (selectedTags.length === 0) {
                 return true
@@ -126,7 +128,7 @@ const Animals = () => {
 
     // TODO: tell user order of sorts in jsx
 
-    const reset = () => {
+    const resetFilterButton = () => {
         setSearch('')
         setSortBy('name')
         setStatusFilter('all')
@@ -165,16 +167,16 @@ const Animals = () => {
                 <p> Filter By Tags </p>
                 {tagOptions.map((tag) => {
                     return (
-                        <>
-                            <label htmlFor='tag' key={tag}> {tag} </label>
+                        <div>
+                            <label style={{display: 'block'}} htmlFor='tag' key={tag}> {tag} </label>
                             <input id='tag' type='checkbox' checked={selectedTags.includes(tag)} onChange = {() => toggleTagFilter(tag)} />
-                        </>
+                        </div>
                     )
                 })}
             </div>
 
             <p> Results: {processedAnimals.length} </p>
-            <button onClick={reset} title='Reset'> <RiResetLeftFill size={18} /> </button>
+            <button onClick={resetFilterButton} title='Reset'> <RiResetLeftFill size={18} /> </button>
         </div>
 
         <div>
