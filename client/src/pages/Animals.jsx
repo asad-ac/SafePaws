@@ -29,12 +29,12 @@ const Animals = () => {
 
     const tagOptions = ["Vaccinated, Healthy, Requires Training, Special Needs, Needs Medication, New Arrival, Special Diet, Territorial"]
 
-    const [tag, setTag] = useState([])
+    const [tags, setTags] = useState([])
 
     // adding and removing tags
 
     const toggleTagFilter = (tagName) => {
-        setTag((prev) => 
+        setTags((prev) => 
         prev.includes(tagName)
           ? prev.filter((tag) => tag !== tagName)
           : [...prev, tagName]
@@ -116,6 +116,7 @@ const Animals = () => {
         setSearch('')
         setSortBy('name')
         setStatusFilter('all')
+        setTags([])
     }
 
   return (
@@ -145,6 +146,19 @@ const Animals = () => {
                     <option value='needsCaring'> Needs Attention </option>
                 </select>
             </div>
+
+            <div>
+                <p> Filter By Tags </p>
+                {tagOptions.map((tag) => {
+                    return (
+                        <>
+                            <label htmlFor='tag' key={tag}> {tag} </label>
+                            <input id='tag' type='checkbox' checked={tag.includes(tag)} onChange = {() => toggleTagFilter(tag)} />
+                        </>
+                    )
+                })}
+            </div>
+
             <p> Results: {processedAnimals.length} </p>
             <button onClick={reset} title='Reset'> <RiResetLeftFill size={18} /> </button>
         </div>
