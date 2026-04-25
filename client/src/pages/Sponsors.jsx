@@ -7,10 +7,13 @@ import {FaRegTrashAlt} from "react-icons/fa";
 
 const Sponsors = () => {
 
+    //TODO: search bar to search by name
+
     const [sponsors, setSponsors] = useState([])
     const [isAddOpen, setIsAddOpen] = useState(false)
     const [isEditOpen, setIsEditOpen] = useState(false)
     const [selected, setSelected] = useState(null)
+    const [search, setSearch] = useState('')
 
     useEffect(() => {
         const fetchAllSponsors = async () => {
@@ -37,14 +40,19 @@ const Sponsors = () => {
 
         return data
     }
+
+    const searchSponsors = sponsors.filter((s) => {
+        return s.name.toLowerCase().includes(search.trim().toLowerCase())
+    })
     
   return (
     <>
         <div>
             <h1> Sponsors </h1>
+            <input type='search' value={search} placeholder='Search by name' onChange={(e) => setSearch(e.target.value)} />
             {/* we map sponsors state with all fields of name, amount, address, phone, email */}
             <button onClick={() => setIsAddOpen(true)}> <IoAddSharp /> Add Sponsor </button>
-            {sponsors.length > 0 ? sponsors.map((sponsor) => {
+            {searchSponsors.length > 0 ? searchSponsors.map((sponsor) => {
                 return (
                     <div key={sponsor.sponsor_id} className=''>
                         <div className=''> 

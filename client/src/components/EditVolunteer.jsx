@@ -37,7 +37,7 @@ const EditVolunteer = (props) => {
       <form onSubmit={handleSubmit}>
         <label htmlFor="name"> Name: </label>
         <input id="name" required type='text' name='name' value={form.name} onChange={handleChange} />
-        <label htmlFor="address"> Address:</label>
+        <label htmlFor="address"> Address: </label>
         <input id="address" required type='text' name='address' value={form.address} onChange={handleChange} />
         <label htmlFor="phone"> Phone: </label>
         <input id="phone" required type='tel' name='phone' value={form.phone} onChange={handleChange} />

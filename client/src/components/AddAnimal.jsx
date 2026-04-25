@@ -80,21 +80,21 @@ const AddAnimal = (props) => {
     <div>
       <form onSubmit={handleSubmit}>
         <label htmlFor='name'> Name: </label>
-        <input id='name' required type='text' name='name' value={form.name} onChange={handleChange} />
+        <input id='name' placeholder='e.g. Simba' required type='text' name='name' value={form.name} onChange={handleChange} />
         <label htmlFor='description'> Description: </label>
-        <textarea style={{resize: 'none'}} rows={3} id='description' name='description' value={form.description} onChange={handleChange}></textarea>
+        <textarea placeholder="e.g. Rescued from illegal captivity, under observation" style={{resize: 'none'}} rows={3} id='description' name='description' value={form.description} onChange={handleChange}></textarea>
         <label htmlFor='age'> Age: </label>
-        <input id='age' required type="text" name='age' value={form.age} onChange={handleChange} />
+        <input placeholder="e.g. 5" id='age' required type="text" name='age' value={form.age} onChange={handleChange} />
         <label htmlFor='weight'> Weight: </label>
-        <input id='weight' required type="text" name='weight' value={form.weight} onChange={handleChange} />
+        <input placeholder="e.g. 190.5" id='weight' required type="text" name='weight' value={form.weight} onChange={handleChange} />
         <label htmlFor='height'> Height: </label>
-        <input id='height' required type="text" name='height' value={form.height} onChange={handleChange} />
+        <input placeholder="e.g. 1.2" id='height' required type="text" name='height' value={form.height} onChange={handleChange} />
         <label htmlFor='image_url'> Image Link: </label>
-        <input id='image_url' required type="text" name='image_url' value={form.image_url} onChange={handleChange} />
+        <input placeholder= "e.g. https://example.com/lion.jpg" id='image_url' required type="text" name='image_url' value={form.image_url} onChange={handleChange} />
         <label htmlFor='date_intake'> Date Intake: </label>
         <input id='date_intake' required type='date' name='date_intake' value={form.date_intake} onChange={handleChange} />
         <label htmlFor='species'> Species: </label>
-        <input id='species' required type='text' name='species' value={form.species} onChange={handleChange} />
+        <input placeholder="e.g. Lion" id='species' required type='text' name='species' value={form.species} onChange={handleChange} />
         
         <label htmlFor='feeding'> Feeding Status: </label>
         <select id='feeding' name='feeding_status' value={form.feeding_status} onChange={handleSelectChange}>

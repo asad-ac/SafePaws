@@ -11,6 +11,9 @@ const Volunteers = () => {
     const [isAddOpen, setIsAddOpen] = useState(false)
     const [isEditOpen, setIsEditOpen] = useState(false)
     const [selected, setSelected] = useState(null)
+    const [search, setSearch] = useState('')
+
+    // TODO: search bar to search by name
 
     useEffect(() => {
         const fetchAllVolunteers = async () => {
@@ -37,13 +40,18 @@ const Volunteers = () => {
 
         return data
     }
+
+    const searchVolunteers = volunteers.filter((v) => {
+        return v.name.toLowerCase().includes(search.trim().toLowerCase())
+    })
     
     return (
         <>
             <div>
                 <h1> Volunteers </h1>
+                <input type='search' placeholder='Search by name' value={search} onChange={(e) => setSearch(e.target.value)} />
                 <button onClick={() => setIsAddOpen(true)}> <IoAddSharp /> Add Volunteer</button>
-                {volunteers.length > 0 ? volunteers.map((volunteer) => {
+                {searchVolunteers.length > 0 ? searchVolunteers.map((volunteer) => {
                     return (
                         <div key={volunteer.volunteer_id} className=''>
                             <div className=''>

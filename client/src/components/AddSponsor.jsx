@@ -30,21 +30,23 @@ const AddSponsor = (props) => {
 
         props.setSponsors((prev) => [...prev, newSponsor])
         props.setIsAddOpen(false)
+
+        setForm({name: '', amount: '', address: '', phone: '', email: '', sanctuary_id: 1})
     }
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name"> Name: </label>
-        <input id="name" required type="text" name='name' value={form.name} onChange={handleChange} />
+        <input placeholder="e.g. Wildlife Rescue Fund" id="name" required type="text" name='name' value={form.name} onChange={handleChange} />
         <label htmlFor="amount"> Amount: </label>
-        <input id="amount" required type="number" name='amount' value={form.amount} onChange={handleChange} />
+        <input placeholder="e.g. 500.00" id="amount" required type="number" name='amount' value={form.amount} onChange={handleChange} />
         <label htmlFor="address"> Address: </label>
-        <input id="address" required type="text" name='address' value={form.address} onChange={handleChange} />
+        <input placeholder="e.g. 210 Ocean Dr, Miami, FL" id="address" required type="text" name='address' value={form.address} onChange={handleChange} />
         <label htmlFor="phone"> Phone: </label>
-        <input id="phone" required type="tel" name='phone' value={form.phone} onChange={handleChange} />
+        <input placeholder="e.g. 305-482-9172" id="phone" required type="tel" name='phone' value={form.phone} onChange={handleChange} />
         <label htmlFor="email"> Email: </label>
-        <input id="email" required type="email" name='email' value={form.email} onChange={handleChange} />
+        <input placeholder="e.g. contact@wildliferescue.org" id="email" required type="email" name='email' value={form.email} onChange={handleChange} />
         <button type="submit"> <IoAddSharp /> Add Sponsor </button>
       </form>
         <button type="button" onClick={() => props.setIsAddOpen(false)}> Cancel </button>
