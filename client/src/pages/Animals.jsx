@@ -6,6 +6,7 @@ import {IoAddSharp} from 'react-icons/io5'
 import {MdEdit} from "react-icons/md";
 import {FaRegTrashAlt} from "react-icons/fa";
 import {IoIosWarning} from "react-icons/io";
+import {RiResetLeftFill} from "react-icons/ri";
 
 const Animals = () => {
 
@@ -131,7 +132,7 @@ const Animals = () => {
                 </select>
             </div>
             <p> Results: {processedAnimals.length} </p>
-            <button onClick={reset}> Reset All </button>
+            <button onClick={reset} title='Reset'> <RiResetLeftFill size={18} /> </button>
         </div>
 
         <div>

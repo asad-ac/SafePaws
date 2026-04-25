@@ -70,9 +70,9 @@ const AnimalDetail = () => {
 
                         <h3> Tags </h3>
                         {animal.tags && animal.tags.length > 0 && animal.tags.map((tag) => (
-                        <div key={tag.tag_id}>
-                            <p> {tag.name} </p>
-                        </div>
+                            <div key={tag.tag_id}>
+                                <p> {tag.name} </p>
+                            </div>
                         ))}
                     </div>
             ): <h1> No animal here </h1>}

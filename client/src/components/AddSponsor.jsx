@@ -41,9 +41,9 @@ const AddSponsor = (props) => {
         <input required type="number" name='amount' value={form.amount} onChange={handleChange} />
         <label> Address: </label>
         <input required type="text" name='address' value={form.address} onChange={handleChange} />
-        <label>Phone: </label>
+        <label> Phone: </label>
         <input required type="tel" name='phone' value={form.phone} onChange={handleChange} />
-        <label>Email: </label>
+        <label> Email: </label>
         <input required type="email" name='email' value={form.email} onChange={handleChange} />
         <button type="submit"> <IoAddSharp /> Add Sponsor </button>
       </form>
