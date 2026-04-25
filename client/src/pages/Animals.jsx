@@ -27,14 +27,14 @@ const Animals = () => {
 
     const [statusFilter, setStatusFilter] = useState('all')
 
-    const tagOptions = ["Vaccinated, Healthy, Requires Training, Special Needs, Needs Medication, New Arrival, Special Diet, Territorial"]
+    const tagOptions = ["Vaccinated", "Healthy", "Requires Training", "Special Needs", "Needs Medication", "New Arrival", "Special Diet", "Territorial"]
 
-    const [tags, setTags] = useState([])
+    const [selectedTags, setSelectedTags] = useState([])
 
     // adding and removing tags
 
     const toggleTagFilter = (tagName) => {
-        setTags((prev) => 
+        setSelectedTags((prev) => 
         prev.includes(tagName)
           ? prev.filter((tag) => tag !== tagName)
           : [...prev, tagName]
@@ -98,14 +98,12 @@ const Animals = () => {
         })
 
         .filter((a) => {
-            if (tags.length === 0) {
-                return True
+            if (selectedTags.length === 0) {
+                return true
             }
 
-            return tags.some((selectedTag) =>
-                a.tags?.some((tag) => tag.name === selectedTag)
-              )
-
+            return selectedTags.some((selectedTag) =>
+                a.tags?.some((tag) => tag.name === selectedTag))
         })
         
         .sort((a,b) => {
@@ -132,7 +130,7 @@ const Animals = () => {
         setSearch('')
         setSortBy('name')
         setStatusFilter('all')
-        setTags([])
+        setSelectedTags([])
     }
 
   return (
@@ -169,7 +167,7 @@ const Animals = () => {
                     return (
                         <>
                             <label htmlFor='tag' key={tag}> {tag} </label>
-                            <input id='tag' type='checkbox' checked={tag.includes(tag)} onChange = {() => toggleTagFilter(tag)} />
+                            <input id='tag' type='checkbox' checked={selectedTags.includes(tag)} onChange = {() => toggleTagFilter(tag)} />
                         </>
                     )
                 })}
