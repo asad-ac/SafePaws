@@ -86,9 +86,9 @@ const EditAnimal = (props) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label> Name </label>
+        <label> Name: </label>
         <input required type='text' name='name' value={form.name} onChange={handleChange} />
-        <label> Description </label>
+        <label> Description: </label>
         <textarea name='description' value={form.description} onChange={handleChange}></textarea>
         <label> Age </label>
         <input required type="text" name='age' value={form.age} onChange={handleChange} />
