@@ -85,10 +85,27 @@ const Animals = () => {
         a.name.toLowerCase().includes(search.trim().toLowerCase()) ||
         a.species.toLowerCase().includes(search.trim().toLowerCase()))
         .filter((a) => {
-            if (statusFilter === 'needsFeeding') return !a.feeding_status
-            if (statusFilter === 'needsCleaning') return !a.cleaning_status
-            if (statusFilter === 'needsCaring') return !a.care_status
+            if (statusFilter === 'needsFeeding') {
+                return !a.feeding_status
+            }
+            if (statusFilter === 'needsCleaning') {
+                return !a.cleaning_status
+            }
+            if (statusFilter === 'needsCaring') {
+                return !a.care_status
+            }
             return true
+        })
+
+        .filter((a) => {
+            if (tags.length === 0) {
+                return True
+            }
+
+            return tags.some((selectedTag) =>
+                a.tags?.some((tag) => tag.name === selectedTag)
+              )
+
         })
         
         .sort((a,b) => {
@@ -98,7 +115,6 @@ const Animals = () => {
             // undefined to use browser default language
             // sensitivity base to ignore uppercase vs lowercase on comparison of input animal names
         }
-
         if (sortBy === 'age') {
             return b.age - a.age // oldest to youngest
         }
