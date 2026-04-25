@@ -12,6 +12,8 @@ const Volunteers = () => {
     const [isEditOpen, setIsEditOpen] = useState(false)
     const [selected, setSelected] = useState(null)
 
+    // TODO: search bar to search by name
+
     useEffect(() => {
         const fetchAllVolunteers = async () => {
             const response = await fetch(`http://localhost:3001/volunteers`)

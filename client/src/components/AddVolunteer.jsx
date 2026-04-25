@@ -37,15 +37,15 @@ const AddVolunteer = (props) => {
     <div>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name"> Name: </label>
-        <input id="name" required type='text' name='name' value={form.name} onChange={handleChange} />
+        <input placeholder="e.g. Alex Rivera" id="name" required type='text' name='name' value={form.name} onChange={handleChange} />
         <label htmlFor="address"> Address: </label>
-        <input id="address" required type='text' name='address' value={form.address} onChange={handleChange} />
+        <input placeholder="e.g. 128 Coral Way, Miami, FL" id="address" required type='text' name='address' value={form.address} onChange={handleChange} />
         <label htmlFor="phone"> Phone: </label>
-        <input id="phone" required type='tel' name='phone' value={form.phone} onChange={handleChange} />
+        <input placeholder="e.g. 786-213-4456" id="phone" required type='tel' name='phone' value={form.phone} onChange={handleChange} />
         <label htmlFor="email"> Email: </label>
-        <input id="email" required type='email' name='email' value={form.email} onChange={handleChange} />
+        <input placeholder="e.g. alex.rivera@email.com" id="email" required type='email' name='email' value={form.email} onChange={handleChange} />
         <label htmlFor="assigned_duty"> Assigned Duty: </label>
-        <textarea rows={2} style={{resize: 'none'}} required name='assigned_duty' value={form.assigned_duty} onChange={handleChange}></textarea>
+        <textarea placeholder="e.g. Feeding and enclosure cleaning" rows={2} style={{resize: 'none'}} required name='assigned_duty' value={form.assigned_duty} onChange={handleChange}></textarea>
         <button type='submit'> <IoAddSharp /> Add Volunteer </button>
       </form>
       <button type='button' onClick={() => props.setIsAddOpen(false)}> Cancel</button>

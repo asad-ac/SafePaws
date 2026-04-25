@@ -7,6 +7,8 @@ import {FaRegTrashAlt} from "react-icons/fa";
 
 const Sponsors = () => {
 
+    //TODO: search bar to search by name
+
     const [sponsors, setSponsors] = useState([])
     const [isAddOpen, setIsAddOpen] = useState(false)
     const [isEditOpen, setIsEditOpen] = useState(false)
