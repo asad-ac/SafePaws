@@ -116,8 +116,8 @@ const Animals = () => {
                 <label htmlFor='sort'> Sort By </label>
                 <select id='sort' value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
                     <option value="name"> Name (A - Z) </option>
-                    <option value="age"> Age (Oldest - Youngest) </option>
-                    <option value="intake_date"> Intake Date (Oldest - Newest) </option>
+                    <option value="age"> Age (Oldest First) </option>
+                    <option value="intake_date"> Intake Date (Oldest First) </option>
                 </select>
             </div>
 
