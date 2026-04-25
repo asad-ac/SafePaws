@@ -29,6 +29,8 @@ const AddVolunteer = (props) => {
 
         props.setVolunteers((prev) => [...prev, newVolunteer])
         props.setIsAddOpen(false)
+
+        setForm({name: '', address: '', phone: '', email: '', assigned_duty: '', sanctuary_id: 1})
     }
   
     return (

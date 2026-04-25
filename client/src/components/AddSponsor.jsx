@@ -30,6 +30,8 @@ const AddSponsor = (props) => {
 
         props.setSponsors((prev) => [...prev, newSponsor])
         props.setIsAddOpen(false)
+
+        setForm({name: '', amount: '', address: '', phone: '', email: '', sanctuary_id: 1})
     }
 
   return (
