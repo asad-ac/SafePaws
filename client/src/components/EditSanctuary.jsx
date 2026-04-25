@@ -32,16 +32,16 @@ const EditSanctuary = (props) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label> Name: </label>
-        <input onChange={handleChange} name='name' value={form.name} required type='text'  />
-        <label> Address: </label>
-        <input onChange={handleChange} name='address' value={form.address} required type='text' />
-        <label> Phone: </label>
-        <input onChange={handleChange} name='phone' value={form.phone} required type='tel' />
-        <label> Email: </label>
-        <input onChange={handleChange} name='email' value={form.email} required type='email' />
-        <label> Capacity: </label>
-        <input onChange={handleChange} name='capacity' value={form.capacity} required type='number' />
+        <label htmlFor="name"> Name: </label>
+        <input id="name" onChange={handleChange} name='name' value={form.name} required type='text'  />
+        <label htmlFor="address"> Address: </label>
+        <input id="address" onChange={handleChange} name='address' value={form.address} required type='text' />
+        <label htmlFor="phone"> Phone: </label>
+        <input id="phone" onChange={handleChange} name='phone' value={form.phone} required type='tel' />
+        <label htmlFor="email"> Email: </label>
+        <input id="email" onChange={handleChange} name='email' value={form.email} required type='email' />
+        <label htmlFor="capacity"> Capacity: </label>
+        <input id="capacity" onChange={handleChange} name='capacity' value={form.capacity} required type='number' />
         <button type='submit'> Save </button>
       </form>
       <button type='button' onClick={() => props.setIsEditOpen(false)}> Cancel </button>

@@ -6,6 +6,7 @@ import {IoAddSharp} from 'react-icons/io5'
 import {MdEdit} from "react-icons/md";
 import {FaRegTrashAlt} from "react-icons/fa";
 import {IoIosWarning} from "react-icons/io";
+import {RiResetLeftFill} from "react-icons/ri";
 
 const Animals = () => {
 
@@ -25,6 +26,20 @@ const Animals = () => {
     // filter state
 
     const [statusFilter, setStatusFilter] = useState('all')
+
+    const tagOptions = ["Vaccinated", "Healthy", "Requires Training", "Special Needs", "Needs Medication", "New Arrival", "Special Diet", "Territorial"]
+
+    const [selectedTags, setSelectedTags] = useState([])
+
+    // adding and removing tags
+
+    const toggleTagFilter = (tagName) => {
+        setSelectedTags((prev) => 
+        prev.includes(tagName)
+          ? prev.filter((tag) => tag !== tagName)
+          : [...prev, tagName]
+        )
+    }
 
     useEffect(() => {
         const fetchAllAnimals = async () => {
@@ -70,10 +85,27 @@ const Animals = () => {
         a.name.toLowerCase().includes(search.trim().toLowerCase()) ||
         a.species.toLowerCase().includes(search.trim().toLowerCase()))
         .filter((a) => {
-            if (statusFilter === 'needsFeeding') return !a.feeding_status
-            if (statusFilter === 'needsCleaning') return !a.cleaning_status
-            if (statusFilter === 'needsCaring') return !a.care_status
+            if (statusFilter === 'needsFeeding') {
+                return !a.feeding_status
+            }
+            if (statusFilter === 'needsCleaning') {
+                return !a.cleaning_status
+            }
+            if (statusFilter === 'needsCaring') {
+                return !a.care_status
+            }
             return true
+        })
+
+        // or behavior not AND for checkboxes.
+
+        .filter((a) => {
+            if (selectedTags.length === 0) {
+                return true
+            }
+
+            return selectedTags.some((selectedTag) =>
+                a.tags?.some((tag) => tag.name === selectedTag))
         })
         
         .sort((a,b) => {
@@ -83,7 +115,6 @@ const Animals = () => {
             // undefined to use browser default language
             // sensitivity base to ignore uppercase vs lowercase on comparison of input animal names
         }
-
         if (sortBy === 'age') {
             return b.age - a.age // oldest to youngest
         }
@@ -97,10 +128,11 @@ const Animals = () => {
 
     // TODO: tell user order of sorts in jsx
 
-    const reset = () => {
+    const resetFilterButton = () => {
         setSearch('')
         setSortBy('name')
         setStatusFilter('all')
+        setSelectedTags([])
     }
 
   return (
@@ -130,8 +162,21 @@ const Animals = () => {
                     <option value='needsCaring'> Needs Attention </option>
                 </select>
             </div>
+
+            <div>
+                <p> Filter By Tags </p>
+                {tagOptions.map((tag) => {
+                    return (
+                        <div>
+                            <label style={{display: 'block'}} htmlFor='tag' key={tag}> {tag} </label>
+                            <input id='tag' type='checkbox' checked={selectedTags.includes(tag)} onChange = {() => toggleTagFilter(tag)} />
+                        </div>
+                    )
+                })}
+            </div>
+
             <p> Results: {processedAnimals.length} </p>
-            <button onClick={reset}> Reset All </button>
+            <button onClick={resetFilterButton} title='Reset'> <RiResetLeftFill size={18} /> </button>
         </div>
 
         <div>

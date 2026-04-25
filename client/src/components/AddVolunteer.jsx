@@ -34,16 +34,16 @@ const AddVolunteer = (props) => {
     return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label> Name: </label>
-        <input required type='text' name='name' value={form.name} onChange={handleChange} />
-        <label> Address: </label>
-        <input required type='text' name='address' value={form.address} onChange={handleChange} />
-        <label> Phone: </label>
-        <input required type='tel' name='phone' value={form.phone} onChange={handleChange} />
-        <label> Email: </label>
-        <input required type='email' name='email' value={form.email} onChange={handleChange} />
-        <label> Assigned Duty: </label>
-        <textarea required name='assigned_duty' value={form.assigned_duty} onChange={handleChange}></textarea>
+        <label htmlFor="name"> Name: </label>
+        <input id="name" required type='text' name='name' value={form.name} onChange={handleChange} />
+        <label htmlFor="address"> Address: </label>
+        <input id="address" required type='text' name='address' value={form.address} onChange={handleChange} />
+        <label htmlFor="phone"> Phone: </label>
+        <input id="phone" required type='tel' name='phone' value={form.phone} onChange={handleChange} />
+        <label htmlFor="email"> Email: </label>
+        <input id="email" required type='email' name='email' value={form.email} onChange={handleChange} />
+        <label htmlFor="assigned_duty"> Assigned Duty: </label>
+        <textarea rows={2} style={{resize: 'none'}} required name='assigned_duty' value={form.assigned_duty} onChange={handleChange}></textarea>
         <button type='submit'> <IoAddSharp /> Add Volunteer </button>
       </form>
       <button type='button' onClick={() => props.setIsAddOpen(false)}> Cancel</button>
