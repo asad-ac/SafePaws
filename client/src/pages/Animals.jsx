@@ -27,7 +27,19 @@ const Animals = () => {
 
     const [statusFilter, setStatusFilter] = useState('all')
 
-    const [tag, setTag] = useState('All')
+    const tagOptions = ["Vaccinated, Healthy, Requires Training, Special Needs, Needs Medication, New Arrival, Special Diet, Territorial"]
+
+    const [tag, setTag] = useState([])
+
+    // adding and removing tags
+
+    const toggleTagFilter = (tagName) => {
+        setTag((prev) => 
+        prev.includes(tagName)
+          ? prev.filter((tag) => tag !== tagName)
+          : [...prev, tagName]
+        )
+    }
 
     useEffect(() => {
         const fetchAllAnimals = async () => {
