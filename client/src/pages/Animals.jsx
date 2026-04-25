@@ -27,6 +27,8 @@ const Animals = () => {
 
     const [statusFilter, setStatusFilter] = useState('all')
 
+    const [tag, setTag] = useState('All')
+
     useEffect(() => {
         const fetchAllAnimals = async () => {
             const response = await fetch('http://localhost:3001/animals')
