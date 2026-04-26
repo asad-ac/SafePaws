@@ -4,6 +4,7 @@ import EditAnimal from '../components/EditAnimal.jsx'
 import {IoReturnDownBackOutline} from "react-icons/io5";
 import {MdEdit} from "react-icons/md";
 import {FaRegTrashAlt} from "react-icons/fa";
+import {toast} from 'react-hot-toast'
 
 const AnimalDetail = () => {
 
