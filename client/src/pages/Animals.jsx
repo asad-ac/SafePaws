@@ -60,17 +60,17 @@ const deleteAnimal = async (animal) => {
     }
   
     try {
-      const response = fetch(`http://localhost:3001/animals/${animal.animal_id}`, options)
+      const promise = fetch(`http://localhost:3001/animals/${animal.animal_id}`, options)
 
-      toast.promise(response, {
+      toast.promise(promise, {
         loading: `Deleting ${animal.name}...`,
         success: `${animal.name} deleted`,
         error: `Failed to delete ${animal.name}`
       })
   
-      const resolve = await response
+      const response = await promise
 
-      if (!resolve.ok) {
+      if (!response.ok) {
         throw new Error("Delete failed")
       }
       // keep every animal whose ID is NOT equal to the one admin

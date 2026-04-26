@@ -59,21 +59,21 @@ const AddAnimal = (props) => {
         }
 
         try {
-          const promise = fetch(`http://localhost:3001/animals`, options)
-          
-          toast.promise(promise, {
-            loading: `Adding ${form.name}...`,
-            success: `${form.name} added`,
-            error: `Failed to delete ${form.name}`
-          })
-          
-          const response = await promise
-          
-          if (!response.ok) {
-            throw new Error("Add failed")
+          const addAnimalPromise = async () => {
+            const response = await fetch(`http://localhost:3001/animals`, options)
+
+            if (!response.ok) {
+              throw new Error("Add failed")
+            }
+            
+            return await response.json()
           }
           
-          const newAnimal = response.json()
+          const newAnimal = await toast.promise(addAnimalPromise(), {
+            loading: `Adding ${form.name}...`,
+            success: `${form.name} added`,
+            error: `Failed to add ${form.name}`
+          })
 
           props.setAnimals(prev => [...prev, newAnimal])
           props.setIsAddOpen(false)
@@ -85,8 +85,6 @@ const AddAnimal = (props) => {
         catch (error) {
           console.log(error)
         }
-
-          
     }
 
     const toggleTag = (tagId) => {
