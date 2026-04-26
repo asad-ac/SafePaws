@@ -10,7 +10,7 @@ function App() {
 
   return (
     <>
-    <Toaster />
+    <Toaster position='bottom-left' />
       <BrowserRouter>
         <Routes>
           <Route path='/animals' element={<Animals />} />
