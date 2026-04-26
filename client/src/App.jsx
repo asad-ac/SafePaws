@@ -3,7 +3,6 @@ import Animals from './pages/Animals.jsx'
 import AnimalDetail from './pages/AnimalDetail.jsx'
 import Sponsors from './pages/Sponsors.jsx'
 import Volunteers from './pages/Volunteers.jsx'
-import Sanctuary from './pages/Sanctuary.jsx'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import {Toaster} from 'react-hot-toast'
 
@@ -18,7 +17,6 @@ function App() {
           <Route path='/sponsors' element={<Sponsors />} />
           <Route path='/volunteers' element={<Volunteers />} />
           <Route path='/animals/:animal_id' element={<AnimalDetail />} />
-          <Route path='/sanctuary' element={<Sanctuary />} />
         </Routes>
       </BrowserRouter>
     </>
