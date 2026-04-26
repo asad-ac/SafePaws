@@ -45,9 +45,9 @@ const Sponsors = () => {
             }
             
             await toast.promise(deleteSponsorPromise(), {
-                loading: `Deleting ${volunteer.name}...`,
-                success: `${volunteer.name} deleted`,
-                error: `Failed to delete ${volunteer.name}`
+                loading: `Deleting ${sponsor.name}...`,
+                success: `${sponsor.name} deleted`,
+                error: `Failed to delete ${sponsor.name}`
             })
             
             // goes through array of sponsors and returns array of sponsors who are not the one that was deleted 
