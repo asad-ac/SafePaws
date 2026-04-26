@@ -4,6 +4,7 @@ import EditSponsor from '../components/EditSponsor.jsx'
 import {MdEdit} from "react-icons/md";
 import {IoAddSharp} from "react-icons/io5";
 import {FaRegTrashAlt} from "react-icons/fa";
+import {toast} from 'react-hot-toast'
 
 const Sponsors = () => {
 
@@ -32,13 +33,29 @@ const Sponsors = () => {
             }
         }
 
-        const response = await fetch(`http://localhost:3001/sponsors/${sponsor.sponsor_id}`, options)
-        const data = await response.json()
-
-        // goes through array of sponsors and returns array of sponsors who are not the one that was deleted 
-        setSponsors((prev) => prev.filter((s) => s.sponsor_id !== sponsor.sponsor_id))
-
-        return data
+        try {
+            const deleteSponsorPromise = async () => {
+                const response = await fetch(`http://localhost:3001/sponsors/${sponsor.sponsor_id}`, options)
+                
+                if (!response.ok) {
+                    throw new Error("Delete failed")
+                }
+                
+                return true
+            }
+            
+            await toast.promise(deleteSponsorPromise(), {
+                loading: `Deleting ${sponsor.name}...`,
+                success: `${sponsor.name} deleted`,
+                error: `Failed to delete ${sponsor.name}`
+            })
+            
+            // goes through array of sponsors and returns array of sponsors who are not the one that was deleted 
+            setSponsors((prev) => prev.filter((s) => s.sponsor_id !== sponsor.sponsor_id))
+        }
+            catch (error) {
+                console.error(error)
+            }
     }
 
     const searchSponsors = sponsors.filter((s) => {

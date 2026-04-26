@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import {toast} from 'react-hot-toast'
 
 const EditSponsor = (props) => {
 
@@ -23,16 +24,35 @@ const EditSponsor = (props) => {
       body: JSON.stringify(form)
     }
 
-    const response = await fetch(`http://localhost:3001/sponsors/${props.sponsor.sponsor_id}`, options)
-    const updatedSponsor = await response.json()
+    try {
+      const updateSponsorPromise = async () => {
+        const response = await fetch(`http://localhost:3001/sponsors/${props.sponsor.sponsor_id}`, options)
 
-    // maps through sponsors to find sponsor we just edited, if it is update it otherwise keep same
-    props.setSponsors((prev) =>
-      prev.map((sponsor) =>
-        sponsor.sponsor_id === updatedSponsor.sponsor_id ? updatedSponsor: sponsor))
-    props.setIsEditOpen(false)
-  }
+        if (!response.ok) {
+          throw new Error("Update failed")
+        }
 
+        return await response.json()
+      }
+
+      const updatedSponsor = await toast.promise(updateSponsorPromise(), {
+        loading: `Updating ${form.name}...`,
+        success: `${form.name} updated`,
+        error: `Failed to update ${form.name}`
+      })
+      
+      // maps through sponsors to find sponsor we just edited, if it is update it otherwise keep same
+      props.setSponsors((prev) =>
+        prev.map((sponsor) =>
+          sponsor.sponsor_id === updatedSponsor.sponsor_id ? updatedSponsor: sponsor))
+      props.setIsEditOpen(false)
+      }
+
+      catch (error) {
+        console.error(error)
+      }
+    }
+    
    // TODO: add for, id, and autocomplete attributes
 
   return (

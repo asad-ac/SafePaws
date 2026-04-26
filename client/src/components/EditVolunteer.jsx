@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import {toast} from 'react-hot-toast'
 
 const EditVolunteer = (props) => {
 
@@ -23,13 +24,32 @@ const EditVolunteer = (props) => {
             body: JSON.stringify(form)
         }
 
-        const response = await fetch(`http://localhost:3001/volunteers/${props.volunteer.volunteer_id}`, options)
-        const updatedVolunteer = await response.json()
+        try {
+          const updateVolunteerPromise = async () => {
+            const response = await fetch(`http://localhost:3001/volunteers/${props.volunteer.volunteer_id}`, options)
+            
+            if (!response.ok) {
+              throw new Error("Update failed")
+            }
+            
+            return await response.json()
+          }
 
-        props.setVolunteers((prev) => 
+          const updatedVolunteer = await toast.promise(updateVolunteerPromise(), {
+            loading: `Updating ${form.name}...`,
+            success: `${form.name} updated`,
+            error: `Failed to update ${form.name}`
+          })
+          
+          props.setVolunteers((prev) => 
             prev.map((volunteer) => 
-                volunteer.volunteer_id === updatedVolunteer.volunteer_id ? updatedVolunteer : volunteer))
-        props.setIsEditOpen(false)
+              volunteer.volunteer_id === updatedVolunteer.volunteer_id ? updatedVolunteer : volunteer))
+          props.setIsEditOpen(false)
+        }
+
+        catch (error) {
+          console.error(error)
+        } 
     }
 
   return (

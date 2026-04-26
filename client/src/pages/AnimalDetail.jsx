@@ -4,6 +4,7 @@ import EditAnimal from '../components/EditAnimal.jsx'
 import {IoReturnDownBackOutline} from "react-icons/io5";
 import {MdEdit} from "react-icons/md";
 import {FaRegTrashAlt} from "react-icons/fa";
+import {toast} from 'react-hot-toast'
 
 const AnimalDetail = () => {
 
@@ -32,8 +33,29 @@ const AnimalDetail = () => {
             }
         }
 
-        const response = await fetch(`http://localhost:3001/animals/${animal_id}`, options)
-        navigate('/animals')
+        try {
+            const deleteAnimalPromise = async () => {
+                const response = await fetch(`http://localhost:3001/animals/${animal_id}`, options)
+                
+                if (!response.ok) {
+                    throw new Error("Delete failed")
+                }
+                // dont need data back so not returning json
+                return true
+            }
+            
+            await toast.promise(deleteAnimalPromise(), {
+                loading: `Deleting ${animal.name}...`,
+                success: `${animal.name} deleted`,
+                error: `Failed to delete ${animal.name}`
+            })
+            
+            navigate('/animals')
+        }
+
+        catch (error) {
+            console.error(error)
+        }
     }
 
   return (

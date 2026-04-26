@@ -4,6 +4,7 @@ import EditVolunteer from '../components/EditVolunteer.jsx'
 import {MdEdit} from "react-icons/md";
 import {IoAddSharp} from "react-icons/io5";
 import {FaRegTrashAlt} from "react-icons/fa";
+import {toast} from 'react-hot-toast'
 
 const Volunteers = () => {
     
@@ -31,14 +32,32 @@ const Volunteers = () => {
                 'Content-Type': 'application/json'
             }
         }
-        const response = await fetch(`http://localhost:3001/volunteers/${volunteer.volunteer_id}`, options)
-        const data = await response.json()
 
-        // keep every volunteer whose ID is NOT equal to the one admin deletes
+        try {
+            const deleteVolunteerPromise = async () => {
+                const response = await fetch(`http://localhost:3001/volunteers/${volunteer.volunteer_id}`, options)
+                
+                if (!response.ok) {
+                    throw new Error("Delete failed")
+                }
+                
+                return true
+            }
+            
+            await toast.promise(deleteVolunteerPromise(), {
+                loading: `Deleting ${volunteer.name}...`,
+                success: `${volunteer.name} deleted`,
+                error: `Failed to delete ${volunteer.name}`
+            })
+            
+            // keep every volunteer whose ID is NOT equal to the one admin deletes
+            
+            setVolunteers((prev) => prev.filter((v) => v.volunteer_id !== volunteer.volunteer_id))
+        }
 
-        setVolunteers((prev) => prev.filter((v) => v.volunteer_id !== volunteer.volunteer_id))
-
-        return data
+        catch (error) {
+            console.error(error)
+        }
     }
 
     const searchVolunteers = volunteers.filter((v) => {

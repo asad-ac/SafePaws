@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
 import {IoAddSharp} from "react-icons/io5";
+import {toast} from 'react-hot-toast'
 
 const AddAnimal = (props) => {
 
@@ -57,15 +58,33 @@ const AddAnimal = (props) => {
             body: JSON.stringify(payload)
         }
 
-        const response = await fetch(`http://localhost:3001/animals`, options)
-        const newAnimal = await response.json()
+        try {
+          const addAnimalPromise = async () => {
+            const response = await fetch(`http://localhost:3001/animals`, options)
 
-        props.setAnimals(prev => [...prev, newAnimal])
-        props.setIsAddOpen(false)
-
-        setForm({name: '', description: '', age: '', weight: '', height: '', image_url: '', date_intake: '', species: '', cleaning_status: false, care_status: false, feeding_status: false, sanctuary_id: 1})
+            if (!response.ok) {
+              throw new Error("Add failed")
+            }
+            
+            return await response.json()
+          }
           
-        setSelectedTags([])
+          const newAnimal = await toast.promise(addAnimalPromise(), {
+            loading: `Adding ${form.name}...`,
+            success: `${form.name} added`,
+            error: `Failed to add ${form.name}`
+          })
+
+          props.setAnimals(prev => [...prev, newAnimal])
+          props.setIsAddOpen(false)
+
+          setForm({name: '', description: '', age: '', weight: '', height: '', image_url: '', date_intake: '', species: '', cleaning_status: false, care_status: false, feeding_status: false, sanctuary_id: 1})
+          setSelectedTags([])
+        }
+
+        catch (error) {
+          console.error(error)
+        }
     }
 
     const toggleTag = (tagId) => {

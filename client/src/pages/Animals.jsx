@@ -7,6 +7,7 @@ import {MdEdit} from "react-icons/md";
 import {FaRegTrashAlt} from "react-icons/fa";
 import {IoIosWarning} from "react-icons/io";
 import {RiResetLeftFill} from "react-icons/ri";
+import toast from 'react-hot-toast'
 
 const Animals = () => {
 
@@ -50,23 +51,40 @@ const Animals = () => {
         fetchAllAnimals()
     },[])
 
-    const deleteAnimal = async (animal) => {
-        const options = {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
+const deleteAnimal = async (animal) => {
+    const options = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+  
+    try {
+        const deleteAnimalPromise = async () => {
+            const response = await fetch(`http://localhost:3001/animals/${animal.animal_id}`, options)
+
+            if (!response.ok) {
+                throw new Error("Delete failed")
             }
+
+        return true
         }
 
-        const response = await fetch(`http://localhost:3001/animals/${animal.animal_id}`, options)
-        const data = await response.json()
+      await toast.promise(deleteAnimalPromise(), {
+        loading: `Deleting ${animal.name}...`,
+        success: `${animal.name} deleted`,
+        error: `Failed to delete ${animal.name}`
+      })
 
-        // keep every animal whose ID is NOT equal to the one admin deletes
+      // keep every animal whose ID is NOT equal to the one admin
 
-        setAnimals((prev) => prev.filter((a) => a.animal_id !== animal.animal_id))
-
-        return data
+      setAnimals((prev) => prev.filter((a) => a.animal_id !== animal.animal_id))
+    } 
+    
+    catch (error) {
+      console.error(error)
     }
+  }
 
     // TODO: make sure backend receives not in string, but in boolean. assign value on inputs as true or false.
     // TODO: filter functions for counts
