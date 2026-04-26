@@ -62,14 +62,13 @@ const EditAnimal = (props) => {
         const response = await fetch(`http://localhost:3001/animals/${props.animal.animal_id}`, options)
         
         if (!response.ok) {
-          throw new Error('Update failed')
+          throw new Error("Update failed")
         }
         
         return await response.json()
-        
       }
 
-      const updatedAnimal = toast.promise(updateAnimalPromise(), {
+      const updatedAnimal = await toast.promise(updateAnimalPromise(), {
         loading: `Updating ${form.name}...`,
         success: `${form.name} Updated`,
         error: `Failed to update ${form.name}`
@@ -89,10 +88,11 @@ const EditAnimal = (props) => {
       }
   
       props.setIsEditOpen(false)
-      }
-      catch (error) {
-        console.log(error)
-      }
+    }
+
+    catch (error) {
+      console.log(error)
+    }
   }
 
   const toggleTag = (tagId) => {

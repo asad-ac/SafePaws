@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import {toast} from 'react-hot-toast'
 
 const EditSanctuary = (props) => {
 
@@ -23,12 +24,33 @@ const EditSanctuary = (props) => {
             body: JSON.stringify(form)
         }
 
-        const response = await fetch(`http://localhost:3001/sanctuaries/${form.sanctuary_id}`, options)
-        const editedSanctuary = await response.json()
+        try {
+          const updateSanctuaryPromise = async () => {
+            const response = await fetch(`http://localhost:3001/sanctuaries/${form.sanctuary_id}`, options)
+            
+            if (!response.ok) {
+              throw new Error("Update failed")
+            }
+            
+            return await response.json()
+          }
+          
+          const editedSanctuary = await toast.promise(updateSanctuaryPromise(), {
+            loading: `Adding ${form.name}...`,
+            success: `${form.name} added`,
+            error: `Failed to update ${form.name}`
+          })
+          
+          props.setSanctuary(editedSanctuary)
+          props.setIsEditOpen(false)
 
-        props.setSanctuary(editedSanctuary)
-        props.setIsEditOpen(false)
+        }
+
+        catch (error) {
+          console.log(error)
+        }
     }
+    
   return (
     <div>
       <form onSubmit={handleSubmit}>
