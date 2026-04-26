@@ -26,13 +26,34 @@ const AddSponsor = (props) => {
             body: JSON.stringify(form)
         }
 
-        const response = await fetch('http://localhost:3001/sponsors', options)
-        const newSponsor = await response.json()
+        try {
 
-        props.setSponsors((prev) => [...prev, newSponsor])
-        props.setIsAddOpen(false)
+          const newSponsor = async () => {
+            const response = await fetch('http://localhost:3001/sponsors', options)
+  
+            if (!response.ok) {
+              throw new Error("Add failed")
+            }
+  
+            return await response.json()
+          }
+  
+          toast.promise(newSponsor(), {
+            loading: `Adding ${form.name}...`,
+            success: `${form.name} added`,
+            error: `Failed to add ${form.name}`
+          })
+  
+          props.setSponsors((prev) => [...prev, newSponsor])
+          props.setIsAddOpen(false)
+  
+          setForm({name: '', amount: '', address: '', phone: '', email: '', sanctuary_id: 1})
 
-        setForm({name: '', amount: '', address: '', phone: '', email: '', sanctuary_id: 1})
+        }
+
+        catch (error) {
+          console.log(error)
+        }
     }
 
   return (
