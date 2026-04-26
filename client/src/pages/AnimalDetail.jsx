@@ -34,14 +34,13 @@ const AnimalDetail = () => {
         }
 
         try {
-
             const deleteAnimalPromise = async () => {
                 const response = await fetch(`http://localhost:3001/animals/${animal_id}`, options)
                 
                 if (!response.ok) {
                     throw new Error("Delete failed")
                 }
-                
+                // dont need data back so not returning json
                 return true
             }
             
@@ -55,7 +54,7 @@ const AnimalDetail = () => {
         }
 
         catch (error) {
-            console.log(error)
+            console.error(error)
         }
     }
 

@@ -31,6 +31,7 @@ const Volunteers = () => {
                 'Content-Type': 'application/json'
             }
         }
+        
         const response = await fetch(`http://localhost:3001/volunteers/${volunteer.volunteer_id}`, options)
         const data = await response.json()
 

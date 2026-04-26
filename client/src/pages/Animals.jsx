@@ -75,8 +75,9 @@ const deleteAnimal = async (animal) => {
         success: `${animal.name} deleted`,
         error: `Failed to delete ${animal.name}`
       })
+      
       // keep every animal whose ID is NOT equal to the one admin
-  
+
       setAnimals((prev) => prev.filter((a) => a.animal_id !== animal.animal_id))
   
     } catch (error) {
