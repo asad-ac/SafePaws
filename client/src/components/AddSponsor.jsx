@@ -27,7 +27,6 @@ const AddSponsor = (props) => {
         }
 
         try {
-
           const newSponsor = async () => {
             const response = await fetch('http://localhost:3001/sponsors', options)
   
