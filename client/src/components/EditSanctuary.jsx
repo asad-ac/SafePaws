@@ -36,8 +36,8 @@ const EditSanctuary = (props) => {
           }
           
           const editedSanctuary = await toast.promise(updateSanctuaryPromise(), {
-            loading: `Adding ${form.name}...`,
-            success: `${form.name} added`,
+            loading: `Updating ${form.name}...`,
+            success: `${form.name} updated`,
             error: `Failed to update ${form.name}`
           })
           
@@ -50,7 +50,7 @@ const EditSanctuary = (props) => {
           console.log(error)
         }
     }
-    
+
   return (
     <div>
       <form onSubmit={handleSubmit}>

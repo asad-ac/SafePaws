@@ -70,7 +70,7 @@ const EditAnimal = (props) => {
 
       const updatedAnimal = await toast.promise(updateAnimalPromise(), {
         loading: `Updating ${form.name}...`,
-        success: `${form.name} Updated`,
+        success: `${form.name} updated`,
         error: `Failed to update ${form.name}`
       })
       
