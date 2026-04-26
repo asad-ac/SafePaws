@@ -58,15 +58,35 @@ const AddAnimal = (props) => {
             body: JSON.stringify(payload)
         }
 
-        const response = await fetch(`http://localhost:3001/animals`, options)
-        const newAnimal = await response.json()
-
-        props.setAnimals(prev => [...prev, newAnimal])
-        props.setIsAddOpen(false)
-
-        setForm({name: '', description: '', age: '', weight: '', height: '', image_url: '', date_intake: '', species: '', cleaning_status: false, care_status: false, feeding_status: false, sanctuary_id: 1})
+        try {
+          const promise = fetch(`http://localhost:3001/animals`, options)
           
-        setSelectedTags([])
+          toast.promise(promise, {
+            loading: `Adding ${form.name}...`,
+            success: `${form.name} added`,
+            error: `Failed to delete ${form.name}`
+          })
+          
+          const response = await promise
+          
+          if (!response.ok) {
+            throw new Error("Add failed")
+          }
+          
+          const newAnimal = response.json()
+
+          props.setAnimals(prev => [...prev, newAnimal])
+          props.setIsAddOpen(false)
+
+          setForm({name: '', description: '', age: '', weight: '', height: '', image_url: '', date_intake: '', species: '', cleaning_status: false, care_status: false, feeding_status: false, sanctuary_id: 1})
+          setSelectedTags([])
+        }
+
+        catch (error) {
+          console.log(error)
+        }
+
+          
     }
 
     const toggleTag = (tagId) => {
