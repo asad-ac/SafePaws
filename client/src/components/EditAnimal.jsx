@@ -57,23 +57,42 @@ const EditAnimal = (props) => {
       body: JSON.stringify(payload)
     }
 
-    const response = await fetch(`http://localhost:3001/animals/${props.animal.animal_id}`, options)
-    const updatedAnimal = await response.json()
+    try {
+      const updateAnimalPromise = async () => {
+        const response = await fetch(`http://localhost:3001/animals/${props.animal.animal_id}`, options)
+        
+        if (!response.ok) {
+          throw new Error('Update failed')
+        }
+        
+        return await response.json()
+        
+      }
 
-     // maps through animals to find animal we just edited, if it is update it otherwise keep same
-     if (props.setAnimals) {
-      props.setAnimals((prev) =>
-        prev.map((animal) =>
-          animal.animal_id === updatedAnimal.animal_id ? updatedAnimal : animal
+      const updatedAnimal = toast.promise(updateAnimalPromise(), {
+        loading: `Updating ${form.name}...`,
+        success: `${form.name} Updated`,
+        error: `Failed to update ${form.name}`
+      })
+      
+      // maps through animals to find animal we just edited, if it is update it otherwise keep same
+      if (props.setAnimals) {
+        props.setAnimals((prev) =>
+          prev.map((animal) =>
+            animal.animal_id === updatedAnimal.animal_id ? updatedAnimal : animal
+          )
         )
-      )
-    }
-    
-    if (props.setAnimal) {
-      props.setAnimal(updatedAnimal)
-    }
-    
-    props.setIsEditOpen(false)
+      }
+
+      if (props.setAnimal) {
+        props.setAnimal(updatedAnimal)
+      }
+  
+      props.setIsEditOpen(false)
+      }
+      catch (error) {
+        console.log(error)
+      }
   }
 
   const toggleTag = (tagId) => {
