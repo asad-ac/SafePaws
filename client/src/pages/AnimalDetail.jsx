@@ -33,8 +33,30 @@ const AnimalDetail = () => {
             }
         }
 
-        const response = await fetch(`http://localhost:3001/animals/${animal_id}`, options)
-        navigate('/animals')
+        try {
+
+            const deleteAnimalPromise = async () => {
+                const response = await fetch(`http://localhost:3001/animals/${animal_id}`, options)
+                
+                if (!response.ok) {
+                    throw new Error("Delete failed")
+                }
+                
+                return true
+            }
+            
+            await toast.promise(deleteAnimalPromise(), {
+                loading: `Deleting ${animal.name}...`,
+                success: `${animal.name} deleted`,
+                error: `Failed to delete ${animal.name}`
+            })
+            
+            navigate('/animals')
+        }
+
+        catch (error) {
+            console.log(error)
+        }
     }
 
   return (

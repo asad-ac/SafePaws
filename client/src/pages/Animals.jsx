@@ -60,9 +60,17 @@ const deleteAnimal = async (animal) => {
     }
   
     try {
-      const promise = fetch(`http://localhost:3001/animals/${animal.animal_id}`, options)
+        const deleteAnimalPromise = async () => {
+            const response = fetch(`http://localhost:3001/animals/${animal.animal_id}`, options)
 
-      toast.promise(promise, {
+            if (!response.ok) {
+                throw new Error("Delete failed")
+            }
+
+        return true
+        }
+
+      await toast.promise(promise, {
         loading: `Deleting ${animal.name}...`,
         success: `${animal.name} deleted`,
         error: `Failed to delete ${animal.name}`
