@@ -25,7 +25,6 @@ const EditSponsor = (props) => {
     }
 
     try {
-
       const updateSponsorPromise = async () => {
         const response = await fetch(`http://localhost:3001/sponsors/${props.sponsor.sponsor_id}`, options)
 
@@ -47,7 +46,6 @@ const EditSponsor = (props) => {
         prev.map((sponsor) =>
           sponsor.sponsor_id === updatedSponsor.sponsor_id ? updatedSponsor: sponsor))
       props.setIsEditOpen(false)
-
       }
 
       catch (error) {
