@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import {IoAddSharp} from "react-icons/io5";
+import {toast} from 'react-hot-toast'
 
 const AddVolunteer = (props) => {
     // boolean prop and setter state passed to add to array
@@ -24,13 +25,33 @@ const AddVolunteer = (props) => {
             body: JSON.stringify(form)
         }
 
-        const response = await fetch('http://localhost:3001/volunteers', options)
-        const newVolunteer = await response.json()
+        try {
+          const addVolunteerPromise = async () => {
+            const response = await fetch('http://localhost:3001/volunteers', options)
+  
+            if (!response.ok) {
+              throw new Error("Add failed")
+            }
+  
+            return await response.json()
+          }
+  
+          const newVolunteer = await toast.promise(addVolunteerPromise(), {
+            loading: `Adding ${form.name}...`,
+            success: `${form.name} added`,
+            error: `Failed to add ${form.name}`
+          })
+  
+          props.setVolunteers((prev) => [...prev, newVolunteer])
+          props.setIsAddOpen(false)
+  
+          setForm({name: '', address: '', phone: '', email: '', assigned_duty: '', sanctuary_id: 1})
 
-        props.setVolunteers((prev) => [...prev, newVolunteer])
-        props.setIsAddOpen(false)
+        }
 
-        setForm({name: '', address: '', phone: '', email: '', assigned_duty: '', sanctuary_id: 1})
+        catch (error) {
+          console.log(error)
+        }
     }
   
     return (

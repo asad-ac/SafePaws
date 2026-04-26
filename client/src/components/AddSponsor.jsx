@@ -27,7 +27,7 @@ const AddSponsor = (props) => {
         }
 
         try {
-          const newSponsor = async () => {
+          const addSponsorPromise = async () => {
             const response = await fetch('http://localhost:3001/sponsors', options)
   
             if (!response.ok) {
@@ -37,7 +37,7 @@ const AddSponsor = (props) => {
             return await response.json()
           }
   
-          toast.promise(newSponsor(), {
+          const newSponsor = await toast.promise(addSponsorPromise(), {
             loading: `Adding ${form.name}...`,
             success: `${form.name} added`,
             error: `Failed to add ${form.name}`
