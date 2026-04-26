@@ -67,7 +67,7 @@ const deleteAnimal = async (animal) => {
                 throw new Error("Delete failed")
             }
 
-        return true
+            return true
         }
 
       await toast.promise(deleteAnimalPromise(), {
