@@ -53,9 +53,9 @@ const Sponsors = () => {
             // goes through array of sponsors and returns array of sponsors who are not the one that was deleted 
             setSponsors((prev) => prev.filter((s) => s.sponsor_id !== sponsor.sponsor_id))
         }
-        catch (error) {
-            console.error(error)
-        }
+            catch (error) {
+                console.error(error)
+            }
     }
 
     const searchSponsors = sponsors.filter((s) => {
