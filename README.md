@@ -36,8 +36,10 @@ All animals deserve a good environment and should not have to go through abuse, 
 
   [![Watch the demo](https://cdn.loom.com/sessions/thumbnails/d96fef29bffc4ea799ab5fcb1d4e8e9b-87bb6542300468f8-full-play.gif)](https://www.loom.com/share/d96fef29bffc4ea799ab5fcb1d4e8e9bD)
 
-### CRUD Workflow
+### ✅ CRUD Workflow
   Use modal-based CRUD forms to streamline workflows and reduce unnecessary page navigation for staff.
+
+  ![Demo](./milestones/demo/crud-modal.gif)
 
 ### Social Media Post Generation
   Enable post generation for individual animals to support donation campaigns and volunteer outreach.
@@ -45,16 +47,18 @@ All animals deserve a good environment and should not have to go through abuse, 
 ### GitHub Authentication
   Implement GitHub authentication so staff users can securely manage their assigned sanctuary and its animals, sponsors, and volunteers.
 
-### Toast Notifications
-  Add toast notifications to provide feedback when animals, sponsors, or volunteers are successfully or unsuccessfully added, updated, or deleted in the system.
-
-### Loading Skeletons
-  Utilize loading skeletons to improve performance and give users a preview of incoming content while data loads.
-
 ### ✅ Error Handling
   Handle errors gracefully to maintain a smooth user experience and strong data integrity.
 
   ![Demo](./milestones/demo/error-handling.gif)
+
+### ✅ Toast Notifications
+  Add toast notifications to provide feedback when animals, sponsors, or volunteers are successfully or unsuccessfully added, updated, or deleted in the system.
+
+  ![Demo](./milestones/demo/toast-notifications.gif)
+
+### Loading Skeletons
+  Utilize loading skeletons to improve performance and give users a preview of incoming content while data loads.
 
 ## Installation Instructions
 
