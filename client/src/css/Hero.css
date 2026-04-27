@@ -1,0 +1,17 @@
+.wallpaper {
+    display: block;
+    width: calc(100% - 40px);
+    height: calc(100vh - 40px);
+    margin: 20px auto;
+    object-fit: cover;
+}
+
+.buttongroup {
+    position: fixed;
+    bottom: 60px;
+    left: 80px;
+    right: 80px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
