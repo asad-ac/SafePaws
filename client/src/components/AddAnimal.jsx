@@ -3,12 +3,8 @@ import {IoAddSharp} from "react-icons/io5";
 import {toast} from 'react-hot-toast'
 
 const AddAnimal = (props) => {
-
-    // TODO: fetch tags
-    // TODO: selected tags
-    // TODO: fix handlesubmit with spread
-    // TODO: cleaning status, care status, feeding status
-    // TODO: pass props?
+  
+    // TODO: gracefully handle all errors
 
     const [form, setForm] = useState({name: '', description: '', age: '', weight: '', height: '', image_url: '', date_intake: '', species: '', cleaning_status: false, care_status: false, feeding_status: false, sanctuary_id: 1})
     const [tags, setTags] = useState([])
