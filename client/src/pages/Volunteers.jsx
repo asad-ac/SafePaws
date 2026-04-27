@@ -80,7 +80,11 @@ const Volunteers = () => {
                                 <p>{volunteer.email}</p>
                                 <p>{volunteer.assigned_duty}</p>
                                 <button onClick={() => {setSelected(volunteer), setIsEditOpen(true)}}> <MdEdit /> Edit </button>
-                                <button onClick={() => deleteVolunteer(volunteer)}> <FaRegTrashAlt /> Delete </button>
+                                <button command="show-modal" commandfor="delete-confirmation"> <FaRegTrashAlt /> Delete </button>
+                                <dialog id="delete-confirmation">Are you sure you'd like to delete an Volunteer? This action can NOT be undone. 
+                                    <button commandfor="delete-confirmation" command="close" >Close</button>
+                                    <button onClick={() => deleteVolunteer(volunteer)} > DELETE </button>
+                                </dialog>
                             </div>
                         </div>
                     )

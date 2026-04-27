@@ -79,7 +79,11 @@ const Sponsors = () => {
                             <p> {sponsor.phone} </p>
                             <p> {sponsor.email} </p>
                             <button onClick={() => {setSelected(sponsor), setIsEditOpen(true)}}> <MdEdit /> Edit </button>
-                            <button onClick={() => deleteSponsor(sponsor)}> <FaRegTrashAlt /> Delete </button>
+                            <button command="show-modal" commandfor="delete-confirmation"> <FaRegTrashAlt /> Delete </button>
+                            <dialog id="delete-confirmation">Are you sure you'd like to delete an Sponsor? This action can NOT be undone. 
+                                <button commandfor="delete-confirmation" command="close" >Close</button>
+                                <button onClick={() => deleteSponsor(sponsor)} > DELETE </button>
+                            </dialog>
                         </div>
                     </div>
                 )

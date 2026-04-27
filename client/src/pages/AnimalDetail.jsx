@@ -82,7 +82,12 @@ const AnimalDetail = () => {
 
                         <div>
                             <button onClick={() => setIsEditOpen(true)}> <MdEdit /> Edit </button>
-                            <button onClick={deleteAnimal}> <FaRegTrashAlt /> Delete </button>
+
+                            <button command="show-modal" commandfor="delete-confirmation"> <FaRegTrashAlt /> Delete </button>
+                            <dialog id="delete-confirmation">Are you sure you'd like to delete an Animal from the Sanctuary? This action can NOT be undone. 
+                                <button commandfor="delete-confirmation" command="close" >Close</button>
+                                <button onClick={deleteAnimal} > DELETE </button>
+                            </dialog>
                         </div>
 
                         {isEditOpen && <EditAnimal
