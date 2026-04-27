@@ -1,11 +1,14 @@
 import {useState, useEffect} from 'react'
-import AddVolunteer from '../components/AddVolunteer.jsx'
-import EditVolunteer from '../components/EditVolunteer.jsx'
-import NavBar from '../components/Navbar.jsx'
 import {MdEdit} from "react-icons/md";
 import {IoAddSharp} from "react-icons/io5";
 import {FaRegTrashAlt} from "react-icons/fa";
 import {toast} from 'react-hot-toast'
+
+import AddVolunteer from '../components/AddVolunteer.jsx'
+import EditVolunteer from '../components/EditVolunteer.jsx'
+import NavBar from '../components/NavBar.jsx'
+import HomeBar from '../components/HomeBar.jsx'
+import Logout from '../components/Logout.jsx';
 
 const Volunteers = () => {
     
@@ -67,7 +70,9 @@ const Volunteers = () => {
     
     return (
         <>
+            <HomeBar />
             <NavBar/>
+            <Logout />
             <div>
                 <h1> Volunteers </h1>
                 <input type='search' placeholder='Search by name' value={search} onChange={(e) => setSearch(e.target.value)} />

@@ -1,7 +1,7 @@
 import React from 'react'
 import wallpaper from '../assets/wallpaper.jpg'
 import '../css/Hero.css'
-import NavBar from '../components/NavBar'
+import HomeBar from '../components/HomeBar'
 import Footer from '../components/Footer'
 import Logout from '../components/Logout'
 import { Link } from 'react-router-dom'
@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 const Hero = () => {
   return (
     <>
-      <NavBar />
+      <HomeBar />
       <Logout />
       <div className="wallpaper" style={{ backgroundImage: `url(${wallpaper})` }} />
       <p1 className="hero-text">Every animal deserves a safe and enriching life.<br />Thank you for your continued support.</p1>

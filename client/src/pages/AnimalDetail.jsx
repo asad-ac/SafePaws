@@ -1,11 +1,14 @@
 import {useState, useEffect} from 'react'
 import {useParams, Link, useNavigate} from 'react-router-dom'
-import EditAnimal from '../components/EditAnimal.jsx'
-import NavBar from '../components/Navbar.jsx'
 import {IoReturnDownBackOutline} from "react-icons/io5";
 import {MdEdit} from "react-icons/md";
 import {FaRegTrashAlt} from "react-icons/fa";
 import {toast} from 'react-hot-toast'
+
+import EditAnimal from '../components/EditAnimal.jsx'
+import NavBar from '../components/NavBar.jsx'
+import HomeBar from '../components/HomeBar.jsx'
+import Logout from '../components/Logout.jsx'
 
 const AnimalDetail = () => {
 
@@ -61,7 +64,9 @@ const AnimalDetail = () => {
 
   return (
     <div>
+        <HomeBar />
         <NavBar/>
+        <Logout />
         <h1> View Animal </h1>
         <Link to='/animals'> <IoReturnDownBackOutline /> Back </Link>
         <div>
