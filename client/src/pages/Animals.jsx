@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import AddAnimal from '../components/AddAnimal.jsx'
 import EditAnimal from '../components/EditAnimal.jsx'
+import NavBar from '../components/Navbar.jsx'
 import {Link} from 'react-router-dom'
 import {IoAddSharp} from 'react-icons/io5'
 import {MdEdit} from "react-icons/md";
@@ -44,6 +45,7 @@ const Animals = () => {
 
     useEffect(() => {
         const fetchAllAnimals = async () => {
+            // TODO: add error catching if the fetch returns an error?
             const response = await fetch('http://localhost:3001/animals')
             const data = await response.json()
             setAnimals(data)
@@ -155,6 +157,7 @@ const deleteAnimal = async (animal) => {
 
   return (
     <>
+        <NavBar/>
         <div className='sidebar-based-on-figma-file'>
                 <h1> Animals </h1>
             <div>

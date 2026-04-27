@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import AddVolunteer from '../components/AddVolunteer.jsx'
 import EditVolunteer from '../components/EditVolunteer.jsx'
+import NavBar from '../components/Navbar.jsx'
 import {MdEdit} from "react-icons/md";
 import {IoAddSharp} from "react-icons/io5";
 import {FaRegTrashAlt} from "react-icons/fa";
@@ -66,6 +67,7 @@ const Volunteers = () => {
     
     return (
         <>
+            <NavBar/>
             <div>
                 <h1> Volunteers </h1>
                 <input type='search' placeholder='Search by name' value={search} onChange={(e) => setSearch(e.target.value)} />

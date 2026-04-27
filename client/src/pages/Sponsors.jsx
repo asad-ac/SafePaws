@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import AddSponsor from '../components/AddSponsor.jsx'
 import EditSponsor from '../components/EditSponsor.jsx'
+import NavBar from '../components/Navbar.jsx'
 import {MdEdit} from "react-icons/md";
 import {IoAddSharp} from "react-icons/io5";
 import {FaRegTrashAlt} from "react-icons/fa";
@@ -64,6 +65,7 @@ const Sponsors = () => {
     
   return (
     <>
+        <NavBar/>
         <div>
             <h1> Sponsors </h1>
             <input type='search' value={search} placeholder='Search by name' onChange={(e) => setSearch(e.target.value)} />
