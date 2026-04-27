@@ -1,5 +1,5 @@
 import passport from "passport"
-import GitHubStategy from "passport-github2"
+import GitHubStrategy from "passport-github2"
 
 const options = {
     clientID: process.env.GITHUB_CLIENT_ID,
@@ -11,4 +11,16 @@ const verify = (accessToken, refreshToken, profile, callback) => {
     return callback(null, profile)
 }
 
-p
+passport.use(new GitHubStrategy(options, verify))
+
+// runs when user logs in
+passport.serializeUser((user, callback) => {
+    callback(null, user)
+})
+
+// runs on every request after login
+passport.deserializeUser((user, callback) => {
+    callback(null, user)
+})
+
+export default passport
