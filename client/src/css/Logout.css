@@ -1,0 +1,20 @@
+.logout-container {
+    position: fixed;
+    top: 80px;
+    right: 120px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    z-index: 1000;
+}
+
+.profile-img {
+    width: 56px;
+    height: 56px;
+}
+
+.logout-btn {
+    font-size: 36px;
+    color: black;
+}
