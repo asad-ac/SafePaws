@@ -6,7 +6,7 @@ import logo from '../assets/logo.svg'
 const NavBar = () =>{
     return (
         <div className="navbar-brand">
-            <img className="logobtn" src={logo} alt="logo" />
+            <Link to="/hero"><img className="logobtn" src={logo} alt="logo" /></Link>
             <div className="navbar-text">
                 <h1 className="heading">Safe Paws</h1>
                 <p className="subheading">Rehabilitation & Sanctuary</p>

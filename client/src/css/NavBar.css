@@ -23,16 +23,17 @@
 .heading {
     font-size: 88px;
     font-family: "Playfair Display", serif;
-    letter-spacing: 2px;
+    letter-spacing: 4px;
     line-height: 1;
     font-weight: 900;
-    color: #1E1E1E;
+    color: #000000;
     margin: 0;
 }
 
 .subheading {
-    font-size: 36px;
-    font-family: "Montserrat", sans-serif;
-    color: #000000;
+    font-size: 35px;
+    color: #1E1E1E;
     margin: 0;
+    font-variant: small-caps;
+    font-weight: 700;
 }
