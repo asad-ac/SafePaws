@@ -215,6 +215,8 @@ const deleteAnimal = async (animal) => {
                             <h1> {animal.name} </h1>
                             <p> {animal.species} </p>
                             <p> {animal.weight} Pounds </p>
+                            <p> {animal.age} Years Old </p>
+                            <p> {animal.date_intake && new Date(animal.date_intake).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'})} </p>
                             {animal.tags?.length > 0 ? animal.tags.map((tag) => {
                                 return (
                                     <div key={tag.tag_id}>
