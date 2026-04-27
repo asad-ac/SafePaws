@@ -16,6 +16,7 @@ const Sponsors = () => {
     const [isEditOpen, setIsEditOpen] = useState(false)
     const [selected, setSelected] = useState(null)
     const [search, setSearch] = useState('')
+    const [sortBy, setSortBy] = useState('name')
 
     useEffect(() => {
         const fetchAllSponsors = async () => {
@@ -59,8 +60,18 @@ const Sponsors = () => {
             }
     }
 
-    const searchSponsors = sponsors.filter((s) => {
+    const processedSponsors = [...sponsors].filter((s) => {
         return s.name.toLowerCase().includes(search.trim().toLowerCase())
+    })
+    .sort((a,b) => {
+        if (sortBy === 'lowToHigh') {
+            return Number(a.amount) - Number(b.amount)
+        }
+        if (sortBy === 'highToLow') {
+            return Number(b.amount) - Number(a.amount)
+        }
+
+        return a.name.localeCompare(b.name)
     })
     
   return (
@@ -69,9 +80,15 @@ const Sponsors = () => {
         <div>
             <h1> Sponsors </h1>
             <input type='search' value={search} placeholder='Search by name' onChange={(e) => setSearch(e.target.value)} />
+            <label htmlFor="sort"> Sort By </label>
+            <select id='sort' value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+                <option value="name"> Name A-Z </option>
+                <option value="lowToHigh"> Amount (Low To High) </option>
+                <option value="highToLow"> Amount (High To Low) </option>
+            </select>
             {/* we map sponsors state with all fields of name, amount, address, phone, email */}
             <button onClick={() => setIsAddOpen(true)}> <IoAddSharp /> Add Sponsor </button>
-            {searchSponsors.length > 0 ? searchSponsors.map((sponsor) => {
+            {processedSponsors.length > 0 ? processedSponsors.map((sponsor) => {
                 return (
                     <div key={sponsor.sponsor_id} className=''>
                         <div className=''> 
