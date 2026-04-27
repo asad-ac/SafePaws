@@ -3,7 +3,7 @@
     max-width: 900px;
     margin: 0 auto;
     padding: 20px;
-    font-family: Georgia, 'Times New Roman', Times, serif; /* Matches the serif font in the photo */
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 /* --- Header Area --- */
@@ -32,11 +32,11 @@
 }
 
 .btn-add {
-    background-color: #92dca8; /* Light green from the photo */
+    background-color: #92dca8;
     color: #111;
     border: none;
     padding: 10px 20px;
-    border-radius: 25px; /* Pill shape */
+    border-radius: 25px;
     font-weight: bold;
     font-size: 0.9rem;
     cursor: pointer;
@@ -150,7 +150,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6); /* Dark semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.6);
     display: flex;
     justify-content: center;
     align-items: center;
