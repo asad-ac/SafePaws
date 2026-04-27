@@ -1,12 +1,15 @@
 import {useState, useEffect} from 'react'
-import AddSponsor from '../components/AddSponsor.jsx'
-import EditSponsor from '../components/EditSponsor.jsx'
-import NavBar from '../components/Navbar.jsx'
+
 import {MdEdit} from "react-icons/md";
 import {IoAddSharp} from "react-icons/io5";
 import {FaRegTrashAlt} from "react-icons/fa";
 import {toast} from 'react-hot-toast'
 
+import AddSponsor from '../components/AddSponsor.jsx'
+import EditSponsor from '../components/EditSponsor.jsx'
+import NavBar from '../components/NavBar.jsx'
+import HomeBar from '../components/HomeBar.jsx'
+import Logout from '../components/Logout.jsx';
 const Sponsors = () => {
 
     const [sponsors, setSponsors] = useState([])
@@ -75,6 +78,8 @@ const Sponsors = () => {
   return (
     <>
         <NavBar/>
+        <HomeBar />
+        <Logout />
         <div>
             <h1> Sponsors </h1>
             <input type='search' value={search} placeholder='Search by name' onChange={(e) => setSearch(e.target.value)} />

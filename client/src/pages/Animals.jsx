@@ -1,14 +1,17 @@
 import {useState, useEffect} from 'react'
-import AddAnimal from '../components/AddAnimal.jsx'
-import EditAnimal from '../components/EditAnimal.jsx'
-import NavBar from '../components/Navbar.jsx'
 import {Link} from 'react-router-dom'
 import {IoAddSharp} from 'react-icons/io5'
 import {MdEdit} from "react-icons/md";
 import {FaRegTrashAlt} from "react-icons/fa";
 import {IoIosWarning} from "react-icons/io";
 import {RiResetLeftFill} from "react-icons/ri";
-import toast from 'react-hot-toast'
+import {toast} from 'react-hot-toast'
+
+import AddAnimal from '../components/AddAnimal.jsx'
+import EditAnimal from '../components/EditAnimal.jsx'
+import NavBar from '../components/NavBar.jsx'
+import HomeBar from '../components/HomeBar.jsx'
+import Logout from '../components/Logout.jsx';
 
 const Animals = () => {
 
@@ -148,7 +151,9 @@ const deleteAnimal = async (animal) => {
 
   return (
     <>
+        <HomeBar />
         <NavBar/>
+        <Logout />
         <div className='sidebar-based-on-figma-file'>
                 <h1> Animals </h1>
             <div>
