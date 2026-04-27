@@ -101,7 +101,7 @@ const deleteAnimal = async (animal) => {
     // TODO: allow user to select multiple status
     // TODO: select tags
 
-    const processedAnimals = [...animals].filter((a) =>
+    const processedAnimals = animals.filter((a) =>
         a.name.toLowerCase().includes(search.trim().toLowerCase()) ||
         a.species.toLowerCase().includes(search.trim().toLowerCase()))
         .filter((a) => {
