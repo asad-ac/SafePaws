@@ -23,7 +23,7 @@ Need to communicate and coordinate more effectively, difficult through text.
 
 ### 3. Did you finish all of your tasks in your sprint plan for this week? If you did not finish all of the planned tasks, how would you prioritize the remaining tasks on your list?
 
-Yes just need UI ASAP. Have to polish and debug.
+Yes just need remaining features to ensure user experience and have presentable project to put together.
 
 ### 4. Which features and user stories would you consider “at risk”? How will you change your plan if those items remain “at risk”?
 
