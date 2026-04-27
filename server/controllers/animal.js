@@ -1,4 +1,4 @@
-import { pool } from "../config/database.js"
+import {pool} from "../config/database.js"
 
 //TODO: do all filtering and sorting logic in backend?
 
@@ -117,8 +117,31 @@ const updateAnimal = async (req, res) => {
             await client.query(`INSERT INTO animal_tag (animal_id, tag_id) VALUES ($1, $2)`, [animal_id, tag_id])
         }
 
+        const updatedAnimal = await client.query(
+            `
+            SELECT 
+              a.*,
+              COALESCE(
+                json_agg(
+                  json_build_object(
+                    'tag_id', t.tag_id,
+                    'name', t.name,
+                    'description', t.description
+                  )
+                ) FILTER (WHERE t.tag_id IS NOT NULL),
+                '[]'
+              ) AS tags
+            FROM animal a
+            LEFT JOIN animal_tag at ON a.animal_id = at.animal_id
+            LEFT JOIN tag t ON at.tag_id = t.tag_id
+            WHERE a.animal_id = $1
+            GROUP BY a.animal_id
+            `,
+            [animal_id]
+          )
+
         await client.query('COMMIT')
-        res.status(200).json(animalResult.rows[0])
+        res.status(200).json(updatedAnimal.rows[0])
     } catch (error) {
         await client.query('ROLLBACK')
         res.status(409).json({error: error.message})

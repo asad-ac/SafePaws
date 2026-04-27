@@ -1,7 +1,10 @@
 import {useState} from 'react'
 import {IoAddSharp} from "react-icons/io5";
+import {toast} from 'react-hot-toast'
 
 const AddSponsor = (props) => {
+
+  //TODO: empty all forms after submission for smoother UX.
 
     const [form, setForm] = useState({name: '', amount: '', address: '', phone: '', email: '', sanctuary_id: 1})
 
@@ -23,27 +26,49 @@ const AddSponsor = (props) => {
             body: JSON.stringify(form)
         }
 
-        const response = await fetch('http://localhost:3001/sponsors', options)
-        const newSponsor = await response.json()
+        try {
+          const addSponsorPromise = async () => {
+            const response = await fetch('http://localhost:3001/sponsors', options)
+  
+            if (!response.ok) {
+              throw new Error("Add failed")
+            }
+  
+            return await response.json()
+          }
+  
+          const newSponsor = await toast.promise(addSponsorPromise(), {
+            loading: `Adding ${form.name}...`,
+            success: `${form.name} added`,
+            error: `Failed to add ${form.name}`
+          })
+  
+          props.setSponsors((prev) => [...prev, newSponsor])
+          props.setIsAddOpen(false)
+  
+          setForm({name: '', amount: '', address: '', phone: '', email: '', sanctuary_id: 1})
 
-        props.setSponsors((prev) => [...prev, newSponsor])
-        props.setIsAddOpen(false)
+        }
+
+        catch (error) {
+          console.error(error)
+        }
     }
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label> Name: </label>
-        <input required type="text" name='name' value={form.name} onChange={handleChange} />
-        <label> Amount: </label>
-        <input required type="number" name='amount' value={form.amount} onChange={handleChange} />
-        <label> Address: </label>
-        <input required type="text" name='address' value={form.address} onChange={handleChange} />
-        <label>Phone: </label>
-        <input required type="tel" name='phone' value={form.phone} onChange={handleChange} />
-        <label>Email: </label>
-        <input required type="email" name='email' value={form.email} onChange={handleChange} />
-        <button type="submit"> <IoAddSharp /> Add Sponsor</button>
+        <label htmlFor="name"> Name: </label>
+        <input placeholder="e.g. Wildlife Rescue Fund" id="name" required type="text" name='name' value={form.name} onChange={handleChange} />
+        <label htmlFor="amount"> Amount: </label>
+        <input placeholder="e.g. 500.00" id="amount" required type="number" name='amount' value={form.amount} onChange={handleChange} />
+        <label htmlFor="address"> Address: </label>
+        <input placeholder="e.g. 210 Ocean Dr, Miami, FL" id="address" required type="text" name='address' value={form.address} onChange={handleChange} />
+        <label htmlFor="phone"> Phone: </label>
+        <input placeholder="e.g. 305-482-9172" id="phone" required type="tel" name='phone' value={form.phone} onChange={handleChange} />
+        <label htmlFor="email"> Email: </label>
+        <input placeholder="e.g. contact@wildliferescue.org" id="email" required type="email" name='email' value={form.email} onChange={handleChange} />
+        <button type="submit"> <IoAddSharp /> Add Sponsor </button>
       </form>
         <button type="button" onClick={() => props.setIsAddOpen(false)}> Cancel </button>
     </div>

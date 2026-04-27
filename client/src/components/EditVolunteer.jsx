@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import {toast} from 'react-hot-toast'
 
 const EditVolunteer = (props) => {
 
@@ -23,28 +24,47 @@ const EditVolunteer = (props) => {
             body: JSON.stringify(form)
         }
 
-        const response = await fetch(`http://localhost:3001/volunteers/${props.volunteer.volunteer_id}`, options)
-        const updatedVolunteer = await response.json()
+        try {
+          const updateVolunteerPromise = async () => {
+            const response = await fetch(`http://localhost:3001/volunteers/${props.volunteer.volunteer_id}`, options)
+            
+            if (!response.ok) {
+              throw new Error("Update failed")
+            }
+            
+            return await response.json()
+          }
 
-        props.setVolunteers((prev) => 
+          const updatedVolunteer = await toast.promise(updateVolunteerPromise(), {
+            loading: `Updating ${form.name}...`,
+            success: `${form.name} updated`,
+            error: `Failed to update ${form.name}`
+          })
+          
+          props.setVolunteers((prev) => 
             prev.map((volunteer) => 
-                volunteer.volunteer_id === updatedVolunteer.volunteer_id ? updatedVolunteer : volunteer))
-        props.setIsEditOpen(false)
+              volunteer.volunteer_id === updatedVolunteer.volunteer_id ? updatedVolunteer : volunteer))
+          props.setIsEditOpen(false)
+        }
+
+        catch (error) {
+          console.error(error)
+        } 
     }
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label> Name: </label>
-        <input required type='text' name='name' value={form.name} onChange={handleChange} />
-        <label> Address:</label>
-        <input required type='text' name='address' value={form.address} onChange={handleChange} />
-        <label> Phone: </label>
-        <input required type='tel' name='phone' value={form.phone} onChange={handleChange} />
-        <label> Email: </label>
-        <input required type='email' name='email' value={form.email} onChange={handleChange} />
-        <label> Assigned Duty: </label>
-        <textarea required type='text' name='assigned_duty' value={form.assigned_duty} onChange={handleChange}></textarea>
+        <label htmlFor="name"> Name: </label>
+        <input id="name" required type='text' name='name' value={form.name} onChange={handleChange} />
+        <label htmlFor="address"> Address: </label>
+        <input id="address" required type='text' name='address' value={form.address} onChange={handleChange} />
+        <label htmlFor="phone"> Phone: </label>
+        <input id="phone" required type='tel' name='phone' value={form.phone} onChange={handleChange} />
+        <label htmlFor="email"> Email: </label>
+        <input id="email" required type='email' name='email' value={form.email} onChange={handleChange} />
+        <label htmlFor="assigned_duty"> Assigned Duty: </label>
+        <textarea rows={2} style={{resize: 'none'}} id="assigned_duty" required type='text' name='assigned_duty' value={form.assigned_duty} onChange={handleChange}></textarea>
         <button type='submit'> Save </button>
       </form>
       <button type='button' onClick={() => props.setIsEditOpen(false)}> Cancel </button>
