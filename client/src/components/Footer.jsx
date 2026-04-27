@@ -1,11 +1,12 @@
 import React from 'react'
+import '../css/Footer.css'
 
-const Footer = () => {
-    
+const Footer = () =>{
     return (
         <div className="footer">
-            <span>SafePaws — Rehabilitation and Sanctuary</span>
-            <span>Built with care by Rajiv, Sam, Asad, and Baire</span>
+            <p1>(305) 130-PAWS</p1>
+            <p1>130 nw 8th ave  Miami, FL 33188</p1>
+            <p1>safepaws@npf.org</p1>
         </div>
     )
 }
