@@ -52,8 +52,6 @@ const EditSponsor = (props) => {
         console.error(error)
       }
     }
-    
-   // TODO: add for, id, and autocomplete attributes
 
   return (
     <div>

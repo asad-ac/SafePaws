@@ -15,8 +15,6 @@ const Volunteers = () => {
     const [selected, setSelected] = useState(null)
     const [search, setSearch] = useState('')
 
-    // TODO: search bar to search by name
-
     useEffect(() => {
         const fetchAllVolunteers = async () => {
             const response = await fetch(`http://localhost:3001/volunteers`)
