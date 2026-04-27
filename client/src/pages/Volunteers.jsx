@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import AddVolunteer from '../components/AddVolunteer.jsx'
 import EditVolunteer from '../components/EditVolunteer.jsx'
+import NavBar from '../components/Navbar.jsx'
 import {MdEdit} from "react-icons/md";
 import {IoAddSharp} from "react-icons/io5";
 import {FaRegTrashAlt} from "react-icons/fa";
@@ -66,6 +67,7 @@ const Volunteers = () => {
     
     return (
         <>
+            <NavBar/>
             <div>
                 <h1> Volunteers </h1>
                 <input type='search' placeholder='Search by name' value={search} onChange={(e) => setSearch(e.target.value)} />
@@ -80,7 +82,11 @@ const Volunteers = () => {
                                 <p>{volunteer.email}</p>
                                 <p>{volunteer.assigned_duty}</p>
                                 <button onClick={() => {setSelected(volunteer), setIsEditOpen(true)}}> <MdEdit /> Edit </button>
-                                <button onClick={() => deleteVolunteer(volunteer)}> <FaRegTrashAlt /> Delete </button>
+                                <button command="show-modal" commandfor="delete-confirmation"> <FaRegTrashAlt /> Delete </button>
+                                <dialog id="delete-confirmation">Are you sure you'd like to delete an Volunteer? This action can NOT be undone. 
+                                    <button commandfor="delete-confirmation" command="close" >Close</button>
+                                    <button onClick={() => deleteVolunteer(volunteer)} > DELETE </button>
+                                </dialog>
                             </div>
                         </div>
                     )

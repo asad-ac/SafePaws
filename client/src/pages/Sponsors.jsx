@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import AddSponsor from '../components/AddSponsor.jsx'
 import EditSponsor from '../components/EditSponsor.jsx'
+import NavBar from '../components/Navbar.jsx'
 import {MdEdit} from "react-icons/md";
 import {IoAddSharp} from "react-icons/io5";
 import {FaRegTrashAlt} from "react-icons/fa";
@@ -64,6 +65,7 @@ const Sponsors = () => {
     
   return (
     <>
+        <NavBar/>
         <div>
             <h1> Sponsors </h1>
             <input type='search' value={search} placeholder='Search by name' onChange={(e) => setSearch(e.target.value)} />
@@ -79,7 +81,11 @@ const Sponsors = () => {
                             <p> {sponsor.phone} </p>
                             <p> {sponsor.email} </p>
                             <button onClick={() => {setSelected(sponsor), setIsEditOpen(true)}}> <MdEdit /> Edit </button>
-                            <button onClick={() => deleteSponsor(sponsor)}> <FaRegTrashAlt /> Delete </button>
+                            <button command="show-modal" commandfor="delete-confirmation"> <FaRegTrashAlt /> Delete </button>
+                            <dialog id="delete-confirmation">Are you sure you'd like to delete an Sponsor? This action can NOT be undone. 
+                                <button commandfor="delete-confirmation" command="close" >Close</button>
+                                <button onClick={() => deleteSponsor(sponsor)} > DELETE </button>
+                            </dialog>
                         </div>
                     </div>
                 )
