@@ -165,7 +165,7 @@ const Sponsors = () => {
                                 <button command="show-modal" commandfor="delete-confirmation" className="btn-delete"> <FaRegTrashAlt /> Delete </button>
                             </div>
 
-                            <dialog id="delete-confirmation" className="delete-dialog">Are you sure you'd like to delete the sponsor: {sponsor.name}? This action can NOT be undone. 
+                            <dialog id="delete-confirmation" onClick={closeDialogOutside} className="delete-dialog">Are you sure you'd like to delete the sponsor: {sponsor.name}? This action can NOT be undone. 
                                     <button commandfor="delete-confirmation" command="close" className="btn-cancel">Close</button>
                                     <button onClick={() => deleteSponsor(sponsor)} className="btn-delete"> DELETE </button>
                             </dialog>
