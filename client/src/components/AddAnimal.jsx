@@ -4,8 +4,6 @@ import {toast} from 'react-hot-toast'
 import '../css/AddAnimal.css'
 
 const AddAnimal = (props) => {
-  
-    // TODO: gracefully handle all errors
 
     const [form, setForm] = useState({name: '', description: '', age: '', weight: '', height: '', image_url: '', date_intake: '', species: '', cleaning_status: false, care_status: false, feeding_status: false, sanctuary_id: 1})
     const [tags, setTags] = useState([])
@@ -92,9 +90,10 @@ const AddAnimal = (props) => {
         )
       }
 
+      // propagation function blocks close while outer div closes it
   return (
-    <div className='modal-overlay'>
-      <div className='modal'>
+    <div className='modal-overlay' onClick={() => props.setIsAddOpen(false)}> 
+      <div className='modal' onClick={(e) => e.stopPropagation()}>
         <h2>Add Animal</h2>
         <form className='modal-form' onSubmit={handleSubmit}>
           <label htmlFor='name'>Name</label>

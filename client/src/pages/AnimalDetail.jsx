@@ -9,7 +9,7 @@ import EditAnimal from '../components/EditAnimal.jsx'
 import NavBar from '../components/NavBar.jsx'
 import HomeBar from '../components/HomeBar.jsx'
 import Logout from '../components/Logout.jsx'
-import AnimalDetailSkeleton from '../components/SkeletonAnimalDetail.jsx';
+import SkeletonAnimalDetail from '../components/SkeletonAnimalDetail.jsx';
 import '../css/AnimalDetail.css'
 
 const AnimalDetail = () => {
@@ -94,7 +94,7 @@ const AnimalDetail = () => {
                 <Link className="back-link" to='/animals'><IoReturnDownBackOutline /> Back</Link>
             </div>
             {loading ? (
-                <AnimalDetailSkeleton />
+                <SkeletonAnimalDetail />
             ) : error ? (
                 <p>Error: {error}</p>
             ) : animal && animal.animal_id ? (
