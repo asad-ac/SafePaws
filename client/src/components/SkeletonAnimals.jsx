@@ -5,7 +5,7 @@ const SkeletonAnimals = () => {
     return (
         <>
             {[...Array(10)].map((_, index) => (
-                <div key={index} className="animal-card">
+                <div key={index} className="">
                     <Skeleton height={180} className="animal-card-img" />
 
                     <div className="animal-card-info">
