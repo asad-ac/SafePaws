@@ -89,7 +89,7 @@ const Sponsors = () => {
                     <IoAddSharp /> Add Sponsor
                 </button>
             </div>
-            <div className='sponsors-searchbar'>
+            <div className='sponsors-sorting-section'>
                 <input 
                     className="search-input"
                     type='search' 
@@ -97,14 +97,14 @@ const Sponsors = () => {
                     placeholder='Search by name' 
                     onChange={(e) => setSearch(e.target.value)} 
                 />
+
+                <label htmlFor="sort"> Sort By </label>
+                <select id='sort' className="sponsors-sort-by" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+                    <option value="name"> Name A-Z </option>
+                    <option value="lowToHigh"> Amount (Low To High) </option>
+                    <option value="highToLow"> Amount (High To Low) </option>
+                </select>
             </div>
-            
-            <label htmlFor="sort"> Sort By </label>
-            <select id='sort' value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-                <option value="name"> Name A-Z </option>
-                <option value="lowToHigh"> Amount (Low To High) </option>
-                <option value="highToLow"> Amount (High To Low) </option>
-            </select>
 
             <div className="list-headers">
                 <span>name</span>

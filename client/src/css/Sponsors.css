@@ -22,10 +22,28 @@
 }
 
 /* --- Controls & Inputs --- */
-.search-input {
+.sponsors-sorting-section{
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.search-input {
+    width: 70%;
     padding: 10px;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
+    margin-right: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: sans-serif;
+}
+
+.sponsors-sort-by{
+    width: 20%;
+    padding: 10px;
+    /* margin-bottom: 30px; */
     border: 1px solid #ccc;
     border-radius: 8px;
     font-family: sans-serif;
