@@ -12,7 +12,7 @@ const SkeletonAnimals = () => {
                         <Skeleton height={24} width="60%" />
                         <Skeleton height={18} width="45%" />
                         <Skeleton height={18} width="35%" />
-                        <Skeleton height={40} width="50%" />
+                        <Skeleton height={18} width="50%" />
                         <Skeleton height={18} width="65%" />
 
                         <div className="animal-card-tags">
