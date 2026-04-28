@@ -267,10 +267,10 @@ const deleteAnimal = async (animal) => {
         </div>
 
         {isAddOpen && 
-        <AddAnimal
-            setIsAddOpen={setIsAddOpen}
-            // boolean and add to array of sponsors with spread 
-            setAnimals={setAnimals} />}
+            <AddAnimal
+                setIsAddOpen={setIsAddOpen}
+                // boolean and add to array of sponsors with spread 
+                setAnimals={setAnimals} />}
 
         {isEditOpen && selected && (
             <EditAnimal
