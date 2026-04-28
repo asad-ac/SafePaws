@@ -1,7 +1,7 @@
 .detail-page {
     position: absolute;
-    top: 200px;
-    left: 380px;
+    padding-top: 240px;
+    left: 80px;
     right: 40px;
     padding-bottom: 60px;
     display: flex;
@@ -26,17 +26,19 @@
 
 .back-link {
     display: flex;
+    margin-left: auto;
+    margin-right: 90px;
     align-items: center;
     gap: 6px;
     font-family: "Quicksand", sans-serif;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 600;
     color: #1E1E1E;
     text-decoration: none;
-    background-color: #F5F5F5;
+    background-color: #9ADAB0;
     border: 1px solid #DDDDDD;
-    border-radius: 24px;
-    padding: 8px 16px;
+    border-radius: 32px;
+    padding: 18px 50px;
 }
 
 .back-link:hover {

@@ -90,14 +90,14 @@ const Sponsors = () => {
                         className="search-input"
                         type='search'
                         value={search}
-                        placeholder='Search by name'
+                        placeholder='name'
                         onChange={(e) => setSearch(e.target.value)}
                     />
                     <label htmlFor="sort"> Sort by </label>
                     <select id='sort' className="sponsors-sort-by" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-                        <option value="name"> Name (A-Z) </option>
-                        <option value="lowToHigh"> Amount (Low To High) </option>
-                        <option value="highToLow"> Amount (High To Low) </option>
+                        <option value="name"> name (A-Z) </option>
+                        <option value="lowToHigh"> amount (low To high) </option>
+                        <option value="highToLow"> amount (high To low) </option>
                     </select>
                 </div>
                 <button className="btn-add" onClick={() => setIsAddOpen(true)}>

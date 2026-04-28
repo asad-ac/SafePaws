@@ -87,16 +87,16 @@
 .needs-container > button {
     margin-left: auto;
     margin-right: 80px;
+    border: none;
     background-color: #9ADAB0;
     color: #1E1E1E;;
-    border: none;
     border-radius: 32px;
-    padding: 18px 40px;
+    padding: 18px 42px;
     font-family: "Quicksand", sans-serif;
     font-size: 18px;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
 .needs-container {
