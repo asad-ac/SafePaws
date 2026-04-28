@@ -4,6 +4,7 @@ import {MdEdit} from "react-icons/md";
 import {IoAddSharp} from "react-icons/io5";
 import {FaRegTrashAlt} from "react-icons/fa";
 import {toast} from 'react-hot-toast'
+import '../css/Sponsors.css'
 
 import AddSponsor from '../components/AddSponsor.jsx'
 import EditSponsor from '../components/EditSponsor.jsx'
@@ -12,13 +13,12 @@ import HomeBar from '../components/HomeBar.jsx'
 import Logout from '../components/Logout.jsx';
 const Sponsors = () => {
 
-    //TODO: search bar to search by name
-
     const [sponsors, setSponsors] = useState([])
     const [isAddOpen, setIsAddOpen] = useState(false)
     const [isEditOpen, setIsEditOpen] = useState(false)
     const [selected, setSelected] = useState(null)
     const [search, setSearch] = useState('')
+    const [sortBy, setSortBy] = useState('name')
 
     useEffect(() => {
         const fetchAllSponsors = async () => {
@@ -62,8 +62,18 @@ const Sponsors = () => {
             }
     }
 
-    const searchSponsors = sponsors.filter((s) => {
+    const processedSponsors = [...sponsors].filter((s) => {
         return s.name.toLowerCase().includes(search.trim().toLowerCase())
+    })
+    .sort((a,b) => {
+        if (sortBy === 'lowToHigh') {
+            return Number(a.amount) - Number(b.amount)
+        }
+        if (sortBy === 'highToLow') {
+            return Number(b.amount) - Number(a.amount)
+        }
+
+        return a.name.localeCompare(b.name)
     })
     
   return (
@@ -71,25 +81,57 @@ const Sponsors = () => {
         <NavBar/>
         <HomeBar />
         <Logout />
-        <div>
-            <h1> Sponsors </h1>
-            <input type='search' value={search} placeholder='Search by name' onChange={(e) => setSearch(e.target.value)} />
-            {/* we map sponsors state with all fields of name, amount, address, phone, email */}
-            <button onClick={() => setIsAddOpen(true)}> <IoAddSharp /> Add Sponsor </button>
-            {searchSponsors.length > 0 ? searchSponsors.map((sponsor) => {
+        <div className='sponsors-page'>
+            <div className="sponsors-header">
+                <h1>Sponsors</h1>
+                {/* we map sponsors state with all fields of name, amount, address, phone, email */}
+                <button className="btn-add" onClick={() => setIsAddOpen(true)}>
+                    <IoAddSharp /> Add Sponsor
+                </button>
+            </div>
+            <div className='sponsors-sorting-section'>
+                <input 
+                    className="search-input"
+                    type='search' 
+                    value={search} 
+                    placeholder='Search by name' 
+                    onChange={(e) => setSearch(e.target.value)} 
+                />
+
+                <label htmlFor="sort"> Sort By </label>
+                <select id='sort' className="sponsors-sort-by" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+                    <option value="name"> Name A-Z </option>
+                    <option value="lowToHigh"> Amount (Low To High) </option>
+                    <option value="highToLow"> Amount (High To Low) </option>
+                </select>
+            </div>
+
+            <div className="list-headers">
+                <span>name</span>
+                <span>amount</span>
+                <span>address</span>
+                <span>phone</span>
+                <span>email</span>
+            </div>
+            
+            {processedSponsors.length > 0 ? processedSponsors.map((sponsor) => {
                 return (
-                    <div key={sponsor.sponsor_id} className=''>
-                        <div className=''> 
-                            <p> {sponsor.name} </p> 
-                            <p> ${sponsor.amount} / Monthly </p>
-                            <p> {sponsor.address} </p>
-                            <p> {sponsor.phone} </p>
-                            <p> {sponsor.email} </p>
-                            <button onClick={() => {setSelected(sponsor), setIsEditOpen(true)}}> <MdEdit /> Edit </button>
-                            <button command="show-modal" commandfor="delete-confirmation"> <FaRegTrashAlt /> Delete </button>
-                            <dialog id="delete-confirmation">Are you sure you'd like to delete an Sponsor? This action can NOT be undone. 
-                                <button commandfor="delete-confirmation" command="close" >Close</button>
-                                <button onClick={() => deleteSponsor(sponsor)} > DELETE </button>
+                    <div key={sponsor.sponsor_id} className='sponsor-card'>
+                        <div className='sponsor-info'> 
+                            <p className="sponsor-name"> {sponsor.name} </p> 
+                            <p className="sponsor-amount"> ${sponsor.amount} / Monthly </p>
+                            <p className="sponsor-address"> {sponsor.address} </p>
+                            <p className="sponsor-phone"> {sponsor.phone} </p>
+                            <p className="sponsor-email"> {sponsor.email} </p>
+
+                            <div className="sponsor-actions"> 
+                                <button onClick={() => {setSelected(sponsor), setIsEditOpen(true)}} className="btn-edit"> <MdEdit /> Edit </button>
+                                <button command="show-modal" commandfor="delete-confirmation" className="btn-delete"> <FaRegTrashAlt /> Delete </button>
+                            </div>
+
+                            <dialog id="delete-confirmation" className="delete-dialog">Are you sure you'd like to delete the sponsor: {sponsor.name}? This action can NOT be undone. 
+                                    <button commandfor="delete-confirmation" command="close" className="btn-cancel">Close</button>
+                                    <button onClick={() => deleteSponsor(sponsor)} className="btn-delete"> DELETE </button>
                             </dialog>
                         </div>
                     </div>
@@ -98,18 +140,31 @@ const Sponsors = () => {
         </div>
 
         {isAddOpen && 
-        <AddSponsor 
-            setIsAddOpen={setIsAddOpen}
-            // boolean and add to array of sponsors with spread 
-            setSponsors={setSponsors} />}
+        (<div className="modal-overlay">
+            <div className="modal-content">
+                <h2>Add New Sponsor</h2>
+                <AddSponsor 
+                    setIsAddOpen={setIsAddOpen}
+                    // boolean and add to array of sponsors with spread 
+                    setSponsors={setSponsors} 
+                />
+            </div>
+        </div> )}
 
         {isEditOpen && selected && (
-        <EditSponsor 
-            // the sponsor the user selected
-            sponsor={selected}
-            // boolean and add to array of sponsor with spread
-            setIsEditOpen={setIsEditOpen} 
-            setSponsors={setSponsors} />)}
+            <div className="modal-overlay">
+                <div className="modal-content">
+                    <h2>Edit Sponsor: {selected.name}</h2>
+                    <EditSponsor 
+                        // the sponsor the user selected
+                        sponsor={selected}
+                        // boolean and add to array of sponsor with spread
+                        setIsEditOpen={setIsEditOpen} 
+                        setSponsors={setSponsors} 
+                    />
+                </div>
+            </div>
+        )}
     </>
   )
 }
