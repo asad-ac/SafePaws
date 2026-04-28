@@ -19,15 +19,34 @@ const Volunteers = () => {
     const [isEditOpen, setIsEditOpen] = useState(false)
     const [selected, setSelected] = useState(null)
     const [search, setSearch] = useState('')
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState('')
 
     useEffect(() => {
         const fetchAllVolunteers = async () => {
-            const response = await fetch(`http://localhost:3001/volunteers`)
-            const data = await response.json()
-            setVolunteers(data)
+            try {
+                setLoading(true)
+                setError('')
+    
+                const response = await fetch('http://localhost:3001/volunteers')
+    
+                if (!response.ok) {
+                    throw new Error(`Server error: ${response.status}`)
+                }
+    
+                const data = await response.json()
+                setVolunteers(data)
+    
+            } catch (err) {
+                console.error(err)
+                setError(err.message || 'Something went wrong')
+            } finally {
+                setLoading(false)
+            }
         }
+    
         fetchAllVolunteers()
-    },[])
+    }, [])
 
     const deleteVolunteer = async (volunteer) => {
         const options = {
@@ -79,7 +98,14 @@ const Volunteers = () => {
                 <button className='volunteers-add-btn' onClick={() => setIsAddOpen(true)}><IoAddSharp /> Add Volunteer</button>
             </div>
             <div className='volunteers-container'>
-                {searchVolunteers.length > 0 ? searchVolunteers.map((volunteer) => {
+            {loading ? (
+                <SkeletonVolunteers />
+            ) : error ? (
+                <div className="error-message">
+                    <p>Error: {error}</p>
+                    <button onClick={() => window.location.reload()}>Retry</button>
+                </div>
+            ) : searchVolunteers.length > 0 ? searchVolunteers.map((volunteer) => {
                     return (
                         <div key={volunteer.volunteer_id} className='volunteer-card'>
                             <div className=''>
