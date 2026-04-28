@@ -16,6 +16,12 @@ import SkeletonSponsors from '../components/SkeletonSponsors.jsx'
 // TODO: fix sponsors skeleton
 // TODO: add on click outside of modal closes
 
+function closeDialogOutside(e) {
+    if (e.target === e.currentTarget) {
+        e.currentTarget.close()
+    }
+}
+
 const Sponsors = () => {
 
     const [sponsors, setSponsors] = useState([])

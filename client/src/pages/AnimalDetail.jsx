@@ -83,6 +83,12 @@ const AnimalDetail = () => {
         }
     }
 
+    function closeDialogOutside(e) {
+        if (e.target === e.currentTarget) {
+            e.currentTarget.close()
+        }
+    }
+
   return (
     <div>
         <HomeBar />
@@ -147,11 +153,11 @@ const AnimalDetail = () => {
                             <div className="detail-actions">
                                 <button className="edit-btn" onClick={() => setIsEditOpen(true)}><MdEdit /> Edit</button>
                                 <button className="delete-btn" command="show-modal" commandfor="delete-confirmation"><FaRegTrashAlt /> Delete</button>
-                                <dialog className="delete-dialog" id="delete-confirmation">
+                                <dialog className="delete-dialog" id="delete-confirmation" onClick={closeDialogOutside}>
                                     Are you sure you'd like to delete this animal from the Sanctuary? This action cannot be undone.
                                     <div className="dialog-actions">
                                         <button commandfor="delete-confirmation" command="close">Close</button>
-                                        <button onClick={deleteAnimal}>DELETE</button>
+                                        <button onClick={deleteAnimal}>Delete</button>
                                     </div>
                                 </dialog>
                             </div>

@@ -169,6 +169,12 @@ const deleteAnimal = async (animal) => {
         setSelectedTags([])
     }
 
+    function closeDialogOutside(e) {
+        if (e.target === e.currentTarget) {
+            e.currentTarget.close()
+        }
+    }
+
   return (
     <>
         <HomeBar />
@@ -257,7 +263,7 @@ const deleteAnimal = async (animal) => {
                         </div>
                         <button onClick={() => {setSelected(animal), setIsEditOpen(true)}}><MdEdit /> Edit</button>
                         <button command="show-modal" commandfor="delete-confirmation"><FaRegTrashAlt /> Delete</button>
-                        <dialog id="delete-confirmation">Are you sure you'd like to delete this animal from the Sanctuary? This action can NOT be undone.
+                        <dialog id="delete-confirmation" onClick={closeDialogOutside}>Are you sure you'd like to delete this animal from the Sanctuary? This action can NOT be undone.
                             <button commandfor="delete-confirmation" command="close">Close</button>
                             <button onClick={() => deleteAnimal(animal)}>DELETE</button>
                         </dialog>
