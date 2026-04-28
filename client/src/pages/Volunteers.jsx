@@ -9,6 +9,7 @@ import EditVolunteer from '../components/EditVolunteer.jsx'
 import NavBar from '../components/NavBar.jsx'
 import HomeBar from '../components/HomeBar.jsx'
 import Logout from '../components/Logout.jsx';
+import SkeletonVolunteers from '../components/SkeletonVolunteers.jsx'
 import '../css/Volunteers.css'
 
 const Volunteers = () => {

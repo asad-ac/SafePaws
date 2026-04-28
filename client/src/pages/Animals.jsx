@@ -52,13 +52,29 @@ const Animals = () => {
 
     useEffect(() => {
         const fetchAllAnimals = async () => {
-            // TODO: add error catching if the fetch returns an error?
-            const response = await fetch('http://localhost:3001/animals')
-            const data = await response.json()
-            setAnimals(data)
+            try {
+                setLoading(true)
+                setError('')
+    
+                const response = await fetch('http://localhost:3001/animals')
+    
+                if (!response.ok) {
+                    throw new Error(`Server error: ${response.status}`)
+                }
+    
+                const data = await response.json()
+                setAnimals(data)
+    
+            } catch (err) {
+                console.error(err)
+                setError(err.message || 'Something went wrong')
+            } finally {
+                setLoading(false)
+            }
         }
+    
         fetchAllAnimals()
-    },[])
+    }, [])
 
 const deleteAnimal = async (animal) => {
     const options = {
