@@ -11,6 +11,7 @@ import EditSponsor from '../components/EditSponsor.jsx'
 import NavBar from '../components/NavBar.jsx'
 import HomeBar from '../components/HomeBar.jsx'
 import Logout from '../components/Logout.jsx';
+
 const Sponsors = () => {
 
     const [sponsors, setSponsors] = useState([])
@@ -19,15 +20,34 @@ const Sponsors = () => {
     const [selected, setSelected] = useState(null)
     const [search, setSearch] = useState('')
     const [sortBy, setSortBy] = useState('name')
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState('')
 
     useEffect(() => {
         const fetchAllSponsors = async () => {
-            const response = await fetch(`http://localhost:3001/sponsors`)
-            const data = await response.json()
-            setSponsors(data)
+            try {
+                setLoading(true)
+                setError('')
+    
+                const response = await fetch('http://localhost:3001/sponsors')
+    
+                if (!response.ok) {
+                    throw new Error(`Server error: ${response.status}`)
+                }
+    
+                const data = await response.json()
+                setSponsors(data)
+    
+            } catch (err) {
+                console.error(err)
+                setError(err.message || 'Something went wrong')
+            } finally {
+                setLoading(false)
+            }
         }
+    
         fetchAllSponsors()
-    },[])
+    }, [])
 
     const deleteSponsor = async (sponsor) => {
         const options = {

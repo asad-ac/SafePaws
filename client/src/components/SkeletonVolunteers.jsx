@@ -9,15 +9,15 @@ const SkeletonVolunteers = () => {
       {[...Array(6)].map((_, index) => (
         <div key={index} className=''>
           <div>
-            <Skeleton height={24} width="60%" />   {/* name */}
-            <Skeleton height={18} width="80%" />   {/* address */}
-            <Skeleton height={18} width="50%" />   {/* phone */}
-            <Skeleton height={18} width="70%" />   {/* email */}
-            <Skeleton height={18} width="65%" />   {/* duty */}
+            <Skeleton height={24} width="60%" />
+            <Skeleton height={18} width="80%" />
+            <Skeleton height={18} width="50%" />
+            <Skeleton height={18} width="70%" />
+            <Skeleton height={18} width="65%" />
 
             <div style={{ display: 'flex', gap: '8px', marginTop: '10px' }}>
-              <Skeleton height={32} width={80} />  {/* edit btn */}
-              <Skeleton height={32} width={90} />  {/* delete btn */}
+              <Skeleton height={32} width={80} />
+              <Skeleton height={32} width={90} /> 
             </div>
           </div>
         </div>
