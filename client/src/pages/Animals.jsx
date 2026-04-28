@@ -12,6 +12,7 @@ import EditAnimal from '../components/EditAnimal.jsx'
 import NavBar from '../components/NavBar.jsx'
 import HomeBar from '../components/HomeBar.jsx'
 import Logout from '../components/Logout.jsx';
+import SkeletonAnimals from '../components/SkeletonAnimals.jsx';
 import '../css/Animals.css'
 
 const Animals = () => {
@@ -20,6 +21,8 @@ const Animals = () => {
     const [isAddOpen, setIsAddOpen] = useState(false)
     const [isEditOpen, setIsEditOpen] = useState(false)
     const [selected, setSelected] = useState(null)
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState('')
 
     // searching state
 
@@ -204,7 +207,14 @@ const deleteAnimal = async (animal) => {
             <button onClick={() => setIsAddOpen(true)}> <IoAddSharp /> Add Animal </button>
         </div>
         <div className='animals-container'>
-            {processedAnimals.length > 0 ? processedAnimals.map((animal) => {
+            {loading ? (
+                <SkeletonAnimals />
+            ) : error ? (
+                <div className="error-message">
+                    <p>Error: {error}</p>
+                    <button onClick={() => window.location.reload()}>Retry</button>
+                </div>
+            ) : processedAnimals.length > 0 ? processedAnimals.map((animal) => {
                 return (
                     <div key={animal.animal_id} className='animal-card'>
                         <Link to={`/animals/${animal.animal_id}`}>
@@ -237,7 +247,7 @@ const deleteAnimal = async (animal) => {
                         </dialog>
                     </div>
                 )
-                }): <h1> No animals added yet. </h1>}
+                }): <SkeletonAnimals />}
         </div>
 
         {isAddOpen && 
