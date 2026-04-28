@@ -84,7 +84,7 @@ const Volunteers = () => {
     }
 
     const searchVolunteers = volunteers.filter((v) => {
-        return v.name.toLowerCase().includes(search.trim().toLowerCase())
+        return (v.name || '').toLowerCase().includes(search.trim().toLowerCase())
     })
     
     return (
