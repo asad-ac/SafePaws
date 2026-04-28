@@ -11,6 +11,10 @@ import EditSponsor from '../components/EditSponsor.jsx'
 import NavBar from '../components/NavBar.jsx'
 import HomeBar from '../components/HomeBar.jsx'
 import Logout from '../components/Logout.jsx';
+import SkeletonSponsors from '../components/SkeletonSponsors.jsx'
+
+// TODO: fix sponsors skeleton
+// TODO: add on click outside of modal closes
 
 const Sponsors = () => {
 
@@ -83,7 +87,7 @@ const Sponsors = () => {
     }
 
     const processedSponsors = [...sponsors].filter((s) => {
-        return s.name.toLowerCase().includes(search.trim().toLowerCase())
+        return (s.name || '').toLowerCase().includes(search.trim().toLowerCase())
     })
     .sort((a,b) => {
         if (sortBy === 'lowToHigh') {
@@ -133,7 +137,14 @@ const Sponsors = () => {
                 <span>email</span>
             </div>
             
-            {processedSponsors.length > 0 ? processedSponsors.map((sponsor) => {
+            {loading ? (
+                <SkeletonSponsors />
+            ) : error ? (
+                <div className="error-message">
+                    <p>Error: {error}</p>
+                    <button onClick={() => window.location.reload()}>Retry</button>
+                </div>
+            ) : processedSponsors.length > 0 ? processedSponsors.map((sponsor) => {
                 return (
                     <div key={sponsor.sponsor_id} className='sponsor-card'>
                         <div className='sponsor-info'> 
