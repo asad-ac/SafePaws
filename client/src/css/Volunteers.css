@@ -1,0 +1,65 @@
+.volunteers-header {
+    position: fixed;
+    top: 240px;
+    left: 80px;
+    right: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 560px;
+    z-index: 10;
+}
+
+.volunteers-title {
+    font-family: "Playfair Display", serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: #1E1E1E;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.volunteers-search {
+    height: 40px;
+    width: 120px;
+    background-color: #ffffff;
+    color: #1E1E1E;
+    border: 1px solid #1E1E1E;
+    border-radius: 18px;
+    padding: 0px 10px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 16px;
+    flex: 1;
+}
+
+.volunteers-search::placeholder {
+    color: #AAAAAA;
+}
+
+.volunteers-add-btn {
+    margin-left: auto;
+    background-color: #9ADAB0;
+    color: #1E1E1E;
+    border: none;
+    border-radius: 32px;
+    padding: 18px 40px;
+    margin-right: 80px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+}
+
+.volunteers-container {
+    position: absolute;
+    top: 320px;
+    left: 80px;
+    right: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 40px;
+}

@@ -9,6 +9,7 @@ import EditVolunteer from '../components/EditVolunteer.jsx'
 import NavBar from '../components/NavBar.jsx'
 import HomeBar from '../components/HomeBar.jsx'
 import Logout from '../components/Logout.jsx';
+import '../css/Volunteers.css'
 
 const Volunteers = () => {
     
@@ -73,13 +74,15 @@ const Volunteers = () => {
             <HomeBar />
             <NavBar/>
             <Logout />
-            <div>
-                <h1> Volunteers </h1>
-                <input type='search' placeholder='Search by name' value={search} onChange={(e) => setSearch(e.target.value)} />
-                <button onClick={() => setIsAddOpen(true)}> <IoAddSharp /> Add Volunteer</button>
+            <div className='volunteers-header'>
+                <h1 className='volunteers-title'>Volunteers</h1>
+                <input className='volunteers-search' type='search' placeholder='Search by name' value={search} onChange={(e) => setSearch(e.target.value)} />
+                <button className='volunteers-add-btn' onClick={() => setIsAddOpen(true)}><IoAddSharp /> Add Volunteer</button>
+            </div>
+            <div className='volunteers-container'>
                 {searchVolunteers.length > 0 ? searchVolunteers.map((volunteer) => {
                     return (
-                        <div key={volunteer.volunteer_id} className=''>
+                        <div key={volunteer.volunteer_id} className='volunteer-card'>
                             <div className=''>
                                 <p>{volunteer.name}</p>
                                 <p>{volunteer.address}</p>
@@ -88,7 +91,7 @@ const Volunteers = () => {
                                 <p>{volunteer.assigned_duty}</p>
                                 <button onClick={() => {setSelected(volunteer), setIsEditOpen(true)}}> <MdEdit /> Edit </button>
                                 <button command="show-modal" commandfor="delete-confirmation"> <FaRegTrashAlt /> Delete </button>
-                                <dialog id="delete-confirmation">Are you sure you'd like to delete an Volunteer? This action can NOT be undone. 
+                                <dialog id="delete-confirmation">Are you sure you'd like to delete an Volunteer? This action can NOT be undone.
                                     <button commandfor="delete-confirmation" command="close" >Close</button>
                                     <button onClick={() => deleteVolunteer(volunteer)} > DELETE </button>
                                 </dialog>
