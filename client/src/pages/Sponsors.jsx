@@ -84,26 +84,25 @@ const Sponsors = () => {
         <div className='sponsors-page'>
             <div className="sponsors-header">
                 <h1>Sponsors</h1>
-                {/* we map sponsors state with all fields of name, amount, address, phone, email */}
+                <div className='sponsors-sorting-section'>
+                    <label htmlFor="search"> Search by </label>
+                    <input
+                        className="search-input"
+                        type='search'
+                        value={search}
+                        placeholder='name'
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+                    <label htmlFor="sort"> Sort by </label>
+                    <select id='sort' className="sponsors-sort-by" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+                        <option value="name"> name (A-Z) </option>
+                        <option value="lowToHigh"> amount (low To high) </option>
+                        <option value="highToLow"> amount (high To low) </option>
+                    </select>
+                </div>
                 <button className="btn-add" onClick={() => setIsAddOpen(true)}>
                     <IoAddSharp /> Add Sponsor
                 </button>
-            </div>
-            <div className='sponsors-sorting-section'>
-                <input 
-                    className="search-input"
-                    type='search' 
-                    value={search} 
-                    placeholder='Search by name' 
-                    onChange={(e) => setSearch(e.target.value)} 
-                />
-
-                <label htmlFor="sort"> Sort By </label>
-                <select id='sort' className="sponsors-sort-by" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-                    <option value="name"> Name A-Z </option>
-                    <option value="lowToHigh"> Amount (Low To High) </option>
-                    <option value="highToLow"> Amount (High To Low) </option>
-                </select>
             </div>
 
             <div className="list-headers">
@@ -136,7 +135,7 @@ const Sponsors = () => {
                         </div>
                     </div>
                 )
-            }) : <h2> No sponsors added </h2>}
+            }) : <h2> No sponsors added yet.</h2>}
         </div>
 
         {isAddOpen && 

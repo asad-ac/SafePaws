@@ -9,6 +9,7 @@ import EditAnimal from '../components/EditAnimal.jsx'
 import NavBar from '../components/NavBar.jsx'
 import HomeBar from '../components/HomeBar.jsx'
 import Logout from '../components/Logout.jsx'
+import '../css/AnimalDetail.css'
 
 const AnimalDetail = () => {
 
@@ -67,49 +68,87 @@ const AnimalDetail = () => {
         <HomeBar />
         <NavBar/>
         <Logout />
-        <h1> View Animal </h1>
-        <Link to='/animals'> <IoReturnDownBackOutline /> Back </Link>
-        <div>
+        <div className="detail-page">
+            <div className="detail-header">
+                <h1>View Animal</h1>
+                <Link className="back-link" to='/animals'><IoReturnDownBackOutline /> Back</Link>
+            </div>
             {animal && animal.animal_id ? (
-                    <div>
-                        <img src={animal.image_url} alt={`${animal.name} the ${animal.species}`} />
-                        <h2> <strong> Name </strong> {animal.name} </h2>
-                        <h2> <strong> Description </strong> {animal.description} </h2>
-                        <h2> <strong> Species </strong> {animal.species} </h2>
-                        <h2> <strong> Age </strong> {animal.age} years old </h2>
-                        <h2> <strong> Weight (pounds) </strong> {animal.weight} lbs </h2>
-                        <h2> <strong> Height (feet) </strong> {animal.height} ft </h2>
-                        <h2> <strong> Intake </strong> {" "} {animal.date_intake && new Date(animal.date_intake).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'})} </h2>
-
-                        <div>
-                            <h2> <strong> Feeding </strong> <span style={{backgroundColor: animal.feeding_status ? 'green' : 'red'}}> {animal.feeding_status ? 'Complete' : 'Pending'} </span> </h2>
-                            <h2> <strong> Cleaning </strong> <span style={{backgroundColor: animal.cleaning_status ? 'green' : 'red'}}> {animal.cleaning_status ? 'Complete' : 'Pending'} </span> </h2>
-                            <h2> <strong> Enrichment </strong> <span style={{backgroundColor: animal.care_status ? 'green' : 'red'}}> {animal.care_status ? 'Complete' : 'Pending'} </span> </h2>
-                        </div>
-
-                        <div>
-                            <button onClick={() => setIsEditOpen(true)}> <MdEdit /> Edit </button>
-
-                            <button command="show-modal" commandfor="delete-confirmation"> <FaRegTrashAlt /> Delete </button>
-                            <dialog id="delete-confirmation">Are you sure you'd like to delete an Animal from the Sanctuary? This action can NOT be undone. 
-                                <button commandfor="delete-confirmation" command="close" >Close</button>
-                                <button onClick={deleteAnimal} > DELETE </button>
-                            </dialog>
-                        </div>
-
-                        {isEditOpen && <EditAnimal
-                            animal={animal}
-                            setIsEditOpen={setIsEditOpen}
-                            setAnimal={setAnimal} />}
-
-                        <h3> Tags </h3>
-                        {animal.tags && animal.tags.length > 0 && animal.tags.map((tag) => (
-                            <div key={tag.tag_id}>
-                                <p> {tag.name} </p>
+                <>
+                    <div className="detail-card">
+                        <img className="detail-image" src={animal.image_url} alt={`${animal.name} the ${animal.species}`} />
+                        <div className="detail-info">
+                            <div className="detail-field">
+                                <span className="detail-label">Name</span>
+                                <span className="detail-value">{animal.name}</span>
                             </div>
-                        ))}
+                            <div className="detail-field">
+                                <span className="detail-label">Description</span>
+                                <span className="detail-value">{animal.description}</span>
+                            </div>
+                            <div className="detail-field">
+                                <span className="detail-label">Species</span>
+                                <span className="detail-value">{animal.species}</span>
+                            </div>
+                            <div className="detail-field">
+                                <span className="detail-label">Age</span>
+                                <span className="detail-value">{animal.age} years old</span>
+                            </div>
+                            <div className="detail-field">
+                                <span className="detail-label">Weight</span>
+                                <span className="detail-value">{animal.weight} lbs</span>
+                            </div>
+                            <div className="detail-field">
+                                <span className="detail-label">Height</span>
+                                <span className="detail-value">{animal.height} ft</span>
+                            </div>
+                            <div className="detail-field">
+                                <span className="detail-label">Intake</span>
+                                <span className="detail-value">{animal.date_intake && new Date(animal.date_intake).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'})}</span>
+                            </div>
+                            <div className="detail-status">
+                                <div className="detail-status-item">
+                                    <span className="detail-label">Feeding</span>
+                                    <span className={`status-badge ${animal.feeding_status ? 'status-complete' : 'status-pending'}`}>{animal.feeding_status ? 'Complete' : 'Pending'}</span>
+                                </div>
+                                <div className="detail-status-item">
+                                    <span className="detail-label">Cleaning</span>
+                                    <span className={`status-badge ${animal.cleaning_status ? 'status-complete' : 'status-pending'}`}>{animal.cleaning_status ? 'Complete' : 'Pending'}</span>
+                                </div>
+                                <div className="detail-status-item">
+                                    <span className="detail-label">Enrichment</span>
+                                    <span className={`status-badge ${animal.care_status ? 'status-complete' : 'status-pending'}`}>{animal.care_status ? 'Complete' : 'Pending'}</span>
+                                </div>
+                            </div>
+                            <div className="detail-actions">
+                                <button className="edit-btn" onClick={() => setIsEditOpen(true)}><MdEdit /> Edit</button>
+                                <button className="delete-btn" command="show-modal" commandfor="delete-confirmation"><FaRegTrashAlt /> Delete</button>
+                                <dialog className="delete-dialog" id="delete-confirmation">
+                                    Are you sure you'd like to delete this animal from the Sanctuary? This action cannot be undone.
+                                    <div className="dialog-actions">
+                                        <button commandfor="delete-confirmation" command="close">Close</button>
+                                        <button onClick={deleteAnimal}>DELETE</button>
+                                    </div>
+                                </dialog>
+                            </div>
+                        </div>
                     </div>
-            ): <h1> No animal here </h1>}
+
+                    {isEditOpen && <EditAnimal
+                        animal={animal}
+                        setIsEditOpen={setIsEditOpen}
+                        setAnimal={setAnimal} />}
+
+                    <div className="detail-tags">
+                        <h3>Tags</h3>
+                        <div className="tags-list">
+                            {animal.tags && animal.tags.length > 0 && animal.tags.map((tag) => (
+                                <span className="tag-pill" key={tag.tag_id}>{tag.name}</span>
+                            ))}
+                        </div>
+                    </div>
+                </>
+            ) : <h1>No animal found</h1>}
         </div>
     </div>
   )

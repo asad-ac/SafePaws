@@ -12,6 +12,7 @@ import EditAnimal from '../components/EditAnimal.jsx'
 import NavBar from '../components/NavBar.jsx'
 import HomeBar from '../components/HomeBar.jsx'
 import Logout from '../components/Logout.jsx';
+import '../css/Animals.css'
 
 const Animals = () => {
 
@@ -32,7 +33,7 @@ const Animals = () => {
 
     const [statusFilter, setStatusFilter] = useState('all')
 
-    const tagOptions = ["Vaccinated", "Healthy", "Requires Training", "Special Needs", "Needs Medication", "New Arrival", "Special Diet", "Territorial"]
+    const tagOptions = ["Needs Medication", "Requires Training", "Special Needs", "Special Diet", "New Arrival", "Vaccinated", "Territorial", "Healthy"]
 
     const [selectedTags, setSelectedTags] = useState([])
 
@@ -154,39 +155,39 @@ const deleteAnimal = async (animal) => {
         <HomeBar />
         <NavBar/>
         <Logout />
-        <div className='sidebar-based-on-figma-file'>
-                <h1> Animals </h1>
-            <div>
-                <label htmlFor='search'> Search By </label>
-                <input id='search' type='search' placeholder='Search by name or species' value={search} onChange={(e) => setSearch(e.target.value)} />
+        <div className='sidebar'>
+                <h1>Animals</h1>
+            <div className='search-container'>
+                <label htmlFor='search'>Search by</label>
+                <input id='search' type='search' placeholder='enter name or species' value={search} onChange={(e) => setSearch(e.target.value)} />
             </div>
 
-            <div>
-                <label htmlFor='sort'> Sort By </label>
+            <div className='sort-container'>
+                <label htmlFor='sort'>Sort by</label>
                 <select id='sort' value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-                    <option value="name"> Name (A - Z) </option>
-                    <option value="age"> Age (Oldest First) </option>
-                    <option value="intake_date"> Intake Date (Oldest First) </option>
+                    <option value="name"> name (A - Z) </option>
+                    <option value="age"> age (oldest first) </option>
+                    <option value="intake_date"> intake date (oldest first) </option>
                 </select>
             </div>
 
-            <div>
-                <label htmlFor='status'> Filter By </label>
+            <div className='status-container'>
+                <label htmlFor='status'>Filter by</label>
                 <select id='status' value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
-                    <option value='all'> All </option>
-                    <option value='needsFeeding'> Needs Feeding </option>
-                    <option value='needsCleaning'> Needs Cleaning </option>
-                    <option value='needsCaring'> Needs Attention </option>
+                    <option value='all'> all </option>
+                    <option value='needsFeeding'> needs feeding </option>
+                    <option value='needsCleaning'> needs cleaning </option>
+                    <option value='needsCaring'> needs attention </option>
                 </select>
             </div>
 
-            <div>
+            <div className='tags-container'>
                 <p> Filter By Tags </p>
                 {tagOptions.map((tag) => {
                     return (
-                        <div>
-                            <label style={{display: 'block'}} htmlFor='tag' key={tag}> {tag} </label>
-                            <input id='tag' type='checkbox' checked={selectedTags.includes(tag)} onChange = {() => toggleTagFilter(tag)} />
+                        <div className='tag-item'>
+                            <input id={tag} type='checkbox' checked={selectedTags.includes(tag)} onChange={() => toggleTagFilter(tag)} />
+                            <label htmlFor={tag} key={tag}>{tag}</label>
                         </div>
                     )
                 })}
@@ -196,46 +197,47 @@ const deleteAnimal = async (animal) => {
             <button onClick={resetFilterButton} title='Reset'> <RiResetLeftFill size={18} /> </button>
         </div>
 
-        <div>
+        <div className='needs-container'>
             <p> Feedings Left: {needsFeeding} </p>
             <p> Cleanings Left: {needsCleaning} </p>
             <p> Enrichments Left: {needsCaring} </p>
             <button onClick={() => setIsAddOpen(true)}> <IoAddSharp /> Add Animal </button>
         </div>
-        <div>
+        <div className='animals-container'>
             {processedAnimals.length > 0 ? processedAnimals.map((animal) => {
                 return (
-                    <div key={animal.animal_id}>
+                    <div key={animal.animal_id} className='animal-card'>
                         <Link to={`/animals/${animal.animal_id}`}>
-                        <div style={{backgroundImage: `url(${animal.image_url})`}}>
-                            <h1> {animal.name} </h1>
-                            <p> {animal.species} </p>
-                            <p> {animal.weight} Pounds </p>
-                            <p> {animal.age} Years Old </p>
-                            <p> {animal.date_intake && new Date(animal.date_intake).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'})} </p>
-                            {animal.tags?.length > 0 ? animal.tags.map((tag) => {
-                                return (
-                                    <div key={tag.tag_id}>
-                                        <p> {tag.name} </p>
+                            <img src={animal.image_url} alt={animal.name} className='animal-card-img' />
+                            <div className='animal-card-info'>
+                                <p className='animal-card-name'>{animal.name}</p>
+                                <p>{animal.species}</p>
+                                <p>{animal.age} Years Old</p>
+                                <p>{animal.weight} Pounds</p>
+                                <p>{animal.date_intake && new Date(animal.date_intake).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'})}</p>
+                                {animal.tags?.length > 0 && (
+                                    <div className='animal-card-tags'>
+                                        {animal.tags.map((tag) => (
+                                            <span key={tag.tag_id} className='animal-tag'>{tag.name}</span>
+                                        ))}
                                     </div>
-                                )
-                            }): null}
-                            <div>
-                                {!animal.cleaning_status  && <p> <IoIosWarning /> Enrichment Needs Cleaning </p>}
-                                {!animal.feeding_status && <p> <IoIosWarning /> Needs Feeding </p> }
-                                {!animal.care_status && <p> <IoIosWarning /> Needs Attention </p>}
+                                )}
                             </div>
+                        </Link>
+                        <div className='animal-card-warnings'>
+                            {!animal.cleaning_status && <p><IoIosWarning /> Needs Cleaning</p>}
+                            {!animal.feeding_status && <p><IoIosWarning /> Needs Feeding</p>}
+                            {!animal.care_status && <p><IoIosWarning /> Needs Attention</p>}
                         </div>
-                    </Link>
-                    <button onClick={() => {setSelected(animal), setIsEditOpen(true)}}> <MdEdit /> Edit </button>
-                    <button command="show-modal" commandfor="delete-confirmation"><FaRegTrashAlt /> Delete</button>
-                    <dialog id="delete-confirmation">Are you sure you'd like to delete an Animal from the Sanctuary? This action can NOT be undone. 
-                        <button commandfor="delete-confirmation" command="close" >Close</button>
-                        <button onClick={() => deleteAnimal(animal)} > DELETE </button>
-                    </dialog>
-                </div>
+                        <button onClick={() => {setSelected(animal), setIsEditOpen(true)}}><MdEdit /> Edit</button>
+                        <button command="show-modal" commandfor="delete-confirmation"><FaRegTrashAlt /> Delete</button>
+                        <dialog id="delete-confirmation">Are you sure you'd like to delete this animal from the Sanctuary? This action can NOT be undone.
+                            <button commandfor="delete-confirmation" command="close">Close</button>
+                            <button onClick={() => deleteAnimal(animal)}>DELETE</button>
+                        </dialog>
+                    </div>
                 )
-                }): <h1> No animals added </h1>}
+                }): <h1> No animals added yet. </h1>}
         </div>
 
         {isAddOpen && 

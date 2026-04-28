@@ -1,5 +1,5 @@
 import React from 'react'
-import wallpaper from '../assets/wallpaper.jpg'
+import wallpaper from '../assets/wallpaper3.jpg'
 import '../css/Hero.css'
 import HomeBar from '../components/HomeBar'
 import Footer from '../components/Footer'
@@ -12,7 +12,7 @@ const Hero = () => {
       <HomeBar />
       <Logout />
       <div className="wallpaper" style={{ backgroundImage: `url(${wallpaper})` }} />
-      <p1 className="hero-text">Every animal deserves a safe and enriching life.<br />Thank you for your continued support.</p1>
+      <p className="hero-text">Every animal deserves a safe and enriching life.<br />Thank you for your continued support.</p>
       <div className="button-group">
         <Link to="/sponsors"><button>SPONSORS</button></Link>
         <Link to="/animals"><button>ANIMALS</button></Link>

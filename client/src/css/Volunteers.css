@@ -1,0 +1,115 @@
+.volunteers-header {
+    position: fixed;
+    top: 240px;
+    left: 80px;
+    right: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 560px;
+    z-index: 10;
+}
+
+.volunteers-title {
+    font-family: "Playfair Display", serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: #1E1E1E;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.volunteers-search {
+    height: 40px;
+    width: 120px;
+    background-color: #ffffff;
+    color: #1E1E1E;
+    border: 1px solid #1E1E1E;
+    border-radius: 18px;
+    padding: 0px 10px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 16px;
+    flex: 1;
+}
+
+.volunteers-search::placeholder {
+    color: #AAAAAA;
+}
+
+.volunteers-add-btn {
+    margin-left: auto;
+    background-color: #9ADAB0;
+    color: #1E1E1E;
+    border: none;
+    border-radius: 32px;
+    padding: 18px 36px;
+    margin-right: 80px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+}
+
+.volunteers-container {
+    position: absolute;
+    top: 320px;
+    left: 80px;
+    right: 80px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    padding-bottom: 40px;
+}
+
+/* --- Volunteer Cards --- */
+.volunteer-card {
+    position: relative;
+    background-color: #1E1E1E;
+    color: #ffffff;
+    border-radius: 15px;
+    padding: 18px 25px 60px 25px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    font-family: "Quicksand", sans-serif;
+}
+
+.volunteer-card p {
+    margin: 4px 0;
+    font-size: 20px;
+    color: #e0e0e0;
+}
+
+.volunteer-card p:first-of-type {
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+/* --- Card Actions --- */
+.volunteer-card > div > button {
+    position: absolute;
+    bottom: 16px;
+    background: transparent;
+    border: none;
+    font-family: "Quicksand", sans-sserif;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.volunteer-card > div > button:first-of-type {
+    right: 115px;
+    color: #92dca8;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.volunteer-card > div > button:nth-of-type(2) {
+    right: 16px;
+    color: #ff6b6b;
+}
