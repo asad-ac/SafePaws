@@ -90,8 +90,9 @@ const AddAnimal = (props) => {
         )
       }
 
+      // propagation function blocks close while outer div closes it
   return (
-    <div className='modal-overlay' onClick={() => props.setIsAddOpen(false)}>
+    <div className='modal-overlay' onClick={() => props.setIsAddOpen(false)}> 
       <div className='modal' onClick={(e) => e.stopPropagation()}>
         <h2>Add Animal</h2>
         <form className='modal-form' onSubmit={handleSubmit}>

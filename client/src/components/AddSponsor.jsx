@@ -55,8 +55,8 @@ const AddSponsor = (props) => {
     }
 
   return (
-    <div className="modal-overlay">
-      <div className="modal">
+    <div className="modal-overlay" onClick={() => props.setIsAddOpen(false)}>
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
         <h2>Add Sponsor</h2>
         <form className="modal-form" onSubmit={handleSubmit}>
           <label htmlFor="name">Name</label>
