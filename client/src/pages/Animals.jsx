@@ -206,37 +206,38 @@ const deleteAnimal = async (animal) => {
         <div className='animals-container'>
             {processedAnimals.length > 0 ? processedAnimals.map((animal) => {
                 return (
-                    <div key={animal.animal_id}>
+                    <div key={animal.animal_id} className='animal-card'>
                         <Link to={`/animals/${animal.animal_id}`}>
-                        <div style={{backgroundImage: `url(${animal.image_url})`}}>
-                            <h1> {animal.name} </h1>
-                            <p> {animal.species} </p>
-                            <p> {animal.weight} Pounds </p>
-                            <p> {animal.age} Years Old </p>
-                            <p> {animal.date_intake && new Date(animal.date_intake).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'})} </p>
-                            {animal.tags?.length > 0 ? animal.tags.map((tag) => {
-                                return (
-                                    <div key={tag.tag_id}>
-                                        <p> {tag.name} </p>
+                            <img src={animal.image_url} alt={animal.name} className='animal-card-img' />
+                            <div className='animal-card-info'>
+                                <p className='animal-card-name'>{animal.name}</p>
+                                <p>{animal.species}</p>
+                                <p>{animal.age} Years Old</p>
+                                <p>{animal.weight} Pounds</p>
+                                <p>{animal.date_intake && new Date(animal.date_intake).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'})}</p>
+                                {animal.tags?.length > 0 && (
+                                    <div className='animal-card-tags'>
+                                        {animal.tags.map((tag) => (
+                                            <span key={tag.tag_id} className='animal-tag'>{tag.name}</span>
+                                        ))}
                                     </div>
-                                )
-                            }): null}
-                            <div>
-                                {!animal.cleaning_status  && <p> <IoIosWarning /> Enrichment Needs Cleaning </p>}
-                                {!animal.feeding_status && <p> <IoIosWarning /> Needs Feeding </p> }
-                                {!animal.care_status && <p> <IoIosWarning /> Needs Attention </p>}
+                                )}
                             </div>
+                        </Link>
+                        <div className='animal-card-warnings'>
+                            {!animal.cleaning_status && <p><IoIosWarning /> Needs Cleaning</p>}
+                            {!animal.feeding_status && <p><IoIosWarning /> Needs Feeding</p>}
+                            {!animal.care_status && <p><IoIosWarning /> Needs Attention</p>}
                         </div>
-                    </Link>
-                    <button onClick={() => {setSelected(animal), setIsEditOpen(true)}}> <MdEdit /> Edit </button>
-                    <button command="show-modal" commandfor="delete-confirmation"><FaRegTrashAlt /> Delete</button>
-                    <dialog id="delete-confirmation">Are you sure you'd like to delete an Animal from the Sanctuary? This action can NOT be undone. 
-                        <button commandfor="delete-confirmation" command="close" >Close</button>
-                        <button onClick={() => deleteAnimal(animal)} > DELETE </button>
-                    </dialog>
-                </div>
+                        <button onClick={() => {setSelected(animal), setIsEditOpen(true)}}><MdEdit /> Edit</button>
+                        <button command="show-modal" commandfor="delete-confirmation"><FaRegTrashAlt /> Delete</button>
+                        <dialog id="delete-confirmation">Are you sure you'd like to delete this animal from the Sanctuary? This action can NOT be undone.
+                            <button commandfor="delete-confirmation" command="close">Close</button>
+                            <button onClick={() => deleteAnimal(animal)}>DELETE</button>
+                        </dialog>
+                    </div>
                 )
-                }): <h1> No animals added </h1>}
+                }): <h1> No animals added yet. </h1>}
         </div>
 
         {isAddOpen && 

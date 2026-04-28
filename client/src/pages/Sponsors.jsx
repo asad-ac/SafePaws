@@ -135,7 +135,7 @@ const Sponsors = () => {
                         </div>
                     </div>
                 )
-            }) : <h2> No sponsors added </h2>}
+            }) : <h2> No sponsors added yet.</h2>}
         </div>
 
         {isAddOpen && 
