@@ -9,6 +9,7 @@ import EditAnimal from '../components/EditAnimal.jsx'
 import NavBar from '../components/NavBar.jsx'
 import HomeBar from '../components/HomeBar.jsx'
 import Logout from '../components/Logout.jsx'
+import AnimalDetailSkeleton from '../components/SkeletonAnimalDetail.jsx';
 import '../css/AnimalDetail.css'
 
 const AnimalDetail = () => {
@@ -19,15 +20,34 @@ const AnimalDetail = () => {
 
     const [animal, setAnimal] = useState({})
     const [isEditOpen, setIsEditOpen] = useState(false)
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState('')
 
     useEffect(() => {
         const fetchAnimalById = async () => {
-            const response = await fetch(`http://localhost:3001/animals/${animal_id}`)
-            const data = await response.json()
-            setAnimal(data)
+            try {
+                setLoading(true)
+                setError('')
+    
+                const response = await fetch(`http://localhost:3001/animals/${animal_id}`)
+    
+                if (!response.ok) {
+                    throw new Error(`Server error: ${response.status}`)
+                }
+    
+                const data = await response.json()
+                setAnimal(data)
+    
+            } catch (err) {
+                console.error(err)
+                setError(err.message || 'Something went wrong')
+            } finally {
+                setLoading(false)
+            }
         }
+    
         fetchAnimalById()
-    },[animal_id])
+    }, [animal_id])
 
     const deleteAnimal = async () => {
 
@@ -73,7 +93,11 @@ const AnimalDetail = () => {
                 <h1>View Animal</h1>
                 <Link className="back-link" to='/animals'><IoReturnDownBackOutline /> Back</Link>
             </div>
-            {animal && animal.animal_id ? (
+            {loading ? (
+                <AnimalDetailSkeleton />
+            ) : error ? (
+                <p>Error: {error}</p>
+            ) : animal && animal.animal_id ? (
                 <>
                     <div className="detail-card">
                         <img className="detail-image" src={animal.image_url} alt={`${animal.name} the ${animal.species}`} />

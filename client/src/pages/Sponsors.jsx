@@ -11,6 +11,11 @@ import EditSponsor from '../components/EditSponsor.jsx'
 import NavBar from '../components/NavBar.jsx'
 import HomeBar from '../components/HomeBar.jsx'
 import Logout from '../components/Logout.jsx';
+import SkeletonSponsors from '../components/SkeletonSponsors.jsx'
+
+// TODO: fix sponsors skeleton
+// TODO: add on click outside of modal closes
+
 const Sponsors = () => {
 
     const [sponsors, setSponsors] = useState([])
@@ -19,15 +24,34 @@ const Sponsors = () => {
     const [selected, setSelected] = useState(null)
     const [search, setSearch] = useState('')
     const [sortBy, setSortBy] = useState('name')
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState('')
 
     useEffect(() => {
         const fetchAllSponsors = async () => {
-            const response = await fetch(`http://localhost:3001/sponsors`)
-            const data = await response.json()
-            setSponsors(data)
+            try {
+                setLoading(true)
+                setError('')
+    
+                const response = await fetch('http://localhost:3001/sponsors')
+    
+                if (!response.ok) {
+                    throw new Error(`Server error: ${response.status}`)
+                }
+    
+                const data = await response.json()
+                setSponsors(data)
+    
+            } catch (err) {
+                console.error(err)
+                setError(err.message || 'Something went wrong')
+            } finally {
+                setLoading(false)
+            }
         }
+    
         fetchAllSponsors()
-    },[])
+    }, [])
 
     const deleteSponsor = async (sponsor) => {
         const options = {
@@ -63,7 +87,7 @@ const Sponsors = () => {
     }
 
     const processedSponsors = [...sponsors].filter((s) => {
-        return s.name.toLowerCase().includes(search.trim().toLowerCase())
+        return (s.name || '').toLowerCase().includes(search.trim().toLowerCase())
     })
     .sort((a,b) => {
         if (sortBy === 'lowToHigh') {
@@ -113,7 +137,14 @@ const Sponsors = () => {
                 <span>email</span>
             </div>
             
-            {processedSponsors.length > 0 ? processedSponsors.map((sponsor) => {
+            {loading ? (
+                <SkeletonSponsors />
+            ) : error ? (
+                <div className="error-message">
+                    <p>Error: {error}</p>
+                    <button onClick={() => window.location.reload()}>Retry</button>
+                </div>
+            ) : processedSponsors.length > 0 ? processedSponsors.map((sponsor) => {
                 return (
                     <div key={sponsor.sponsor_id} className='sponsor-card'>
                         <div className='sponsor-info'> 
