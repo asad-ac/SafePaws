@@ -1,14 +1,17 @@
 import {useState, useEffect} from 'react'
-import AddAnimal from '../components/AddAnimal.jsx'
-import EditAnimal from '../components/EditAnimal.jsx'
-import NavBar from '../components/Navbar.jsx'
 import {Link} from 'react-router-dom'
 import {IoAddSharp} from 'react-icons/io5'
 import {MdEdit} from "react-icons/md";
 import {FaRegTrashAlt} from "react-icons/fa";
 import {IoIosWarning} from "react-icons/io";
 import {RiResetLeftFill} from "react-icons/ri";
-import toast from 'react-hot-toast'
+import {toast} from 'react-hot-toast'
+
+import AddAnimal from '../components/AddAnimal.jsx'
+import EditAnimal from '../components/EditAnimal.jsx'
+import NavBar from '../components/NavBar.jsx'
+import HomeBar from '../components/HomeBar.jsx'
+import Logout from '../components/Logout.jsx';
 
 const Animals = () => {
 
@@ -88,18 +91,11 @@ const deleteAnimal = async (animal) => {
     }
   }
 
-    // TODO: make sure backend receives not in string, but in boolean. assign value on inputs as true or false.
-    // TODO: filter functions for counts
-
     const needsCleaning = animals.filter(animal => !animal.cleaning_status).length
     const needsFeeding = animals.filter(animal => !animal.feeding_status).length
     const needsCaring = animals.filter(animal => !animal.care_status).length
 
     // search, filter, and sort function
-    // TODO: reset button to clear all filters
-
-    // TODO: allow user to select multiple status
-    // TODO: select tags
 
     const processedAnimals = animals.filter((a) =>
         a.name.toLowerCase().includes(search.trim().toLowerCase()) ||
@@ -146,8 +142,6 @@ const deleteAnimal = async (animal) => {
         return 0 // keep order same
     })
 
-    // TODO: tell user order of sorts in jsx
-
     const resetFilterButton = () => {
         setSearch('')
         setSortBy('name')
@@ -157,7 +151,9 @@ const deleteAnimal = async (animal) => {
 
   return (
     <>
+        <HomeBar />
         <NavBar/>
+        <Logout />
         <div className='sidebar-based-on-figma-file'>
                 <h1> Animals </h1>
             <div>

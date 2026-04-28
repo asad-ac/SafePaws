@@ -1,22 +1,24 @@
 import {useState, useEffect} from 'react'
-import AddSponsor from '../components/AddSponsor.jsx'
-import EditSponsor from '../components/EditSponsor.jsx'
-import NavBar from '../components/Navbar.jsx'
+
 import {MdEdit} from "react-icons/md";
 import {IoAddSharp} from "react-icons/io5";
 import {FaRegTrashAlt} from "react-icons/fa";
 import {toast} from 'react-hot-toast'
 import '../css/Sponsors.css'
 
+import AddSponsor from '../components/AddSponsor.jsx'
+import EditSponsor from '../components/EditSponsor.jsx'
+import NavBar from '../components/NavBar.jsx'
+import HomeBar from '../components/HomeBar.jsx'
+import Logout from '../components/Logout.jsx';
 const Sponsors = () => {
-
-    //TODO: search bar to search by name
 
     const [sponsors, setSponsors] = useState([])
     const [isAddOpen, setIsAddOpen] = useState(false)
     const [isEditOpen, setIsEditOpen] = useState(false)
     const [selected, setSelected] = useState(null)
     const [search, setSearch] = useState('')
+    const [sortBy, setSortBy] = useState('name')
 
     useEffect(() => {
         const fetchAllSponsors = async () => {
@@ -60,13 +62,25 @@ const Sponsors = () => {
             }
     }
 
-    const searchSponsors = sponsors.filter((s) => {
+    const processedSponsors = [...sponsors].filter((s) => {
         return s.name.toLowerCase().includes(search.trim().toLowerCase())
+    })
+    .sort((a,b) => {
+        if (sortBy === 'lowToHigh') {
+            return Number(a.amount) - Number(b.amount)
+        }
+        if (sortBy === 'highToLow') {
+            return Number(b.amount) - Number(a.amount)
+        }
+
+        return a.name.localeCompare(b.name)
     })
     
   return (
     <>
-        {/* <NavBar/> */}
+        <NavBar/>
+        <HomeBar />
+        <Logout />
         <div className='sponsors-page'>
             <div className="sponsors-header">
                 <h1>Sponsors</h1>
@@ -85,6 +99,12 @@ const Sponsors = () => {
                 />
             </div>
             
+            <label htmlFor="sort"> Sort By </label>
+            <select id='sort' value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+                <option value="name"> Name A-Z </option>
+                <option value="lowToHigh"> Amount (Low To High) </option>
+                <option value="highToLow"> Amount (High To Low) </option>
+            </select>
 
             <div className="list-headers">
                 <span>name</span>
@@ -94,7 +114,7 @@ const Sponsors = () => {
                 <span>email</span>
             </div>
             
-            {searchSponsors.length > 0 ? searchSponsors.map((sponsor) => {
+            {processedSponsors.length > 0 ? processedSponsors.map((sponsor) => {
                 return (
                     <div key={sponsor.sponsor_id} className='sponsor-card'>
                         <div className='sponsor-info'> 

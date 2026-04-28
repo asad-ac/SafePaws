@@ -4,8 +4,6 @@ import {toast} from 'react-hot-toast'
 
 const AddSponsor = (props) => {
 
-  //TODO: empty all forms after submission for smoother UX.
-
     const [form, setForm] = useState({name: '', amount: '', address: '', phone: '', email: '', sanctuary_id: 1})
 
     const handleChange = (e) => {
