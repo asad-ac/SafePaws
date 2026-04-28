@@ -1,0 +1,124 @@
+.sidebar {
+    position: fixed;
+    width: 240px;
+    padding-left: 80px;
+    padding-top: 240px;
+    padding-right: 20px;
+    padding-bottom: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.search-container, .sort-container, .status-container, .tags-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tag-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+.sidebar > h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: #1E1E1E;
+    margin: 0;
+}
+
+.sidebar label,
+.tags-container > p,
+.sidebar > p {
+    font-family: "Quicksand", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1E1E1E;
+    margin: 0;
+}
+
+.sidebar input,
+.sidebar select {
+    height: 40px;
+    background-color: #ffffff;
+    color: #1E1E1E;
+    border: 1px solid #1E1E1E;
+    border-radius: 18px;
+    padding: 0 10px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 16px;
+}
+
+.sidebar select option {
+    background-color: #ffffff;
+    color: #1E1E1E;
+}
+
+.sidebar input::placeholder {
+    color: #AAAAAA;
+}
+
+.tag-item label {
+    font-family: "Quicksand", sans-serif;
+    font-size: 18px;
+    color: #1E1E1E;
+    font-weight: 500;
+}
+
+/** Refresh button styles **/
+.sidebar > button {
+    background-color: #1E1E1E;
+    color: #9ADAB0;
+    border: none;
+    border-radius: 24px;
+    padding: 14px 18px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/** Add animal button styles **/
+.needs-container > button {
+    margin-left: auto;
+    margin-right: 80px;
+    background-color: #9ADAB0;
+    color: #1E1E1E;;
+    border: none;
+    border-radius: 12px;
+    padding: 18px 24px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.needs-container {
+    position: fixed;
+    font-size: 32px;
+    top: 226px;
+    left: 380px;
+    right: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    z-index: 10;
+}
+
+.animals-container {
+    position: absolute;
+    top: 290px;
+    left: 380px;
+    right: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding-bottom: 40px;
+}

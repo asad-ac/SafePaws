@@ -1,9 +1,10 @@
 .logout-container {
     position: fixed;
     top: 80px;
-    right: 120px;
+    width: 95%;
     display: flex;
     flex-direction: row;
+    justify-content: flex-end;
     align-items: center;
     gap: 20px;
     z-index: 1000;
@@ -15,6 +16,6 @@
 }
 
 .logout-btn {
-    font-size: 36px;
-    color: black;
+    font-size: 40px;
+    color: #1E1E1E;
 }
