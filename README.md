@@ -59,7 +59,7 @@ All animals deserve a good environment and should not have to go through abuse, 
   ![Demo](./milestones/demo/toast-notifications.gif)
 
 ### Loading Skeletons
-  Utilize loading skeletons to improve performance and give users a preview of incoming content while data loads.
+  <img width="2538" height="1386" alt="Skeletons" src="https://github.com/user-attachments/assets/d6f1c6cb-dcf5-43ae-bd2d-00deeb5bca43" />
 
 ## Entity Relationship Diagram
 
