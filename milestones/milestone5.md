@@ -78,7 +78,8 @@ Complete the checklist below detailing each baseline, custom, and stretch featur
 
 ## Final Demo GIF
 
-
+Video size is too big, so the file was compressed.
+[Full Demo.zip](https://github.com/user-attachments/files/27192628/Full.Demo.zip)
 
 ## Reflection
 
