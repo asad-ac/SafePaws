@@ -4,7 +4,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 const SkeletonAnimals = () => {
     return (
         <>
-            {[...Array(12)].map((_, index) => (
+            {[...Array(20)].map((_, index) => (
                 <div key={index} className="">
                     <Skeleton height={180} className="animal-card-img" />
 

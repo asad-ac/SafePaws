@@ -4,7 +4,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 const SkeletonSponsors = () => {
     return (
       <>
-        {[...Array(6)].map((_, index) => (
+        {[...Array(12)].map((_, index) => (
           <div key={index} className='sponsor-card'>
             <div className='sponsor-info'>
               <Skeleton height={22} width="50%" />
