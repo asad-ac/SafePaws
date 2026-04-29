@@ -28,7 +28,7 @@ const EditSanctuary = (props) => {
 
         try {
           const updateSanctuaryPromise = async () => {
-            const response = await fetch(`http://localhost:3001/sanctuaries/${form.sanctuary_id}`, options)
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/sanctuaries/${form.sanctuary_id}`, options)
 
             if (!response.ok) {
               throw new Error("Update failed")

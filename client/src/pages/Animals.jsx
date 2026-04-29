@@ -56,7 +56,7 @@ const Animals = () => {
                 setLoading(true)
                 setError('')
     
-                const response = await fetch('http://localhost:3001/animals')
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/animals`)
     
                 if (!response.ok) {
                     throw new Error(`Server error: ${response.status}`)
@@ -86,7 +86,7 @@ const deleteAnimal = async (animal) => {
   
     try {
         const deleteAnimalPromise = async () => {
-            const response = await fetch(`http://localhost:3001/animals/${animal.animal_id}`, options)
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/animals/${animal.animal_id}`, options)
 
             if (!response.ok) {
                 throw new Error("Delete failed")
@@ -228,6 +228,7 @@ const deleteAnimal = async (animal) => {
             <p> Enrichments Left: {needsCaring} </p>
             <button onClick={() => setIsAddOpen(true)}> <IoAddSharp /> Add Animal </button>
         </div>
+        <div className='animals-scroll-area'>
         <div className='animals-container'>
             {loading ? (
                 <SkeletonAnimals />
@@ -263,13 +264,16 @@ const deleteAnimal = async (animal) => {
                         </div>
                         <button onClick={() => {setSelected(animal), setIsEditOpen(true)}}><MdEdit /> Edit</button>
                         <button command="show-modal" commandfor="delete-confirmation"><FaRegTrashAlt /> Delete</button>
-                        <dialog id="delete-confirmation" onClick={closeDialogOutside}>Are you sure you'd like to delete this animal from the Sanctuary? This action can NOT be undone.
-                            <button commandfor="delete-confirmation" command="close">Close</button>
-                            <button onClick={() => deleteAnimal(animal)}>DELETE</button>
+                        <dialog className="delete-dialog" id="delete-confirmation" onClick={closeDialogOutside}>Are you sure you'd like to delete this animal from the Sanctuary? This action can NOT be undone.
+                            <div className="dialog-actions">
+                                <button commandfor="delete-confirmation" command="close">Close</button>
+                                <button onClick={() => deleteAnimal(animal)}>Delete</button>
+                            </div>
                         </dialog>
                     </div>
                 )
                 }): <SkeletonAnimals />}
+        </div>
         </div>
 
         {isAddOpen && 

@@ -27,7 +27,7 @@ const EditSponsor = (props) => {
 
     try {
       const updateSponsorPromise = async () => {
-        const response = await fetch(`http://localhost:3001/sponsors/${props.sponsor.sponsor_id}`, options)
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/sponsors/${props.sponsor.sponsor_id}`, options)
 
         if (!response.ok) {
           throw new Error("Update failed")

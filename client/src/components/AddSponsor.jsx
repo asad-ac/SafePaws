@@ -27,7 +27,7 @@ const AddSponsor = (props) => {
 
         try {
           const addSponsorPromise = async () => {
-            const response = await fetch('http://localhost:3001/sponsors', options)
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/sponsors`, options)
   
             if (!response.ok) {
               throw new Error("Add failed")

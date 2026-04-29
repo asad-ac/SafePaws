@@ -11,7 +11,7 @@ const AddAnimal = (props) => {
 
     useEffect(() => {
         const getTags = async () => {
-            const response = await fetch('http://localhost:3001/tags')
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/tags`)
             const data = await response.json()
             setTags(data)
         }
@@ -55,7 +55,7 @@ const AddAnimal = (props) => {
 
         try {
           const addAnimalPromise = async () => {
-            const response = await fetch(`http://localhost:3001/animals`, options)
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/animals`, options)
 
             if (!response.ok) {
               throw new Error("Add failed")

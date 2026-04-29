@@ -27,7 +27,7 @@ const EditVolunteer = (props) => {
 
         try {
           const updateVolunteerPromise = async () => {
-            const response = await fetch(`http://localhost:3001/volunteers/${props.volunteer.volunteer_id}`, options)
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/volunteers/${props.volunteer.volunteer_id}`, options)
             
             if (!response.ok) {
               throw new Error("Update failed")

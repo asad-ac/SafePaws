@@ -1,6 +1,6 @@
 .navbar-links {
     position: fixed;
-    top: 130px;
+    top: clamp(90px, 13vh, 156px);
     right: clamp(20px, 5vw, 90px);
     display: flex;
     gap: 40px;
@@ -35,7 +35,6 @@
 
 @media (max-width: 900px) {
     .navbar-links {
-        top: 110px;
         gap: 18px;
     }
     .navbar-links a {
@@ -45,7 +44,6 @@
 
 @media (max-width: 640px) {
     .navbar-links {
-        top: 90px;
         gap: 12px;
     }
     .navbar-links a {

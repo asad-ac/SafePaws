@@ -13,7 +13,7 @@ const Sanctuary = () => {
 
     useEffect(() => {
        const getSanctuary = async () => {
-        const response = await fetch('http://localhost:3001/sanctuaries/1')
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/sanctuaries/1`)
         const data = await response.json()
         setSanctuary(data)
        }

@@ -1,6 +1,6 @@
 .homebar-brand {
     position: fixed;
-    top: 70px;
+    top: clamp(28px, 6.5vh, 70px);
     left: clamp(20px, 5vw, 90px);
     display: flex;
     flex-direction: row;
@@ -41,7 +41,6 @@
 
 @media (max-width: 1200px) {
     .homebar-brand {
-        top: 50px;
         gap: 14px;
     }
     .logobtn {
@@ -59,7 +58,6 @@
 /** Used for responsive scaling w/ defined breakpoints **/
 @media (max-width: 900px) {
     .homebar-brand {
-        top: 40px;
         gap: 10px;
     }
     .logobtn {
@@ -76,7 +74,6 @@
 
 @media (max-width: 640px) {
     .homebar-brand {
-        top: 28px;
         gap: 8px;
     }
     .logobtn {

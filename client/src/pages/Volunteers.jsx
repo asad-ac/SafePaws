@@ -28,7 +28,7 @@ const Volunteers = () => {
                 setLoading(true)
                 setError('')
     
-                const response = await fetch('http://localhost:3001/volunteers')
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/volunteers`)
     
                 if (!response.ok) {
                     throw new Error(`Server error: ${response.status}`)
@@ -58,7 +58,7 @@ const Volunteers = () => {
 
         try {
             const deleteVolunteerPromise = async () => {
-                const response = await fetch(`http://localhost:3001/volunteers/${volunteer.volunteer_id}`, options)
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/volunteers/${volunteer.volunteer_id}`, options)
                 
                 if (!response.ok) {
                     throw new Error("Delete failed")
@@ -122,9 +122,11 @@ const Volunteers = () => {
                                 <p>{volunteer.assigned_duty}</p>
                                 <button onClick={() => {setSelected(volunteer), setIsEditOpen(true)}}> <MdEdit /> Edit </button>
                                 <button command="show-modal" commandfor="delete-confirmation"> <FaRegTrashAlt /> Delete </button>
-                                <dialog id="delete-confirmation" onClick={closeDialogOutside} >Are you sure you'd like to delete an Volunteer? This action can NOT be undone.
-                                    <button commandfor="delete-confirmation" command="close" >Close</button>
-                                    <button onClick={() => deleteVolunteer(volunteer)} > DELETE </button>
+                                <dialog className="delete-dialog" id="delete-confirmation" onClick={closeDialogOutside}>Are you sure you'd like to delete an Volunteer? This action can NOT be undone.
+                                    <div className="dialog-actions">
+                                        <button commandfor="delete-confirmation" command="close">Close</button>
+                                        <button onClick={() => deleteVolunteer(volunteer)}>Delete</button>
+                                    </div>
                                 </dialog>
                             </div>
                         </div>

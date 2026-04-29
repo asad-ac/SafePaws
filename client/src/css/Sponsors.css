@@ -146,22 +146,52 @@
     cursor: pointer;
 }
 
-.btn-cancel {
-    background-color: #f0f0f0;
-    color: #333;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
+/* --- Delete Confirmation Dialog --- */
+.delete-dialog {
+    border-radius: 16px;
+    border: 1px solid #DDDDDD;
+    padding: 32px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    font-family: "Quicksand", sans-serif;
+    font-size: 16px;
+    color: #1E1E1E;
+    max-width: 420px;
 }
 
-/* --- Native Dialog Styling --- */
-.delete-dialog {
+.delete-dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.dialog-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.dialog-actions button:first-child {
+    background-color: #F5F5F5;
+    color: #1E1E1E;
+    border: 1px solid #DDDDDD;
+    border-radius: 24px;
+    padding: 10px 20px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.dialog-actions button:last-child {
+    background-color: #A83232;
+    color: #FFFFFF;
     border: none;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border-radius: 24px;
+    padding: 10px 20px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
 }
 
 /* --- Modals (Add/Edit) --- */

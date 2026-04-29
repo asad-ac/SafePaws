@@ -29,7 +29,7 @@ const AnimalDetail = () => {
                 setLoading(true)
                 setError('')
     
-                const response = await fetch(`http://localhost:3001/animals/${animal_id}`)
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/animals/${animal_id}`)
     
                 if (!response.ok) {
                     throw new Error(`Server error: ${response.status}`)
@@ -60,7 +60,7 @@ const AnimalDetail = () => {
 
         try {
             const deleteAnimalPromise = async () => {
-                const response = await fetch(`http://localhost:3001/animals/${animal_id}`, options)
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/animals/${animal_id}`, options)
                 
                 if (!response.ok) {
                     throw new Error("Delete failed")

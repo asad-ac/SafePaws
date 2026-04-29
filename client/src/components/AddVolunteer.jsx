@@ -28,7 +28,7 @@ const AddVolunteer = (props) => {
 
         try {
           const addVolunteerPromise = async () => {
-            const response = await fetch('http://localhost:3001/volunteers', options)
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/volunteers`, options)
   
             if (!response.ok) {
               throw new Error("Add failed")

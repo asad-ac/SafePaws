@@ -39,7 +39,7 @@ const Sponsors = () => {
                 setLoading(true)
                 setError('')
     
-                const response = await fetch('http://localhost:3001/sponsors')
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/sponsors`)
     
                 if (!response.ok) {
                     throw new Error(`Server error: ${response.status}`)
@@ -69,7 +69,7 @@ const Sponsors = () => {
 
         try {
             const deleteSponsorPromise = async () => {
-                const response = await fetch(`http://localhost:3001/sponsors/${sponsor.sponsor_id}`, options)
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/sponsors/${sponsor.sponsor_id}`, options)
                 
                 if (!response.ok) {
                     throw new Error("Delete failed")
@@ -165,9 +165,11 @@ const Sponsors = () => {
                                 <button command="show-modal" commandfor="delete-confirmation" className="btn-delete"> <FaRegTrashAlt /> Delete </button>
                             </div>
 
-                            <dialog id="delete-confirmation" onClick={closeDialogOutside} className="delete-dialog">Are you sure you'd like to delete the sponsor: {sponsor.name}? This action can NOT be undone. 
-                                    <button commandfor="delete-confirmation" command="close" className="btn-cancel">Close</button>
-                                    <button onClick={() => deleteSponsor(sponsor)} className="btn-delete"> DELETE </button>
+                            <dialog className="delete-dialog" id="delete-confirmation" onClick={closeDialogOutside}>Are you sure you'd like to delete the sponsor: {sponsor.name}? This action can NOT be undone.
+                                <div className="dialog-actions">
+                                    <button commandfor="delete-confirmation" command="close">Close</button>
+                                    <button onClick={() => deleteSponsor(sponsor)}>Delete</button>
+                                </div>
                             </dialog>
                         </div>
                     </div>
