@@ -120,14 +120,14 @@ const Sponsors = () => {
                         className="search-input"
                         type='search'
                         value={search}
-                        placeholder='search by name'
+                        placeholder='Search by name'
                         onChange={(e) => setSearch(e.target.value)}
                     />
                     <label htmlFor="sort"> Sort by </label>
                     <select id='sort' className="sponsors-sort-by" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
                         <option value="name"> Name (A-Z) </option>
-                        <option value="lowToHigh"> Amount (Low to High) </option>
-                        <option value="highToLow"> Amount (High To Low) </option>
+                        <option value="lowToHigh"> Amount (Low-High) </option>
+                        <option value="highToLow"> Amount (High-Low) </option>
                     </select>
                 </div>
                 <button className="btn-add" onClick={() => setIsAddOpen(true)}>
@@ -162,11 +162,11 @@ const Sponsors = () => {
 
                             <div className="sponsor-actions"> 
                                 <button onClick={() => {setSelected(sponsor), setIsEditOpen(true)}} className="btn-edit"> <MdEdit /> Edit </button>
-                                <button command="show-modal" commandfor="delete-confirmation" className="btn-delete"> <FaRegTrashAlt /> Delete </button>
+                                <button command="show-modal"  commandfor={`delete-confirmation-${sponsor.sponsor_id}`} className="btn-delete"> <FaRegTrashAlt /> Delete </button>
                             </div>
 
-                            <dialog id="delete-confirmation" onClick={closeDialogOutside} className="delete-dialog">Are you sure you'd like to delete the sponsor: {sponsor.name}? This action can NOT be undone. 
-                                    <button commandfor="delete-confirmation" command="close" className="btn-cancel">Close</button>
+                            <dialog id={`delete-confirmation-${sponsor.sponsor_id}`} onClick={closeDialogOutside} className="delete-dialog">Are you sure you'd like to delete the sponsor: {sponsor.name}? This action can NOT be undone. 
+                                    <button commandfor={`delete-confirmation-${sponsor.sponsor_id}`} command="close" className="btn-cancel">Close</button>
                                     <button onClick={() => deleteSponsor(sponsor)} className="btn-delete"> DELETE </button>
                             </dialog>
                         </div>
@@ -190,7 +190,6 @@ const Sponsors = () => {
         {isEditOpen && selected && (
             <div className="modal-overlay">
                 <div className="modal-content">
-                    <h2>Edit Sponsor: {selected.name}</h2>
                     <EditSponsor 
                         // the sponsor the user selected
                         sponsor={selected}

@@ -184,25 +184,25 @@ const deleteAnimal = async (animal) => {
                 <h1>Animals</h1>
             <div className='search-container'>
                 <label htmlFor='search'>Search by</label>
-                <input id='search' type='search' placeholder='enter name or species' value={search} onChange={(e) => setSearch(e.target.value)} />
+                <input id='search' type='search' placeholder='Enter name or species' value={search} onChange={(e) => setSearch(e.target.value)} />
             </div>
 
             <div className='sort-container'>
                 <label htmlFor='sort'>Sort by</label>
                 <select id='sort' value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-                    <option value="name"> name (A - Z) </option>
-                    <option value="age"> age (oldest first) </option>
-                    <option value="intake_date"> intake date (oldest first) </option>
+                    <option value="name"> Name (A-Z) </option>
+                    <option value="age"> Age (Oldest first) </option>
+                    <option value="intake_date"> Intake Date (Oldest first) </option>
                 </select>
             </div>
 
             <div className='status-container'>
                 <label htmlFor='status'>Filter by</label>
                 <select id='status' value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
-                    <option value='all'> all </option>
-                    <option value='needsFeeding'> needs feeding </option>
-                    <option value='needsCleaning'> needs cleaning </option>
-                    <option value='needsCaring'> needs attention </option>
+                    <option value='all'> All </option>
+                    <option value='needsFeeding'> Needs Feeding </option>
+                    <option value='needsCleaning'> Needs Cleaning </option>
+                    <option value='needsCaring'> Needs Attention </option>
                 </select>
             </div>
 
@@ -262,9 +262,9 @@ const deleteAnimal = async (animal) => {
                             {!animal.care_status && <p><IoIosWarning /> Needs Attention</p>}
                         </div>
                         <button onClick={() => {setSelected(animal), setIsEditOpen(true)}}><MdEdit /> Edit</button>
-                        <button command="show-modal" commandfor="delete-confirmation"><FaRegTrashAlt /> Delete</button>
-                        <dialog id="delete-confirmation" onClick={closeDialogOutside}>Are you sure you'd like to delete this animal from the Sanctuary? This action can NOT be undone.
-                            <button commandfor="delete-confirmation" command="close">Close</button>
+                        <button command="show-modal" commandfor={`delete-confirmation-${animal.animal_id}`}><FaRegTrashAlt /> Delete</button>
+                        <dialog id={`delete-confirmation-${animal.animal_id}`} onClick={closeDialogOutside}>Are you sure you'd like to delete this animal from the Sanctuary? This action can NOT be undone.
+                            <button commandfor={`delete-confirmation-${animal.animal_id}`} command="close">Close</button>
                             <button onClick={() => deleteAnimal(animal)}>DELETE</button>
                         </dialog>
                     </div>

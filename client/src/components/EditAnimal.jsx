@@ -107,7 +107,7 @@ const EditAnimal = (props) => {
   return (
     <div className="modal-overlay" onClick={() => props.setIsEditOpen(false)}>
       <div className="modal" onClick={(e) => e.stopPropagation()}>
-        <h2>Edit Animal</h2>
+        <h2>Edit Animal: {props.animal.name}</h2>
         <form className="modal-form" onSubmit={handleSubmit}>
           <label htmlFor="name">Name</label>
           <input id="name" required type='text' name='name' value={form.name} onChange={handleChange} />

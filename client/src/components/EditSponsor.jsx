@@ -57,7 +57,7 @@ const EditSponsor = (props) => {
   return (
     <div className="modal-overlay" onClick={() => props.setIsEditOpen(false)}>
       <div className="modal" onClick={(e) => e.stopPropagation(e)}>
-        <h2>Edit Sponsor</h2>
+        <h2>Edit Sponsor: {props.sponsor.name}</h2>
         <form className="modal-form" onSubmit={handleSubmit}>
           <label htmlFor="name">Name</label>
           <input id="name" required type="text" name="name" value={form.name} onChange={handleChange} />
