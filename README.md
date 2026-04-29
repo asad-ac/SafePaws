@@ -66,6 +66,13 @@ All animals deserve a good environment and should not have to go through abuse, 
 
 ![ER Diagram](./milestones/pics/er-diagram.png)
 
+### Relationships
+
+sanctuary → animal (1:N)  
+sanctuary → volunteer (1:N)  
+sanctuary → sponsor (1:N)  
+animal ↔ tag (M:N)
+
 ## Wireframes
 
 ![Hero Page](./planning/wireframe/hero.png)
