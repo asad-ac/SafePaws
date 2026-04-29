@@ -1,4 +1,4 @@
-# SafePaws
+# <img src="client/src/assets/logo.svg" width="40" style="vertical-align: 8-px;" /> SafePaws
 
 CodePath WEB103 Final Project
 
