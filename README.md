@@ -42,12 +42,12 @@ All animals deserve a good environment and should not have to go through abuse, 
   Prototype:
   ![Demo](./milestones/demo/crud-modal.gif)
 
-### ✅ Sorting Pet Attributes 
+### ✅ Sorting by Pet Attributes 
   Implement sorting by name, age, or intake date so staff can quickly find and manage animals more efficiently.
   
   <img width="2538" height="1386" alt="SORT" src="https://github.com/user-attachments/assets/8d5ddd8b-3109-4ed2-a7aa-f38d8969874e" />
 
-### ✅ Filtering Animal Status
+### ✅ Filtering by Animal Status & Tags
   Provide filtering by care status, feeding status, enclosure cleanliness, and tags to make it easier for staff to organize and monitor animals.
 
   <img width="2538" height="1386" alt="FILTER" src="https://github.com/user-attachments/assets/a1185603-a062-443c-8bad-f1e7b7aef04d" />
@@ -75,10 +75,10 @@ All animals deserve a good environment and should not have to go through abuse, 
 
 ### Relationships
 
-sanctuary → animal (1:N)  
-sanctuary → volunteer (1:N)  
-sanctuary → sponsor (1:N)  
-animal ↔ tag (M:N)
+sanctuary → animal (One-to-Many)  
+sanctuary → volunteer (One-to-Many)  
+sanctuary → sponsor (One-to-Many)  
+animal ↔ tag (Many-to-Many)
 
 ## Wireframes
 
