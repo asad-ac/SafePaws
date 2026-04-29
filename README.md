@@ -59,9 +59,6 @@ All animals deserve a good environment and should not have to go through abuse, 
 ### Loading Skeletons
   Utilize loading skeletons to improve performance and give users a preview of incoming content while data loads.
 
-### GitHub Authentication
-  Implement GitHub authentication so staff users can securely manage their assigned sanctuary and its animals, sponsors, and volunteers.
-
 ## Entity Relationship Diagram
 
 ![ER Diagram](./milestones/pics/er-diagram.png)
