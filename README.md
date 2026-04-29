@@ -31,6 +31,11 @@ All animals deserve a good environment and should not have to go through abuse, 
 
 ## Features
 
+### ✅ CRUD Workflow
+  Use modal-based CRUD forms to streamline workflows and reduce unnecessary page navigation for staff.
+
+  ![Demo](./milestones/demo/crud-modal.gif)
+
 ### ✅ Sorting Pet Attributes 
   Implement sorting by name, age, or intake date so staff can quickly find and manage animals more efficiently.
 
@@ -40,11 +45,6 @@ All animals deserve a good environment and should not have to go through abuse, 
   Provide filtering by care status, feeding status, enclosure cleanliness, and tags to make it easier for staff to organize and monitor animals.
 
   [![Watch the demo](https://cdn.loom.com/sessions/thumbnails/d96fef29bffc4ea799ab5fcb1d4e8e9b-87bb6542300468f8-full-play.gif)](https://www.loom.com/share/d96fef29bffc4ea799ab5fcb1d4e8e9bD)
-
-### ✅ CRUD Workflow
-  Use modal-based CRUD forms to streamline workflows and reduce unnecessary page navigation for staff.
-
-  ![Demo](./milestones/demo/crud-modal.gif)
 
 ### ✅ Error Handling
   Handle errors gracefully to maintain a smooth user experience and strong data integrity.
@@ -61,6 +61,14 @@ All animals deserve a good environment and should not have to go through abuse, 
 
 ### GitHub Authentication
   Implement GitHub authentication so staff users can securely manage their assigned sanctuary and its animals, sponsors, and volunteers.
+
+## Entity Relationship Diagram
+
+![ER Diagram](./milestones/pics/er-diagram.png)
+
+## Wireframes
+
+
 
 ## Installation Instructions
 
