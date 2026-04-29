@@ -19,10 +19,15 @@ All animals deserve a good environment and should not have to go through abuse, 
 - **Frontend:**
   - **Languages:** JavaScript
   - **Frameworks:** React.js (Vite)
+  - **Styling:** CSS
+  - **Icons:** React Icons
+  - **UI Libraries:** react-hot-toast & react-loading-skeleton
 - **Backend:**
   - **Languages:** Node.js
   - **Frameworks:** Express
-- **Database:** PostgreSQL
+- **Database:** PostgreSQL (Neon)
+- **Deployment:** Render
+- **Tools:** Git, Postman, Figma
 
 ## Features
 
@@ -41,12 +46,6 @@ All animals deserve a good environment and should not have to go through abuse, 
 
   ![Demo](./milestones/demo/crud-modal.gif)
 
-### Social Media Post Generation
-  Enable post generation for individual animals to support donation campaigns and volunteer outreach.
-
-### GitHub Authentication
-  Implement GitHub authentication so staff users can securely manage their assigned sanctuary and its animals, sponsors, and volunteers.
-
 ### ✅ Error Handling
   Handle errors gracefully to maintain a smooth user experience and strong data integrity.
 
@@ -59,6 +58,9 @@ All animals deserve a good environment and should not have to go through abuse, 
 
 ### Loading Skeletons
   Utilize loading skeletons to improve performance and give users a preview of incoming content while data loads.
+
+### GitHub Authentication
+  Implement GitHub authentication so staff users can securely manage their assigned sanctuary and its animals, sponsors, and volunteers.
 
 ## Installation Instructions
 
