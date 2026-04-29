@@ -3,13 +3,12 @@
 ## List of Pages
 
 * Hero Page
-* Login Page
-* Dashboard Page
+* Animals Page
 * Animal Detail Page
 * Volunteers Page
 * Sponsors Page
 * 404 Page
-
+* Login Page
 
 ## Wireframe 1: [Hero Page] ⭐️
 
