@@ -2,7 +2,6 @@ import {NavLink} from 'react-router-dom'
 import '../css/NavBar.css'
 
 const base = {
-    fontSize: '36px',
     color: '#1E1E1E',
     textDecoration: 'none'
 }

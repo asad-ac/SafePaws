@@ -3,6 +3,7 @@ import Animals from './pages/Animals.jsx'
 import AnimalDetail from './pages/AnimalDetail.jsx'
 import Sponsors from './pages/Sponsors.jsx'
 import Volunteers from './pages/Volunteers.jsx'
+import Sanctuary from './pages/Sanctuary.jsx'
 import Login from './pages/Login.jsx'
 import Error from './pages/Error.jsx'
 import Hero from './pages/Hero.jsx'
@@ -22,6 +23,7 @@ function App() {
           <Route path='/animals' element={<Animals />} />
           <Route path='/sponsors' element={<Sponsors />} />
           <Route path='/volunteers' element={<Volunteers />} />
+          <Route path='/sanctuary' element={<Sanctuary />} />
           <Route path='/animals/:animal_id' element={<AnimalDetail />} />
           <Route path='*' element={<Error />} />
         </Routes>

@@ -1,9 +1,6 @@
 .wallpaper {
     position: fixed;
-    top: 48px;
-    left: 48px;
-    right: 48px;
-    bottom: 48px;
+    inset: clamp(10px, 5vw, 56px);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -12,11 +9,11 @@
 }
 
 .hero-text {
-    position: fixed;
-    top: 10%;
+    position: absolute;
+    top: 110px;
     left: 77%;
     transform: translateX(-50%);
-    font-size: 49px;
+    font-size: clamp(20px, 3.5vw, 49px);
     color: #000000;
     font-style: italic;
     text-align: right;
@@ -26,11 +23,11 @@
 .button-group {
     position: fixed;
     bottom: 80px;
-    left: 120px;
-    right: 120px;
+    left: clamp(20px, 5vw, 90px);
+    right: clamp(20px, 5vw, 90px);
     display: flex;
     justify-content: space-between;
-    gap: 64px;
+    gap: clamp(16px, 4vw, 64px);
 }
 
 .button-group a {
@@ -39,14 +36,14 @@
 
 .button-group button {
     width: 60%;
-    height: 128px;
-    border-radius: 30px;
+    height: clamp(60px, 10vw, 128px);
+    border-radius: clamp(12px, 2vw, 30px);
     border: none;
-    font-size: 32px;
+    font-size: clamp(14px, 2.2vw, 32px);
     font-weight: 600;
     color: #9ADAB0;
     background-color: #1E1E1E;
     cursor: pointer;
     letter-spacing: 6px;
-    box-shadow: #0c110e 0px 8px 8px; 
+    box-shadow: #0c110e 0px 8px 8px;
 }
