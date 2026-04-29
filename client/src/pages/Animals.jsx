@@ -184,13 +184,13 @@ const deleteAnimal = async (animal) => {
                 <h1>Animals</h1>
             <div className='search-container'>
                 <label htmlFor='search'>Search by</label>
-                <input id='search' type='search' placeholder='enter name or species' value={search} onChange={(e) => setSearch(e.target.value)} />
+                <input id='search' type='search' placeholder='Enter name or species' value={search} onChange={(e) => setSearch(e.target.value)} />
             </div>
 
             <div className='sort-container'>
                 <label htmlFor='sort'>Sort by</label>
                 <select id='sort' value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-                    <option value="name"> Name (A - Z) </option>
+                    <option value="name"> Name (A-Z) </option>
                     <option value="age"> Age (Oldest first) </option>
                     <option value="intake_date"> Intake Date (Oldest first) </option>
                 </select>

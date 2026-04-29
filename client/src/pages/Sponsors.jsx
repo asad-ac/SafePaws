@@ -120,7 +120,7 @@ const Sponsors = () => {
                         className="search-input"
                         type='search'
                         value={search}
-                        placeholder='search by name'
+                        placeholder='Search by name'
                         onChange={(e) => setSearch(e.target.value)}
                     />
                     <label htmlFor="sort"> Sort by </label>
