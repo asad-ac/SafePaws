@@ -1,9 +1,9 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import HomeBar from '../components/HomeBar'
-import NavBar from '../components/NavBar'
-import Logout from '../components/Logout'
-import Footer from '../components/Footer'
+import HomeBar from '../components/HomeBar.jsx'
+import NavBar from '../components/NavBar.jsx'
+import Logout from '../components/Logout.jsx'
+import Footer from '../components/Footer.jsx'
 import '../css/Error.css'
 
 const Error = () => {
