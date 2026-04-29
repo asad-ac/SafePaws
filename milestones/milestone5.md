@@ -6,15 +6,15 @@ This document should be completed and submitted during **Unit 9** of this course
 
 This unit, be sure to complete all tasks listed below. To complete a task, place an `x` between the brackets.
 
-- [ ] Deploy your project on Render
-  - [] In `readme.md`, add the link to your deployed project
+- [X] Deploy your project on Render
+  - [X] In `readme.md`, add the link to your deployed project
 - [x] Update the status of issues in your project board as you complete them
 - [x] In `readme.md`, check off the features you have completed in this unit by adding a ✅ emoji in front of their title
   - [x] Under each feature you have completed, **include a GIF** showing feature functionality
 - [x] In this document, complete the **Reflection** section below
-- [] 🚩🚩🚩**Complete the Final Project Feature Checklist section below**, detailing each feature you completed in the project (ONLY include features you implemented, not features you planned)
-- [ ] 🚩🚩🚩**Record a GIF showing a complete run-through of your app** that displays all the components included in the **Final Project Feature Checklist** below
-  - [ ] Include this GIF in the **Final Demo GIF** section below
+- [x] 🚩🚩🚩**Complete the Final Project Feature Checklist section below**, detailing each feature you completed in the project (ONLY include features you implemented, not features you planned)
+- [x] 🚩🚩🚩**Record a GIF showing a complete run-through of your app** that displays all the components included in the **Final Project Feature Checklist** below
+  - [x] Include this GIF in the **Final Demo GIF** section below
 
 ## Final Project Feature Checklist
 
@@ -43,13 +43,13 @@ Complete the checklist below detailing each baseline, custom, and stretch featur
     - [x] Components broken down into categories, including Page and Component types
     - [x] Corresponding container components and presenter components as appropriate
 - [x] The project includes dynamic routes for both frontend and backend apps
-- [ ] The project is deployed on Render with all pages and features that are visible to the user are working as intended
+- [X] The project is deployed on Render with all pages and features that are visible to the user are working as intended
 
 ### Custom Features
 
 👉🏾👉🏾👉🏾 Check off each completed feature below.
 
-- [x] The project gracefully handles errors
+- [x] The project gracefully handles errors, contains 404 page
 - [ ] The project includes a one-to-one database relationship
 - [x] The project includes a slide-out pane or modal as appropriate for your use case that pops up and covers the page content without navigating away from the current page
 - [ ] The project includes a unique field within the join table
@@ -78,24 +78,26 @@ Complete the checklist below detailing each baseline, custom, and stretch featur
 
 ## Final Demo GIF
 
+
+
 ## Reflection
 
 ### 1. What went well during this unit?
 
-Working hard.
+The Toast notifications and CSS. Also no merge conflicts, which allowed us to accept pull requests much faster.
 
 ### 2. What were some challenges your group faced in this unit?
 
-Implementing everything.
+Implementing all of the CRUD functions and ensuring all the necessary dependencies were installed. Deploying to Render was also very difficult as it kept throwing all sorts of errors.
 
 ### 3. What were some of the highlights or achievements that you are most proud of in this project?
 
-CRUD Modals.
+CRUD Modals, CSS, and Toast.
 
 ### 4. Reflecting on your web development journey so far, how have you grown since the beginning of the course?
 
-I love web dev.
+We've developed our planning skills and communication skills.
 
 ### 5. Looking ahead, what are your goals related to web development, and what steps do you plan to take to achieve them?
 
-I want to keep building and building. Bigger projects, more features that have impact.
+I want to keep building and building. Bigger projects, more features that have real-world impact.
