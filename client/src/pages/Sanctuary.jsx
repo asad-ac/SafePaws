@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import EditSanctuary from '../components/EditSanctuary.jsx'
 import {MdEdit} from "react-icons/md";
-import NavBar from '../components/Navbar.jsx';
+import NavBar from '../components/NavBar.jsx';
 import HomeBar from '../components/HomeBar.jsx';
 import Logout from '../components/Logout.jsx';
 import '../css/Sanctuary.css'
