@@ -24,10 +24,7 @@ const SkeletonSanctuary = () => {
         <p className="sanctuary-detail">
           <Skeleton width={120} />
         </p>
-
-        <button className="sanctuary-edit-btn">
-          <Skeleton width={160} height={35} />
-        </button>
+        
       </div>
     </div>
   );
