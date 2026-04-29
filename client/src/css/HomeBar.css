@@ -1,7 +1,7 @@
 .homebar-brand {
     position: fixed;
     top: 70px;
-    left: 90px;
+    left: clamp(20px, 5vw, 90px);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -37,4 +37,57 @@
     color: #1E1E1E;
     margin: 0;
     font-family: "Quicksand", sans-serif;
+}
+
+@media (max-width: 1200px) {
+    .homebar-brand {
+        top: 50px;
+        gap: 14px;
+    }
+    .logobtn {
+        width: 90px;
+        height: 90px;
+    }
+    .heading {
+        font-size: 64px;
+    }
+    .subheading {
+        font-size: 28px;
+    }
+}
+
+/** Used for responsive scaling w/ defined breakpoints **/
+@media (max-width: 900px) {
+    .homebar-brand {
+        top: 40px;
+        gap: 10px;
+    }
+    .logobtn {
+        width: 70px;
+        height: 70px;
+    }
+    .heading {
+        font-size: 48px;
+    }
+    .subheading {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 640px) {
+    .homebar-brand {
+        top: 28px;
+        gap: 8px;
+    }
+    .logobtn {
+        width: 50px;
+        height: 50px;
+    }
+    .heading {
+        font-size: 34px;
+        letter-spacing: 2px;
+    }
+    .subheading {
+        font-size: 16px;
+    }
 }
