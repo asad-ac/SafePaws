@@ -4,6 +4,7 @@ import {MdEdit} from "react-icons/md";
 import NavBar from '../components/Navbar.jsx';
 import HomeBar from '../components/HomeBar.jsx';
 import Logout from '../components/Logout.jsx';
+import SkeletonSanctuary from '../components/SkeletonSanctuary.jsx';
 import '../css/Sanctuary.css'
 
 const Sanctuary = () => {
