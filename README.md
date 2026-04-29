@@ -68,7 +68,12 @@ All animals deserve a good environment and should not have to go through abuse, 
 
 ## Wireframes
 
-
+![Hero Page](./planning/wireframe/hero.png)
+![Animals Page](./planning/wireframe/animals-page.png)
+![Animal Detail Page](./planning/wireframe/animal-detail.png)
+![Sponsors Page](./planning/wireframe/sponsors-page.png)
+![Volunteers Page](./planning/wireframe/volunteers-page.png)
+![404 Page](./planning/wireframe/404.png)
 
 ## Installation Instructions
 
