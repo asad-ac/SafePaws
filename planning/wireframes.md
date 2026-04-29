@@ -15,26 +15,22 @@
 
 ![Hero Wireframe](./wireframe/hero.png)
 
-## Wireframe 2: [Login Page] ⭐️
+## Wireframe 2: [Animals Page] ⭐️
 
-![Login Wireframe](./wireframe/login.png)
+![Animals Wireframe](./wireframe/animals-page.png)
 
-## Wireframe 3: [Animals Page] ⭐️
-
-![Animals Wireframe](./wireframe/dashboard.png)
-
-## Wireframe 4: [Animal Detail Page] ⭐️ 
+## Wireframe 3: [Animal Detail Page] ⭐️ 
 
 ![Animal Detail Wireframe](./wireframe/animal-detail.png)
 
-## Wireframe 5: [Volunteers Page] ⭐️
+## Wireframe 4: [Volunteers Page] ⭐️
 
-![Volunteers Wireframe](./wireframe/volunteers.png)
+![Volunteers Wireframe](./wireframe/volunteers-page.png)
 
-## Wireframe 7: [Sponsors Page] ⭐️
+## Wireframe 5: [Sponsors Page] ⭐️
 
-![Sponsors Wireframe](./wireframe/sponsors.png)
+![Sponsors Wireframe](./wireframe/sponsors-page.png)
 
-## Wireframe 8: [404 Page] ⭐️
+## Wireframe 6: [404 Page] ⭐️
 
 ![404 Wireframe](./wireframe/404.png)
