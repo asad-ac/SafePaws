@@ -60,6 +60,10 @@ All animals deserve a good environment and should not have to go through abuse, 
 ### ✅ Toast Notifications
   Add toast notifications to provide feedback when animals, sponsors, or volunteers are successfully or unsuccessfully added, updated, or deleted in the system.
 
+  Final:
+  <img width="2538" height="1386" alt="TOAST" src="https://github.com/user-attachments/assets/f3088e98-8619-4fe7-ab0e-6a460c3c2156" />
+
+  Prototype:
   ![Demo](./milestones/demo/toast-notifications.gif)
 
 ### Loading Skeletons
