@@ -56,7 +56,7 @@ const EditSanctuary = (props) => {
   return (
     <div className="sanctuary-modal-overlay" onClick={(e) => { if (e.target === e.currentTarget) props.setIsEditOpen(false) }}>
       <div className="sanctuary-modal">
-        <h2>Edit Sanctuary</h2>
+        <h2>Edit Sanctuary: {props.sanctuary.name}</h2>
         <form className="sanctuary-modal-form" onSubmit={handleSubmit}>
           <label htmlFor="name">Name</label>
           <input id="name" onChange={handleChange} name='name' value={form.name} required type='text' />
