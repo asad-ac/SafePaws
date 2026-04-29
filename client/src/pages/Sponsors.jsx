@@ -162,11 +162,11 @@ const Sponsors = () => {
 
                             <div className="sponsor-actions"> 
                                 <button onClick={() => {setSelected(sponsor), setIsEditOpen(true)}} className="btn-edit"> <MdEdit /> Edit </button>
-                                <button command="show-modal" commandfor="delete-confirmation" className="btn-delete"> <FaRegTrashAlt /> Delete </button>
+                                <button command="show-modal"  commandfor={`delete-confirmation-${sponsor.sponsor_id}`} className="btn-delete"> <FaRegTrashAlt /> Delete </button>
                             </div>
 
-                            <dialog id="delete-confirmation" onClick={closeDialogOutside} className="delete-dialog">Are you sure you'd like to delete the sponsor: {sponsor.name}? This action can NOT be undone. 
-                                    <button commandfor="delete-confirmation" command="close" className="btn-cancel">Close</button>
+                            <dialog id={`delete-confirmation-${sponsor.sponsor_id}`} onClick={closeDialogOutside} className="delete-dialog">Are you sure you'd like to delete the sponsor: {sponsor.name}? This action can NOT be undone. 
+                                    <button commandfor={`delete-confirmation-${sponsor.sponsor_id}`} command="close" className="btn-cancel">Close</button>
                                     <button onClick={() => deleteSponsor(sponsor)} className="btn-delete"> DELETE </button>
                             </dialog>
                         </div>

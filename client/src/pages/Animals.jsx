@@ -262,9 +262,9 @@ const deleteAnimal = async (animal) => {
                             {!animal.care_status && <p><IoIosWarning /> Needs Attention</p>}
                         </div>
                         <button onClick={() => {setSelected(animal), setIsEditOpen(true)}}><MdEdit /> Edit</button>
-                        <button command="show-modal" commandfor="delete-confirmation"><FaRegTrashAlt /> Delete</button>
-                        <dialog id="delete-confirmation" onClick={closeDialogOutside}>Are you sure you'd like to delete this animal from the Sanctuary? This action can NOT be undone.
-                            <button commandfor="delete-confirmation" command="close">Close</button>
+                        <button command="show-modal" commandfor={`delete-confirmation-${animal.animal_id}`}><FaRegTrashAlt /> Delete</button>
+                        <dialog id={`delete-confirmation-${animal.animal_id}`} onClick={closeDialogOutside}>Are you sure you'd like to delete this animal from the Sanctuary? This action can NOT be undone.
+                            <button commandfor={`delete-confirmation-${animal.animal_id}`} command="close">Close</button>
                             <button onClick={() => deleteAnimal(animal)}>DELETE</button>
                         </dialog>
                     </div>
