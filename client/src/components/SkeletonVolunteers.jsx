@@ -6,7 +6,7 @@ const SkeletonVolunteers = () => {
   return (
     <SkeletonTheme baseColor="#e5e7eb" highlightColor="#f3f4f6">
     <>
-      {[...Array(6)].map((_, index) => (
+      {[...Array(12)].map((_, index) => (
         <div key={index} className=''>
           <div>
             <Skeleton height={24} width="60%" />
