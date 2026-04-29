@@ -126,8 +126,8 @@ const Sponsors = () => {
                     <label htmlFor="sort"> Sort by </label>
                     <select id='sort' className="sponsors-sort-by" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
                         <option value="name"> Name (A-Z) </option>
-                        <option value="lowToHigh"> Amount (Low to High) </option>
-                        <option value="highToLow"> Amount (High To Low) </option>
+                        <option value="lowToHigh"> Amount (Low-High) </option>
+                        <option value="highToLow"> Amount (High-Low) </option>
                     </select>
                 </div>
                 <button className="btn-add" onClick={() => setIsAddOpen(true)}>
@@ -190,7 +190,6 @@ const Sponsors = () => {
         {isEditOpen && selected && (
             <div className="modal-overlay">
                 <div className="modal-content">
-                    <h2>Edit Sponsor: {selected.name}</h2>
                     <EditSponsor 
                         // the sponsor the user selected
                         sponsor={selected}

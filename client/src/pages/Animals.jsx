@@ -190,19 +190,19 @@ const deleteAnimal = async (animal) => {
             <div className='sort-container'>
                 <label htmlFor='sort'>Sort by</label>
                 <select id='sort' value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-                    <option value="name"> name (A - Z) </option>
-                    <option value="age"> age (oldest first) </option>
-                    <option value="intake_date"> intake date (oldest first) </option>
+                    <option value="name"> Name (A - Z) </option>
+                    <option value="age"> Age (Oldest first) </option>
+                    <option value="intake_date"> Intake Date (Oldest first) </option>
                 </select>
             </div>
 
             <div className='status-container'>
                 <label htmlFor='status'>Filter by</label>
                 <select id='status' value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
-                    <option value='all'> all </option>
-                    <option value='needsFeeding'> needs feeding </option>
-                    <option value='needsCleaning'> needs cleaning </option>
-                    <option value='needsCaring'> needs attention </option>
+                    <option value='all'> All </option>
+                    <option value='needsFeeding'> Needs Feeding </option>
+                    <option value='needsCleaning'> Needs Cleaning </option>
+                    <option value='needsCaring'> Needs Attention </option>
                 </select>
             </div>
 
