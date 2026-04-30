@@ -42,7 +42,7 @@ All animals deserve a good environment and should not have to go through abuse, 
   Prototype:
   ![Demo](./milestones/demo/crud-modal.gif)
 
-### ✅ Sorting by Pet Attributes 
+### ✅ Sorting by Pet Attributes & Searching by name
   Implement sorting by name, age, or intake date so staff can quickly find and manage animals more efficiently.
   
   <img width="2538" height="1386" alt="SORT" src="https://github.com/user-attachments/assets/8d5ddd8b-3109-4ed2-a7aa-f38d8969874e" />
