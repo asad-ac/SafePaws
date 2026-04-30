@@ -4,8 +4,6 @@ CodePath WEB103 Final Project
 
 Designed and developed by: Rajiv Chevannes, Samantha Milo, Asad Chaudhry, Baire Diaz
 
-RENDER DEPLOY: https://client-wc16.onrender.com/animals
-
 ## About
 
 ### Description and Purpose
