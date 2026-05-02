@@ -18,7 +18,7 @@ const createStaffUserTable = async () => {
         avatar_url VARCHAR(255),
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
-        `;
+    `;
 
         try {
             await pool.query(create)
