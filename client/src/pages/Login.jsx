@@ -29,6 +29,7 @@ const Login = () => {
         <form className="login-form" onSubmit={handleSubmit}>
           <input type="text" placeholder="Username" />
           <input type="password" placeholder="Password" />
+          <button onClick={handleGitHubLogin}> Login with GitHub </button>
           <button type="submit">Sign In</button>
         </form>
         <div className="login-notice-container">
@@ -36,7 +37,6 @@ const Login = () => {
           <p className="login-notice">
             This platform is restricted to authorized sanctuary staff members. Contact your sanctuary administrator if you need access.
           </p>
-          <button onClick={handleGitHubLogin}> Login with GitHub </button>
         </div>
       </div>
       <Footer />
