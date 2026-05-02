@@ -1,0 +1,9 @@
+.footer {
+    position: fixed;
+    top: 95%;
+    left: 48px;
+    right: 48px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+}

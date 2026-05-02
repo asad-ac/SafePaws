@@ -1,10 +1,16 @@
 import {useState, useEffect} from 'react'
-import AddVolunteer from '../components/AddVolunteer.jsx'
-import EditVolunteer from '../components/EditVolunteer.jsx'
 import {MdEdit} from "react-icons/md";
 import {IoAddSharp} from "react-icons/io5";
 import {FaRegTrashAlt} from "react-icons/fa";
 import {toast} from 'react-hot-toast'
+
+import AddVolunteer from '../components/AddVolunteer.jsx'
+import EditVolunteer from '../components/EditVolunteer.jsx'
+import NavBar from '../components/NavBar.jsx'
+import HomeBar from '../components/HomeBar.jsx'
+import Logout from '../components/Logout.jsx';
+import SkeletonVolunteers from '../components/SkeletonVolunteers.jsx'
+import '../css/Volunteers.css'
 
 const Volunteers = () => {
     
@@ -13,17 +19,34 @@ const Volunteers = () => {
     const [isEditOpen, setIsEditOpen] = useState(false)
     const [selected, setSelected] = useState(null)
     const [search, setSearch] = useState('')
-
-    // TODO: search bar to search by name
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState('')
 
     useEffect(() => {
         const fetchAllVolunteers = async () => {
-            const response = await fetch(`http://localhost:3001/volunteers`)
-            const data = await response.json()
-            setVolunteers(data)
+            try {
+                setLoading(true)
+                setError('')
+    
+                const response = await fetch('http://localhost:3001/volunteers')
+    
+                if (!response.ok) {
+                    throw new Error(`Server error: ${response.status}`)
+                }
+    
+                const data = await response.json()
+                setVolunteers(data)
+    
+            } catch (err) {
+                console.error(err)
+                setError(err.message || 'Something went wrong')
+            } finally {
+                setLoading(false)
+            }
         }
+    
         fetchAllVolunteers()
-    },[])
+    }, [])
 
     const deleteVolunteer = async (volunteer) => {
         const options = {
@@ -61,18 +84,36 @@ const Volunteers = () => {
     }
 
     const searchVolunteers = volunteers.filter((v) => {
-        return v.name.toLowerCase().includes(search.trim().toLowerCase())
+        return (v.name || '').toLowerCase().includes(search.trim().toLowerCase())
     })
+
+    function closeDialogOutside(e) {
+        if (e.target === e.currentTarget) {
+            e.currentTarget.close()
+        }
+    }
     
     return (
         <>
-            <div>
-                <h1> Volunteers </h1>
-                <input type='search' placeholder='Search by name' value={search} onChange={(e) => setSearch(e.target.value)} />
-                <button onClick={() => setIsAddOpen(true)}> <IoAddSharp /> Add Volunteer</button>
-                {searchVolunteers.length > 0 ? searchVolunteers.map((volunteer) => {
+            <HomeBar />
+            <NavBar/>
+            <Logout />
+            <div className='volunteers-header'>
+                <h1 className='volunteers-title'>Volunteers</h1>
+                <input className='volunteers-search' type='search' placeholder='Search by name' value={search} onChange={(e) => setSearch(e.target.value)} />
+                <button className='volunteers-add-btn' onClick={() => setIsAddOpen(true)}><IoAddSharp /> Add Volunteer</button>
+            </div>
+            <div className='volunteers-container'>
+            {loading ? (
+                <SkeletonVolunteers />
+            ) : error ? (
+                <div className="error-message">
+                    <p>Error: {error}</p>
+                    <button onClick={() => window.location.reload()}>Retry</button>
+                </div>
+            ) : searchVolunteers.length > 0 ? searchVolunteers.map((volunteer) => {
                     return (
-                        <div key={volunteer.volunteer_id} className=''>
+                        <div key={volunteer.volunteer_id} className='volunteer-card'>
                             <div className=''>
                                 <p>{volunteer.name}</p>
                                 <p>{volunteer.address}</p>
@@ -80,11 +121,15 @@ const Volunteers = () => {
                                 <p>{volunteer.email}</p>
                                 <p>{volunteer.assigned_duty}</p>
                                 <button onClick={() => {setSelected(volunteer), setIsEditOpen(true)}}> <MdEdit /> Edit </button>
-                                <button onClick={() => deleteVolunteer(volunteer)}> <FaRegTrashAlt /> Delete </button>
+                                <button command="show-modal" commandfor={`delete-confirmation-${volunteer.volunteer_id}`}> <FaRegTrashAlt /> Delete </button>
+                                <dialog id={`delete-confirmation-${volunteer.volunteer_id}`} onClick={closeDialogOutside} >Are you sure you'd like to delete an Volunteer? This action can NOT be undone.
+                                    <button  commandfor={`delete-confirmation-${volunteer.volunteer_id}`} command="close" >Close</button>
+                                    <button onClick={() => deleteVolunteer(volunteer)} > DELETE </button>
+                                </dialog>
                             </div>
                         </div>
                     )
-                }) : <h2> No volunteers added </h2>}
+                }) : <h2> No volunteers added yet.</h2>}
             </div>
 
             {isAddOpen && 

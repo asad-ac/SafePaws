@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import {toast} from 'react-hot-toast'
+import '../css/EditVolunteer.css'
 
 const EditVolunteer = (props) => {
 
@@ -53,21 +54,26 @@ const EditVolunteer = (props) => {
     }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name"> Name: </label>
-        <input id="name" required type='text' name='name' value={form.name} onChange={handleChange} />
-        <label htmlFor="address"> Address: </label>
-        <input id="address" required type='text' name='address' value={form.address} onChange={handleChange} />
-        <label htmlFor="phone"> Phone: </label>
-        <input id="phone" required type='tel' name='phone' value={form.phone} onChange={handleChange} />
-        <label htmlFor="email"> Email: </label>
-        <input id="email" required type='email' name='email' value={form.email} onChange={handleChange} />
-        <label htmlFor="assigned_duty"> Assigned Duty: </label>
-        <textarea rows={2} style={{resize: 'none'}} id="assigned_duty" required type='text' name='assigned_duty' value={form.assigned_duty} onChange={handleChange}></textarea>
-        <button type='submit'> Save </button>
-      </form>
-      <button type='button' onClick={() => props.setIsEditOpen(false)}> Cancel </button>
+    <div className="modal-overlay" onClick={() => props.setIsEditOpen(false)}>
+      <div className="modal" onClick={(e) => e.stopPropagation(e)}>
+        <h2>Edit Volunteer: {props.volunteer.name}</h2>
+        <form className="modal-form" onSubmit={handleSubmit}>
+          <label htmlFor="name">Name</label>
+          <input id="name" required type='text' name='name' value={form.name} onChange={handleChange} />
+          <label htmlFor="address">Address</label>
+          <input id="address" required type='text' name='address' value={form.address} onChange={handleChange} />
+          <label htmlFor="phone">Phone</label>
+          <input id="phone" required type='tel' name='phone' value={form.phone} onChange={handleChange} />
+          <label htmlFor="email">Email</label>
+          <input id="email" required type='email' name='email' value={form.email} onChange={handleChange} />
+          <label htmlFor="assigned_duty">Assigned Duty</label>
+          <textarea rows={2} id="assigned_duty" required name='assigned_duty' value={form.assigned_duty} onChange={handleChange}></textarea>
+          <div className="modal-actions">
+            <button type='button' onClick={() => props.setIsEditOpen(false)}>Cancel</button>
+            <button type='submit'>Save</button>
+          </div>
+        </form>
+      </div>
     </div>
   )
 }

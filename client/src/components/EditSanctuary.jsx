@@ -1,5 +1,7 @@
 import {useState} from 'react'
 import {toast} from 'react-hot-toast'
+import {MdEdit} from 'react-icons/md'
+import '../css/Sanctuary.css'
 
 const EditSanctuary = (props) => {
 
@@ -27,20 +29,20 @@ const EditSanctuary = (props) => {
         try {
           const updateSanctuaryPromise = async () => {
             const response = await fetch(`http://localhost:3001/sanctuaries/${form.sanctuary_id}`, options)
-            
+
             if (!response.ok) {
               throw new Error("Update failed")
             }
-            
+
             return await response.json()
           }
-          
+
           const editedSanctuary = await toast.promise(updateSanctuaryPromise(), {
             loading: `Updating ${form.name}...`,
             success: `${form.name} updated`,
             error: `Failed to update ${form.name}`
           })
-          
+
           props.setSanctuary(editedSanctuary)
           props.setIsEditOpen(false)
 
@@ -52,21 +54,26 @@ const EditSanctuary = (props) => {
     }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name"> Name: </label>
-        <input id="name" onChange={handleChange} name='name' value={form.name} required type='text'  />
-        <label htmlFor="address"> Address: </label>
-        <input id="address" onChange={handleChange} name='address' value={form.address} required type='text' />
-        <label htmlFor="phone"> Phone: </label>
-        <input id="phone" onChange={handleChange} name='phone' value={form.phone} required type='tel' />
-        <label htmlFor="email"> Email: </label>
-        <input id="email" onChange={handleChange} name='email' value={form.email} required type='email' />
-        <label htmlFor="capacity"> Capacity: </label>
-        <input id="capacity" onChange={handleChange} name='capacity' value={form.capacity} required type='number' />
-        <button type='submit'> Save </button>
-      </form>
-      <button type='button' onClick={() => props.setIsEditOpen(false)}> Cancel </button>
+    <div className="sanctuary-modal-overlay" onClick={(e) => { if (e.target === e.currentTarget) props.setIsEditOpen(false) }}>
+      <div className="sanctuary-modal">
+        <h2>Edit Sanctuary: {props.sanctuary.name}</h2>
+        <form className="sanctuary-modal-form" onSubmit={handleSubmit}>
+          <label htmlFor="name">Name</label>
+          <input id="name" onChange={handleChange} name='name' value={form.name} required type='text' />
+          <label htmlFor="address">Address</label>
+          <input id="address" onChange={handleChange} name='address' value={form.address} required type='text' />
+          <label htmlFor="phone">Phone</label>
+          <input id="phone" onChange={handleChange} name='phone' value={form.phone} required type='tel' />
+          <label htmlFor="email">Email</label>
+          <input id="email" onChange={handleChange} name='email' value={form.email} required type='email' />
+          <label htmlFor="capacity">Capacity</label>
+          <input id="capacity" onChange={handleChange} name='capacity' value={form.capacity} required type='number' />
+          <div className="sanctuary-modal-actions">
+            <button type='submit'><MdEdit /> Save</button>
+            <button type='button' onClick={() => props.setIsEditOpen(false)}>Cancel</button>
+          </div>
+        </form>
+      </div>
     </div>
   )
 }

@@ -1,0 +1,165 @@
+/** Page Layout **/
+.sanctuary-page {
+    position: absolute;
+    top: 80px;
+    left: 80px;
+    right: 80px;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/** Card **/
+.sanctuary-card {
+    background-color: #1E1E1E;
+    color: #ffffff;
+    border-radius: 30px;
+    padding: 60px 80px;
+    max-width: 1040px;
+    margin: 0 auto;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    font-family: "Quicksand", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.sanctuary-name {
+    font-family: "Playfair Display", serif;
+    font-size: 64px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 16px 0;
+}
+
+.sanctuary-detail {
+    font-size: 40px;
+    color: #e0e0e0;
+    margin: 0;
+}
+
+.sanctuary-empty {
+    font-family: "Playfair Display", serif;
+    font-size: 64px;
+    font-weight: 700;
+    color: #1E1E1E;
+    text-align: center;
+}
+
+/* --- Edit Button --- */
+.sanctuary-edit-btn {
+    margin-top: 32px;
+    background-color: #9ADAB0;
+    color: #1E1E1E;
+    border: none;
+    border-radius: 40px;
+    padding: 24px 56px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: fit-content;
+}
+
+/* --- Edit Modal --- */
+.sanctuary-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.sanctuary-modal {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 40px;
+    width: 560px;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sanctuary-modal h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #1E1E1E;
+    margin: 0;
+}
+
+.sanctuary-modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sanctuary-modal-form label {
+    font-family: "Quicksand", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1E1E1E;
+    margin-top: 10px;
+}
+
+.sanctuary-modal-form input {
+    height: 40px;
+    background-color: #F5F5F5;
+    color: #1E1E1E;
+    border: 1px solid #DDDDDD;
+    border-radius: 10px;
+    padding: 0 12px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 14px;
+}
+
+.sanctuary-modal-form input::placeholder {
+    color: #AAAAAA;
+}
+
+.sanctuary-modal-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.sanctuary-modal-actions button:first-child {
+    background-color: #1E1E1E;
+    color: #9ADAB0;
+    border: none;
+    border-radius: 24px;
+    padding: 10px 20px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.sanctuary-modal-actions button:last-child {
+    background-color: #F5F5F5;
+    color: #1E1E1E;
+    border: 1px solid #DDDDDD;
+    border-radius: 24px;
+    padding: 10px 20px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
