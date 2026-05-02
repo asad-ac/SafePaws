@@ -6,7 +6,28 @@ import volunteerData from "../data/volunteer.js";
 import sponsorData from "../data/sponsor.js";
 import animalTagData from "../data/animal_tag.js";
 
-// TODO: want (amount) field on sponsor table - yes or no.
+const createStaffUserTable = async () => {
+    const create = `
+    DROP TABLE IF EXISTS staff_user CASCADE;
+    
+    CREATE TABLE IF NOT EXISTS staff_user (
+        user_id SERIAL PRIMARY KEY,
+        github_id VARCHAR(255) UNIQUE NOT NULL,
+        username VARCHAR(255) NOT NULL,
+        display_name VARCHAR(255), 
+        avatar_url VARCHAR(255),
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
+        `;
+
+        try {
+            await pool.query(create)
+            console.log("✅ user table created successfully")
+        }
+        catch (error) {
+            console.log("🛑 error creating user table", err)
+        }
+}
 
 const createSanctuaryTable = async () => {
     const create = `
@@ -236,6 +257,8 @@ const seedAnimalTags = async () => {
 };
 
 const resetDatabase = async () => {
+    await createStaffUserTable()
+
     await createSanctuaryTable()
     await seedSanctuary()
 

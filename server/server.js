@@ -1,11 +1,14 @@
 import express from 'express'
 import cors from 'cors'
+import dotenv from 'dontenv'
 
 import animalRouter from './routes/animal.js'
 import sanctuaryRouter from './routes/sanctuary.js'
 import sponsorRouter from './routes/sponsor.js'
 import volunteerRouter from './routes/volunteer.js'
 import tagRouter from './routes/tag.js'
+
+dotenv.config()
 
 const app = express()
 
