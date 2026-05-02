@@ -35,8 +35,9 @@ app.use(passport.session());
 
 const isAuthenticated = (req, res, next) => {
   if (!req.user) {
-    return res.status(401).json({error: ""})
+    return res.status(401).json({error: "Unauthorized"})
   }
+  next();
 }
 
 app.get('/', (req, res) => {
@@ -44,14 +45,14 @@ app.get('/', (req, res) => {
 })
 
 app.use("/auth", authRouter)
-app.use("/animals", animalRouter)
-app.use("/sanctuaries", sanctuaryRouter)
-app.use("/sponsors", sponsorRouter)
-app.use("/volunteers", volunteerRouter)
-app.use("/tags", tagRouter)
+app.use("/animals", isAuthenticated, animalRouter)
+app.use("/sanctuaries", isAuthenticated, sanctuaryRouter)
+app.use("/sponsors", isAuthenticated, sponsorRouter)
+app.use("/volunteers", isAuthenticated, volunteerRouter)
+app.use("/tags", isAuthenticated, tagRouter)
 
 const PORT = process.env.PORT || 3001
 
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
-})
+}) 
