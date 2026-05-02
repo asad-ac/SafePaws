@@ -14,6 +14,7 @@ import {useEffect, useState} from 'react'
 function App() {
 
   const [authLoading, setAuthLoading] = useState(true)
+  const [user, setUser] = useState(true)
 
   useEffect(() => {
     const checkUser = async () => {
@@ -41,19 +42,26 @@ function App() {
     checkUser()
   }, [])
 
+  if (authLoading) {
+    return <p> Loading... </p>
+  }
+
   return (
     <>
     <Toaster position='bottom-left' />
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Navigate to='/login' replace />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/hero' element={<Hero />} />
-          <Route path='/animals' element={<Animals />} />
-          <Route path='/sponsors' element={<Sponsors />} />
-          <Route path='/volunteers' element={<Volunteers />} />
-          <Route path='/sanctuary' element={<Sanctuary />} />
-          <Route path='/animals/:animal_id' element={<AnimalDetail />} />
+          <Route path='/' element={<Navigate to={user ? '/hero' : '/login'} replace />} />
+
+          <Route path='/login' element={ user ? <Navigate to='/hero' replace /> : <Login />} />
+
+          <Route path='/hero' element={ user ? <Hero /> : <Navigate to='/login' replace />} />
+          <Route path='/animals' element={ user ? <Animals /> : <Navigate to='/login' replace />} />
+          <Route path='/sponsors' element={ user ? <Sponsors /> : <Navigate to='/login' replace /> } />
+          <Route path='/volunteers' element={user ? <Volunteers /> : <Navigate to='/login'replace />} />
+          <Route path='/sanctuary' element={ user ? <Sanctuary /> : <Navigate to='/login' replace />} />
+          <Route path='/animals/:animal_id' element={ user ? <AnimalDetail /> : <Navigate to='/login' replace />} />
+
           <Route path='*' element={<Error />} />
         </Routes>
       </BrowserRouter>
