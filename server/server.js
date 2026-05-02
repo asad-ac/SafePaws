@@ -45,6 +45,8 @@ app.get('/', (req, res) => {
 })
 
 app.use("/auth", authRouter)
+
+// protected
 app.use("/animals", isAuthenticated, animalRouter)
 app.use("/sanctuaries", isAuthenticated, sanctuaryRouter)
 app.use("/sponsors", isAuthenticated, sponsorRouter)

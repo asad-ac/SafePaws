@@ -15,6 +15,10 @@ const Login = () => {
     navigate('/hero')
   }
 
+  const handleGitHubLogin = () => {
+    window.location.href ="http://localhost:3001/auth/github"
+  }
+
   return (
     <>
       <HomeBar disableLogoLink />
@@ -32,6 +36,7 @@ const Login = () => {
           <p className="login-notice">
             This platform is restricted to authorized sanctuary staff members. Contact your sanctuary administrator if you need access.
           </p>
+          <button onClick={handleGitHubLogin}> Login with GitHub </button>
         </div>
       </div>
       <Footer />
