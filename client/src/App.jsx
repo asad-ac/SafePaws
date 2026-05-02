@@ -9,8 +9,37 @@ import Error from './pages/Error.jsx'
 import Hero from './pages/Hero.jsx'
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
 import {Toaster} from 'react-hot-toast'
+import {useEffect, useState} from 'react'
 
 function App() {
+
+  const [authLoading, setAuthLoading] = useState(true)
+
+  useEffect(() => {
+    const checkUser = async () => {
+      try {
+        const response = await fetch("http://localhost:3001/auth/me", {
+          credentials: "include"
+        });
+
+        if (!response.ok) {
+          setUser(null)
+          return;
+        }
+
+        const data = await response.json()
+        setUser(data)
+      }
+      catch (error) {
+        setUser(null)
+      }
+      finally {
+        setAuthLoading(false)
+      }
+    }
+
+    checkUser()
+  }, [])
 
   return (
     <>
