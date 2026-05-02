@@ -33,6 +33,12 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+const isAuthenticated = (req, res, next) => {
+  if (!req.user) {
+    return res.status(401).json({error: ""})
+  }
+}
+
 app.get('/', (req, res) => {
     res.status(200).send('<h1 style="text-align: center; margin-top: 50px;">🐾 SafePaws API</h1>')
 })
