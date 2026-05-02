@@ -5,7 +5,7 @@ const Logout = ({ setUser }) => {
 
   const handleLogout = async () => {
     await fetch("http://localhost:3001/auth/logout", {
-      method: "POST",
+      method: "GET",
       credentials: "include"
     })
 

@@ -56,7 +56,7 @@ const Animals = (props) => {
                 setLoading(true)
                 setError('')
     
-                const response = await fetch('http://localhost:3001/animals')
+                const response = await fetch('http://localhost:3001/animals', {credentials: 'include'})
     
                 if (!response.ok) {
                     throw new Error(`Server error: ${response.status}`)

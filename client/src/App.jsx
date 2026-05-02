@@ -13,8 +13,8 @@ import {useEffect, useState} from 'react'
 
 function App() {
 
-  const [authLoading, setAuthLoading] = useState(true)
   const [user, setUser] = useState(null)
+  const [authLoading, setAuthLoading] = useState(true)
 
   useEffect(() => {
     const checkUser = async () => {

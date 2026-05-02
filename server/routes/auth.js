@@ -12,13 +12,13 @@ router.get(
         failureRedirect: `${process.env.CLIENT_URL}/login`,
     }),
     (req, res) => {
-        res.redirect(process.env.CLIENT_URL);
+        res.redirect(`${process.env.CLIENT_URL}/hero`);
     }
 );
 
 // current user
 router.get("/me", (req, res) => {
-    if (!req.user) {
+    if (!req.isAuthenticated()) {
         return res.status(401).json({user: null});
     }
     res.json(req.user)

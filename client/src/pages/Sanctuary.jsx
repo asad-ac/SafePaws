@@ -17,7 +17,7 @@ const Sanctuary = (props) => {
         const getSanctuary = async () => {
           try {
             setLoading(true);
-            const response = await fetch('http://localhost:3001/sanctuaries/1');
+            const response = await fetch('http://localhost:3001/sanctuaries/1', {credentials: "include"});
             const data = await response.json();
             setSanctuary(data);
           } catch (err) {

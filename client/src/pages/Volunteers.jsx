@@ -28,7 +28,7 @@ const Volunteers = (props) => {
                 setLoading(true)
                 setError('')
     
-                const response = await fetch('http://localhost:3001/volunteers')
+                const response = await fetch('http://localhost:3001/volunteers', {credentials: 'include'})
     
                 if (!response.ok) {
                     throw new Error(`Server error: ${response.status}`)
@@ -53,7 +53,8 @@ const Volunteers = (props) => {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            credentials: "include"
         }
 
         try {

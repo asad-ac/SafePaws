@@ -27,6 +27,11 @@ app.use(
     secret: process.env.SESSION_SECRET, // used to sign session cookie so can't be tampered with
     resave: false, // dont save if nothing changed
     saveUninitialized: false, // dont create empty sessions
+    cookie: {
+      httpOnly: true,
+      secure: false,
+      sameSite: "lax"
+    }
   })
 );
 
@@ -46,6 +51,14 @@ app.get('/', (req, res) => {
 
 app.use("/auth", authRouter)
 
+app.get("/debug-session", (req, res) => {
+  res.json({
+    session: req.session,
+    user: req.user,
+    isAuthenticated: req.isAuthenticated?.()
+  })
+})
+
 // protected
 app.use("/animals", isAuthenticated, animalRouter)
 app.use("/sanctuaries", isAuthenticated, sanctuaryRouter)
@@ -58,3 +71,7 @@ const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
 }) 
+
+console.log("CLIENT_URL:", process.env.CLIENT_URL)
+console.log("SESSION_SECRET:", process.env.SESSION_SECRET)
+console.log("GITHUB_CLIENT_ID:", process.env.GITHUB_CLIENT_ID)

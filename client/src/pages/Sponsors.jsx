@@ -39,7 +39,7 @@ const Sponsors = (props) => {
                 setLoading(true)
                 setError('')
     
-                const response = await fetch('http://localhost:3001/sponsors')
+                const response = await fetch('http://localhost:3001/sponsors', {credentials: 'include'})
     
                 if (!response.ok) {
                     throw new Error(`Server error: ${response.status}`)
@@ -64,7 +64,8 @@ const Sponsors = (props) => {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            credentials: "include"
         }
 
         try {

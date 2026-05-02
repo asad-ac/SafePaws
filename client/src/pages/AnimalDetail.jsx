@@ -29,7 +29,7 @@ const AnimalDetail = (props) => {
                 setLoading(true)
                 setError('')
     
-                const response = await fetch(`http://localhost:3001/animals/${animal_id}`)
+                const response = await fetch(`http://localhost:3001/animals/${animal_id}`, {credentials: "include"})
     
                 if (!response.ok) {
                     throw new Error(`Server error: ${response.status}`)
