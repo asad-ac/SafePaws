@@ -9,6 +9,7 @@ import sanctuaryRouter from './routes/sanctuary.js'
 import sponsorRouter from './routes/sponsor.js'
 import volunteerRouter from './routes/volunteer.js'
 import tagRouter from './routes/tag.js'
+import authRouter from './routes/auth.js'
 
 dotenv.config()
 
@@ -36,6 +37,7 @@ app.get('/', (req, res) => {
     res.status(200).send('<h1 style="text-align: center; margin-top: 50px;">🐾 SafePaws API</h1>')
 })
 
+app.use("auth", authRouter)
 app.use("/animals", animalRouter)
 app.use("/sanctuaries", sanctuaryRouter)
 app.use("/sponsors", sponsorRouter)
