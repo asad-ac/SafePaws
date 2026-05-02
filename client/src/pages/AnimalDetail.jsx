@@ -93,7 +93,7 @@ const AnimalDetail = () => {
     <div>
         <HomeBar />
         <NavBar/>
-        <Logout />
+        <Logout setUser={props.setUser} />
         <div className="detail-page">
             <div className="detail-header">
                 <h1>View Animal</h1>

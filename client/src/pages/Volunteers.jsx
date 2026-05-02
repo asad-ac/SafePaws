@@ -97,7 +97,7 @@ const Volunteers = () => {
         <>
             <HomeBar />
             <NavBar/>
-            <Logout />
+            <Logout setUser={props.setUser} />
             <div className='volunteers-header'>
                 <h1 className='volunteers-title'>Volunteers</h1>
                 <input className='volunteers-search' type='search' placeholder='Search by name' value={search} onChange={(e) => setSearch(e.target.value)} />

@@ -110,7 +110,7 @@ const Sponsors = () => {
     <>
         <NavBar/>
         <HomeBar />
-        <Logout />
+        <Logout setUser={props.setUser} />
         <div className='sponsors-page'>
             <div className="sponsors-header">
                 <h1>Sponsors</h1>

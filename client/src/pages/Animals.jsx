@@ -179,7 +179,7 @@ const deleteAnimal = async (animal) => {
     <>
         <HomeBar />
         <NavBar/>
-        <Logout />
+        <Logout setUser={props.setUser} />
         <div className='sidebar'>
                 <h1>Animals</h1>
             <div className='search-container'>

@@ -33,7 +33,7 @@ const Sanctuary = () => {
     <>
         <NavBar />
         <HomeBar />
-        <Logout />
+        <Logout setUser={props.setUser} />
         <div className="sanctuary-page">
         {loading ? (
             <SkeletonSanctuary />

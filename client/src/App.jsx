@@ -53,14 +53,14 @@ function App() {
         <Routes>
           <Route path='/' element={<Navigate to={user ? '/hero' : '/login'} replace />} />
 
-          <Route path='/login' element={ user ? <Navigate to='/hero' replace /> : <Login setUser={user} />} />
+          <Route path='/login' element={ user ? <Navigate to='/hero' replace /> : <Login setUser={setUser} />} />
 
-          <Route path='/hero' element={ user ? <Hero /> : <Navigate to='/login' replace />} />
-          <Route path='/animals' element={ user ? <Animals /> : <Navigate to='/login' replace />} />
-          <Route path='/sponsors' element={ user ? <Sponsors /> : <Navigate to='/login' replace /> } />
-          <Route path='/volunteers' element={user ? <Volunteers /> : <Navigate to='/login' replace />} />
-          <Route path='/sanctuary' element={ user ? <Sanctuary /> : <Navigate to='/login' replace />} />
-          <Route path='/animals/:animal_id' element={ user ? <AnimalDetail /> : <Navigate to='/login' replace />} />
+          <Route path='/hero' element={ user ? <Hero setUser={setUser} /> : <Navigate to='/login' replace />} />
+          <Route path='/animals' element={ user ? <Animals setUser={setUser} /> : <Navigate to='/login' replace />} />
+          <Route path='/sponsors' element={ user ? <Sponsors setUser={setUser} /> : <Navigate to='/login' replace /> } />
+          <Route path='/volunteers' element={user ? <Volunteers setUser={setUser} /> : <Navigate to='/login' replace />} />
+          <Route path='/sanctuary' element={ user ? <Sanctuary setUser={setUser} /> : <Navigate to='/login' replace />} />
+          <Route path='/animals/:animal_id' element={ user ? <AnimalDetail setUser={setUser} /> : <Navigate to='/login' replace />} />
 
           <Route path='*' element={<Error />} />
         </Routes>

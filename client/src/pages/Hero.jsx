@@ -10,7 +10,7 @@ const Hero = () => {
   return (
     <>
       <HomeBar />
-      <Logout />
+      <Logout setUser={props.setUser} />
       <div className="wallpaper" style={{ backgroundImage: `url(${wallpaper})` }} />
       <p className="hero-text">Every animal deserves a safe and enriching life.<br />Thank you for your continued support.</p>
       <div className="button-group">
