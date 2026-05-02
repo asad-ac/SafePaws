@@ -1,8 +1,8 @@
 import express from 'express'
 import cors from 'cors'
-import dotenv from 'dontenv'
+import dotenv from 'dotenv'
 import session from 'express-session'
-import passport from "./auth/auth.js"
+import passport from "./config/auth.js"
 
 import animalRouter from './routes/animal.js'
 import sanctuaryRouter from './routes/sanctuary.js'
@@ -16,18 +16,21 @@ const app = express()
 
 app.use(express.json())
 
-app.use(cors())
+app.use(cors({
+    origin: process.env.CLIENT_URL, // use client port domain and protocol
+    credentials: true // allows cookies, sessions, and login state
+  }))
 
 app.use(
   session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
+    secret: process.env.SESSION_SECRET, // used to sign session cookie so can't be tampered with
+    resave: false, // dont save if nothing changed
+    saveUninitialized: false, // dont create empty sessions
   })
 );
 
 app.use(passport.initialize());
-app.use(passsport.session());
+app.use(passport.session());
 
 app.get('/', (req, res) => {
     res.status(200).send('<h1 style="text-align: center; margin-top: 50px;">🐾 SafePaws API</h1>')
