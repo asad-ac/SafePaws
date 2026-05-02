@@ -1,6 +1,8 @@
 import express from 'express'
 import cors from 'cors'
 import dotenv from 'dontenv'
+import session from 'express-session'
+import passport from "./auth/auth.js"
 
 import animalRouter from './routes/animal.js'
 import sanctuaryRouter from './routes/sanctuary.js'
@@ -15,6 +17,17 @@ const app = express()
 app.use(express.json())
 
 app.use(cors())
+
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+app.use(passport.initialize());
+app.use(passsport.session());
 
 app.get('/', (req, res) => {
     res.status(200).send('<h1 style="text-align: center; margin-top: 50px;">🐾 SafePaws API</h1>')
