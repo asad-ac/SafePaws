@@ -12,7 +12,7 @@ import Logout from '../components/Logout.jsx';
 import SkeletonVolunteers from '../components/SkeletonVolunteers.jsx'
 import '../css/Volunteers.css'
 
-const Volunteers = () => {
+const Volunteers = (props) => {
     
     const [volunteers, setVolunteers] = useState([])
     const [isAddOpen, setIsAddOpen] = useState(false)
@@ -28,7 +28,7 @@ const Volunteers = () => {
                 setLoading(true)
                 setError('')
     
-                const response = await fetch('http://localhost:3001/volunteers')
+                const response = await fetch('http://localhost:3001/volunteers', {credentials: 'include'})
     
                 if (!response.ok) {
                     throw new Error(`Server error: ${response.status}`)
@@ -53,7 +53,8 @@ const Volunteers = () => {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            credentials: "include"
         }
 
         try {
@@ -97,7 +98,7 @@ const Volunteers = () => {
         <>
             <HomeBar />
             <NavBar/>
-            <Logout />
+            <Logout setUser={props.setUser} />
             <div className='volunteers-header'>
                 <h1 className='volunteers-title'>Volunteers</h1>
                 <input className='volunteers-search' type='search' placeholder='Search by name' value={search} onChange={(e) => setSearch(e.target.value)} />

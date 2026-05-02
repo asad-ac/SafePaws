@@ -1,7 +1,5 @@
 import {pool} from "../config/database.js"
 
-//TODO: do all filtering and sorting logic in backend?
-
 const getAllAnimals = async (req, res) => {
     try {
         const results = await pool.query(`

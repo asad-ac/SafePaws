@@ -12,7 +12,7 @@ import Logout from '../components/Logout.jsx'
 import SkeletonAnimalDetail from '../components/SkeletonAnimalDetail.jsx';
 import '../css/AnimalDetail.css'
 
-const AnimalDetail = () => {
+const AnimalDetail = (props) => {
 
     const {animal_id} = useParams()
 
@@ -29,7 +29,7 @@ const AnimalDetail = () => {
                 setLoading(true)
                 setError('')
     
-                const response = await fetch(`http://localhost:3001/animals/${animal_id}`)
+                const response = await fetch(`http://localhost:3001/animals/${animal_id}`, {credentials: "include"})
     
                 if (!response.ok) {
                     throw new Error(`Server error: ${response.status}`)
@@ -55,7 +55,8 @@ const AnimalDetail = () => {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            credentials: 'include'
         }
 
         try {
@@ -93,7 +94,7 @@ const AnimalDetail = () => {
     <div>
         <HomeBar />
         <NavBar/>
-        <Logout />
+        <Logout setUser={props.setUser} />
         <div className="detail-page">
             <div className="detail-header">
                 <h1>View Animal</h1>

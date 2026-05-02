@@ -7,7 +7,7 @@ import Logout from '../components/Logout.jsx';
 import SkeletonSanctuary from '../components/SkeletonSanctuary.jsx';
 import '../css/Sanctuary.css'
 
-const Sanctuary = () => {
+const Sanctuary = (props) => {
 
     const [sanctuary, setSanctuary] = useState(null)
     const [isEditOpen, setIsEditOpen] = useState(false)
@@ -17,7 +17,7 @@ const Sanctuary = () => {
         const getSanctuary = async () => {
           try {
             setLoading(true);
-            const response = await fetch('http://localhost:3001/sanctuaries/1');
+            const response = await fetch('http://localhost:3001/sanctuaries/1', {credentials: "include"});
             const data = await response.json();
             setSanctuary(data);
           } catch (err) {
@@ -33,7 +33,7 @@ const Sanctuary = () => {
     <>
         <NavBar />
         <HomeBar />
-        <Logout />
+        <Logout setUser={props.setUser} />
         <div className="sanctuary-page">
         {loading ? (
             <SkeletonSanctuary />

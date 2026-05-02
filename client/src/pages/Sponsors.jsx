@@ -22,7 +22,7 @@ function closeDialogOutside(e) {
     }
 }
 
-const Sponsors = () => {
+const Sponsors = (props) => {
 
     const [sponsors, setSponsors] = useState([])
     const [isAddOpen, setIsAddOpen] = useState(false)
@@ -39,7 +39,7 @@ const Sponsors = () => {
                 setLoading(true)
                 setError('')
     
-                const response = await fetch('http://localhost:3001/sponsors')
+                const response = await fetch('http://localhost:3001/sponsors', {credentials: 'include'})
     
                 if (!response.ok) {
                     throw new Error(`Server error: ${response.status}`)
@@ -64,7 +64,8 @@ const Sponsors = () => {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            credentials: "include"
         }
 
         try {
@@ -110,7 +111,7 @@ const Sponsors = () => {
     <>
         <NavBar/>
         <HomeBar />
-        <Logout />
+        <Logout setUser={props.setUser} />
         <div className='sponsors-page'>
             <div className="sponsors-header">
                 <h1>Sponsors</h1>

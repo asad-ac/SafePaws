@@ -15,7 +15,7 @@ import Logout from '../components/Logout.jsx';
 import SkeletonAnimals from '../components/SkeletonAnimals.jsx';
 import '../css/Animals.css'
 
-const Animals = () => {
+const Animals = (props) => {
 
     const [animals, setAnimals] = useState([])
     const [isAddOpen, setIsAddOpen] = useState(false)
@@ -56,7 +56,7 @@ const Animals = () => {
                 setLoading(true)
                 setError('')
     
-                const response = await fetch('http://localhost:3001/animals')
+                const response = await fetch('http://localhost:3001/animals', {credentials: 'include'})
     
                 if (!response.ok) {
                     throw new Error(`Server error: ${response.status}`)
@@ -81,7 +81,8 @@ const deleteAnimal = async (animal) => {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
-      }
+      },
+      credentials: 'include'
     }
   
     try {
@@ -92,7 +93,7 @@ const deleteAnimal = async (animal) => {
                 throw new Error("Delete failed")
             }
 
-        return true
+            return true
         }
 
       await toast.promise(deleteAnimalPromise(), {
@@ -179,7 +180,7 @@ const deleteAnimal = async (animal) => {
     <>
         <HomeBar />
         <NavBar/>
-        <Logout />
+        <Logout setUser={props.setUser} />
         <div className='sidebar'>
                 <h1>Animals</h1>
             <div className='search-container'>

@@ -1,16 +1,19 @@
-import '../css/Logout.css'
-import {Link} from 'react-router-dom'
-import profileImage from '../assets/profile-image.png'
+import {useNavigate} from "react-router-dom"
 
-const Logout = () => {
-    return (
-        <>
-            <div className="logout-container">
-                <img className="profile-img" src={profileImage} alt="Profile" />
-                <Link to="/login" className="logout-btn">Log Out</Link>
-            </div>
-        </>
-    )
+const Logout = ({ setUser }) => {
+  const navigate = useNavigate()
+
+  const handleLogout = async () => {
+    await fetch("http://localhost:3001/auth/logout", {
+      method: "GET",
+      credentials: "include"
+    })
+
+    setUser(null)
+    navigate("/login")
+  }
+
+  return <button onClick={handleLogout}>Logout</button>
 }
 
 export default Logout
