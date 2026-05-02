@@ -15,7 +15,7 @@ import Logout from '../components/Logout.jsx';
 import SkeletonAnimals from '../components/SkeletonAnimals.jsx';
 import '../css/Animals.css'
 
-const Animals = () => {
+const Animals = (props) => {
 
     const [animals, setAnimals] = useState([])
     const [isAddOpen, setIsAddOpen] = useState(false)

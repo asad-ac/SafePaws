@@ -12,7 +12,7 @@ import Logout from '../components/Logout.jsx'
 import SkeletonAnimalDetail from '../components/SkeletonAnimalDetail.jsx';
 import '../css/AnimalDetail.css'
 
-const AnimalDetail = () => {
+const AnimalDetail = (props) => {
 
     const {animal_id} = useParams()
 

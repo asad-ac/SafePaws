@@ -7,7 +7,7 @@ import Logout from '../components/Logout.jsx';
 import SkeletonSanctuary from '../components/SkeletonSanctuary.jsx';
 import '../css/Sanctuary.css'
 
-const Sanctuary = () => {
+const Sanctuary = (props) => {
 
     const [sanctuary, setSanctuary] = useState(null)
     const [isEditOpen, setIsEditOpen] = useState(false)

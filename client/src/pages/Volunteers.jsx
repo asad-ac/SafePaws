@@ -12,7 +12,7 @@ import Logout from '../components/Logout.jsx';
 import SkeletonVolunteers from '../components/SkeletonVolunteers.jsx'
 import '../css/Volunteers.css'
 
-const Volunteers = () => {
+const Volunteers = (props) => {
     
     const [volunteers, setVolunteers] = useState([])
     const [isAddOpen, setIsAddOpen] = useState(false)

@@ -6,7 +6,7 @@ import Footer from '../components/Footer'
 import Logout from '../components/Logout'
 import { Link } from 'react-router-dom'
 
-const Hero = () => {
+const Hero = (props) => {
   return (
     <>
       <HomeBar />

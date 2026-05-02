@@ -22,7 +22,7 @@ function closeDialogOutside(e) {
     }
 }
 
-const Sponsors = () => {
+const Sponsors = (props) => {
 
     const [sponsors, setSponsors] = useState([])
     const [isAddOpen, setIsAddOpen] = useState(false)
