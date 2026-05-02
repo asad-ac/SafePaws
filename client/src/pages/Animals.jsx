@@ -81,7 +81,8 @@ const deleteAnimal = async (animal) => {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
-      }
+      },
+      credentials: 'include'
     }
   
     try {

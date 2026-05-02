@@ -55,7 +55,8 @@ const AnimalDetail = (props) => {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            credentials: 'include'
         }
 
         try {

@@ -16,7 +16,6 @@ router.get(
     }
 );
 
-
 // current user
 router.get("/me", (req, res) => {
     if (!req.user) {
