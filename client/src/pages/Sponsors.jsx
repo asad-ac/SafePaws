@@ -13,9 +13,6 @@ import HomeBar from '../components/HomeBar.jsx'
 import Logout from '../components/Logout.jsx';
 import SkeletonSponsors from '../components/SkeletonSponsors.jsx'
 
-// TODO: fix sponsors skeleton
-// TODO: add on click outside of modal closes
-
 function closeDialogOutside(e) {
     if (e.target === e.currentTarget) {
         e.currentTarget.close()

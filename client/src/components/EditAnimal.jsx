@@ -10,7 +10,7 @@ const EditAnimal = (props) => {
 
   useEffect(() => {
     const getTags = async () => {
-      const response = await fetch('http://localhost:3001/tags')
+      const response = await fetch('http://localhost:3001/tags', {credentials: 'include'})
       const data = await response.json()
       setTags(data)
     }

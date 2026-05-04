@@ -259,25 +259,17 @@ const seedAnimalTags = async () => {
 
 const resetDatabase = async () => {
     await createStaffUserTable()
-
     await createSanctuaryTable()
-    await seedSanctuary()
-
+  
     await createTagTable()
     await seedTags()
-
+  
     await createAnimalTable()
-    await seedAnimals()
-
     await createAnimalTagTable()
-    await seedAnimalTags()
-
+    
     await createVolunteerTable()
-    await seedVolunteers()
-
     await createSponsorTable()
-    await seedSponsors()
-};
+  }
 
 const run = async () => {
     try {

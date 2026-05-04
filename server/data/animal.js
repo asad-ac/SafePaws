@@ -10,8 +10,7 @@ const animalData = [
       species: "Lion",
       cleaning_status: true,
       care_status: true,
-      feeding_status: false,
-      sanctuary_id: 1
+      feeding_status: false
     },
     {
       name: "Maya",
@@ -24,8 +23,7 @@ const animalData = [
       species: "Elephant",
       cleaning_status: false,
       care_status: true,
-      feeding_status: true,
-      sanctuary_id: 1
+      feeding_status: true
     },
     {
       name: "Zara",
@@ -38,8 +36,7 @@ const animalData = [
       species: "Zebra",
       cleaning_status: true,
       care_status: false,
-      feeding_status: true,
-      sanctuary_id: 1
+      feeding_status: true
     },
     {
       name: "Kiko",
@@ -52,8 +49,7 @@ const animalData = [
       species: "Monkey",
       cleaning_status: false,
       care_status: false,
-      feeding_status: false,
-      sanctuary_id: 1
+      feeding_status: false
     },
     {
       name: "Rex",
@@ -66,8 +62,7 @@ const animalData = [
       species: "Wolf",
       cleaning_status: true,
       care_status: false,
-      feeding_status: true,
-      sanctuary_id: 1
+      feeding_status: true
     },
     {
       name: "Luna",
@@ -80,8 +75,7 @@ const animalData = [
       species: "Deer",
       cleaning_status: true,
       care_status: true,
-      feeding_status: true,
-      sanctuary_id: 1
+      feeding_status: true
     },
     {
       name: "Simba",
@@ -94,8 +88,7 @@ const animalData = [
       species: "Lion",
       cleaning_status: false,
       care_status: false,
-      feeding_status: false,
-      sanctuary_id: 1
+      feeding_status: false
     },
     {
       name: "Bruno",
@@ -108,8 +101,7 @@ const animalData = [
       species: "Bear",
       cleaning_status: true,
       care_status: false,
-      feeding_status: true,
-      sanctuary_id: 1
+      feeding_status: true
     },
     {
       name: "Tango",
@@ -122,8 +114,7 @@ const animalData = [
       species: "Parrot",
       cleaning_status: false,
       care_status: true,
-      feeding_status: false,
-      sanctuary_id: 1
+      feeding_status: false
     },
     {
       name: "Atlas",
@@ -136,8 +127,7 @@ const animalData = [
       species: "Elephant",
       cleaning_status: true,
       care_status: true,
-      feeding_status: true,
-      sanctuary_id: 1
+      feeding_status: true
     },
     {
       name: "Ivy",
@@ -150,8 +140,7 @@ const animalData = [
       species: "Monkey",
       cleaning_status: true,
       care_status: false,
-      feeding_status: true,
-      sanctuary_id: 1
+      feeding_status: true
     },
     {
       name: "Shadow",
@@ -164,8 +153,7 @@ const animalData = [
       species: "Leopard",
       cleaning_status: false,
       care_status: false,
-      feeding_status: true,
-      sanctuary_id: 1
+      feeding_status: true
     },
     {
       name: "Dash",
@@ -178,8 +166,7 @@ const animalData = [
       species: "Zebra",
       cleaning_status: true,
       care_status: false,
-      feeding_status: true,
-      sanctuary_id: 1
+      feeding_status: true
     },
     {
       name: "Aurora",
@@ -192,8 +179,7 @@ const animalData = [
       species: "Wolf",
       cleaning_status: true,
       care_status: true,
-      feeding_status: false,
-      sanctuary_id: 1
+      feeding_status: false
     },
     {
       name: "Coco",
@@ -206,8 +192,7 @@ const animalData = [
       species: "Parrot",
       cleaning_status: true,
       care_status: false,
-      feeding_status: false,
-      sanctuary_id: 1
+      feeding_status: false
     },
     {
       name: "Rocky",
@@ -220,8 +205,7 @@ const animalData = [
       species: "Bear",
       cleaning_status: false,
       care_status: false,
-      feeding_status: true,
-      sanctuary_id: 1
+      feeding_status: true
     },
     {
       name: "Loki",
@@ -234,8 +218,7 @@ const animalData = [
       species: "Fox",
       cleaning_status: true,
       care_status: true,
-      feeding_status: false,
-      sanctuary_id: 1
+      feeding_status: false
     },
     {
       name: "Nora",
@@ -248,8 +231,7 @@ const animalData = [
       species: "Giraffe",
       cleaning_status: true,
       care_status: true,
-      feeding_status: true,
-      sanctuary_id: 1
+      feeding_status: true
     },
     {
       name: "Max",
@@ -262,8 +244,7 @@ const animalData = [
       species: "Tiger",
       cleaning_status: false,
       care_status: true,
-      feeding_status: true,
-      sanctuary_id: 1
+      feeding_status: true
     },
     {
       name: "Bella",
@@ -276,8 +257,7 @@ const animalData = [
       species: "Deer",
       cleaning_status: true,
       care_status: true,
-      feeding_status: true,
-      sanctuary_id: 1
+      feeding_status: true
     }
   ];
   

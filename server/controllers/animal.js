@@ -179,23 +179,35 @@ const updateAnimal = async (req, res) => {
 
 const deleteAnimal = async (req, res) => {
     try {
-        const user_id = req.user.user_id
-        const animal_id = parseInt(req.params.animal_id);
-
-        const sanctuary_id = await getUserSanctuaryId(pool, user_id)
-
-        const results = await pool.query(`DELETE FROM animal WHERE animal_id = $1 AND sanctuary_id = $2 RETURNING *`, [animal_id, sanctuary_id]);
-
-        if (results.rows.length === 0) {
-            res.status(404).json({error: "Animal not found"})
-        }
-        await pool.query(`DELETE FROM animal_tag WHERE animal_id = $1`, [animal_id]);
-
-        res.status(200).json(results.rows[0]);
+      const user_id = req.user.user_id
+      const animal_id = parseInt(req.params.animal_id)
+  
+      const sanctuary_id = await getUserSanctuaryId(pool, user_id)
+  
+      const animalCheck = await pool.query(
+        `SELECT * FROM animal WHERE animal_id = $1 AND sanctuary_id = $2`,
+        [animal_id, sanctuary_id]
+      )
+  
+      if (animalCheck.rows.length === 0) {
+        return res.status(404).json({ error: "Animal not found" })
+      }
+  
+      await pool.query(
+        `DELETE FROM animal_tag WHERE animal_id = $1`,
+        [animal_id]
+      )
+  
+      const results = await pool.query(
+        `DELETE FROM animal WHERE animal_id = $1 AND sanctuary_id = $2 RETURNING *`,
+        [animal_id, sanctuary_id]
+      )
+  
+      res.status(200).json(results.rows[0])
     } catch (error) {
-        res.status(409).json({error: error.message});
+      res.status(409).json({ error: error.message })
     }
-};
+  }
 
 export default {
     getAllAnimals,
