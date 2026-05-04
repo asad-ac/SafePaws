@@ -14,7 +14,7 @@ const options = {
 // accessToken = to call github api (not using)
 // refreshToken = token rarely used with github
 // profile = github user data  
-// callback =tells passport login succeeded or failed
+// callback = tells passport login succeeded or failed
 const verify = async (accessToken, refreshToken, profile, callback) => {
     try {
         const githubId = profile.id;
@@ -52,7 +52,7 @@ const verify = async (accessToken, refreshToken, profile, callback) => {
             ]
         );
 
-        return callback(null, newUser.rows[0]);
+        return callback(null, user);
     } catch (error) {
         return callback(error, null);
     }
