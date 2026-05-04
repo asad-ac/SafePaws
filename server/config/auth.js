@@ -38,6 +38,9 @@ const verify = async (accessToken, refreshToken, profile, callback) => {
             [githubId, username, displayName, avatarUrl]
         );
 
+        console.log("NEW USER:", newUser.rows[0]);
+        console.log("EXISTING USER:", existingUser.rows[0]);
+
         return callback(null, newUser.rows[0]);
     } catch (error) {
         return callback(error, null);
@@ -60,6 +63,10 @@ passport.deserializeUser(async (user_id, callback) => {
             "SELECT * FROM staff_user WHERE user_id = $1",
             [user_id]
         );
+
+        if (result.rows.length === 0) {
+            return callback(null, false)
+        }
 
         callback(null, result.rows[0]);
     } catch (error) {

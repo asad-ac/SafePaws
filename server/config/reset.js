@@ -24,7 +24,7 @@ const createStaffUserTable = async () => {
             await pool.query(create)
             console.log("✅ user table created successfully")
         }
-        catch (error) {
+        catch (err) {
             console.log("🛑 error creating user table", err)
         }
 }
@@ -40,8 +40,7 @@ const createSanctuaryTable = async () => {
         phone varchar(50) NOT NULL,
         email varchar(50) NOT NULL,
         capacity INTEGER NOT NULL,
-        user_id INTEGER NOT NULL,
-        FOREIGN KEY (user_id) UNIQUE REFERENCES staff_user(user_id)
+        user_id INTEGER UNIQUE REFERENCES staff_user(user_id)
         );
     `;
 
