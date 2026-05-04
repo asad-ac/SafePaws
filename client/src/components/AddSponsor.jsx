@@ -5,7 +5,7 @@ import '../css/AddSponsor.css'
 
 const AddSponsor = (props) => {
 
-    const [form, setForm] = useState({name: '', amount: '', address: '', phone: '', email: '', sanctuary_id: 1})
+    const [form, setForm] = useState({name: '', amount: '', address: '', phone: '', email: ''})
 
     const handleChange = (e) => {
         const {name, value} = e.target

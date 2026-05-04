@@ -39,10 +39,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 const isAuthenticated = (req, res, next) => {
-  if (!req.user) {
-    return res.status(401).json({error: "Unauthorized"})
+  if (req.isAuthenticated()) {
+    return next()
   }
-  next();
+    return res.status(401).json({error: "Unauthorized"})
 }
 
 app.get('/', (req, res) => {
@@ -64,6 +64,8 @@ app.use("/animals", isAuthenticated, animalRouter)
 app.use("/sanctuaries", isAuthenticated, sanctuaryRouter)
 app.use("/sponsors", isAuthenticated, sponsorRouter)
 app.use("/volunteers", isAuthenticated, volunteerRouter)
+
+// could make tags unprotected but doesn't hurt
 app.use("/tags", isAuthenticated, tagRouter)
 
 const PORT = process.env.PORT || 3001

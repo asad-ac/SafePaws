@@ -24,7 +24,7 @@ const createStaffUserTable = async () => {
             await pool.query(create)
             console.log("✅ user table created successfully")
         }
-        catch (error) {
+        catch (err) {
             console.log("🛑 error creating user table", err)
         }
 }
@@ -32,14 +32,15 @@ const createStaffUserTable = async () => {
 const createSanctuaryTable = async () => {
     const create = `
     DROP TABLE IF EXISTS sanctuary CASCADE;
-        
+    
     CREATE TABLE IF NOT EXISTS sanctuary (
         sanctuary_id SERIAL PRIMARY KEY,
         name varchar(50) NOT NULL,
         address varchar(255) NOT NULL,
         phone varchar(50) NOT NULL,
         email varchar(50) NOT NULL,
-        capacity INTEGER NOT NULL
+        capacity INTEGER NOT NULL,
+        user_id INTEGER UNIQUE REFERENCES staff_user(user_id)
         );
     `;
 
@@ -258,25 +259,17 @@ const seedAnimalTags = async () => {
 
 const resetDatabase = async () => {
     await createStaffUserTable()
-
     await createSanctuaryTable()
-    await seedSanctuary()
-
+  
     await createTagTable()
     await seedTags()
-
+  
     await createAnimalTable()
-    await seedAnimals()
-
     await createAnimalTagTable()
-    await seedAnimalTags()
-
+    
     await createVolunteerTable()
-    await seedVolunteers()
-
     await createSponsorTable()
-    await seedSponsors()
-};
+  }
 
 const run = async () => {
     try {
