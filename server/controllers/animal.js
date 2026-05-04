@@ -1,5 +1,18 @@
 import {pool} from "../config/database.js"
 
+const getUserSanctuaryId = async (clientOrPool, user_id) => {
+    const results = await clientOrPool.query(
+      "SELECT sanctuary_id FROM sanctuary WHERE user_id = $1",
+      [user_id]
+    );
+  
+    if (results.rows.length === 0) {
+      throw new Error("Sanctuary not found for user");
+    }
+  
+    return results.rows[0].sanctuary_id;
+  };
+
 const getAllAnimals = async (req, res) => {
     try {
         const user_id = req.user.user_id
@@ -71,9 +84,11 @@ const createAnimal = async (req, res) => {
 
     try {
         const user_id = req.user.user_id
-        const {name, description, age, weight, height, image_url, date_intake, species, cleaning_status, care_status, feeding_status, sanctuary_id, tag_ids = []} = req.body
+        const {name, description, age, weight, height, image_url, date_intake, species, cleaning_status, care_status, feeding_status, tag_ids = []} = req.body
 
         await client.query('BEGIN')
+
+        const sanctuary_id = await getUserSanctuaryId(client, user_id)
 
         const animalResult = await client.query(
             `INSERT INTO animal (name, description, age, weight, height, image_url, date_intake, species, cleaning_status, care_status, feeding_status, sanctuary_id) 
