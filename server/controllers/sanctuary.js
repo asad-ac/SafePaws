@@ -20,6 +20,11 @@ const updateSanctuary = async (req, res) => {
 
         const results = await pool.query(`UPDATE sanctuary SET name = $1, address = $2, phone = $3, email = $4, capacity = $5 WHERE sanctuary_id = $6 AND user_id = $7 RETURNING *`,
             [name, address, phone, email, capacity, sanctuary_id, user_id]);
+        
+        if (results.rows.length === 0) {
+            res.status(404),json({error: "Sanctuary not found"})
+        }
+        
         res.status(200).json(results.rows[0]);
     } 
     catch (error) {
