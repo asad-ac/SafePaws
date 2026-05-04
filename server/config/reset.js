@@ -32,14 +32,15 @@ const createStaffUserTable = async () => {
 const createSanctuaryTable = async () => {
     const create = `
     DROP TABLE IF EXISTS sanctuary CASCADE;
-        
+    
     CREATE TABLE IF NOT EXISTS sanctuary (
         sanctuary_id SERIAL PRIMARY KEY,
         name varchar(50) NOT NULL,
         address varchar(255) NOT NULL,
         phone varchar(50) NOT NULL,
         email varchar(50) NOT NULL,
-        capacity INTEGER NOT NULL
+        capacity INTEGER NOT NULL,
+        user_id INTEGER REFERENCES staff_user(user_id)
         );
     `;
 
