@@ -6,7 +6,7 @@ import '../css/AddVolunteer.css'
 const AddVolunteer = (props) => {
     // boolean prop and setter state passed to add to array
 
-    const [form, setForm] = useState({name: '', address: '', phone: '', email: '', assigned_duty: '', sanctuary_id: 1})
+    const [form, setForm] = useState({name: '', address: '', phone: '', email: '', assigned_duty: ''})
 
     const handleChange = (e) => {
         const {name, value} = e.target

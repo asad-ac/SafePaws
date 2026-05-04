@@ -64,6 +64,8 @@ app.use("/animals", isAuthenticated, animalRouter)
 app.use("/sanctuaries", isAuthenticated, sanctuaryRouter)
 app.use("/sponsors", isAuthenticated, sponsorRouter)
 app.use("/volunteers", isAuthenticated, volunteerRouter)
+
+// could make tags unprotected but doesn't hurt
 app.use("/tags", isAuthenticated, tagRouter)
 
 const PORT = process.env.PORT || 3001

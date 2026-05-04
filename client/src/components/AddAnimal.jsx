@@ -5,7 +5,7 @@ import '../css/AddAnimal.css'
 
 const AddAnimal = (props) => {
 
-    const [form, setForm] = useState({name: '', description: '', age: '', weight: '', height: '', image_url: '', date_intake: '', species: '', cleaning_status: false, care_status: false, feeding_status: false, sanctuary_id: 1})
+    const [form, setForm] = useState({name: '', description: '', age: '', weight: '', height: '', image_url: '', date_intake: '', species: '', cleaning_status: false, care_status: false, feeding_status: false})
     const [tags, setTags] = useState([])
     const [selectedTags, setSelectedTags] = useState([])
 
