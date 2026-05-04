@@ -17,46 +17,72 @@ const options = {
 // callback = tells passport login succeeded or failed
 const verify = async (accessToken, refreshToken, profile, callback) => {
     try {
-        const githubId = profile.id;
-        const username = profile.username;
-        const displayName = profile.displayName || profile.username;
-        const avatarUrl = profile.photos?.[0]?.value || null;
-
-        const existingUser = await pool.query(
-            "SELECT * FROM staff_user WHERE github_id = $1",
-            [githubId]
+      const githubId = profile.id;
+      const username = profile.username;
+      const displayName = profile.displayName || profile.username;
+      const avatarUrl = profile.photos?.[0]?.value || null;
+  
+      const existingUser = await pool.query(
+        "SELECT * FROM staff_user WHERE github_id = $1",
+        [githubId]
+      );
+  
+      // ✅ EXISTING USER
+      if (existingUser.rows.length > 0) {
+        const user = existingUser.rows[0];
+  
+        // check if sanctuary exists
+        const sanctuaryCheck = await pool.query(
+          "SELECT * FROM sanctuary WHERE user_id = $1",
+          [user.user_id]
         );
-
-        if (existingUser.rows.length > 0) {
-            return callback(null, existingUser.rows[0]);
-        }
-
-        const newUser = await pool.query(
-            `INSERT INTO staff_user (github_id, username, display_name, avatar_url)
-             VALUES ($1, $2, $3, $4)
-             RETURNING *`,
-            [githubId, username, displayName, avatarUrl]
-        );
-
-        const user = newUser.rows[0]
-
-        await pool.query(`INSERT INTO sanctuary (name, address, phone, email, capacity, user_id)
-            VALUES ($1, $2, $3, $4, $5, $6)`,
+  
+        // create one if missing
+        if (sanctuaryCheck.rows.length === 0) {
+          await pool.query(
+            `INSERT INTO sanctuary (name, address, phone, email, capacity, user_id)
+             VALUES ($1, $2, $3, $4, $5, $6)`,
             [
-                `${displayName}'s Sanctuary`,
-                "Default Address",
-                "000-000-0000",
-                "default@gmail.com",
-                50,
-                user.user_id
+              `${user.display_name || user.username}'s Sanctuary`,
+              "Default Address",
+              "000-000-0000",
+              "default@gmail.com",
+              50,
+              user.user_id
             ]
-        );
-
+          );
+        }
+  
         return callback(null, user);
+      }
+  
+      const newUser = await pool.query(
+        `INSERT INTO staff_user (github_id, username, display_name, avatar_url)
+         VALUES ($1, $2, $3, $4)
+         RETURNING *`,
+        [githubId, username, displayName, avatarUrl]
+      );
+  
+      const user = newUser.rows[0];
+  
+      await pool.query(
+        `INSERT INTO sanctuary (name, address, phone, email, capacity, user_id)
+         VALUES ($1, $2, $3, $4, $5, $6)`,
+        [
+          `${displayName}'s Sanctuary`,
+          "Default Address",
+          "000-000-0000",
+          "default@gmail.com",
+          50,
+          user.user_id
+        ]
+      );
+  
+      return callback(null, user);
     } catch (error) {
-        return callback(error, null);
+      return callback(error, null);
     }
-};
+  };
 
 passport.use(new GitHubStrategy(options, verify))
 
