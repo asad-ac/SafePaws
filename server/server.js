@@ -39,7 +39,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 const isAuthenticated = (req, res, next) => {
-  if (!req.isAuthenticated()) {
+  if (req.isAuthenticated()) {
     return next()
   }
     return res.status(401).json({error: "Unauthorized"})
