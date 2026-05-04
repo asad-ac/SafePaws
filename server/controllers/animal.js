@@ -17,11 +17,13 @@ const getAllAnimals = async (req, res) => {
                     '[]'
                 ) AS tags
             FROM animal a
+            JOIN sanctuary s ON a.sanctuary_id = s.sanctuary_id
             LEFT JOIN animal_tag at ON a.animal_id = at.animal_id
             LEFT JOIN tag t ON at.tag_id = t.tag_id
+            WHERE s.user_id = $1
             GROUP BY a.animal_id
             ORDER BY a.animal_id DESC
-        `)
+        `, [user_id])
 
         res.status(200).json(results.rows)
     }
@@ -68,6 +70,7 @@ const createAnimal = async (req, res) => {
     const client = await pool.connect()
 
     try {
+        const user_id = req.user.user_id
         const {name, description, age, weight, height, image_url, date_intake, species, cleaning_status, care_status, feeding_status, sanctuary_id, tag_ids = []} = req.body
 
         await client.query('BEGIN')
