@@ -2,6 +2,7 @@ import {pool} from "../config/database.js"
 
 const getAllAnimals = async (req, res) => {
     try {
+        const user_id = req.user.user_id
         const results = await pool.query(`
             SELECT
                 a.*,
