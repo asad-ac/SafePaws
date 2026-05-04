@@ -132,6 +132,11 @@ const updateAnimal = async (req, res) => {
             `UPDATE animal SET name = $1, description = $2, age = $3, weight = $4, height = $5, image_url = $6, date_intake = $7, species = $8, cleaning_status = $9, care_status = $10, feeding_status = $11 WHERE animal_id = $12 AND sanctuary_id = $13 RETURNING *`,
             [name, description, age, weight, height, image_url, date_intake, species, cleaning_status, care_status, feeding_status, animal_id, sanctuary_id])
 
+        if (animalResult.rows.length === 0) {
+            await client.query("ROLLBACK")
+            return res.status(404).json({error: "Animal not found"})
+        }
+
         await client.query(
             `DELETE FROM animal_tag WHERE animal_id = $1`, [animal_id])
 
@@ -177,9 +182,9 @@ const deleteAnimal = async (req, res) => {
         const user_id = req.user.user_id
         const animal_id = parseInt(req.params.animal_id);
 
-        const sanctuary_id = await getUserSanctuaryId(client, user_id)
+        const sanctuary_id = await getUserSanctuaryId(pool, user_id)
 
-        await pool.query(`DELETE FROM animal_tag WHERE animal_id = $1 AND sanctuary_id = $2`, [animal_id]);
+        await pool.query(`DELETE FROM animal_tag WHERE animal_id = $1`, [animal_id]);
         const results = await pool.query(`DELETE FROM animal WHERE animal_id = $1 AND sanctuary_id = $2 RETURNING *`, [animal_id, sanctuary_id]);
 
         res.status(200).json(results.rows[0]);
