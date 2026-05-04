@@ -41,7 +41,7 @@ const createSanctuaryTable = async () => {
         email varchar(50) NOT NULL,
         capacity INTEGER NOT NULL,
         user_id INTEGER NOT NULL,
-        FOREIGN KEY (user_id) REFERENCES staff_user(user_id)
+        FOREIGN KEY (user_id) UNIQUE REFERENCES staff_user(user_id)
         );
     `;
 
