@@ -47,6 +47,7 @@ const getAllAnimals = async (req, res) => {
 
 const getAnimalById = async (req, res) => {
     try {
+        const user_id = req.user.user_id
         const {animal_id} = req.params
 
         const results = await pool.query(`
@@ -63,11 +64,12 @@ const getAnimalById = async (req, res) => {
                     '[]'::json
                 ) AS tags
             FROM animal a
+            JOIN sanctuary s ON a.sanctuary_id = s.sanctuary_id
             LEFT JOIN animal_tag at ON a.animal_id = at.animal_id
             LEFT JOIN tag t ON at.tag_id = t.tag_id
-            WHERE a.animal_id = $1
+            WHERE a.animal_id = $1 AND s.user_id = $2
             GROUP BY a.animal_id
-        `, [animal_id])
+        `, [animal_id, user_id])
 
         if (results.rows.length === 0) {
             return res.status(404).json({ error: "Animal not found" })
@@ -117,15 +119,18 @@ const createAnimal = async (req, res) => {
 const updateAnimal = async (req, res) => {
     const client = await pool.connect()
     try {
+        const user_id = req.user.user_id
         const animal_id = parseInt(req.params.animal_id)
 
-        const {name, description, age, weight, height, image_url, date_intake, species, cleaning_status, care_status, feeding_status, sanctuary_id, tag_ids = []} = req.body
+        const {name, description, age, weight, height, image_url, date_intake, species, cleaning_status, care_status, feeding_status, tag_ids = []} = req.body
 
         await client.query('BEGIN')
 
+        const sanctuary_id = await getUserSanctuaryId(client, user_id)
+
         const animalResult = await client.query(
-            `UPDATE animal SET name = $1, description = $2, age = $3, weight = $4, height = $5, image_url = $6, date_intake = $7, species = $8, cleaning_status = $9, care_status = $10, feeding_status = $11,sanctuary_id = $12 WHERE animal_id = $13 RETURNING *`,
-            [name, description, age, weight, height, image_url, date_intake, species, cleaning_status, care_status, feeding_status, sanctuary_id, animal_id])
+            `UPDATE animal SET name = $1, description = $2, age = $3, weight = $4, height = $5, image_url = $6, date_intake = $7, species = $8, cleaning_status = $9, care_status = $10, feeding_status = $11 WHERE animal_id = $12 AND sanctuary_id = $13 RETURNING *`,
+            [name, description, age, weight, height, image_url, date_intake, species, cleaning_status, care_status, feeding_status, animal_id, sanctuary_id])
 
         await client.query(
             `DELETE FROM animal_tag WHERE animal_id = $1`, [animal_id])
@@ -151,10 +156,10 @@ const updateAnimal = async (req, res) => {
             FROM animal a
             LEFT JOIN animal_tag at ON a.animal_id = at.animal_id
             LEFT JOIN tag t ON at.tag_id = t.tag_id
-            WHERE a.animal_id = $1
+            WHERE a.animal_id = $1 AND a.sanctuary_id = $2 
             GROUP BY a.animal_id
             `,
-            [animal_id]
+            [animal_id, sanctuary_id]
           )
 
         await client.query('COMMIT')
@@ -169,10 +174,13 @@ const updateAnimal = async (req, res) => {
 
 const deleteAnimal = async (req, res) => {
     try {
+        const user_id = req.user.user_id
         const animal_id = parseInt(req.params.animal_id);
 
-        await pool.query(`DELETE FROM animal_tag WHERE animal_id = $1`, [animal_id]);
-        const results = await pool.query(`DELETE FROM animal WHERE animal_id = $1 RETURNING *`, [animal_id]);
+        const sanctuary_id = await getUserSanctuaryId(client, user_id)
+
+        await pool.query(`DELETE FROM animal_tag WHERE animal_id = $1 AND sanctuary_id = $2`, [animal_id]);
+        const results = await pool.query(`DELETE FROM animal WHERE animal_id = $1 AND sanctuary_id = $2 RETURNING *`, [animal_id, sanctuary_id]);
 
         res.status(200).json(results.rows[0]);
     } catch (error) {
