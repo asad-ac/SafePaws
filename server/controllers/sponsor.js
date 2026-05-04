@@ -1,9 +1,7 @@
 import {pool} from "../config/database.js"
 
-// pattern
-// req.user.user_id
-// find that user’s sanctuary_id
-// use sanctuary_id in every SELECT/INSERT/UPDATE/DELETE
+// helper: pass user id and try to find sanctuary associated
+// since user id is a field in sanctuary
 
 const getUserSanctuaryId = async (clientOrPool, user_id) => {
     const results = await clientOrPool.query(
@@ -17,6 +15,11 @@ const getUserSanctuaryId = async (clientOrPool, user_id) => {
   
     return results.rows[0].sanctuary_id;
   };
+
+  // pattern for each controller
+// req.user.user_id
+// find that user’s sanctuary_id
+// use sanctuary_id in every SELECT/INSERT/UPDATE/DELETE
 
 const getSponsors = async (req, res) => {
     try {
