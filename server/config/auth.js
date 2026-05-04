@@ -38,8 +38,19 @@ const verify = async (accessToken, refreshToken, profile, callback) => {
             [githubId, username, displayName, avatarUrl]
         );
 
-        console.log("NEW USER:", newUser.rows[0]);
-        console.log("EXISTING USER:", existingUser.rows[0]);
+        const user = newUser.rows[0]
+
+        await pool.query(`INSERT INTO sanctuary (name, address, phone, email, capacity, user_id)
+            VALUES ($1, $2, $3, $4, $5, $6)`,
+            [
+                `${displayName}'s Sanctuary`,
+                "Default Address",
+                "000-000-0000",
+                "default@gmail.com",
+                50,
+                user.user_id
+            ]
+        );
 
         return callback(null, newUser.rows[0]);
     } catch (error) {

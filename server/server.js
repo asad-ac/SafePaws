@@ -45,10 +45,6 @@ const isAuthenticated = (req, res, next) => {
   next();
 }
 
-app.get('/debug/user', (req, res) => {
-  res.json(req.user)
-})
-
 app.get('/', (req, res) => {
     res.status(200).send('<h1 style="text-align: center; margin-top: 50px;">🐾 SafePaws API</h1>')
 })
