@@ -5,7 +5,7 @@ import '../css/Sanctuary.css'
 
 const EditSanctuary = (props) => {
 
-    const [form, setForm] = useState({name: props.sanctuary.name || '', address: props.sanctuary.address || '', phone: props.sanctuary.phone || '', email: props.sanctuary.email || '', capacity: props.sanctuary.capacity || '', sanctuary_id: props.sanctuary.sanctuary_id || 1})
+    const [form, setForm] = useState({name: props.sanctuary.name || '', address: props.sanctuary.address || '', phone: props.sanctuary.phone || '', email: props.sanctuary.email || '', capacity: props.sanctuary.capacity || ''})
 
     const handleChange = (e) => {
         const {name, value} = e.target

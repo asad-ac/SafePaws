@@ -4,7 +4,7 @@ import '../css/EditVolunteer.css'
 
 const EditVolunteer = (props) => {
 
-    const [form, setForm] = useState({name: props.volunteer.name || '', address: props.volunteer.address || '', phone: props.volunteer.phone || '', email: props.volunteer.email || '', assigned_duty: props.volunteer.assigned_duty || '', sanctuary_id: props.volunteer.sanctuary_id || 1,})
+    const [form, setForm] = useState({name: props.volunteer.name || '', address: props.volunteer.address || '', phone: props.volunteer.phone || '', email: props.volunteer.email || '', assigned_duty: props.volunteer.assigned_duty || ''})
 
     const handleChange = (e) => {
         const {name, value} = e.target
