@@ -2,7 +2,8 @@ import {pool} from "../config/database.js"
 
 const getSponsors = async (req, res) => {
     try {
-        const results = await pool.query('SELECT * FROM sponsor ORDER BY sponsor_id DESC')
+        const user_id = req.user.user_id
+        const results = await pool.query('SELECT * FROM sponsor JOIN sanctuary sc ON s.sanctuary_id = sc.sanctuary_id WHERE sc.user_id = $1 ORDER BY sponsor_id DESC', [user_id])
         res.status(200).json(results.rows)
     }
     catch (error) {
