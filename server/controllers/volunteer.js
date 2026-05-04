@@ -1,7 +1,21 @@
 import {pool} from "../config/database.js"
 
+const getUserSanctuaryId = async (clientOrPool, user_id) => {
+    const results = await clientOrPool.query(
+      "SELECT sanctuary_id FROM sanctuary WHERE user_id = $1",
+      [user_id]
+    );
+  
+    if (results.rows.length === 0) {
+      throw new Error("Sanctuary not found for user");
+    }
+  
+    return results.rows[0].sanctuary_id;
+  };
+
 const getVolunteers = async (req, res) => {
     try {
+        const user_id = req.user.user_id
         const results = await pool.query('SELECT * FROM volunteer ORDER BY volunteer_id DESC')
         res.status(200).json(results.rows)
     }

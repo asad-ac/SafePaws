@@ -1,5 +1,10 @@
 import {pool} from "../config/database.js"
 
+// pattern
+// req.user.user_id
+// find that user’s sanctuary_id
+// use sanctuary_id in every SELECT/INSERT/UPDATE/DELETE
+
 const getUserSanctuaryId = async (clientOrPool, user_id) => {
     const results = await clientOrPool.query(
       "SELECT sanctuary_id FROM sanctuary WHERE user_id = $1",
@@ -44,8 +49,10 @@ const updateSponsor = async (req, res) => {
         const sponsor_id = parseInt(req.params.sponsor_id);
         const {name, amount, address, phone, email} = req.body;
 
-        const results = await pool.query(`UPDATE sponsor SET name = $1, amount = $2, address = $3, phone = $4, email = $5 WHERE sponsor_id = $6 AND sanctuary_id = $7 WHERE sponsor_id = $7 RETURNING *`,
-            [name, amount, address, phone, email, sanctuary_id, sponsor_id]);
+        const sanctuary_id = await getUserSanctuaryId(pool, user_id)
+
+        const results = await pool.query(`UPDATE sponsor SET name = $1, amount = $2, address = $3, phone = $4, email = $5 WHERE sponsor_id = $6 AND sanctuary_id = $7 RETURNING *`,
+            [name, amount, address, phone, email, sponsor_id, sanctuary_id]);
         res.status(200).json(results.rows[0]);
     } 
     catch (error) {
@@ -64,7 +71,6 @@ const deleteSponsor = async (req, res) => {
         if (results.rows.length === 0) {
             return res.status(404).json({ error: "Sponsor not found" })
           }
-
         res.status(200).json(results.rows[0]);
     } 
     catch (error) {
