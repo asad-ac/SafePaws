@@ -5,7 +5,7 @@ import '../css/Sanctuary.css'
 
 const EditSanctuary = (props) => {
 
-    const [form, setForm] = useState({name: props.sanctuary.name || '', address: props.sanctuary.address || '', phone: props.sanctuary.phone || '', email: props.sanctuary.email || '', capacity: props.sanctuary.capacity || '', sanctuary_id: props.sanctuary.sanctuary_id})
+    const [form, setForm] = useState({name: props.sanctuary.name || '', address: props.sanctuary.address || '', phone: props.sanctuary.phone || '', email: props.sanctuary.email || '', capacity: props.sanctuary.capacity || ''})
 
     const handleChange = (e) => {
         const {name, value} = e.target
@@ -29,7 +29,7 @@ const EditSanctuary = (props) => {
 
         try {
           const updateSanctuaryPromise = async () => {
-            const response = await fetch(`http://localhost:3001/sanctuaries/${props.sanctuary.sanctuary_id}`, options)
+            const response = await fetch(`http://localhost:3001/sanctuaries/me`, options)
 
             if (!response.ok) {
               throw new Error("Update failed")

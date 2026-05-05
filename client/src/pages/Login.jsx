@@ -19,6 +19,10 @@ const Login = () => {
     window.location.href ="http://localhost:3001/auth/github"
   }
 
+  const handleGoogleLogin = () => {
+    window.location.href = "http://localhost:3001/auth/google"
+  }
+
   return (
     <>
       <HomeBar disableLogoLink />
@@ -29,6 +33,7 @@ const Login = () => {
         <form className="login-form" onSubmit={handleSubmit}>
           <input type="text" placeholder="Username" />
           <input type="password" placeholder="Password" />
+          <button onClick={handleGoogleLogin}>Login with Google </button>
           <button onClick={handleGitHubLogin}> Login with GitHub </button>
           <button type="submit">Sign In</button>
         </form>

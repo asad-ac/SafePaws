@@ -3,6 +3,7 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import session from 'express-session'
 import passport from "./config/auth.js"
+import { pool } from "./config/database.js";
 
 import animalRouter from './routes/animal.js'
 import sanctuaryRouter from './routes/sanctuary.js'

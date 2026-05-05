@@ -1,4 +1,3 @@
-import React from 'react'
 import wallpaper from '../assets/wallpaper3.jpg'
 import '../css/Hero.css'
 import HomeBar from '../components/HomeBar'
