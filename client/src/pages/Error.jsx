@@ -1,4 +1,3 @@
-import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import HomeBar from '../components/HomeBar'
 import NavBar from '../components/NavBar'
