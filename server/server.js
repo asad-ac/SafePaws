@@ -60,25 +60,6 @@ app.get("/debug-session", (req, res) => {
   })
 })
 
-app.get("/run-migration", async (req, res) => {
-  try {
-    await pool.query(`
-      ALTER TABLE staff_user
-      ADD COLUMN IF NOT EXISTS google_id VARCHAR(255) UNIQUE;
-    `);
-
-    await pool.query(`
-      ALTER TABLE staff_user
-      ADD COLUMN IF NOT EXISTS email VARCHAR(255);
-    `);
-
-    res.send("Migration done");
-  } catch (err) {
-    console.error(err);
-    res.status(500).send(err.message);
-  }
-});
-
 // protected
 app.use("/animals", isAuthenticated, animalRouter)
 app.use("/sanctuaries", isAuthenticated, sanctuaryRouter)

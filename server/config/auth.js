@@ -76,6 +76,7 @@ const googleVerify = async (accessToken, refreshToken, profile, callback) => {
   try {
     const googleId = profile.id;
     const email = profile.emails?.[0]?.value || null;
+    const username = email || `google_${googleId}`
     const displayName = profile.displayName || "Google User";
     const avatarUrl = profile.photos?.[0]?.value || null;
 
@@ -91,10 +92,10 @@ const googleVerify = async (accessToken, refreshToken, profile, callback) => {
     }
 
     const newUser = await pool.query(
-      `INSERT INTO staff_user (google_id, email, display_name, avatar_url)
-       VALUES ($1, $2, $3, $4)
+      `INSERT INTO staff_user (google_id, username, email, display_name, avatar_url)
+       VALUES ($1, $2, $3, $4, $5)
        RETURNING *`,
-      [googleId, email, displayName, avatarUrl]
+      [googleId, username, email, displayName, avatarUrl]
     );
 
     const user = newUser.rows[0];

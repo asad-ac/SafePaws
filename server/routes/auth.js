@@ -31,4 +31,19 @@ router.get("/logout", (req, res) => {
     });
 });
 
+router.get(
+    "/google",
+    passport.authenticate("google", { scope: ["profile", "email"] })
+  );
+  
+  router.get(
+    "/google/callback",
+    passport.authenticate("google", {
+      failureRedirect: `${process.env.CLIENT_URL}/login`
+    }),
+    (req, res) => {
+      res.redirect(`${process.env.CLIENT_URL}/hero`);
+    }
+  );
+
 export default router
