@@ -3,6 +3,7 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import session from 'express-session'
 import passport from "./config/auth.js"
+import { pool } from "./config/database.js";
 
 import animalRouter from './routes/animal.js'
 import sanctuaryRouter from './routes/sanctuary.js'
@@ -58,6 +59,25 @@ app.get("/debug-session", (req, res) => {
     isAuthenticated: req.isAuthenticated?.()
   })
 })
+
+app.get("/run-migration", async (req, res) => {
+  try {
+    await pool.query(`
+      ALTER TABLE staff_user
+      ADD COLUMN IF NOT EXISTS google_id VARCHAR(255) UNIQUE;
+    `);
+
+    await pool.query(`
+      ALTER TABLE staff_user
+      ADD COLUMN IF NOT EXISTS email VARCHAR(255);
+    `);
+
+    res.send("Migration done");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send(err.message);
+  }
+});
 
 // protected
 app.use("/animals", isAuthenticated, animalRouter)
