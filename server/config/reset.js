@@ -12,21 +12,23 @@ const createStaffUserTable = async () => {
     
     CREATE TABLE IF NOT EXISTS staff_user (
         user_id SERIAL PRIMARY KEY,
-        github_id VARCHAR(255) UNIQUE NOT NULL,
+        github_id VARCHAR(255) UNIQUE,
+        google_id VARCHAR(255) UNIQUE,
         username VARCHAR(255) NOT NULL,
+        email VARCHAR(255),
         display_name VARCHAR(255), 
         avatar_url VARCHAR(255),
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
     `;
 
-        try {
-            await pool.query(create)
-            console.log("✅ user table created successfully")
-        }
-        catch (err) {
-            console.log("🛑 error creating user table", err)
-        }
+    try {
+        await pool.query(create)
+        console.log("✅ user table created successfully")
+    }
+    catch (err) {
+        console.log("🛑 error creating user table", err)
+    }
 }
 
 const createSanctuaryTable = async () => {
