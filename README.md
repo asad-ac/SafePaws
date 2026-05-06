@@ -90,11 +90,11 @@ animal ↔ tag (Many-to-Many)
 | Column       | Type         | Description                  |
 | ------------ | ------------ | ---------------------------- |
 | sanctuary_id | SERIAL       | PRIMARY KEY                  |
-| name         | VARCHAR(50)  | name of sanctuary            |
-| address      | VARCHAR(255) | address of sanctuary         |
-| phone        | VARCHAR(20)  | phone of sanctuary           |
-| email        | VARCHAR(50)  | email of sanctuary           |
-| capacity     | INT          | animal capacity of sanctuary |
+| name         | VARCHAR(50)  | Name of sanctuary            |
+| address      | VARCHAR(255) | Address of sanctuary         |
+| phone        | VARCHAR(20)  | Phone of sanctuary           |
+| email        | VARCHAR(50)  | Email of sanctuary           |
+| capacity     | INT          | Animal capacity of sanctuary |
 
 ### volunteer
 
@@ -102,11 +102,11 @@ animal ↔ tag (Many-to-Many)
 | ------------- | ------------ | -------------------------- |
 | volunteer_id  | SERIAL       | PRIMARY KEY                |
 | sanctuary_id  | INT          | FOREIGN KEY                |
-| name          | VARCHAR(50)  | name of volunteer          |
-| address       | VARCHAR(255) | address of volunteer       |
-| phone         | VARCHAR(20)  | phone of volunteer         |
-| email         | VARCHAR(50)  | email of volunteer         |
-| assigned_duty | VARCHAR(50)  | assigned duty of volunteer |
+| name          | VARCHAR(50)  | Name of volunteer          |
+| address       | VARCHAR(255) | Address of volunteer       |
+| phone         | VARCHAR(20)  | Phone of volunteer         |
+| email         | VARCHAR(50)  | Email of volunteer         |
+| assigned_duty | VARCHAR(50)  | Assigned duty of volunteer |
 
 ### sponsor
 
@@ -114,11 +114,11 @@ animal ↔ tag (Many-to-Many)
 | -------------- | ------------ | ------------------------ |
 | sponsorship_id | SERIAL       | PRIMARY KEY              |
 | sanctuary_id   | INT          | FOREIGN KEY              |
-| name           | VARCHAR(50)  | name of sponsor          |
-| amount         | DECIMAL      | amount pledged to animal |
-| address        | VARCHAR(255) | address of sponsor       |
-| phone          | VARCHAR(20)  | phone of sponsor         |
-| email          | VARCHAR(50)  | email of sponsor         |
+| name           | VARCHAR(50)  | Name of sponsor          |
+| amount         | DECIMAL      | Amount pledged to animal |
+| address        | VARCHAR(255) | Address of sponsor       |
+| phone          | VARCHAR(20)  | Phone of sponsor         |
+| email          | VARCHAR(50)  | Email of sponsor         |
 
 
 ### animal
@@ -127,17 +127,17 @@ animal ↔ tag (Many-to-Many)
 | --------------- | ------------ | -------------------------- |
 | animal_id       | SERIAL       | PRIMARY KEY                |
 | sanctuary_id    | INT          | FOREIGN KEY                |
-| name            | VARCHAR(50)  | name of animal             |
-| description     | VARCHAR(255) | description of animal      |
-| age             | INT          | age of animal              |
-| weight          | DECIMAL      | weight of animal           |
-| height          | DECIMAL      | height of animal           |
-| image_url       | VARCHAR(255) | image link of animal       |
-| date_intake     | DATE         | joining sanctuary date     |
-| species         | VARCHAR(50)  | species of animal          |
-| cleaning_status | BOOLEAN      | completed or not completed |
-| care_status     | BOOLEAN      | stable or not stable       |
-| feeding_status  | BOOLEAN      | fed or not fed             |
+| name            | VARCHAR(50)  | Name of animal             |
+| description     | VARCHAR(255) | Description of animal      |
+| age             | INT          | Age of animal              |
+| weight          | DECIMAL      | Weight of animal           |
+| height          | DECIMAL      | Height of animal           |
+| image_url       | VARCHAR(255) | Image link of animal       |
+| date_intake     | DATE         | Joining sanctuary date     |
+| species         | VARCHAR(50)  | Species of animal          |
+| cleaning_status | BOOLEAN      | Completed or not completed |
+| care_status     | BOOLEAN      | Stable or not stable       |
+| feeding_status  | BOOLEAN      | Fed or not fed             |
 
 ### animal_tag (Join Table)
 
@@ -149,23 +149,16 @@ animal ↔ tag (Many-to-Many)
 
 ### tag
 
-| Column     | Type         | Description |
-|------------|-------------|-------------|
-| tag_id     | INT         | PRIMARY KEY |
-| name       | VARCHAR(25) | name of tag            |
-| description| VARCHAR(50) | description of tag           |
-
-### Relationships
-
-sanctuary (One) ──> (Many) animal  
-sanctuary (One) ──> (Many) volunteer  
-sanctuary (One) ──> (Many) sponsor  
-animal (Many) ──> (Many) tag (via animal_tag)
+| Column      | Type        | Description        |
+| ----------- | ----------- | ------------------ |
+| tag_id      | INT         | PRIMARY KEY        |
+| name        | VARCHAR(25) | Name of tag        |
+| description | VARCHAR(50) | Description of tag |
 
 ## Wireframes
 
-### Hero Page
-![Hero Page](./planning/wireframe/hero.png)
+### Home Page
+![Home Page](./planning/wireframe/hero.png)
 
 ### Animals Page
 ![Animals Page](./planning/wireframe/animals-page.png)
