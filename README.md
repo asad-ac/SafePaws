@@ -42,7 +42,7 @@ All animals deserve a good environment and should not have to go through abuse, 
 
 ### ✅ Login with GitHub or Google
   Sanctuary administrators can login to save data of managing of animals, sponsors, volunteers, and sanctuary info.
-
+  
 
 ### ✅ Sorting by Pet Attributes & Searching by Name
   Implement sorting by name, age, or intake date and searching so staff can quickly find and manage animals more efficiently.
