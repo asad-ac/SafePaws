@@ -115,7 +115,7 @@ animal ↔ tag (Many-to-Many)
 | sponsorship_id | SERIAL       | PRIMARY KEY              |
 | sanctuary_id   | INT          | FOREIGN KEY              |
 | name           | VARCHAR(50)  | Name of sponsor          |
-| amount         | DECIMAL      | Amount pledged to animal |
+| amount         | DECIMAL      | Amount pledged to sanctuary |
 | address        | VARCHAR(255) | Address of sponsor       |
 | phone          | VARCHAR(20)  | Phone of sponsor         |
 | email          | VARCHAR(50)  | Email of sponsor         |
