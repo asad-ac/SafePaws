@@ -34,11 +34,7 @@ All animals deserve a good environment and should not have to go through abuse, 
 ### ✅ CRUD Workflow
   Use modal-based CRUD forms to streamline workflows and reduce unnecessary page navigation for staff.
 
-  Final:
   <img width="2538" height="1386" alt="CRUD" src="https://github.com/user-attachments/assets/e33136ad-1c0a-45d8-9acc-3c0c3bb25c8d" />
-
-  Prototype:
-  ![Demo](./milestones/demo/crud-modal.gif)
 
 ### ✅ Continue with GitHub or Google
   Sanctuary administrators can login to see management records of animals, sponsors, volunteers, and sanctuary information.
@@ -65,13 +61,10 @@ All animals deserve a good environment and should not have to go through abuse, 
 ### ✅ Toast Notifications
   Add toast notifications to provide feedback when animals, sponsors, or volunteers are successfully or unsuccessfully added, updated, or deleted in the system.
 
-  Final:
   <img width="2538" height="1386" alt="TOAST" src="https://github.com/user-attachments/assets/f3088e98-8619-4fe7-ab0e-6a460c3c2156" />
 
-  Prototype:
-  ![Demo](./milestones/demo/toast-notifications.gif)
-
 ### ✅ Loading Skeletons
+
   <img width="2538" height="1386" alt="Skeletons" src="https://github.com/user-attachments/assets/d6f1c6cb-dcf5-43ae-bd2d-00deeb5bca43" />
 
 ## Entity Relationship Diagram
