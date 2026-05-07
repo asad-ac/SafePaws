@@ -36,13 +36,6 @@ All animals deserve a good environment and should not have to go through abuse, 
 
   <img width="2538" height="1386" alt="CRUD" src="https://github.com/user-attachments/assets/e33136ad-1c0a-45d8-9acc-3c0c3bb25c8d" />
 
-### ✅ Continue with GitHub or Google
-  Sanctuary administrators can login to see management records of animals, sponsors, volunteers, and sanctuary information.
-
-  ![Demo](./milestones/demo/google-login.png)
-  ![Demo](./milestones/demo/google-login-2.png)
-  
-
 ### ✅ Sorting by Pet Attributes & Searching by Name
   Implement sorting by name, age, or intake date and searching so staff can quickly find and manage animals more efficiently.
   
@@ -53,20 +46,26 @@ All animals deserve a good environment and should not have to go through abuse, 
 
   <img width="2538" height="1386" alt="FILTER" src="https://github.com/user-attachments/assets/a1185603-a062-443c-8bad-f1e7b7aef04d" />
 
+### ✅ Toast Notifications
+  Add toast notifications to provide instant feedback when animals, sponsors, or volunteers are successfully or unsuccessfully added, updated, or deleted in the system.
+
+  <img width="2538" height="1386" alt="TOAST" src="https://github.com/user-attachments/assets/f3088e98-8619-4fe7-ab0e-6a460c3c2156" />
+
+### ✅ Loading Skeletons
+  Display skeleton loading states while fetching data to create sleek transitions and reduce cognitive load.
+
+  <img width="2538" height="1386" alt="Skeletons" src="https://github.com/user-attachments/assets/d6f1c6cb-dcf5-43ae-bd2d-00deeb5bca43" />
+
 ### ✅ Error Handling
   Handle errors gracefully to maintain a smooth user experience and strong data integrity.
 
   ![Demo](./milestones/demo/error-handling.gif)
 
-### ✅ Toast Notifications
-  Add toast notifications to provide feedback when animals, sponsors, or volunteers are successfully or unsuccessfully added, updated, or deleted in the system.
+### ✅ Continue with GitHub or Google
+  Sanctuary administrators can login to see saved management records of animals, sponsors, volunteers, and sanctuary information.
 
-  <img width="2538" height="1386" alt="TOAST" src="https://github.com/user-attachments/assets/f3088e98-8619-4fe7-ab0e-6a460c3c2156" />
-
-### ✅ Loading Skeletons
-  Display skeleton loading states during API requests to create smoother transitions and reduce cognitive load.
-
-  <img width="2538" height="1386" alt="Skeletons" src="https://github.com/user-attachments/assets/d6f1c6cb-dcf5-43ae-bd2d-00deeb5bca43" />
+  ![Demo](./milestones/demo/google-login.png)
+  ![Demo](./milestones/demo/google-login-2.png)
 
 ## Entity Relationship Diagram
 
