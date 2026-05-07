@@ -64,6 +64,7 @@ All animals deserve a good environment and should not have to go through abuse, 
   <img width="2538" height="1386" alt="TOAST" src="https://github.com/user-attachments/assets/f3088e98-8619-4fe7-ab0e-6a460c3c2156" />
 
 ### ✅ Loading Skeletons
+  Display skeleton loading states during API requests to create smoother transitions and reduce cognitive load.
 
   <img width="2538" height="1386" alt="Skeletons" src="https://github.com/user-attachments/assets/d6f1c6cb-dcf5-43ae-bd2d-00deeb5bca43" />
 
