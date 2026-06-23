@@ -2,7 +2,7 @@
 
 CodePath WEB103 Final Project
 
-Designed and developed by: Rajiv Chevannes, Samantha Milo, Asad Chaudhry, Baire Diaz
+Designed and developed by: Asad Chaudhry, Baire Diaz
 
 ## About
 
